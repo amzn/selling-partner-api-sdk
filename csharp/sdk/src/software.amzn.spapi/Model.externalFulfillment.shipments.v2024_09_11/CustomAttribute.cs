@@ -41,9 +41,9 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomAttribute" /> class.
         /// </summary>
-        /// <param name="key">The key of the custom attribute. Must be unique..</param>
+        /// <param name="key">The attribute key..</param>
         /// <param name="type">type.</param>
-        /// <param name="value">The value of the custom attribute..</param>
+        /// <param name="value">The attribute value..</param>
         public CustomAttribute(string? key = default(string?), CustomAttributeType? type = default(CustomAttributeType?), string? value = default(string?))
         {
             this.Key = key;
@@ -52,16 +52,22 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         }
 
         /// <summary>
-        /// The key of the custom attribute. Must be unique.
+        /// The attribute key.
         /// </summary>
-        /// <value>The key of the custom attribute. Must be unique.</value>
+        /// <value>The attribute key.</value>
+        /*
+        <example>color</example>
+        */
         [DataMember(Name = "key", EmitDefaultValue = false)]
         public string? Key { get; set; }
 
         /// <summary>
-        /// The value of the custom attribute.
+        /// The attribute value.
         /// </summary>
-        /// <value>The value of the custom attribute.</value>
+        /// <value>The attribute value.</value>
+        /*
+        <example>red</example>
+        */
         [DataMember(Name = "value", EmitDefaultValue = false)]
         public string? Value { get; set; }
 

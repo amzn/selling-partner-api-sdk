@@ -136,8 +136,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace from which you want the invoice.</param>
         /// <param name="invoiceId">The invoice identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>GetInvoiceResponse</returns>
-        GetInvoiceResponse GetInvoice (string marketplaceId, string invoiceId);
+        GetInvoiceResponse GetInvoice (string marketplaceId, string invoiceId, string? warehouseCode = null);
 
         /// <summary>
         /// 
@@ -148,8 +149,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace from which you want the invoice.</param>
         /// <param name="invoiceId">The invoice identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>ApiResponse of GetInvoiceResponse</returns>
-        ApiResponse<GetInvoiceResponse> GetInvoiceWithHttpInfo (string marketplaceId, string invoiceId);
+        ApiResponse<GetInvoiceResponse> GetInvoiceWithHttpInfo (string marketplaceId, string invoiceId, string? warehouseCode = null);
         /// <summary>
         /// 
         /// </summary>
@@ -171,8 +173,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="statuses">A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1 (optional)</param>
         /// <param name="externalInvoiceId">Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)</param>
         /// <param name="sortBy">The attribute by which you want to sort the invoices in the response. (optional)</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>GetInvoicesResponse</returns>
-        GetInvoicesResponse GetInvoices (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null);
+        GetInvoicesResponse GetInvoices (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null, string? warehouseCode = null);
 
         /// <summary>
         /// 
@@ -195,8 +198,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="statuses">A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1 (optional)</param>
         /// <param name="externalInvoiceId">Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)</param>
         /// <param name="sortBy">The attribute by which you want to sort the invoices in the response. (optional)</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>ApiResponse of GetInvoicesResponse</returns>
-        ApiResponse<GetInvoicesResponse> GetInvoicesWithHttpInfo (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null);
+        ApiResponse<GetInvoicesResponse> GetInvoicesWithHttpInfo (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null, string? warehouseCode = null);
         /// <summary>
         /// 
         /// </summary>
@@ -205,8 +209,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>GetInvoicesAttributesResponse</returns>
-        GetInvoicesAttributesResponse GetInvoicesAttributes (string marketplaceId);
+        GetInvoicesAttributesResponse GetInvoicesAttributes (string marketplaceId, string? warehouseCode = null);
 
         /// <summary>
         /// 
@@ -216,8 +221,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>ApiResponse of GetInvoicesAttributesResponse</returns>
-        ApiResponse<GetInvoicesAttributesResponse> GetInvoicesAttributesWithHttpInfo (string marketplaceId);
+        ApiResponse<GetInvoicesAttributesResponse> GetInvoicesAttributesWithHttpInfo (string marketplaceId, string? warehouseCode = null);
         /// <summary>
         /// 
         /// </summary>
@@ -226,8 +232,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="invoicesDocumentId">The export document identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>GetInvoicesDocumentResponse</returns>
-        GetInvoicesDocumentResponse GetInvoicesDocument (string invoicesDocumentId);
+        GetInvoicesDocumentResponse GetInvoicesDocument (string invoicesDocumentId, string? warehouseCode = null);
 
         /// <summary>
         /// 
@@ -237,8 +244,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="invoicesDocumentId">The export document identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>ApiResponse of GetInvoicesDocumentResponse</returns>
-        ApiResponse<GetInvoicesDocumentResponse> GetInvoicesDocumentWithHttpInfo (string invoicesDocumentId);
+        ApiResponse<GetInvoicesDocumentResponse> GetInvoicesDocumentWithHttpInfo (string invoicesDocumentId, string? warehouseCode = null);
         /// <summary>
         /// 
         /// </summary>
@@ -247,8 +255,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exportId">The unique identifier for the export.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>GetInvoicesExportResponse</returns>
-        GetInvoicesExportResponse GetInvoicesExport (string exportId);
+        GetInvoicesExportResponse GetInvoicesExport (string exportId, string? warehouseCode = null);
 
         /// <summary>
         /// 
@@ -258,8 +267,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exportId">The unique identifier for the export.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>ApiResponse of GetInvoicesExportResponse</returns>
-        ApiResponse<GetInvoicesExportResponse> GetInvoicesExportWithHttpInfo (string exportId);
+        ApiResponse<GetInvoicesExportResponse> GetInvoicesExportWithHttpInfo (string exportId, string? warehouseCode = null);
         /// <summary>
         /// 
         /// </summary>
@@ -273,8 +283,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="pageSize">The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100 (optional)</param>
         /// <param name="dateEnd">The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)</param>
         /// <param name="status">Return exports matching the status specified.  (optional)</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>GetInvoicesExportsResponse</returns>
-        GetInvoicesExportsResponse GetInvoicesExports (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null);
+        GetInvoicesExportsResponse GetInvoicesExports (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null, string? warehouseCode = null);
 
         /// <summary>
         /// 
@@ -289,8 +300,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="pageSize">The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100 (optional)</param>
         /// <param name="dateEnd">The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)</param>
         /// <param name="status">Return exports matching the status specified.  (optional)</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>ApiResponse of GetInvoicesExportsResponse</returns>
-        ApiResponse<GetInvoicesExportsResponse> GetInvoicesExportsWithHttpInfo (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null);
+        ApiResponse<GetInvoicesExportsResponse> GetInvoicesExportsWithHttpInfo (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null, string? warehouseCode = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -404,8 +416,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace from which you want the invoice.</param>
         /// <param name="invoiceId">The invoice identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of GetInvoiceResponse</returns>
-        System.Threading.Tasks.Task<GetInvoiceResponse> GetInvoiceAsync (string marketplaceId, string invoiceId);
+        System.Threading.Tasks.Task<GetInvoiceResponse> GetInvoiceAsync (string marketplaceId, string invoiceId, string? warehouseCode = null);
 
         /// <summary>
         /// 
@@ -416,8 +429,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace from which you want the invoice.</param>
         /// <param name="invoiceId">The invoice identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of ApiResponse (GetInvoiceResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetInvoiceResponse>> GetInvoiceAsyncWithHttpInfo (string marketplaceId, string invoiceId);
+        System.Threading.Tasks.Task<ApiResponse<GetInvoiceResponse>> GetInvoiceAsyncWithHttpInfo (string marketplaceId, string invoiceId, string? warehouseCode = null);
         /// <summary>
         /// 
         /// </summary>
@@ -439,8 +453,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="statuses">A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1 (optional)</param>
         /// <param name="externalInvoiceId">Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)</param>
         /// <param name="sortBy">The attribute by which you want to sort the invoices in the response. (optional)</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of GetInvoicesResponse</returns>
-        System.Threading.Tasks.Task<GetInvoicesResponse> GetInvoicesAsync (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null);
+        System.Threading.Tasks.Task<GetInvoicesResponse> GetInvoicesAsync (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null, string? warehouseCode = null);
 
         /// <summary>
         /// 
@@ -463,8 +478,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="statuses">A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1 (optional)</param>
         /// <param name="externalInvoiceId">Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)</param>
         /// <param name="sortBy">The attribute by which you want to sort the invoices in the response. (optional)</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of ApiResponse (GetInvoicesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetInvoicesResponse>> GetInvoicesAsyncWithHttpInfo (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null);
+        System.Threading.Tasks.Task<ApiResponse<GetInvoicesResponse>> GetInvoicesAsyncWithHttpInfo (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null, string? warehouseCode = null);
         /// <summary>
         /// 
         /// </summary>
@@ -473,8 +489,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of GetInvoicesAttributesResponse</returns>
-        System.Threading.Tasks.Task<GetInvoicesAttributesResponse> GetInvoicesAttributesAsync (string marketplaceId);
+        System.Threading.Tasks.Task<GetInvoicesAttributesResponse> GetInvoicesAttributesAsync (string marketplaceId, string? warehouseCode = null);
 
         /// <summary>
         /// 
@@ -484,8 +501,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of ApiResponse (GetInvoicesAttributesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetInvoicesAttributesResponse>> GetInvoicesAttributesAsyncWithHttpInfo (string marketplaceId);
+        System.Threading.Tasks.Task<ApiResponse<GetInvoicesAttributesResponse>> GetInvoicesAttributesAsyncWithHttpInfo (string marketplaceId, string? warehouseCode = null);
         /// <summary>
         /// 
         /// </summary>
@@ -494,8 +512,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="invoicesDocumentId">The export document identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of GetInvoicesDocumentResponse</returns>
-        System.Threading.Tasks.Task<GetInvoicesDocumentResponse> GetInvoicesDocumentAsync (string invoicesDocumentId);
+        System.Threading.Tasks.Task<GetInvoicesDocumentResponse> GetInvoicesDocumentAsync (string invoicesDocumentId, string? warehouseCode = null);
 
         /// <summary>
         /// 
@@ -505,8 +524,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="invoicesDocumentId">The export document identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of ApiResponse (GetInvoicesDocumentResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetInvoicesDocumentResponse>> GetInvoicesDocumentAsyncWithHttpInfo (string invoicesDocumentId);
+        System.Threading.Tasks.Task<ApiResponse<GetInvoicesDocumentResponse>> GetInvoicesDocumentAsyncWithHttpInfo (string invoicesDocumentId, string? warehouseCode = null);
         /// <summary>
         /// 
         /// </summary>
@@ -515,8 +535,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exportId">The unique identifier for the export.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of GetInvoicesExportResponse</returns>
-        System.Threading.Tasks.Task<GetInvoicesExportResponse> GetInvoicesExportAsync (string exportId);
+        System.Threading.Tasks.Task<GetInvoicesExportResponse> GetInvoicesExportAsync (string exportId, string? warehouseCode = null);
 
         /// <summary>
         /// 
@@ -526,8 +547,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exportId">The unique identifier for the export.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of ApiResponse (GetInvoicesExportResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetInvoicesExportResponse>> GetInvoicesExportAsyncWithHttpInfo (string exportId);
+        System.Threading.Tasks.Task<ApiResponse<GetInvoicesExportResponse>> GetInvoicesExportAsyncWithHttpInfo (string exportId, string? warehouseCode = null);
         /// <summary>
         /// 
         /// </summary>
@@ -541,8 +563,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="pageSize">The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100 (optional)</param>
         /// <param name="dateEnd">The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)</param>
         /// <param name="status">Return exports matching the status specified.  (optional)</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of GetInvoicesExportsResponse</returns>
-        System.Threading.Tasks.Task<GetInvoicesExportsResponse> GetInvoicesExportsAsync (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null);
+        System.Threading.Tasks.Task<GetInvoicesExportsResponse> GetInvoicesExportsAsync (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null, string? warehouseCode = null);
 
         /// <summary>
         /// 
@@ -557,8 +580,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="pageSize">The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100 (optional)</param>
         /// <param name="dateEnd">The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)</param>
         /// <param name="status">Return exports matching the status specified.  (optional)</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of ApiResponse (GetInvoicesExportsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetInvoicesExportsResponse>> GetInvoicesExportsAsyncWithHttpInfo (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null);
+        System.Threading.Tasks.Task<ApiResponse<GetInvoicesExportsResponse>> GetInvoicesExportsAsyncWithHttpInfo (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null, string? warehouseCode = null);
         #endregion Asynchronous Operations
     }
 
@@ -1290,10 +1314,11 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace from which you want the invoice.</param>
         /// <param name="invoiceId">The invoice identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>GetInvoiceResponse</returns>
-        public GetInvoiceResponse GetInvoice (string marketplaceId, string invoiceId)
+        public GetInvoiceResponse GetInvoice (string marketplaceId, string invoiceId, string? warehouseCode = null)
         {
-             ApiResponse<GetInvoiceResponse> localVarResponse = GetInvoiceWithHttpInfo(marketplaceId, invoiceId);
+             ApiResponse<GetInvoiceResponse> localVarResponse = GetInvoiceWithHttpInfo(marketplaceId, invoiceId, warehouseCode);
              return localVarResponse.Data;
         }
 
@@ -1303,8 +1328,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace from which you want the invoice.</param>
         /// <param name="invoiceId">The invoice identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>ApiResponse of GetInvoiceResponse</returns>
-        public ApiResponse< GetInvoiceResponse > GetInvoiceWithHttpInfo (string marketplaceId, string invoiceId)
+        public ApiResponse< GetInvoiceResponse > GetInvoiceWithHttpInfo (string marketplaceId, string invoiceId, string? warehouseCode = null)
         {
             // verify the required parameter 'marketplaceId' is set
             if (marketplaceId == null)
@@ -1336,6 +1362,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
 
             if (invoiceId != null) localVarPathParams.Add("invoiceId", this.Configuration.ApiClient.ParameterToString(invoiceId)); // path parameter
             if (marketplaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "marketplaceId", marketplaceId)); // query parameter
+            if (warehouseCode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "warehouseCode", warehouseCode)); // query parameter
 
 
             // make the HTTP request
@@ -1360,10 +1387,11 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace from which you want the invoice.</param>
         /// <param name="invoiceId">The invoice identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of GetInvoiceResponse</returns>
-        public async System.Threading.Tasks.Task<GetInvoiceResponse> GetInvoiceAsync (string marketplaceId, string invoiceId)
+        public async System.Threading.Tasks.Task<GetInvoiceResponse> GetInvoiceAsync (string marketplaceId, string invoiceId, string? warehouseCode = null)
         {
-             ApiResponse<GetInvoiceResponse> localVarResponse = await GetInvoiceAsyncWithHttpInfo(marketplaceId, invoiceId);
+             ApiResponse<GetInvoiceResponse> localVarResponse = await GetInvoiceAsyncWithHttpInfo(marketplaceId, invoiceId, warehouseCode);
              return localVarResponse.Data;
 
         }
@@ -1374,8 +1402,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace from which you want the invoice.</param>
         /// <param name="invoiceId">The invoice identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of ApiResponse (GetInvoiceResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetInvoiceResponse>> GetInvoiceAsyncWithHttpInfo (string marketplaceId, string invoiceId)
+        public async System.Threading.Tasks.Task<ApiResponse<GetInvoiceResponse>> GetInvoiceAsyncWithHttpInfo (string marketplaceId, string invoiceId, string? warehouseCode = null)
         {
             // verify the required parameter 'marketplaceId' is set
             if (marketplaceId == null)
@@ -1407,6 +1436,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
 
             if (invoiceId != null) localVarPathParams.Add("invoiceId", this.Configuration.ApiClient.ParameterToString(invoiceId)); // path parameter
             if (marketplaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "marketplaceId", marketplaceId)); // query parameter
+            if (warehouseCode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "warehouseCode", warehouseCode)); // query parameter
 
 
             // make the HTTP request
@@ -1442,10 +1472,11 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="statuses">A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1 (optional)</param>
         /// <param name="externalInvoiceId">Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)</param>
         /// <param name="sortBy">The attribute by which you want to sort the invoices in the response. (optional)</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>GetInvoicesResponse</returns>
-        public GetInvoicesResponse GetInvoices (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null)
+        public GetInvoicesResponse GetInvoices (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null, string? warehouseCode = null)
         {
-             ApiResponse<GetInvoicesResponse> localVarResponse = GetInvoicesWithHttpInfo(marketplaceId, transactionIdentifierName, pageSize, dateEnd, transactionType, transactionIdentifierId, dateStart, series, nextToken, sortOrder, invoiceType, statuses, externalInvoiceId, sortBy);
+             ApiResponse<GetInvoicesResponse> localVarResponse = GetInvoicesWithHttpInfo(marketplaceId, transactionIdentifierName, pageSize, dateEnd, transactionType, transactionIdentifierId, dateStart, series, nextToken, sortOrder, invoiceType, statuses, externalInvoiceId, sortBy, warehouseCode);
              return localVarResponse.Data;
         }
 
@@ -1467,8 +1498,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="statuses">A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1 (optional)</param>
         /// <param name="externalInvoiceId">Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)</param>
         /// <param name="sortBy">The attribute by which you want to sort the invoices in the response. (optional)</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>ApiResponse of GetInvoicesResponse</returns>
-        public ApiResponse< GetInvoicesResponse > GetInvoicesWithHttpInfo (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null)
+        public ApiResponse< GetInvoicesResponse > GetInvoicesWithHttpInfo (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null, string? warehouseCode = null)
         {
             // verify the required parameter 'marketplaceId' is set
             if (marketplaceId == null)
@@ -1509,6 +1541,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
             if (statuses != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "statuses", statuses)); // query parameter
             if (externalInvoiceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "externalInvoiceId", externalInvoiceId)); // query parameter
             if (sortBy != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sortBy", sortBy)); // query parameter
+            if (warehouseCode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "warehouseCode", warehouseCode)); // query parameter
 
 
             // make the HTTP request
@@ -1545,10 +1578,11 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="statuses">A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1 (optional)</param>
         /// <param name="externalInvoiceId">Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)</param>
         /// <param name="sortBy">The attribute by which you want to sort the invoices in the response. (optional)</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of GetInvoicesResponse</returns>
-        public async System.Threading.Tasks.Task<GetInvoicesResponse> GetInvoicesAsync (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null)
+        public async System.Threading.Tasks.Task<GetInvoicesResponse> GetInvoicesAsync (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null, string? warehouseCode = null)
         {
-             ApiResponse<GetInvoicesResponse> localVarResponse = await GetInvoicesAsyncWithHttpInfo(marketplaceId, transactionIdentifierName, pageSize, dateEnd, transactionType, transactionIdentifierId, dateStart, series, nextToken, sortOrder, invoiceType, statuses, externalInvoiceId, sortBy);
+             ApiResponse<GetInvoicesResponse> localVarResponse = await GetInvoicesAsyncWithHttpInfo(marketplaceId, transactionIdentifierName, pageSize, dateEnd, transactionType, transactionIdentifierId, dateStart, series, nextToken, sortOrder, invoiceType, statuses, externalInvoiceId, sortBy, warehouseCode);
              return localVarResponse.Data;
 
         }
@@ -1571,8 +1605,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="statuses">A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1 (optional)</param>
         /// <param name="externalInvoiceId">Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)</param>
         /// <param name="sortBy">The attribute by which you want to sort the invoices in the response. (optional)</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of ApiResponse (GetInvoicesResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetInvoicesResponse>> GetInvoicesAsyncWithHttpInfo (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetInvoicesResponse>> GetInvoicesAsyncWithHttpInfo (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null, string? warehouseCode = null)
         {
             // verify the required parameter 'marketplaceId' is set
             if (marketplaceId == null)
@@ -1613,6 +1648,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
             if (statuses != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "statuses", statuses)); // query parameter
             if (externalInvoiceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "externalInvoiceId", externalInvoiceId)); // query parameter
             if (sortBy != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sortBy", sortBy)); // query parameter
+            if (warehouseCode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "warehouseCode", warehouseCode)); // query parameter
 
 
             // make the HTTP request
@@ -1635,10 +1671,11 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>GetInvoicesAttributesResponse</returns>
-        public GetInvoicesAttributesResponse GetInvoicesAttributes (string marketplaceId)
+        public GetInvoicesAttributesResponse GetInvoicesAttributes (string marketplaceId, string? warehouseCode = null)
         {
-             ApiResponse<GetInvoicesAttributesResponse> localVarResponse = GetInvoicesAttributesWithHttpInfo(marketplaceId);
+             ApiResponse<GetInvoicesAttributesResponse> localVarResponse = GetInvoicesAttributesWithHttpInfo(marketplaceId, warehouseCode);
              return localVarResponse.Data;
         }
 
@@ -1647,8 +1684,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>ApiResponse of GetInvoicesAttributesResponse</returns>
-        public ApiResponse< GetInvoicesAttributesResponse > GetInvoicesAttributesWithHttpInfo (string marketplaceId)
+        public ApiResponse< GetInvoicesAttributesResponse > GetInvoicesAttributesWithHttpInfo (string marketplaceId, string? warehouseCode = null)
         {
             // verify the required parameter 'marketplaceId' is set
             if (marketplaceId == null)
@@ -1676,6 +1714,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (marketplaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "marketplaceId", marketplaceId)); // query parameter
+            if (warehouseCode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "warehouseCode", warehouseCode)); // query parameter
 
 
             // make the HTTP request
@@ -1699,10 +1738,11 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of GetInvoicesAttributesResponse</returns>
-        public async System.Threading.Tasks.Task<GetInvoicesAttributesResponse> GetInvoicesAttributesAsync (string marketplaceId)
+        public async System.Threading.Tasks.Task<GetInvoicesAttributesResponse> GetInvoicesAttributesAsync (string marketplaceId, string? warehouseCode = null)
         {
-             ApiResponse<GetInvoicesAttributesResponse> localVarResponse = await GetInvoicesAttributesAsyncWithHttpInfo(marketplaceId);
+             ApiResponse<GetInvoicesAttributesResponse> localVarResponse = await GetInvoicesAttributesAsyncWithHttpInfo(marketplaceId, warehouseCode);
              return localVarResponse.Data;
 
         }
@@ -1712,8 +1752,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of ApiResponse (GetInvoicesAttributesResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetInvoicesAttributesResponse>> GetInvoicesAttributesAsyncWithHttpInfo (string marketplaceId)
+        public async System.Threading.Tasks.Task<ApiResponse<GetInvoicesAttributesResponse>> GetInvoicesAttributesAsyncWithHttpInfo (string marketplaceId, string? warehouseCode = null)
         {
             // verify the required parameter 'marketplaceId' is set
             if (marketplaceId == null)
@@ -1741,6 +1782,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (marketplaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "marketplaceId", marketplaceId)); // query parameter
+            if (warehouseCode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "warehouseCode", warehouseCode)); // query parameter
 
 
             // make the HTTP request
@@ -1763,10 +1805,11 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="invoicesDocumentId">The export document identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>GetInvoicesDocumentResponse</returns>
-        public GetInvoicesDocumentResponse GetInvoicesDocument (string invoicesDocumentId)
+        public GetInvoicesDocumentResponse GetInvoicesDocument (string invoicesDocumentId, string? warehouseCode = null)
         {
-             ApiResponse<GetInvoicesDocumentResponse> localVarResponse = GetInvoicesDocumentWithHttpInfo(invoicesDocumentId);
+             ApiResponse<GetInvoicesDocumentResponse> localVarResponse = GetInvoicesDocumentWithHttpInfo(invoicesDocumentId, warehouseCode);
              return localVarResponse.Data;
         }
 
@@ -1775,8 +1818,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="invoicesDocumentId">The export document identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>ApiResponse of GetInvoicesDocumentResponse</returns>
-        public ApiResponse< GetInvoicesDocumentResponse > GetInvoicesDocumentWithHttpInfo (string invoicesDocumentId)
+        public ApiResponse< GetInvoicesDocumentResponse > GetInvoicesDocumentWithHttpInfo (string invoicesDocumentId, string? warehouseCode = null)
         {
             // verify the required parameter 'invoicesDocumentId' is set
             if (invoicesDocumentId == null)
@@ -1804,6 +1848,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (invoicesDocumentId != null) localVarPathParams.Add("invoicesDocumentId", this.Configuration.ApiClient.ParameterToString(invoicesDocumentId)); // path parameter
+            if (warehouseCode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "warehouseCode", warehouseCode)); // query parameter
 
 
             // make the HTTP request
@@ -1827,10 +1872,11 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="invoicesDocumentId">The export document identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of GetInvoicesDocumentResponse</returns>
-        public async System.Threading.Tasks.Task<GetInvoicesDocumentResponse> GetInvoicesDocumentAsync (string invoicesDocumentId)
+        public async System.Threading.Tasks.Task<GetInvoicesDocumentResponse> GetInvoicesDocumentAsync (string invoicesDocumentId, string? warehouseCode = null)
         {
-             ApiResponse<GetInvoicesDocumentResponse> localVarResponse = await GetInvoicesDocumentAsyncWithHttpInfo(invoicesDocumentId);
+             ApiResponse<GetInvoicesDocumentResponse> localVarResponse = await GetInvoicesDocumentAsyncWithHttpInfo(invoicesDocumentId, warehouseCode);
              return localVarResponse.Data;
 
         }
@@ -1840,8 +1886,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="invoicesDocumentId">The export document identifier.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of ApiResponse (GetInvoicesDocumentResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetInvoicesDocumentResponse>> GetInvoicesDocumentAsyncWithHttpInfo (string invoicesDocumentId)
+        public async System.Threading.Tasks.Task<ApiResponse<GetInvoicesDocumentResponse>> GetInvoicesDocumentAsyncWithHttpInfo (string invoicesDocumentId, string? warehouseCode = null)
         {
             // verify the required parameter 'invoicesDocumentId' is set
             if (invoicesDocumentId == null)
@@ -1869,6 +1916,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (invoicesDocumentId != null) localVarPathParams.Add("invoicesDocumentId", this.Configuration.ApiClient.ParameterToString(invoicesDocumentId)); // path parameter
+            if (warehouseCode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "warehouseCode", warehouseCode)); // query parameter
 
 
             // make the HTTP request
@@ -1891,10 +1939,11 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exportId">The unique identifier for the export.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>GetInvoicesExportResponse</returns>
-        public GetInvoicesExportResponse GetInvoicesExport (string exportId)
+        public GetInvoicesExportResponse GetInvoicesExport (string exportId, string? warehouseCode = null)
         {
-             ApiResponse<GetInvoicesExportResponse> localVarResponse = GetInvoicesExportWithHttpInfo(exportId);
+             ApiResponse<GetInvoicesExportResponse> localVarResponse = GetInvoicesExportWithHttpInfo(exportId, warehouseCode);
              return localVarResponse.Data;
         }
 
@@ -1903,8 +1952,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exportId">The unique identifier for the export.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>ApiResponse of GetInvoicesExportResponse</returns>
-        public ApiResponse< GetInvoicesExportResponse > GetInvoicesExportWithHttpInfo (string exportId)
+        public ApiResponse< GetInvoicesExportResponse > GetInvoicesExportWithHttpInfo (string exportId, string? warehouseCode = null)
         {
             // verify the required parameter 'exportId' is set
             if (exportId == null)
@@ -1932,6 +1982,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (exportId != null) localVarPathParams.Add("exportId", this.Configuration.ApiClient.ParameterToString(exportId)); // path parameter
+            if (warehouseCode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "warehouseCode", warehouseCode)); // query parameter
 
 
             // make the HTTP request
@@ -1955,10 +2006,11 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exportId">The unique identifier for the export.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of GetInvoicesExportResponse</returns>
-        public async System.Threading.Tasks.Task<GetInvoicesExportResponse> GetInvoicesExportAsync (string exportId)
+        public async System.Threading.Tasks.Task<GetInvoicesExportResponse> GetInvoicesExportAsync (string exportId, string? warehouseCode = null)
         {
-             ApiResponse<GetInvoicesExportResponse> localVarResponse = await GetInvoicesExportAsyncWithHttpInfo(exportId);
+             ApiResponse<GetInvoicesExportResponse> localVarResponse = await GetInvoicesExportAsyncWithHttpInfo(exportId, warehouseCode);
              return localVarResponse.Data;
 
         }
@@ -1968,8 +2020,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exportId">The unique identifier for the export.</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of ApiResponse (GetInvoicesExportResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetInvoicesExportResponse>> GetInvoicesExportAsyncWithHttpInfo (string exportId)
+        public async System.Threading.Tasks.Task<ApiResponse<GetInvoicesExportResponse>> GetInvoicesExportAsyncWithHttpInfo (string exportId, string? warehouseCode = null)
         {
             // verify the required parameter 'exportId' is set
             if (exportId == null)
@@ -1997,6 +2050,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (exportId != null) localVarPathParams.Add("exportId", this.Configuration.ApiClient.ParameterToString(exportId)); // path parameter
+            if (warehouseCode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "warehouseCode", warehouseCode)); // query parameter
 
 
             // make the HTTP request
@@ -2024,10 +2078,11 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="pageSize">The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100 (optional)</param>
         /// <param name="dateEnd">The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)</param>
         /// <param name="status">Return exports matching the status specified.  (optional)</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>GetInvoicesExportsResponse</returns>
-        public GetInvoicesExportsResponse GetInvoicesExports (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null)
+        public GetInvoicesExportsResponse GetInvoicesExports (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null, string? warehouseCode = null)
         {
-             ApiResponse<GetInvoicesExportsResponse> localVarResponse = GetInvoicesExportsWithHttpInfo(marketplaceId, dateStart, nextToken, pageSize, dateEnd, status);
+             ApiResponse<GetInvoicesExportsResponse> localVarResponse = GetInvoicesExportsWithHttpInfo(marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, warehouseCode);
              return localVarResponse.Data;
         }
 
@@ -2041,8 +2096,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="pageSize">The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100 (optional)</param>
         /// <param name="dateEnd">The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)</param>
         /// <param name="status">Return exports matching the status specified.  (optional)</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>ApiResponse of GetInvoicesExportsResponse</returns>
-        public ApiResponse< GetInvoicesExportsResponse > GetInvoicesExportsWithHttpInfo (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null)
+        public ApiResponse< GetInvoicesExportsResponse > GetInvoicesExportsWithHttpInfo (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null, string? warehouseCode = null)
         {
             // verify the required parameter 'marketplaceId' is set
             if (marketplaceId == null)
@@ -2075,6 +2131,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
             if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
             if (dateEnd != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "dateEnd", dateEnd)); // query parameter
             if (status != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
+            if (warehouseCode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "warehouseCode", warehouseCode)); // query parameter
 
 
             // make the HTTP request
@@ -2103,10 +2160,11 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="pageSize">The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100 (optional)</param>
         /// <param name="dateEnd">The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)</param>
         /// <param name="status">Return exports matching the status specified.  (optional)</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of GetInvoicesExportsResponse</returns>
-        public async System.Threading.Tasks.Task<GetInvoicesExportsResponse> GetInvoicesExportsAsync (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null)
+        public async System.Threading.Tasks.Task<GetInvoicesExportsResponse> GetInvoicesExportsAsync (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null, string? warehouseCode = null)
         {
-             ApiResponse<GetInvoicesExportsResponse> localVarResponse = await GetInvoicesExportsAsyncWithHttpInfo(marketplaceId, dateStart, nextToken, pageSize, dateEnd, status);
+             ApiResponse<GetInvoicesExportsResponse> localVarResponse = await GetInvoicesExportsAsyncWithHttpInfo(marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, warehouseCode);
              return localVarResponse.Data;
 
         }
@@ -2121,8 +2179,9 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="pageSize">The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100 (optional)</param>
         /// <param name="dateEnd">The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)</param>
         /// <param name="status">Return exports matching the status specified.  (optional)</param>
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)</param>
         /// <returns>Task of ApiResponse (GetInvoicesExportsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetInvoicesExportsResponse>> GetInvoicesExportsAsyncWithHttpInfo (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetInvoicesExportsResponse>> GetInvoicesExportsAsyncWithHttpInfo (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null, string? warehouseCode = null)
         {
             // verify the required parameter 'marketplaceId' is set
             if (marketplaceId == null)
@@ -2155,6 +2214,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
             if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
             if (dateEnd != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "dateEnd", dateEnd)); // query parameter
             if (status != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
+            if (warehouseCode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "warehouseCode", warehouseCode)); // query parameter
 
 
             // make the HTTP request

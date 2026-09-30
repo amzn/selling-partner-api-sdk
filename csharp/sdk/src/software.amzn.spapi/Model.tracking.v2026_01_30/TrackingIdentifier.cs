@@ -40,7 +40,8 @@ namespace software.amzn.spapi.Model.tracking.v2026_01_30
         /// <param name="aftn">The Amazon Fulfillment Tracking Number..</param>
         /// <param name="containerNumber">The container number provided by the Logistics Service Provider..</param>
         /// <param name="houseBillOfLadingNumber">The House Bill of Lading (HBL) number..</param>
-        public TrackingIdentifier(string? id = default(string?), CarrierTracking? carrierTracking = default(CarrierTracking?), string? acsin = default(string?), string? aftn = default(string?), string? containerNumber = default(string?), string? houseBillOfLadingNumber = default(string?))
+        /// <param name="proNumber">The PRO number assigned by the freight carrier.</param>
+        public TrackingIdentifier(string? id = default(string?), CarrierTracking? carrierTracking = default(CarrierTracking?), string? acsin = default(string?), string? aftn = default(string?), string? containerNumber = default(string?), string? houseBillOfLadingNumber = default(string?), string? proNumber = default(string?))
         {
             this.Id = id;
             this.CarrierTracking = carrierTracking;
@@ -48,6 +49,7 @@ namespace software.amzn.spapi.Model.tracking.v2026_01_30
             this.Aftn = aftn;
             this.ContainerNumber = containerNumber;
             this.HouseBillOfLadingNumber = houseBillOfLadingNumber;
+            this.ProNumber = proNumber;
         }
 
         /// <summary>
@@ -92,6 +94,13 @@ namespace software.amzn.spapi.Model.tracking.v2026_01_30
         public string? HouseBillOfLadingNumber { get; set; }
 
         /// <summary>
+        /// The PRO number assigned by the freight carrier
+        /// </summary>
+        /// <value>The PRO number assigned by the freight carrier</value>
+        [DataMember(Name = "proNumber", EmitDefaultValue = false)]
+        public string? ProNumber { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -105,6 +114,7 @@ namespace software.amzn.spapi.Model.tracking.v2026_01_30
             sb.Append("  Aftn: ").Append(Aftn).Append("\n");
             sb.Append("  ContainerNumber: ").Append(ContainerNumber).Append("\n");
             sb.Append("  HouseBillOfLadingNumber: ").Append(HouseBillOfLadingNumber).Append("\n");
+            sb.Append("  ProNumber: ").Append(ProNumber).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

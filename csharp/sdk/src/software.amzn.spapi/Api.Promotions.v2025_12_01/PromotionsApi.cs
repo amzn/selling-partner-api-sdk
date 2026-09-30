@@ -29,7 +29,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve details of a specified promotion.
+        /// Retrieve details of a specified promotion.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="promotionId">The ID of the promotion.</param>
@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve details of a specified promotion.
+        /// Retrieve details of a specified promotion.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="promotionId">The ID of the promotion.</param>
@@ -54,7 +54,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.
+        /// Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="promotionId">The ID of the promotion.</param>
@@ -71,7 +71,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.
+        /// Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="promotionId">The ID of the promotion.</param>
@@ -87,7 +87,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.
+        /// Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 4 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">The Amazon stores from which to retrieve promotions. Refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers) for a list of Amazon store values.</param>
@@ -113,7 +113,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.
+        /// Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 4 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">The Amazon stores from which to retrieve promotions. Refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers) for a list of Amazon store values.</param>
@@ -140,7 +140,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve details of a specified promotion.
+        /// Retrieve details of a specified promotion.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="promotionId">The ID of the promotion.</param>
@@ -153,7 +153,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve details of a specified promotion.
+        /// Retrieve details of a specified promotion.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="promotionId">The ID of the promotion.</param>
@@ -165,7 +165,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.
+        /// Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="promotionId">The ID of the promotion.</param>
@@ -182,7 +182,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.
+        /// Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="promotionId">The ID of the promotion.</param>
@@ -198,7 +198,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.
+        /// Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 4 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">The Amazon stores from which to retrieve promotions. Refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers) for a list of Amazon store values.</param>
@@ -224,7 +224,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.
+        /// Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 4 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">The Amazon stores from which to retrieve promotions. Refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers) for a list of Amazon store values.</param>
@@ -337,7 +337,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         }
 
         /// <summary>
-        ///  Retrieve details of a specified promotion.
+        ///  Retrieve details of a specified promotion.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="promotionId">The ID of the promotion.</param>
@@ -351,7 +351,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         }
 
         /// <summary>
-        ///  Retrieve details of a specified promotion.
+        ///  Retrieve details of a specified promotion.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="promotionId">The ID of the promotion.</param>
@@ -407,7 +407,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         }
 
         /// <summary>
-        ///  Retrieve details of a specified promotion.
+        ///  Retrieve details of a specified promotion.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="promotionId">The ID of the promotion.</param>
@@ -422,7 +422,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         }
 
         /// <summary>
-        ///  Retrieve details of a specified promotion.
+        ///  Retrieve details of a specified promotion.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="promotionId">The ID of the promotion.</param>
@@ -477,7 +477,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         }
 
         /// <summary>
-        ///  Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.
+        ///  Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="promotionId">The ID of the promotion.</param>
@@ -495,7 +495,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         }
 
         /// <summary>
-        ///  Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.
+        ///  Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="promotionId">The ID of the promotion.</param>
@@ -565,7 +565,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         }
 
         /// <summary>
-        ///  Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.
+        ///  Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="promotionId">The ID of the promotion.</param>
@@ -584,7 +584,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         }
 
         /// <summary>
-        ///  Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.
+        ///  Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="promotionId">The ID of the promotion.</param>
@@ -653,7 +653,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         }
 
         /// <summary>
-        ///  Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.
+        ///  Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 4 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">The Amazon stores from which to retrieve promotions. Refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers) for a list of Amazon store values.</param>
@@ -680,7 +680,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         }
 
         /// <summary>
-        ///  Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.
+        ///  Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 4 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">The Amazon stores from which to retrieve promotions. Refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers) for a list of Amazon store values.</param>
@@ -762,7 +762,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         }
 
         /// <summary>
-        ///  Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.
+        ///  Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 4 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">The Amazon stores from which to retrieve promotions. Refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers) for a list of Amazon store values.</param>
@@ -790,7 +790,7 @@ namespace software.amzn.spapi.Api.Promotions.v2025_12_01
         }
 
         /// <summary>
-        ///  Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.
+        ///  Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 4 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">The Amazon stores from which to retrieve promotions. Refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers) for a list of Amazon store values.</param>

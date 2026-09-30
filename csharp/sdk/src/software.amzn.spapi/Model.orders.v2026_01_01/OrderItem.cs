@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// <param name="orderItemId">A unique identifier for this specific item within the order. (required).</param>
         /// <param name="quantityOrdered">The number of units of this item that the customer ordered. (required).</param>
         /// <param name="measurement">measurement.</param>
-        /// <param name="associatedOrderItems">A list of order items associated with this item. For example, a value-add service purchased with the product..</param>
+        /// <param name="associatedOrderItems">A list of order items associated with this item. For example, a value-add service purchased with the product, or a product covered by a warranty protection plan..</param>
         /// <param name="programs">Special programs that apply specifically to this item within the order.  **Possible values**: &#x60;TRANSPARENCY&#x60;, &#x60;SUBSCRIBE_AND_SAVE&#x60;.</param>
         /// <param name="product">product (required).</param>
         /// <param name="proceeds">proceeds.</param>
@@ -98,9 +98,12 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         public Measurement? Measurement { get; set; }
 
         /// <summary>
-        /// A list of order items associated with this item. For example, a value-add service purchased with the product.
+        /// A list of order items associated with this item. For example, a value-add service purchased with the product, or a product covered by a warranty protection plan.
         /// </summary>
-        /// <value>A list of order items associated with this item. For example, a value-add service purchased with the product.</value>
+        /// <value>A list of order items associated with this item. For example, a value-add service purchased with the product, or a product covered by a warranty protection plan.</value>
+        /*
+        <example>[{orderId&#x3D;123-4567890-7654321, orderItemId&#x3D;12345678904321, associationType&#x3D;VALUE_ADD_SERVICE}, {orderId&#x3D;903-4153187-3171039, orderItemId&#x3D;6248989267365, associationType&#x3D;WARRANTY, asin&#x3D;B0BC9Z7PJT, purchasePrice&#x3D;{amount&#x3D;139.99, currencyCode&#x3D;USD}}]</example>
+        */
         [DataMember(Name = "associatedOrderItems", EmitDefaultValue = false)]
         public List<AssociatedOrderItem>? AssociatedOrderItems { get; set; }
 

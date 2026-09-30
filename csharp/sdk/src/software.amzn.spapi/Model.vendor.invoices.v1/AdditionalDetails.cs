@@ -54,7 +54,25 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
             /// Enum CartonCount for value: CartonCount
             /// </summary>
             [EnumMember(Value = "CartonCount")]
-            CartonCount = 3
+            CartonCount = 3,
+
+            /// <summary>
+            /// Enum TaxExemptReason for value: TaxExemptReason
+            /// </summary>
+            [EnumMember(Value = "TaxExemptReason")]
+            TaxExemptReason = 4,
+
+            /// <summary>
+            /// Enum LegalTerms for value: LegalTerms
+            /// </summary>
+            [EnumMember(Value = "LegalTerms")]
+            LegalTerms = 5,
+
+            /// <summary>
+            /// Enum RegulatoryNote for value: RegulatoryNote
+            /// </summary>
+            [EnumMember(Value = "RegulatoryNote")]
+            RegulatoryNote = 6
         }
 
 

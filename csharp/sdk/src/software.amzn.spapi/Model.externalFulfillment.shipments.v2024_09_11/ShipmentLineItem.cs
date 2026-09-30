@@ -201,6 +201,9 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// A list of custom passthrough attributes. For details on these attributes, reach out to your respective program teams at Amazon.
         /// </summary>
         /// <value>A list of custom passthrough attributes. For details on these attributes, reach out to your respective program teams at Amazon.</value>
+        /*
+        <example>[{key&#x3D;color, value&#x3D;red}]</example>
+        */
         [DataMember(Name = "customAttributes", EmitDefaultValue = false)]
         public List<CustomAttribute>? CustomAttributes { get; set; }
 

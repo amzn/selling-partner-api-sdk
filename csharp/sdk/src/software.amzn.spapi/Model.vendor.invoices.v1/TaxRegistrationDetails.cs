@@ -48,7 +48,13 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
             /// Enum GST for value: GST
             /// </summary>
             [EnumMember(Value = "GST")]
-            GST = 2
+            GST = 2,
+
+            /// <summary>
+            /// Enum LocalTaxNumber for value: LocalTaxNumber
+            /// </summary>
+            [EnumMember(Value = "LocalTaxNumber")]
+            LocalTaxNumber = 3
         }
 
 

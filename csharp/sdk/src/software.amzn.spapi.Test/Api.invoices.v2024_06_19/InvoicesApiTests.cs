@@ -150,7 +150,7 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
             string invoiceId = fixture.Create<string>();
             
 
-            var response = api.GetInvoiceWithHttpInfo(marketplaceId, invoiceId);
+            var response = api.GetInvoiceWithHttpInfo(marketplaceId, invoiceId, null);
 
             Assert.Equal(200, (int) response.StatusCode);
             AssertValidResponsePayload(200, response.Content);
@@ -167,7 +167,7 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
             string marketplaceId = fixture.Create<string>();
             
 
-            var response = api.GetInvoicesWithHttpInfo(marketplaceId, null, null, null, null, null, null, null, null, null, null, null, null, null);
+            var response = api.GetInvoicesWithHttpInfo(marketplaceId, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
             Assert.Equal(200, (int) response.StatusCode);
             AssertValidResponsePayload(200, response.Content);
@@ -184,7 +184,7 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
             string marketplaceId = fixture.Create<string>();
             
 
-            var response = api.GetInvoicesAttributesWithHttpInfo(marketplaceId);
+            var response = api.GetInvoicesAttributesWithHttpInfo(marketplaceId, null);
 
             Assert.Equal(200, (int) response.StatusCode);
             AssertValidResponsePayload(200, response.Content);
@@ -201,7 +201,7 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
             string invoicesDocumentId = fixture.Create<string>();
             
 
-            var response = api.GetInvoicesDocumentWithHttpInfo(invoicesDocumentId);
+            var response = api.GetInvoicesDocumentWithHttpInfo(invoicesDocumentId, null);
 
             Assert.Equal(200, (int) response.StatusCode);
             AssertValidResponsePayload(200, response.Content);
@@ -218,7 +218,7 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
             string exportId = fixture.Create<string>();
             
 
-            var response = api.GetInvoicesExportWithHttpInfo(exportId);
+            var response = api.GetInvoicesExportWithHttpInfo(exportId, null);
 
             Assert.Equal(200, (int) response.StatusCode);
             AssertValidResponsePayload(200, response.Content);
@@ -235,7 +235,7 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
             string marketplaceId = fixture.Create<string>();
             
 
-            var response = api.GetInvoicesExportsWithHttpInfo(marketplaceId, null, null, null, null, null);
+            var response = api.GetInvoicesExportsWithHttpInfo(marketplaceId, null, null, null, null, null, null);
 
             Assert.Equal(200, (int) response.StatusCode);
             AssertValidResponsePayload(200, response.Content);
