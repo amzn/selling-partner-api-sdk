@@ -138,6 +138,8 @@ class TrackingApi
      *                                                      The container number provided by the Logistics Service Provider. (optional)
      * @param null|string $house_bill_of_lading_number
      *                                                      The House Bill of Lading (HBL) number. (optional)
+     * @param null|string $pro_number
+     *                                                      The PRO number assigned by the freight carrier (optional)
      * @param null|string $carrier_tracking_tracking_number
      *                                                      The tracking number assigned by the carrier. (optional)
      * @param null|string $carrier_tracking_carrier_code
@@ -155,12 +157,13 @@ class TrackingApi
         ?string $aftn = null,
         ?string $container_number = null,
         ?string $house_bill_of_lading_number = null,
+        ?string $pro_number = null,
         ?string $carrier_tracking_tracking_number = null,
         ?string $carrier_tracking_carrier_code = null,
         ?string $accept_language = null,
         ?string $restrictedDataToken = null
     ): GetShipmentTrackingResponse {
-        list($response) = $this->getShipmentTrackingWithHttpInfo($id, $acsin, $aftn, $container_number, $house_bill_of_lading_number, $carrier_tracking_tracking_number, $carrier_tracking_carrier_code, $accept_language, $restrictedDataToken);
+        list($response) = $this->getShipmentTrackingWithHttpInfo($id, $acsin, $aftn, $container_number, $house_bill_of_lading_number, $pro_number, $carrier_tracking_tracking_number, $carrier_tracking_carrier_code, $accept_language, $restrictedDataToken);
 
         return $response;
     }
@@ -180,6 +183,8 @@ class TrackingApi
      *                                                      The container number provided by the Logistics Service Provider. (optional)
      * @param null|string $house_bill_of_lading_number
      *                                                      The House Bill of Lading (HBL) number. (optional)
+     * @param null|string $pro_number
+     *                                                      The PRO number assigned by the freight carrier (optional)
      * @param null|string $carrier_tracking_tracking_number
      *                                                      The tracking number assigned by the carrier. (optional)
      * @param null|string $carrier_tracking_carrier_code
@@ -199,12 +204,13 @@ class TrackingApi
         ?string $aftn = null,
         ?string $container_number = null,
         ?string $house_bill_of_lading_number = null,
+        ?string $pro_number = null,
         ?string $carrier_tracking_tracking_number = null,
         ?string $carrier_tracking_carrier_code = null,
         ?string $accept_language = null,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getShipmentTrackingRequest($id, $acsin, $aftn, $container_number, $house_bill_of_lading_number, $carrier_tracking_tracking_number, $carrier_tracking_carrier_code, $accept_language);
+        $request = $this->getShipmentTrackingRequest($id, $acsin, $aftn, $container_number, $house_bill_of_lading_number, $pro_number, $carrier_tracking_tracking_number, $carrier_tracking_carrier_code, $accept_language);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TrackingApi-getShipmentTracking');
         } else {
@@ -293,6 +299,8 @@ class TrackingApi
      *                                                      The container number provided by the Logistics Service Provider. (optional)
      * @param null|string $house_bill_of_lading_number
      *                                                      The House Bill of Lading (HBL) number. (optional)
+     * @param null|string $pro_number
+     *                                                      The PRO number assigned by the freight carrier (optional)
      * @param null|string $carrier_tracking_tracking_number
      *                                                      The tracking number assigned by the carrier. (optional)
      * @param null|string $carrier_tracking_carrier_code
@@ -308,11 +316,12 @@ class TrackingApi
         ?string $aftn = null,
         ?string $container_number = null,
         ?string $house_bill_of_lading_number = null,
+        ?string $pro_number = null,
         ?string $carrier_tracking_tracking_number = null,
         ?string $carrier_tracking_carrier_code = null,
         ?string $accept_language = null
     ): PromiseInterface {
-        return $this->getShipmentTrackingAsyncWithHttpInfo($id, $acsin, $aftn, $container_number, $house_bill_of_lading_number, $carrier_tracking_tracking_number, $carrier_tracking_carrier_code, $accept_language)
+        return $this->getShipmentTrackingAsyncWithHttpInfo($id, $acsin, $aftn, $container_number, $house_bill_of_lading_number, $pro_number, $carrier_tracking_tracking_number, $carrier_tracking_carrier_code, $accept_language)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -336,6 +345,8 @@ class TrackingApi
      *                                                      The container number provided by the Logistics Service Provider. (optional)
      * @param null|string $house_bill_of_lading_number
      *                                                      The House Bill of Lading (HBL) number. (optional)
+     * @param null|string $pro_number
+     *                                                      The PRO number assigned by the freight carrier (optional)
      * @param null|string $carrier_tracking_tracking_number
      *                                                      The tracking number assigned by the carrier. (optional)
      * @param null|string $carrier_tracking_carrier_code
@@ -351,13 +362,14 @@ class TrackingApi
         ?string $aftn = null,
         ?string $container_number = null,
         ?string $house_bill_of_lading_number = null,
+        ?string $pro_number = null,
         ?string $carrier_tracking_tracking_number = null,
         ?string $carrier_tracking_carrier_code = null,
         ?string $accept_language = null,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\tracking\v2026_01_30\GetShipmentTrackingResponse';
-        $request = $this->getShipmentTrackingRequest($id, $acsin, $aftn, $container_number, $house_bill_of_lading_number, $carrier_tracking_tracking_number, $carrier_tracking_carrier_code, $accept_language);
+        $request = $this->getShipmentTrackingRequest($id, $acsin, $aftn, $container_number, $house_bill_of_lading_number, $pro_number, $carrier_tracking_tracking_number, $carrier_tracking_carrier_code, $accept_language);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TrackingApi-getShipmentTracking');
         } else {
@@ -422,6 +434,8 @@ class TrackingApi
      *                                                      The container number provided by the Logistics Service Provider. (optional)
      * @param null|string $house_bill_of_lading_number
      *                                                      The House Bill of Lading (HBL) number. (optional)
+     * @param null|string $pro_number
+     *                                                      The PRO number assigned by the freight carrier (optional)
      * @param null|string $carrier_tracking_tracking_number
      *                                                      The tracking number assigned by the carrier. (optional)
      * @param null|string $carrier_tracking_carrier_code
@@ -437,6 +451,7 @@ class TrackingApi
         ?string $aftn = null,
         ?string $container_number = null,
         ?string $house_bill_of_lading_number = null,
+        ?string $pro_number = null,
         ?string $carrier_tracking_tracking_number = null,
         ?string $carrier_tracking_carrier_code = null,
         ?string $accept_language = null
@@ -496,6 +511,16 @@ class TrackingApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $house_bill_of_lading_number,
             'houseBillOfLadingNumber', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $pro_number,
+            'proNumber', // param base name
             'string', // openApiType
             '', // style
             false, // explode

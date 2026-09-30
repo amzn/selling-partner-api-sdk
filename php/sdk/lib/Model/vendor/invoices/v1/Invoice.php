@@ -68,8 +68,13 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
              'ship_to_party' => '\SpApi\Model\vendor\invoices\v1\PartyIdentification',
              'ship_from_party' => '\SpApi\Model\vendor\invoices\v1\PartyIdentification',
              'bill_to_party' => '\SpApi\Model\vendor\invoices\v1\PartyIdentification',
+             'bill_from_party' => '\SpApi\Model\vendor\invoices\v1\PartyIdentification',
+             'vat_group_party' => '\SpApi\Model\vendor\invoices\v1\PartyIdentification',
+             'tax_representative_party' => '\SpApi\Model\vendor\invoices\v1\PartyIdentification',
              'payment_terms' => '\SpApi\Model\vendor\invoices\v1\PaymentTerms',
              'invoice_total' => '\SpApi\Model\vendor\invoices\v1\Money',
+             'invoice_base_amount' => '\SpApi\Model\vendor\invoices\v1\Money',
+             'tax_point_date' => '\DateTime',
              'tax_details' => '\SpApi\Model\vendor\invoices\v1\TaxDetails[]',
              'additional_details' => '\SpApi\Model\vendor\invoices\v1\AdditionalDetails[]',
              'charge_details' => '\SpApi\Model\vendor\invoices\v1\ChargeDetails[]',
@@ -92,8 +97,13 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
             'ship_to_party' => null,
             'ship_from_party' => null,
             'bill_to_party' => null,
+            'bill_from_party' => null,
+            'vat_group_party' => null,
+            'tax_representative_party' => null,
             'payment_terms' => null,
             'invoice_total' => null,
+            'invoice_base_amount' => null,
+            'tax_point_date' => 'date-time',
             'tax_details' => null,
             'additional_details' => null,
             'charge_details' => null,
@@ -114,8 +124,13 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
         'ship_to_party' => true,
         'ship_from_party' => true,
         'bill_to_party' => true,
+        'bill_from_party' => true,
+        'vat_group_party' => true,
+        'tax_representative_party' => true,
         'payment_terms' => true,
         'invoice_total' => false,
+        'invoice_base_amount' => true,
+        'tax_point_date' => true,
         'tax_details' => true,
         'additional_details' => true,
         'charge_details' => true,
@@ -217,8 +232,13 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
                 'ship_to_party' => 'shipToParty',
                 'ship_from_party' => 'shipFromParty',
                 'bill_to_party' => 'billToParty',
+                'bill_from_party' => 'billFromParty',
+                'vat_group_party' => 'vatGroupParty',
+                'tax_representative_party' => 'taxRepresentativeParty',
                 'payment_terms' => 'paymentTerms',
                 'invoice_total' => 'invoiceTotal',
+                'invoice_base_amount' => 'invoiceBaseAmount',
+                'tax_point_date' => 'taxPointDate',
                 'tax_details' => 'taxDetails',
                 'additional_details' => 'additionalDetails',
                 'charge_details' => 'chargeDetails',
@@ -241,8 +261,13 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
         'ship_to_party' => 'setShipToParty',
         'ship_from_party' => 'setShipFromParty',
         'bill_to_party' => 'setBillToParty',
+        'bill_from_party' => 'setBillFromParty',
+        'vat_group_party' => 'setVatGroupParty',
+        'tax_representative_party' => 'setTaxRepresentativeParty',
         'payment_terms' => 'setPaymentTerms',
         'invoice_total' => 'setInvoiceTotal',
+        'invoice_base_amount' => 'setInvoiceBaseAmount',
+        'tax_point_date' => 'setTaxPointDate',
         'tax_details' => 'setTaxDetails',
         'additional_details' => 'setAdditionalDetails',
         'charge_details' => 'setChargeDetails',
@@ -264,8 +289,13 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
         'ship_to_party' => 'getShipToParty',
         'ship_from_party' => 'getShipFromParty',
         'bill_to_party' => 'getBillToParty',
+        'bill_from_party' => 'getBillFromParty',
+        'vat_group_party' => 'getVatGroupParty',
+        'tax_representative_party' => 'getTaxRepresentativeParty',
         'payment_terms' => 'getPaymentTerms',
         'invoice_total' => 'getInvoiceTotal',
+        'invoice_base_amount' => 'getInvoiceBaseAmount',
+        'tax_point_date' => 'getTaxPointDate',
         'tax_details' => 'getTaxDetails',
         'additional_details' => 'getAdditionalDetails',
         'charge_details' => 'getChargeDetails',
@@ -353,8 +383,13 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('ship_to_party', $data ?? [], null);
         $this->setIfExists('ship_from_party', $data ?? [], null);
         $this->setIfExists('bill_to_party', $data ?? [], null);
+        $this->setIfExists('bill_from_party', $data ?? [], null);
+        $this->setIfExists('vat_group_party', $data ?? [], null);
+        $this->setIfExists('tax_representative_party', $data ?? [], null);
         $this->setIfExists('payment_terms', $data ?? [], null);
         $this->setIfExists('invoice_total', $data ?? [], null);
+        $this->setIfExists('invoice_base_amount', $data ?? [], null);
+        $this->setIfExists('tax_point_date', $data ?? [], null);
         $this->setIfExists('tax_details', $data ?? [], null);
         $this->setIfExists('additional_details', $data ?? [], null);
         $this->setIfExists('charge_details', $data ?? [], null);
@@ -685,6 +720,108 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets bill_from_party
+     *
+     * @return \SpApi\Model\vendor\invoices\v1\PartyIdentification|null
+     */
+    public function getBillFromParty(): ?\SpApi\Model\vendor\invoices\v1\PartyIdentification
+    {
+        return $this->container['bill_from_party'];
+    }
+
+    /**
+     * Sets bill_from_party
+     *
+     * @param \SpApi\Model\vendor\invoices\v1\PartyIdentification|null $bill_from_party bill_from_party
+     *
+     * @return self
+     */
+    public function setBillFromParty(?\SpApi\Model\vendor\invoices\v1\PartyIdentification $bill_from_party): self
+    {
+        if (is_null($bill_from_party)) {
+            array_push($this->openAPINullablesSetToNull, 'bill_from_party');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bill_from_party', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['bill_from_party'] = $bill_from_party;
+
+        return $this;
+    }
+
+    /**
+     * Gets vat_group_party
+     *
+     * @return \SpApi\Model\vendor\invoices\v1\PartyIdentification|null
+     */
+    public function getVatGroupParty(): ?\SpApi\Model\vendor\invoices\v1\PartyIdentification
+    {
+        return $this->container['vat_group_party'];
+    }
+
+    /**
+     * Sets vat_group_party
+     *
+     * @param \SpApi\Model\vendor\invoices\v1\PartyIdentification|null $vat_group_party vat_group_party
+     *
+     * @return self
+     */
+    public function setVatGroupParty(?\SpApi\Model\vendor\invoices\v1\PartyIdentification $vat_group_party): self
+    {
+        if (is_null($vat_group_party)) {
+            array_push($this->openAPINullablesSetToNull, 'vat_group_party');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('vat_group_party', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['vat_group_party'] = $vat_group_party;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_representative_party
+     *
+     * @return \SpApi\Model\vendor\invoices\v1\PartyIdentification|null
+     */
+    public function getTaxRepresentativeParty(): ?\SpApi\Model\vendor\invoices\v1\PartyIdentification
+    {
+        return $this->container['tax_representative_party'];
+    }
+
+    /**
+     * Sets tax_representative_party
+     *
+     * @param \SpApi\Model\vendor\invoices\v1\PartyIdentification|null $tax_representative_party tax_representative_party
+     *
+     * @return self
+     */
+    public function setTaxRepresentativeParty(?\SpApi\Model\vendor\invoices\v1\PartyIdentification $tax_representative_party): self
+    {
+        if (is_null($tax_representative_party)) {
+            array_push($this->openAPINullablesSetToNull, 'tax_representative_party');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_representative_party', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tax_representative_party'] = $tax_representative_party;
+
+        return $this;
+    }
+
+    /**
      * Gets payment_terms
      *
      * @return \SpApi\Model\vendor\invoices\v1\PaymentTerms|null
@@ -741,6 +878,74 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable invoice_total cannot be null');
         }
         $this->container['invoice_total'] = $invoice_total;
+
+        return $this;
+    }
+
+    /**
+     * Gets invoice_base_amount
+     *
+     * @return \SpApi\Model\vendor\invoices\v1\Money|null
+     */
+    public function getInvoiceBaseAmount(): ?\SpApi\Model\vendor\invoices\v1\Money
+    {
+        return $this->container['invoice_base_amount'];
+    }
+
+    /**
+     * Sets invoice_base_amount
+     *
+     * @param \SpApi\Model\vendor\invoices\v1\Money|null $invoice_base_amount invoice_base_amount
+     *
+     * @return self
+     */
+    public function setInvoiceBaseAmount(?\SpApi\Model\vendor\invoices\v1\Money $invoice_base_amount): self
+    {
+        if (is_null($invoice_base_amount)) {
+            array_push($this->openAPINullablesSetToNull, 'invoice_base_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoice_base_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['invoice_base_amount'] = $invoice_base_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_point_date
+     *
+     * @return \DateTime|null
+     */
+    public function getTaxPointDate(): ?\DateTime
+    {
+        return $this->container['tax_point_date'];
+    }
+
+    /**
+     * Sets tax_point_date
+     *
+     * @param \DateTime|null $tax_point_date Defines a date and time according to ISO8601.
+     *
+     * @return self
+     */
+    public function setTaxPointDate(?\DateTime $tax_point_date): self
+    {
+        if (is_null($tax_point_date)) {
+            array_push($this->openAPINullablesSetToNull, 'tax_point_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_point_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tax_point_date'] = $tax_point_date;
 
         return $this;
     }

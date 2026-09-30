@@ -164,7 +164,7 @@ class InvoicesApiTest extends TestCase
         $invoice_id = $this->generateMockData('string');
         
 
-        $response = $this->api->getInvoiceWithHttpInfo($marketplace_id, $invoice_id);
+        $response = $this->api->getInvoiceWithHttpInfo($marketplace_id, $invoice_id, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);
@@ -181,7 +181,7 @@ class InvoicesApiTest extends TestCase
         $marketplace_id = $this->generateMockData('string');
         
 
-        $response = $this->api->getInvoicesWithHttpInfo($marketplace_id, null, null, null, null, null, null, null, null, null, null, null, null, null);
+        $response = $this->api->getInvoicesWithHttpInfo($marketplace_id, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);
@@ -198,7 +198,7 @@ class InvoicesApiTest extends TestCase
         $marketplace_id = $this->generateMockData('string');
         
 
-        $response = $this->api->getInvoicesAttributesWithHttpInfo($marketplace_id);
+        $response = $this->api->getInvoicesAttributesWithHttpInfo($marketplace_id, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);
@@ -215,7 +215,7 @@ class InvoicesApiTest extends TestCase
         $invoices_document_id = $this->generateMockData('string');
         
 
-        $response = $this->api->getInvoicesDocumentWithHttpInfo($invoices_document_id);
+        $response = $this->api->getInvoicesDocumentWithHttpInfo($invoices_document_id, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);
@@ -232,7 +232,7 @@ class InvoicesApiTest extends TestCase
         $export_id = $this->generateMockData('string');
         
 
-        $response = $this->api->getInvoicesExportWithHttpInfo($export_id);
+        $response = $this->api->getInvoicesExportWithHttpInfo($export_id, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);
@@ -249,7 +249,7 @@ class InvoicesApiTest extends TestCase
         $marketplace_id = $this->generateMockData('string');
         
 
-        $response = $this->api->getInvoicesExportsWithHttpInfo($marketplace_id, null, null, null, null, null);
+        $response = $this->api->getInvoicesExportsWithHttpInfo($marketplace_id, null, null, null, null, null, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);

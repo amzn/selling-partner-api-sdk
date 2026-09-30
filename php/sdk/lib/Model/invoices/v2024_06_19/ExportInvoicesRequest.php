@@ -70,7 +70,8 @@ class ExportInvoicesRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'series' => 'string',
         'statuses' => 'string[]',
         'transaction_identifier' => '\SpApi\Model\invoices\v2024_06_19\TransactionIdentifier',
-        'transaction_type' => 'string'];
+        'transaction_type' => 'string',
+        'warehouse_code' => 'string'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -91,7 +92,8 @@ class ExportInvoicesRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'series' => null,
         'statuses' => null,
         'transaction_identifier' => null,
-        'transaction_type' => null];
+        'transaction_type' => null,
+        'warehouse_code' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -109,6 +111,7 @@ class ExportInvoicesRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'statuses' => true,
         'transaction_identifier' => true,
         'transaction_type' => true,
+        'warehouse_code' => true,
     ];
 
     /**
@@ -135,6 +138,7 @@ class ExportInvoicesRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'statuses' => 'statuses',
         'transaction_identifier' => 'transactionIdentifier',
         'transaction_type' => 'transactionType',
+        'warehouse_code' => 'warehouseCode',
     ];
 
     /**
@@ -153,6 +157,7 @@ class ExportInvoicesRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'statuses' => 'setStatuses',
         'transaction_identifier' => 'setTransactionIdentifier',
         'transaction_type' => 'setTransactionType',
+        'warehouse_code' => 'setWarehouseCode',
     ];
 
     /**
@@ -171,6 +176,7 @@ class ExportInvoicesRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'statuses' => 'getStatuses',
         'transaction_identifier' => 'getTransactionIdentifier',
         'transaction_type' => 'getTransactionType',
+        'warehouse_code' => 'getWarehouseCode',
     ];
 
     /**
@@ -196,6 +202,7 @@ class ExportInvoicesRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         $this->setIfExists('statuses', $data ?? [], null);
         $this->setIfExists('transaction_identifier', $data ?? [], null);
         $this->setIfExists('transaction_type', $data ?? [], null);
+        $this->setIfExists('warehouse_code', $data ?? [], null);
     }
 
     /**
@@ -600,6 +607,36 @@ class ExportInvoicesRequest implements ModelInterface, \ArrayAccess, \JsonSerial
             }
         }
         $this->container['transaction_type'] = $transaction_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets warehouse_code.
+     */
+    public function getWarehouseCode(): ?string
+    {
+        return $this->container['warehouse_code'];
+    }
+
+    /**
+     * Sets warehouse_code.
+     *
+     * @param null|string $warehouse_code The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
+     */
+    public function setWarehouseCode(?string $warehouse_code): self
+    {
+        if (is_null($warehouse_code)) {
+            array_push($this->openAPINullablesSetToNull, 'warehouse_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warehouse_code', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['warehouse_code'] = $warehouse_code;
 
         return $this;
     }

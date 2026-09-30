@@ -66,7 +66,8 @@ class OrderFulfillment implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'fulfillment_service_level' => 'string',
         'ship_by_window' => '\SpApi\Model\orders\v2026_01_01\DateTimeRange',
         'deliver_by_window' => '\SpApi\Model\orders\v2026_01_01\DateTimeRange',
-        'label_printing_window' => '\SpApi\Model\orders\v2026_01_01\DateTimeRange'];
+        'label_printing_window' => '\SpApi\Model\orders\v2026_01_01\DateTimeRange',
+        'promise_calculation_inputs' => '\SpApi\Model\orders\v2026_01_01\PromiseCalculationInputs'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -83,7 +84,8 @@ class OrderFulfillment implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'fulfillment_service_level' => null,
         'ship_by_window' => null,
         'deliver_by_window' => null,
-        'label_printing_window' => null];
+        'label_printing_window' => null,
+        'promise_calculation_inputs' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -97,6 +99,7 @@ class OrderFulfillment implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'ship_by_window' => true,
         'deliver_by_window' => true,
         'label_printing_window' => true,
+        'promise_calculation_inputs' => true,
     ];
 
     /**
@@ -119,6 +122,7 @@ class OrderFulfillment implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'ship_by_window' => 'shipByWindow',
         'deliver_by_window' => 'deliverByWindow',
         'label_printing_window' => 'labelPrintingWindow',
+        'promise_calculation_inputs' => 'promiseCalculationInputs',
     ];
 
     /**
@@ -133,6 +137,7 @@ class OrderFulfillment implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'ship_by_window' => 'setShipByWindow',
         'deliver_by_window' => 'setDeliverByWindow',
         'label_printing_window' => 'setLabelPrintingWindow',
+        'promise_calculation_inputs' => 'setPromiseCalculationInputs',
     ];
 
     /**
@@ -147,6 +152,7 @@ class OrderFulfillment implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'ship_by_window' => 'getShipByWindow',
         'deliver_by_window' => 'getDeliverByWindow',
         'label_printing_window' => 'getLabelPrintingWindow',
+        'promise_calculation_inputs' => 'getPromiseCalculationInputs',
     ];
 
     /**
@@ -168,6 +174,7 @@ class OrderFulfillment implements ModelInterface, \ArrayAccess, \JsonSerializabl
         $this->setIfExists('ship_by_window', $data ?? [], null);
         $this->setIfExists('deliver_by_window', $data ?? [], null);
         $this->setIfExists('label_printing_window', $data ?? [], null);
+        $this->setIfExists('promise_calculation_inputs', $data ?? [], null);
     }
 
     /**
@@ -444,6 +451,36 @@ class OrderFulfillment implements ModelInterface, \ArrayAccess, \JsonSerializabl
             }
         }
         $this->container['label_printing_window'] = $label_printing_window;
+
+        return $this;
+    }
+
+    /**
+     * Gets promise_calculation_inputs.
+     */
+    public function getPromiseCalculationInputs(): ?PromiseCalculationInputs
+    {
+        return $this->container['promise_calculation_inputs'];
+    }
+
+    /**
+     * Sets promise_calculation_inputs.
+     *
+     * @param null|PromiseCalculationInputs $promise_calculation_inputs promise_calculation_inputs
+     */
+    public function setPromiseCalculationInputs(?PromiseCalculationInputs $promise_calculation_inputs): self
+    {
+        if (is_null($promise_calculation_inputs)) {
+            array_push($this->openAPINullablesSetToNull, 'promise_calculation_inputs');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('promise_calculation_inputs', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['promise_calculation_inputs'] = $promise_calculation_inputs;
 
         return $this;
     }

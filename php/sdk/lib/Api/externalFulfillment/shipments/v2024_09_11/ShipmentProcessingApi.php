@@ -2259,7 +2259,7 @@ class ShipmentProcessingApi
      * @param string                     $package_id
      *                                                        The ID of the package whose status you want to update. (required)
      * @param null|string                $status
-     *                                                        **DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)
+     *                                                        **This field is only used for the Seller Flex program**. For the Self Delivery program, package statuses are defined in the body parameter. (optional)
      * @param null|PackageDeliveryStatus $body
      *                                                        The body of the request. (optional)
      * @param null|string                $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -2285,7 +2285,7 @@ class ShipmentProcessingApi
      * @param string                     $package_id
      *                                                        The ID of the package whose status you want to update. (required)
      * @param null|string                $status
-     *                                                        **DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)
+     *                                                        **This field is only used for the Seller Flex program**. For the Self Delivery program, package statuses are defined in the body parameter. (optional)
      * @param null|PackageDeliveryStatus $body
      *                                                        The body of the request. (optional)
      * @param null|string                $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -2370,7 +2370,7 @@ class ShipmentProcessingApi
      * @param string                     $package_id
      *                                                The ID of the package whose status you want to update. (required)
      * @param null|string                $status
-     *                                                **DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)
+     *                                                **This field is only used for the Seller Flex program**. For the Self Delivery program, package statuses are defined in the body parameter. (optional)
      * @param null|PackageDeliveryStatus $body
      *                                                The body of the request. (optional)
      *
@@ -2399,7 +2399,7 @@ class ShipmentProcessingApi
      * @param string                     $package_id
      *                                                The ID of the package whose status you want to update. (required)
      * @param null|string                $status
-     *                                                **DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)
+     *                                                **This field is only used for the Seller Flex program**. For the Self Delivery program, package statuses are defined in the body parameter. (optional)
      * @param null|PackageDeliveryStatus $body
      *                                                The body of the request. (optional)
      *
@@ -2458,7 +2458,7 @@ class ShipmentProcessingApi
      * @param string                     $package_id
      *                                                The ID of the package whose status you want to update. (required)
      * @param null|string                $status
-     *                                                **DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)
+     *                                                **This field is only used for the Seller Flex program**. For the Self Delivery program, package statuses are defined in the body parameter. (optional)
      * @param null|PackageDeliveryStatus $body
      *                                                The body of the request. (optional)
      *

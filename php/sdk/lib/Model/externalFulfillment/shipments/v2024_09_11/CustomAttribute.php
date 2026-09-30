@@ -260,7 +260,7 @@ class CustomAttribute implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets key.
      *
-     * @param null|string $key The key of the custom attribute. Must be unique.
+     * @param null|string $key the attribute key
      */
     public function setKey(?string $key): self
     {
@@ -320,7 +320,7 @@ class CustomAttribute implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets value.
      *
-     * @param null|string $value the value of the custom attribute
+     * @param null|string $value the attribute value
      */
     public function setValue(?string $value): self
     {

@@ -61,6 +61,7 @@ class CreditNoteDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static array $openAPITypes = [
              'reference_invoice_number' => 'string',
+             'original_invoice_date' => '\DateTime',
              'debit_note_number' => 'string',
              'returns_reference_number' => 'string',
              'goods_return_date' => '\DateTime',
@@ -77,6 +78,7 @@ class CreditNoteDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static array $openAPIFormats = [
             'reference_invoice_number' => null,
+            'original_invoice_date' => 'date-time',
             'debit_note_number' => null,
             'returns_reference_number' => null,
             'goods_return_date' => 'date-time',
@@ -91,6 +93,7 @@ class CreditNoteDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static array $openAPINullables = [
         'reference_invoice_number' => true,
+        'original_invoice_date' => true,
         'debit_note_number' => true,
         'returns_reference_number' => true,
         'goods_return_date' => true,
@@ -186,6 +189,7 @@ class CreditNoteDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static array $attributeMap = [
         'reference_invoice_number' => 'referenceInvoiceNumber',
+                'original_invoice_date' => 'originalInvoiceDate',
                 'debit_note_number' => 'debitNoteNumber',
                 'returns_reference_number' => 'returnsReferenceNumber',
                 'goods_return_date' => 'goodsReturnDate',
@@ -202,6 +206,7 @@ class CreditNoteDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static array $setters = [
         'reference_invoice_number' => 'setReferenceInvoiceNumber',
+        'original_invoice_date' => 'setOriginalInvoiceDate',
         'debit_note_number' => 'setDebitNoteNumber',
         'returns_reference_number' => 'setReturnsReferenceNumber',
         'goods_return_date' => 'setGoodsReturnDate',
@@ -217,6 +222,7 @@ class CreditNoteDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static array $getters = [
         'reference_invoice_number' => 'getReferenceInvoiceNumber',
+        'original_invoice_date' => 'getOriginalInvoiceDate',
         'debit_note_number' => 'getDebitNoteNumber',
         'returns_reference_number' => 'getReturnsReferenceNumber',
         'goods_return_date' => 'getGoodsReturnDate',
@@ -283,6 +289,7 @@ class CreditNoteDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function __construct(?array $data = null)
     {
         $this->setIfExists('reference_invoice_number', $data ?? [], null);
+        $this->setIfExists('original_invoice_date', $data ?? [], null);
         $this->setIfExists('debit_note_number', $data ?? [], null);
         $this->setIfExists('returns_reference_number', $data ?? [], null);
         $this->setIfExists('goods_return_date', $data ?? [], null);
@@ -363,6 +370,40 @@ class CreditNoteDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
             }
         }
         $this->container['reference_invoice_number'] = $reference_invoice_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets original_invoice_date
+     *
+     * @return \DateTime|null
+     */
+    public function getOriginalInvoiceDate(): ?\DateTime
+    {
+        return $this->container['original_invoice_date'];
+    }
+
+    /**
+     * Sets original_invoice_date
+     *
+     * @param \DateTime|null $original_invoice_date Defines a date and time according to ISO8601.
+     *
+     * @return self
+     */
+    public function setOriginalInvoiceDate(?\DateTime $original_invoice_date): self
+    {
+        if (is_null($original_invoice_date)) {
+            array_push($this->openAPINullablesSetToNull, 'original_invoice_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('original_invoice_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['original_invoice_date'] = $original_invoice_date;
 
         return $this;
     }

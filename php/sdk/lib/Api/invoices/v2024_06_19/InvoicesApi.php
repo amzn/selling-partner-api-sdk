@@ -1506,6 +1506,8 @@ class InvoicesApi
      *                                         The marketplace from which you want the invoice. (required)
      * @param string      $invoice_id
      *                                         The invoice identifier. (required)
+     * @param null|string $warehouse_code
+     *                                         The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -1514,9 +1516,10 @@ class InvoicesApi
     public function getInvoice(
         string $marketplace_id,
         string $invoice_id,
+        ?string $warehouse_code = null,
         ?string $restrictedDataToken = null
     ): GetInvoiceResponse {
-        list($response) = $this->getInvoiceWithHttpInfo($marketplace_id, $invoice_id, $restrictedDataToken);
+        list($response) = $this->getInvoiceWithHttpInfo($marketplace_id, $invoice_id, $warehouse_code, $restrictedDataToken);
 
         return $response;
     }
@@ -1528,6 +1531,8 @@ class InvoicesApi
      *                                         The marketplace from which you want the invoice. (required)
      * @param string      $invoice_id
      *                                         The invoice identifier. (required)
+     * @param null|string $warehouse_code
+     *                                         The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\invoices\v2024_06_19\GetInvoiceResponse, HTTP status code, HTTP response headers (array of strings)
@@ -1538,9 +1543,10 @@ class InvoicesApi
     public function getInvoiceWithHttpInfo(
         string $marketplace_id,
         string $invoice_id,
+        ?string $warehouse_code = null,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getInvoiceRequest($marketplace_id, $invoice_id);
+        $request = $this->getInvoiceRequest($marketplace_id, $invoice_id, $warehouse_code);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoice');
         } else {
@@ -1617,18 +1623,21 @@ class InvoicesApi
     /**
      * Operation getInvoiceAsync.
      *
-     * @param string $marketplace_id
-     *                               The marketplace from which you want the invoice. (required)
-     * @param string $invoice_id
-     *                               The invoice identifier. (required)
+     * @param string      $marketplace_id
+     *                                    The marketplace from which you want the invoice. (required)
+     * @param string      $invoice_id
+     *                                    The invoice identifier. (required)
+     * @param null|string $warehouse_code
+     *                                    The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getInvoiceAsync(
         string $marketplace_id,
-        string $invoice_id
+        string $invoice_id,
+        ?string $warehouse_code = null
     ): PromiseInterface {
-        return $this->getInvoiceAsyncWithHttpInfo($marketplace_id, $invoice_id)
+        return $this->getInvoiceAsyncWithHttpInfo($marketplace_id, $invoice_id, $warehouse_code)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1640,20 +1649,23 @@ class InvoicesApi
     /**
      * Operation getInvoiceAsyncWithHttpInfo.
      *
-     * @param string $marketplace_id
-     *                               The marketplace from which you want the invoice. (required)
-     * @param string $invoice_id
-     *                               The invoice identifier. (required)
+     * @param string      $marketplace_id
+     *                                    The marketplace from which you want the invoice. (required)
+     * @param string      $invoice_id
+     *                                    The invoice identifier. (required)
+     * @param null|string $warehouse_code
+     *                                    The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getInvoiceAsyncWithHttpInfo(
         string $marketplace_id,
         string $invoice_id,
+        ?string $warehouse_code = null,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoiceResponse';
-        $request = $this->getInvoiceRequest($marketplace_id, $invoice_id);
+        $request = $this->getInvoiceRequest($marketplace_id, $invoice_id, $warehouse_code);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoice');
         } else {
@@ -1708,16 +1720,19 @@ class InvoicesApi
     /**
      * Create request for operation 'getInvoice'.
      *
-     * @param string $marketplace_id
-     *                               The marketplace from which you want the invoice. (required)
-     * @param string $invoice_id
-     *                               The invoice identifier. (required)
+     * @param string      $marketplace_id
+     *                                    The marketplace from which you want the invoice. (required)
+     * @param string      $invoice_id
+     *                                    The invoice identifier. (required)
+     * @param null|string $warehouse_code
+     *                                    The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getInvoiceRequest(
         string $marketplace_id,
-        string $invoice_id
+        string $invoice_id,
+        ?string $warehouse_code = null
     ): Request {
         // verify the required parameter 'marketplace_id' is set
         if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
@@ -1747,6 +1762,16 @@ class InvoicesApi
             '', // style
             false, // explode
             true, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $warehouse_code,
+            'warehouseCode', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
             $this->config
         ) ?? []);
 
@@ -1840,6 +1865,8 @@ class InvoicesApi
      *                                                    Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)
      * @param null|string    $sort_by
      *                                                    The attribute by which you want to sort the invoices in the response. (optional)
+     * @param null|string    $warehouse_code
+     *                                                    The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param null|string    $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -1860,9 +1887,10 @@ class InvoicesApi
         ?array $statuses = null,
         ?string $external_invoice_id = null,
         ?string $sort_by = null,
+        ?string $warehouse_code = null,
         ?string $restrictedDataToken = null
     ): GetInvoicesResponse {
-        list($response) = $this->getInvoicesWithHttpInfo($marketplace_id, $transaction_identifier_name, $page_size, $date_end, $transaction_type, $transaction_identifier_id, $date_start, $series, $next_token, $sort_order, $invoice_type, $statuses, $external_invoice_id, $sort_by, $restrictedDataToken);
+        list($response) = $this->getInvoicesWithHttpInfo($marketplace_id, $transaction_identifier_name, $page_size, $date_end, $transaction_type, $transaction_identifier_id, $date_start, $series, $next_token, $sort_order, $invoice_type, $statuses, $external_invoice_id, $sort_by, $warehouse_code, $restrictedDataToken);
 
         return $response;
     }
@@ -1898,6 +1926,8 @@ class InvoicesApi
      *                                                    Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)
      * @param null|string    $sort_by
      *                                                    The attribute by which you want to sort the invoices in the response. (optional)
+     * @param null|string    $warehouse_code
+     *                                                    The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param null|string    $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\invoices\v2024_06_19\GetInvoicesResponse, HTTP status code, HTTP response headers (array of strings)
@@ -1920,9 +1950,10 @@ class InvoicesApi
         ?array $statuses = null,
         ?string $external_invoice_id = null,
         ?string $sort_by = null,
+        ?string $warehouse_code = null,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getInvoicesRequest($marketplace_id, $transaction_identifier_name, $page_size, $date_end, $transaction_type, $transaction_identifier_id, $date_start, $series, $next_token, $sort_order, $invoice_type, $statuses, $external_invoice_id, $sort_by);
+        $request = $this->getInvoicesRequest($marketplace_id, $transaction_identifier_name, $page_size, $date_end, $transaction_type, $transaction_identifier_id, $date_start, $series, $next_token, $sort_order, $invoice_type, $statuses, $external_invoice_id, $sort_by, $warehouse_code);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoices');
         } else {
@@ -2027,6 +2058,8 @@ class InvoicesApi
      *                                                    Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)
      * @param null|string    $sort_by
      *                                                    The attribute by which you want to sort the invoices in the response. (optional)
+     * @param null|string    $warehouse_code
+     *                                                    The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -2044,9 +2077,10 @@ class InvoicesApi
         ?string $invoice_type = null,
         ?array $statuses = null,
         ?string $external_invoice_id = null,
-        ?string $sort_by = null
+        ?string $sort_by = null,
+        ?string $warehouse_code = null
     ): PromiseInterface {
-        return $this->getInvoicesAsyncWithHttpInfo($marketplace_id, $transaction_identifier_name, $page_size, $date_end, $transaction_type, $transaction_identifier_id, $date_start, $series, $next_token, $sort_order, $invoice_type, $statuses, $external_invoice_id, $sort_by)
+        return $this->getInvoicesAsyncWithHttpInfo($marketplace_id, $transaction_identifier_name, $page_size, $date_end, $transaction_type, $transaction_identifier_id, $date_start, $series, $next_token, $sort_order, $invoice_type, $statuses, $external_invoice_id, $sort_by, $warehouse_code)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2086,6 +2120,8 @@ class InvoicesApi
      *                                                    Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)
      * @param null|string    $sort_by
      *                                                    The attribute by which you want to sort the invoices in the response. (optional)
+     * @param null|string    $warehouse_code
+     *                                                    The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -2104,10 +2140,11 @@ class InvoicesApi
         ?array $statuses = null,
         ?string $external_invoice_id = null,
         ?string $sort_by = null,
+        ?string $warehouse_code = null,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesResponse';
-        $request = $this->getInvoicesRequest($marketplace_id, $transaction_identifier_name, $page_size, $date_end, $transaction_type, $transaction_identifier_id, $date_start, $series, $next_token, $sort_order, $invoice_type, $statuses, $external_invoice_id, $sort_by);
+        $request = $this->getInvoicesRequest($marketplace_id, $transaction_identifier_name, $page_size, $date_end, $transaction_type, $transaction_identifier_id, $date_start, $series, $next_token, $sort_order, $invoice_type, $statuses, $external_invoice_id, $sort_by, $warehouse_code);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoices');
         } else {
@@ -2190,6 +2227,8 @@ class InvoicesApi
      *                                                    Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)
      * @param null|string    $sort_by
      *                                                    The attribute by which you want to sort the invoices in the response. (optional)
+     * @param null|string    $warehouse_code
+     *                                                    The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -2207,7 +2246,8 @@ class InvoicesApi
         ?string $invoice_type = null,
         ?array $statuses = null,
         ?string $external_invoice_id = null,
-        ?string $sort_by = null
+        ?string $sort_by = null,
+        ?string $warehouse_code = null
     ): Request {
         // verify the required parameter 'marketplace_id' is set
         if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
@@ -2366,6 +2406,16 @@ class InvoicesApi
             false, // required
             $this->config
         ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $warehouse_code,
+            'warehouseCode', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
@@ -2422,6 +2472,8 @@ class InvoicesApi
      *
      * @param string      $marketplace_id
      *                                         The marketplace identifier. (required)
+     * @param null|string $warehouse_code
+     *                                         The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -2429,9 +2481,10 @@ class InvoicesApi
      */
     public function getInvoicesAttributes(
         string $marketplace_id,
+        ?string $warehouse_code = null,
         ?string $restrictedDataToken = null
     ): GetInvoicesAttributesResponse {
-        list($response) = $this->getInvoicesAttributesWithHttpInfo($marketplace_id, $restrictedDataToken);
+        list($response) = $this->getInvoicesAttributesWithHttpInfo($marketplace_id, $warehouse_code, $restrictedDataToken);
 
         return $response;
     }
@@ -2441,6 +2494,8 @@ class InvoicesApi
      *
      * @param string      $marketplace_id
      *                                         The marketplace identifier. (required)
+     * @param null|string $warehouse_code
+     *                                         The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse, HTTP status code, HTTP response headers (array of strings)
@@ -2450,9 +2505,10 @@ class InvoicesApi
      */
     public function getInvoicesAttributesWithHttpInfo(
         string $marketplace_id,
+        ?string $warehouse_code = null,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getInvoicesAttributesRequest($marketplace_id);
+        $request = $this->getInvoicesAttributesRequest($marketplace_id, $warehouse_code);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesAttributes');
         } else {
@@ -2529,15 +2585,18 @@ class InvoicesApi
     /**
      * Operation getInvoicesAttributesAsync.
      *
-     * @param string $marketplace_id
-     *                               The marketplace identifier. (required)
+     * @param string      $marketplace_id
+     *                                    The marketplace identifier. (required)
+     * @param null|string $warehouse_code
+     *                                    The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getInvoicesAttributesAsync(
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $warehouse_code = null
     ): PromiseInterface {
-        return $this->getInvoicesAttributesAsyncWithHttpInfo($marketplace_id)
+        return $this->getInvoicesAttributesAsyncWithHttpInfo($marketplace_id, $warehouse_code)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2549,17 +2608,20 @@ class InvoicesApi
     /**
      * Operation getInvoicesAttributesAsyncWithHttpInfo.
      *
-     * @param string $marketplace_id
-     *                               The marketplace identifier. (required)
+     * @param string      $marketplace_id
+     *                                    The marketplace identifier. (required)
+     * @param null|string $warehouse_code
+     *                                    The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getInvoicesAttributesAsyncWithHttpInfo(
         string $marketplace_id,
+        ?string $warehouse_code = null,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse';
-        $request = $this->getInvoicesAttributesRequest($marketplace_id);
+        $request = $this->getInvoicesAttributesRequest($marketplace_id, $warehouse_code);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesAttributes');
         } else {
@@ -2614,13 +2676,16 @@ class InvoicesApi
     /**
      * Create request for operation 'getInvoicesAttributes'.
      *
-     * @param string $marketplace_id
-     *                               The marketplace identifier. (required)
+     * @param string      $marketplace_id
+     *                                    The marketplace identifier. (required)
+     * @param null|string $warehouse_code
+     *                                    The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getInvoicesAttributesRequest(
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $warehouse_code = null
     ): Request {
         // verify the required parameter 'marketplace_id' is set
         if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
@@ -2644,6 +2709,16 @@ class InvoicesApi
             '', // style
             false, // explode
             true, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $warehouse_code,
+            'warehouseCode', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
             $this->config
         ) ?? []);
 
@@ -2702,6 +2777,8 @@ class InvoicesApi
      *
      * @param string      $invoices_document_id
      *                                          The export document identifier. (required)
+     * @param null|string $warehouse_code
+     *                                          The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -2709,9 +2786,10 @@ class InvoicesApi
      */
     public function getInvoicesDocument(
         string $invoices_document_id,
+        ?string $warehouse_code = null,
         ?string $restrictedDataToken = null
     ): GetInvoicesDocumentResponse {
-        list($response) = $this->getInvoicesDocumentWithHttpInfo($invoices_document_id, $restrictedDataToken);
+        list($response) = $this->getInvoicesDocumentWithHttpInfo($invoices_document_id, $warehouse_code, $restrictedDataToken);
 
         return $response;
     }
@@ -2721,6 +2799,8 @@ class InvoicesApi
      *
      * @param string      $invoices_document_id
      *                                          The export document identifier. (required)
+     * @param null|string $warehouse_code
+     *                                          The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse, HTTP status code, HTTP response headers (array of strings)
@@ -2730,9 +2810,10 @@ class InvoicesApi
      */
     public function getInvoicesDocumentWithHttpInfo(
         string $invoices_document_id,
+        ?string $warehouse_code = null,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getInvoicesDocumentRequest($invoices_document_id);
+        $request = $this->getInvoicesDocumentRequest($invoices_document_id, $warehouse_code);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesDocument');
         } else {
@@ -2809,15 +2890,18 @@ class InvoicesApi
     /**
      * Operation getInvoicesDocumentAsync.
      *
-     * @param string $invoices_document_id
-     *                                     The export document identifier. (required)
+     * @param string      $invoices_document_id
+     *                                          The export document identifier. (required)
+     * @param null|string $warehouse_code
+     *                                          The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getInvoicesDocumentAsync(
-        string $invoices_document_id
+        string $invoices_document_id,
+        ?string $warehouse_code = null
     ): PromiseInterface {
-        return $this->getInvoicesDocumentAsyncWithHttpInfo($invoices_document_id)
+        return $this->getInvoicesDocumentAsyncWithHttpInfo($invoices_document_id, $warehouse_code)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2829,17 +2913,20 @@ class InvoicesApi
     /**
      * Operation getInvoicesDocumentAsyncWithHttpInfo.
      *
-     * @param string $invoices_document_id
-     *                                     The export document identifier. (required)
+     * @param string      $invoices_document_id
+     *                                          The export document identifier. (required)
+     * @param null|string $warehouse_code
+     *                                          The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getInvoicesDocumentAsyncWithHttpInfo(
         string $invoices_document_id,
+        ?string $warehouse_code = null,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse';
-        $request = $this->getInvoicesDocumentRequest($invoices_document_id);
+        $request = $this->getInvoicesDocumentRequest($invoices_document_id, $warehouse_code);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesDocument');
         } else {
@@ -2894,13 +2981,16 @@ class InvoicesApi
     /**
      * Create request for operation 'getInvoicesDocument'.
      *
-     * @param string $invoices_document_id
-     *                                     The export document identifier. (required)
+     * @param string      $invoices_document_id
+     *                                          The export document identifier. (required)
+     * @param null|string $warehouse_code
+     *                                          The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getInvoicesDocumentRequest(
-        string $invoices_document_id
+        string $invoices_document_id,
+        ?string $warehouse_code = null
     ): Request {
         // verify the required parameter 'invoices_document_id' is set
         if (null === $invoices_document_id || (is_array($invoices_document_id) && 0 === count($invoices_document_id))) {
@@ -2915,6 +3005,17 @@ class InvoicesApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $warehouse_code,
+            'warehouseCode', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
 
         // path params
         if (null !== $invoices_document_id) {
@@ -2980,6 +3081,8 @@ class InvoicesApi
      *
      * @param string      $export_id
      *                                         The unique identifier for the export. (required)
+     * @param null|string $warehouse_code
+     *                                         The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -2987,9 +3090,10 @@ class InvoicesApi
      */
     public function getInvoicesExport(
         string $export_id,
+        ?string $warehouse_code = null,
         ?string $restrictedDataToken = null
     ): GetInvoicesExportResponse {
-        list($response) = $this->getInvoicesExportWithHttpInfo($export_id, $restrictedDataToken);
+        list($response) = $this->getInvoicesExportWithHttpInfo($export_id, $warehouse_code, $restrictedDataToken);
 
         return $response;
     }
@@ -2999,6 +3103,8 @@ class InvoicesApi
      *
      * @param string      $export_id
      *                                         The unique identifier for the export. (required)
+     * @param null|string $warehouse_code
+     *                                         The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\invoices\v2024_06_19\GetInvoicesExportResponse, HTTP status code, HTTP response headers (array of strings)
@@ -3008,9 +3114,10 @@ class InvoicesApi
      */
     public function getInvoicesExportWithHttpInfo(
         string $export_id,
+        ?string $warehouse_code = null,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getInvoicesExportRequest($export_id);
+        $request = $this->getInvoicesExportRequest($export_id, $warehouse_code);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesExport');
         } else {
@@ -3087,15 +3194,18 @@ class InvoicesApi
     /**
      * Operation getInvoicesExportAsync.
      *
-     * @param string $export_id
-     *                          The unique identifier for the export. (required)
+     * @param string      $export_id
+     *                                    The unique identifier for the export. (required)
+     * @param null|string $warehouse_code
+     *                                    The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getInvoicesExportAsync(
-        string $export_id
+        string $export_id,
+        ?string $warehouse_code = null
     ): PromiseInterface {
-        return $this->getInvoicesExportAsyncWithHttpInfo($export_id)
+        return $this->getInvoicesExportAsyncWithHttpInfo($export_id, $warehouse_code)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3107,17 +3217,20 @@ class InvoicesApi
     /**
      * Operation getInvoicesExportAsyncWithHttpInfo.
      *
-     * @param string $export_id
-     *                          The unique identifier for the export. (required)
+     * @param string      $export_id
+     *                                    The unique identifier for the export. (required)
+     * @param null|string $warehouse_code
+     *                                    The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getInvoicesExportAsyncWithHttpInfo(
         string $export_id,
+        ?string $warehouse_code = null,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesExportResponse';
-        $request = $this->getInvoicesExportRequest($export_id);
+        $request = $this->getInvoicesExportRequest($export_id, $warehouse_code);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesExport');
         } else {
@@ -3172,13 +3285,16 @@ class InvoicesApi
     /**
      * Create request for operation 'getInvoicesExport'.
      *
-     * @param string $export_id
-     *                          The unique identifier for the export. (required)
+     * @param string      $export_id
+     *                                    The unique identifier for the export. (required)
+     * @param null|string $warehouse_code
+     *                                    The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getInvoicesExportRequest(
-        string $export_id
+        string $export_id,
+        ?string $warehouse_code = null
     ): Request {
         // verify the required parameter 'export_id' is set
         if (null === $export_id || (is_array($export_id) && 0 === count($export_id))) {
@@ -3193,6 +3309,17 @@ class InvoicesApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $warehouse_code,
+            'warehouseCode', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
 
         // path params
         if (null !== $export_id) {
@@ -3268,6 +3395,8 @@ class InvoicesApi
      *                                            The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)
      * @param null|string    $status
      *                                            Return exports matching the status specified. (optional)
+     * @param null|string    $warehouse_code
+     *                                            The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -3280,9 +3409,10 @@ class InvoicesApi
         ?int $page_size = null,
         ?\DateTime $date_end = null,
         ?string $status = null,
+        ?string $warehouse_code = null,
         ?string $restrictedDataToken = null
     ): GetInvoicesExportsResponse {
-        list($response) = $this->getInvoicesExportsWithHttpInfo($marketplace_id, $date_start, $next_token, $page_size, $date_end, $status, $restrictedDataToken);
+        list($response) = $this->getInvoicesExportsWithHttpInfo($marketplace_id, $date_start, $next_token, $page_size, $date_end, $status, $warehouse_code, $restrictedDataToken);
 
         return $response;
     }
@@ -3302,6 +3432,8 @@ class InvoicesApi
      *                                            The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)
      * @param null|string    $status
      *                                            Return exports matching the status specified. (optional)
+     * @param null|string    $warehouse_code
+     *                                            The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\invoices\v2024_06_19\GetInvoicesExportsResponse, HTTP status code, HTTP response headers (array of strings)
@@ -3316,9 +3448,10 @@ class InvoicesApi
         ?int $page_size = null,
         ?\DateTime $date_end = null,
         ?string $status = null,
+        ?string $warehouse_code = null,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getInvoicesExportsRequest($marketplace_id, $date_start, $next_token, $page_size, $date_end, $status);
+        $request = $this->getInvoicesExportsRequest($marketplace_id, $date_start, $next_token, $page_size, $date_end, $status, $warehouse_code);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesExports');
         } else {
@@ -3407,6 +3540,8 @@ class InvoicesApi
      *                                       The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)
      * @param null|string    $status
      *                                       Return exports matching the status specified. (optional)
+     * @param null|string    $warehouse_code
+     *                                       The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -3416,9 +3551,10 @@ class InvoicesApi
         ?string $next_token = null,
         ?int $page_size = null,
         ?\DateTime $date_end = null,
-        ?string $status = null
+        ?string $status = null,
+        ?string $warehouse_code = null
     ): PromiseInterface {
-        return $this->getInvoicesExportsAsyncWithHttpInfo($marketplace_id, $date_start, $next_token, $page_size, $date_end, $status)
+        return $this->getInvoicesExportsAsyncWithHttpInfo($marketplace_id, $date_start, $next_token, $page_size, $date_end, $status, $warehouse_code)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3442,6 +3578,8 @@ class InvoicesApi
      *                                       The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)
      * @param null|string    $status
      *                                       Return exports matching the status specified. (optional)
+     * @param null|string    $warehouse_code
+     *                                       The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -3452,10 +3590,11 @@ class InvoicesApi
         ?int $page_size = null,
         ?\DateTime $date_end = null,
         ?string $status = null,
+        ?string $warehouse_code = null,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesExportsResponse';
-        $request = $this->getInvoicesExportsRequest($marketplace_id, $date_start, $next_token, $page_size, $date_end, $status);
+        $request = $this->getInvoicesExportsRequest($marketplace_id, $date_start, $next_token, $page_size, $date_end, $status, $warehouse_code);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesExports');
         } else {
@@ -3522,6 +3661,8 @@ class InvoicesApi
      *                                       The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)
      * @param null|string    $status
      *                                       Return exports matching the status specified. (optional)
+     * @param null|string    $warehouse_code
+     *                                       The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -3531,7 +3672,8 @@ class InvoicesApi
         ?string $next_token = null,
         ?int $page_size = null,
         ?\DateTime $date_end = null,
-        ?string $status = null
+        ?string $status = null,
+        ?string $warehouse_code = null
     ): Request {
         // verify the required parameter 'marketplace_id' is set
         if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
@@ -3601,6 +3743,16 @@ class InvoicesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $status,
             'status', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $warehouse_code,
+            'warehouseCode', // param base name
             'string', // openApiType
             '', // style
             false, // explode

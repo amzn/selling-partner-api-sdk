@@ -244,6 +244,9 @@ class AdditionalDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
 
     public const TYPE_SUR = 'SUR';
     public const TYPE_OCR = 'OCR';
+    public const TYPE_TAX_EXEMPT_REASON = 'TaxExemptReason';
+    public const TYPE_LEGAL_TERMS = 'LegalTerms';
+    public const TYPE_REGULATORY_NOTE = 'RegulatoryNote';
 
     /**
      * Gets allowable values of the enum
@@ -255,6 +258,9 @@ class AdditionalDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
         return [
             self::TYPE_SUR,
             self::TYPE_OCR,
+            self::TYPE_TAX_EXEMPT_REASON,
+            self::TYPE_LEGAL_TERMS,
+            self::TYPE_REGULATORY_NOTE,
         ];
     }
 

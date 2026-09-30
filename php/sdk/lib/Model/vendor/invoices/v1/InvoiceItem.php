@@ -68,6 +68,8 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
              'net_cost_unit_of_measure' => '\SpApi\Model\vendor\invoices\v1\NetCostUnitOfMeasure',
              'purchase_order_number' => 'string',
              'hsn_code' => 'string',
+             'item_description' => 'string',
+             'additional_details' => '\SpApi\Model\vendor\invoices\v1\AdditionalDetails[]',
              'credit_note_details' => '\SpApi\Model\vendor\invoices\v1\CreditNoteDetails',
              'tax_details' => '\SpApi\Model\vendor\invoices\v1\TaxDetails[]',
              'charge_details' => '\SpApi\Model\vendor\invoices\v1\ChargeDetails[]',
@@ -89,6 +91,8 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
             'net_cost_unit_of_measure' => null,
             'purchase_order_number' => null,
             'hsn_code' => null,
+            'item_description' => null,
+            'additional_details' => null,
             'credit_note_details' => null,
             'tax_details' => null,
             'charge_details' => null,
@@ -108,6 +112,8 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'net_cost_unit_of_measure' => true,
         'purchase_order_number' => true,
         'hsn_code' => true,
+        'item_description' => true,
+        'additional_details' => true,
         'credit_note_details' => true,
         'tax_details' => true,
         'charge_details' => true,
@@ -208,6 +214,8 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
                 'net_cost_unit_of_measure' => 'netCostUnitOfMeasure',
                 'purchase_order_number' => 'purchaseOrderNumber',
                 'hsn_code' => 'hsnCode',
+                'item_description' => 'itemDescription',
+                'additional_details' => 'additionalDetails',
                 'credit_note_details' => 'creditNoteDetails',
                 'tax_details' => 'taxDetails',
                 'charge_details' => 'chargeDetails',
@@ -229,6 +237,8 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'net_cost_unit_of_measure' => 'setNetCostUnitOfMeasure',
         'purchase_order_number' => 'setPurchaseOrderNumber',
         'hsn_code' => 'setHsnCode',
+        'item_description' => 'setItemDescription',
+        'additional_details' => 'setAdditionalDetails',
         'credit_note_details' => 'setCreditNoteDetails',
         'tax_details' => 'setTaxDetails',
         'charge_details' => 'setChargeDetails',
@@ -249,6 +259,8 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'net_cost_unit_of_measure' => 'getNetCostUnitOfMeasure',
         'purchase_order_number' => 'getPurchaseOrderNumber',
         'hsn_code' => 'getHsnCode',
+        'item_description' => 'getItemDescription',
+        'additional_details' => 'getAdditionalDetails',
         'credit_note_details' => 'getCreditNoteDetails',
         'tax_details' => 'getTaxDetails',
         'charge_details' => 'getChargeDetails',
@@ -320,6 +332,8 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('net_cost_unit_of_measure', $data ?? [], null);
         $this->setIfExists('purchase_order_number', $data ?? [], null);
         $this->setIfExists('hsn_code', $data ?? [], null);
+        $this->setIfExists('item_description', $data ?? [], null);
+        $this->setIfExists('additional_details', $data ?? [], null);
         $this->setIfExists('credit_note_details', $data ?? [], null);
         $this->setIfExists('tax_details', $data ?? [], null);
         $this->setIfExists('charge_details', $data ?? [], null);
@@ -624,6 +638,74 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['hsn_code'] = $hsn_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets item_description
+     *
+     * @return string|null
+     */
+    public function getItemDescription(): ?string
+    {
+        return $this->container['item_description'];
+    }
+
+    /**
+     * Sets item_description
+     *
+     * @param string|null $item_description Product or service description for the invoiced line item.
+     *
+     * @return self
+     */
+    public function setItemDescription(?string $item_description): self
+    {
+        if (is_null($item_description)) {
+            array_push($this->openAPINullablesSetToNull, 'item_description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_description', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['item_description'] = $item_description;
+
+        return $this;
+    }
+
+    /**
+     * Gets additional_details
+     *
+     * @return array|null
+     */
+    public function getAdditionalDetails(): ?array
+    {
+        return $this->container['additional_details'];
+    }
+
+    /**
+     * Sets additional_details
+     *
+     * @param array|null $additional_details Line-level additional details provided by the selling party, e.g. tax exemption reason code and text.
+     *
+     * @return self
+     */
+    public function setAdditionalDetails(?array $additional_details): self
+    {
+        if (is_null($additional_details)) {
+            array_push($this->openAPINullablesSetToNull, 'additional_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('additional_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['additional_details'] = $additional_details;
 
         return $this;
     }

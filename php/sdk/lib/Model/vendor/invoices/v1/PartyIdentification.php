@@ -62,7 +62,8 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static array $openAPITypes = [
              'party_id' => 'string',
              'address' => '\SpApi\Model\vendor\invoices\v1\Address',
-             'tax_registration_details' => '\SpApi\Model\vendor\invoices\v1\TaxRegistrationDetails[]'    ];
+             'tax_registration_details' => '\SpApi\Model\vendor\invoices\v1\TaxRegistrationDetails[]',
+             'additional_party_identifications' => '\SpApi\Model\vendor\invoices\v1\AdditionalPartyIdentification[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -74,7 +75,8 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static array $openAPIFormats = [
             'party_id' => null,
             'address' => null,
-            'tax_registration_details' => null    ];
+            'tax_registration_details' => null,
+            'additional_party_identifications' => null    ];
 
     /**
       * Array of nullable properties. Used for (de)serialization
@@ -84,7 +86,8 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static array $openAPINullables = [
         'party_id' => false,
         'address' => true,
-        'tax_registration_details' => true
+        'tax_registration_details' => true,
+        'additional_party_identifications' => true
     ];
 
     /**
@@ -175,7 +178,8 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static array $attributeMap = [
         'party_id' => 'partyId',
                 'address' => 'address',
-                'tax_registration_details' => 'taxRegistrationDetails'
+                'tax_registration_details' => 'taxRegistrationDetails',
+                'additional_party_identifications' => 'additionalPartyIdentifications'
         
     ];
 
@@ -187,7 +191,8 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static array $setters = [
         'party_id' => 'setPartyId',
         'address' => 'setAddress',
-        'tax_registration_details' => 'setTaxRegistrationDetails'
+        'tax_registration_details' => 'setTaxRegistrationDetails',
+        'additional_party_identifications' => 'setAdditionalPartyIdentifications'
     ];
 
     /**
@@ -198,7 +203,8 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static array $getters = [
         'party_id' => 'getPartyId',
         'address' => 'getAddress',
-        'tax_registration_details' => 'getTaxRegistrationDetails'
+        'tax_registration_details' => 'getTaxRegistrationDetails',
+        'additional_party_identifications' => 'getAdditionalPartyIdentifications'
     ];
 
     /**
@@ -261,6 +267,7 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('party_id', $data ?? [], null);
         $this->setIfExists('address', $data ?? [], null);
         $this->setIfExists('tax_registration_details', $data ?? [], null);
+        $this->setIfExists('additional_party_identifications', $data ?? [], null);
     }
 
     /**
@@ -399,6 +406,40 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
             }
         }
         $this->container['tax_registration_details'] = $tax_registration_details;
+
+        return $this;
+    }
+
+    /**
+     * Gets additional_party_identifications
+     *
+     * @return array|null
+     */
+    public function getAdditionalPartyIdentifications(): ?array
+    {
+        return $this->container['additional_party_identifications'];
+    }
+
+    /**
+     * Sets additional_party_identifications
+     *
+     * @param array|null $additional_party_identifications Additional corporate or fiscal registration identifiers for the party that are not VAT/GST registrations (e.g. FR SIREN, or DE W-IdNr.).
+     *
+     * @return self
+     */
+    public function setAdditionalPartyIdentifications(?array $additional_party_identifications): self
+    {
+        if (is_null($additional_party_identifications)) {
+            array_push($this->openAPINullablesSetToNull, 'additional_party_identifications');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('additional_party_identifications', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['additional_party_identifications'] = $additional_party_identifications;
 
         return $this;
     }
