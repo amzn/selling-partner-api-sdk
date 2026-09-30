@@ -1488,7 +1488,8 @@ public class ShipmentProcessingApi {
      *
      * @param shipmentId The ID of the shipment to which the package belongs. (required)
      * @param packageId The ID of the package whose status you want to update. (required)
-     * @param status **DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)
+     * @param status **This field is only used for the Seller Flex program**. For the Self Delivery program, package
+     *     statuses are defined in the body parameter. (optional)
      * @param body The body of the request. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1572,7 +1573,8 @@ public class ShipmentProcessingApi {
      *
      * @param shipmentId The ID of the shipment to which the package belongs. (required)
      * @param packageId The ID of the package whose status you want to update. (required)
-     * @param status **DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)
+     * @param status **This field is only used for the Seller Flex program**. For the Self Delivery program, package
+     *     statuses are defined in the body parameter. (optional)
      * @param body The body of the request. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1589,7 +1591,8 @@ public class ShipmentProcessingApi {
      *
      * @param shipmentId The ID of the shipment to which the package belongs. (required)
      * @param packageId The ID of the package whose status you want to update. (required)
-     * @param status **DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)
+     * @param status **This field is only used for the Seller Flex program**. For the Self Delivery program, package
+     *     statuses are defined in the body parameter. (optional)
      * @param body The body of the request. (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1604,7 +1607,8 @@ public class ShipmentProcessingApi {
      *
      * @param shipmentId The ID of the shipment to which the package belongs. (required)
      * @param packageId The ID of the package whose status you want to update. (required)
-     * @param status **DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)
+     * @param status **This field is only used for the Seller Flex program**. For the Self Delivery program, package
+     *     statuses are defined in the body parameter. (optional)
      * @param body The body of the request. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;Void&gt;
@@ -1633,7 +1637,8 @@ public class ShipmentProcessingApi {
      *
      * @param shipmentId The ID of the shipment to which the package belongs. (required)
      * @param packageId The ID of the package whose status you want to update. (required)
-     * @param status **DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)
+     * @param status **This field is only used for the Seller Flex program**. For the Self Delivery program, package
+     *     statuses are defined in the body parameter. (optional)
      * @param body The body of the request. (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1650,7 +1655,8 @@ public class ShipmentProcessingApi {
      *
      * @param shipmentId The ID of the shipment to which the package belongs. (required)
      * @param packageId The ID of the package whose status you want to update. (required)
-     * @param status **DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)
+     * @param status **This field is only used for the Seller Flex program**. For the Self Delivery program, package
+     *     statuses are defined in the body parameter. (optional)
      * @param body The body of the request. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1671,7 +1677,8 @@ public class ShipmentProcessingApi {
      *
      * @param shipmentId The ID of the shipment to which the package belongs. (required)
      * @param packageId The ID of the package whose status you want to update. (required)
-     * @param status **DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)
+     * @param status **This field is only used for the Seller Flex program**. For the Self Delivery program, package
+     *     statuses are defined in the body parameter. (optional)
      * @param body The body of the request. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)

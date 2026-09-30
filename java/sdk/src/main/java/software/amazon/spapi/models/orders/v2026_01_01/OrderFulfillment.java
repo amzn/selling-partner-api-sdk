@@ -37,6 +37,9 @@ public class OrderFulfillment {
     @SerializedName("labelPrintingWindow")
     private DateTimeRange labelPrintingWindow = null;
 
+    @SerializedName("promiseCalculationInputs")
+    private PromiseCalculationInputs promiseCalculationInputs = null;
+
     public OrderFulfillment fulfillmentStatus(FulfillmentStatus fulfillmentStatus) {
         this.fulfillmentStatus = fulfillmentStatus;
         return this;
@@ -158,6 +161,25 @@ public class OrderFulfillment {
         this.labelPrintingWindow = labelPrintingWindow;
     }
 
+    public OrderFulfillment promiseCalculationInputs(PromiseCalculationInputs promiseCalculationInputs) {
+        this.promiseCalculationInputs = promiseCalculationInputs;
+        return this;
+    }
+
+    /**
+     * Get promiseCalculationInputs
+     *
+     * @return promiseCalculationInputs
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PromiseCalculationInputs getPromiseCalculationInputs() {
+        return promiseCalculationInputs;
+    }
+
+    public void setPromiseCalculationInputs(PromiseCalculationInputs promiseCalculationInputs) {
+        this.promiseCalculationInputs = promiseCalculationInputs;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -172,7 +194,8 @@ public class OrderFulfillment {
                 && Objects.equals(this.fulfillmentServiceLevel, orderFulfillment.fulfillmentServiceLevel)
                 && Objects.equals(this.shipByWindow, orderFulfillment.shipByWindow)
                 && Objects.equals(this.deliverByWindow, orderFulfillment.deliverByWindow)
-                && Objects.equals(this.labelPrintingWindow, orderFulfillment.labelPrintingWindow);
+                && Objects.equals(this.labelPrintingWindow, orderFulfillment.labelPrintingWindow)
+                && Objects.equals(this.promiseCalculationInputs, orderFulfillment.promiseCalculationInputs);
     }
 
     @Override
@@ -183,7 +206,8 @@ public class OrderFulfillment {
                 fulfillmentServiceLevel,
                 shipByWindow,
                 deliverByWindow,
-                labelPrintingWindow);
+                labelPrintingWindow,
+                promiseCalculationInputs);
     }
 
     @Override
@@ -203,6 +227,9 @@ public class OrderFulfillment {
                 .append("\n");
         sb.append("    labelPrintingWindow: ")
                 .append(toIndentedString(labelPrintingWindow))
+                .append("\n");
+        sb.append("    promiseCalculationInputs: ")
+                .append(toIndentedString(promiseCalculationInputs))
                 .append("\n");
         sb.append("}");
         return sb.toString();

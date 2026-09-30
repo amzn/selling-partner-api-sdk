@@ -32,6 +32,12 @@ public class InvoiceDetail {
     @SerializedName("invoiceDate")
     private OffsetDateTime invoiceDate = null;
 
+    @SerializedName("taxPointDate")
+    private OffsetDateTime taxPointDate = null;
+
+    @SerializedName("deliveryDate")
+    private OffsetDateTime deliveryDate = null;
+
     @SerializedName("referenceNumber")
     private String referenceNumber = null;
 
@@ -44,6 +50,18 @@ public class InvoiceDetail {
     @SerializedName("billToParty")
     private PartyIdentification billToParty = null;
 
+    @SerializedName("billFromParty")
+    private PartyIdentification billFromParty = null;
+
+    @SerializedName("vatGroupParty")
+    private PartyIdentification vatGroupParty = null;
+
+    @SerializedName("taxRepresentativeParty")
+    private PartyIdentification taxRepresentativeParty = null;
+
+    @SerializedName("shipToParty")
+    private PartyIdentification shipToParty = null;
+
     @SerializedName("shipToCountryCode")
     private String shipToCountryCode = null;
 
@@ -53,6 +71,12 @@ public class InvoiceDetail {
     @SerializedName("invoiceTotal")
     private Money invoiceTotal = null;
 
+    @SerializedName("invoiceBaseAmount")
+    private Money invoiceBaseAmount = null;
+
+    @SerializedName("exchangeRate")
+    private String exchangeRate = null;
+
     @SerializedName("taxTotals")
     private List<TaxDetail> taxTotals = null;
 
@@ -61,6 +85,9 @@ public class InvoiceDetail {
 
     @SerializedName("chargeDetails")
     private List<ChargeDetails> chargeDetails = null;
+
+    @SerializedName("allowanceDetails")
+    private List<AllowanceDetails> allowanceDetails = null;
 
     @SerializedName("items")
     private List<InvoiceItem> items = null;
@@ -101,6 +128,48 @@ public class InvoiceDetail {
 
     public void setInvoiceDate(OffsetDateTime invoiceDate) {
         this.invoiceDate = invoiceDate;
+    }
+
+    public InvoiceDetail taxPointDate(OffsetDateTime taxPointDate) {
+        this.taxPointDate = taxPointDate;
+        return this;
+    }
+
+    /**
+     * The date on which the tax becomes chargeable, if different from the invoice date. When absent, the invoice date
+     * applies.
+     *
+     * @return taxPointDate
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description =
+                    "The date on which the tax becomes chargeable, if different from the invoice date. When absent, the invoice date applies.")
+    public OffsetDateTime getTaxPointDate() {
+        return taxPointDate;
+    }
+
+    public void setTaxPointDate(OffsetDateTime taxPointDate) {
+        this.taxPointDate = taxPointDate;
+    }
+
+    public InvoiceDetail deliveryDate(OffsetDateTime deliveryDate) {
+        this.deliveryDate = deliveryDate;
+        return this;
+    }
+
+    /**
+     * Date of delivery of the goods or completion of the service.
+     *
+     * @return deliveryDate
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Date of delivery of the goods or completion of the service.")
+    public OffsetDateTime getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(OffsetDateTime deliveryDate) {
+        this.deliveryDate = deliveryDate;
     }
 
     public InvoiceDetail referenceNumber(String referenceNumber) {
@@ -180,6 +249,82 @@ public class InvoiceDetail {
         this.billToParty = billToParty;
     }
 
+    public InvoiceDetail billFromParty(PartyIdentification billFromParty) {
+        this.billFromParty = billFromParty;
+        return this;
+    }
+
+    /**
+     * Get billFromParty
+     *
+     * @return billFromParty
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PartyIdentification getBillFromParty() {
+        return billFromParty;
+    }
+
+    public void setBillFromParty(PartyIdentification billFromParty) {
+        this.billFromParty = billFromParty;
+    }
+
+    public InvoiceDetail vatGroupParty(PartyIdentification vatGroupParty) {
+        this.vatGroupParty = vatGroupParty;
+        return this;
+    }
+
+    /**
+     * Get vatGroupParty
+     *
+     * @return vatGroupParty
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PartyIdentification getVatGroupParty() {
+        return vatGroupParty;
+    }
+
+    public void setVatGroupParty(PartyIdentification vatGroupParty) {
+        this.vatGroupParty = vatGroupParty;
+    }
+
+    public InvoiceDetail taxRepresentativeParty(PartyIdentification taxRepresentativeParty) {
+        this.taxRepresentativeParty = taxRepresentativeParty;
+        return this;
+    }
+
+    /**
+     * Get taxRepresentativeParty
+     *
+     * @return taxRepresentativeParty
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PartyIdentification getTaxRepresentativeParty() {
+        return taxRepresentativeParty;
+    }
+
+    public void setTaxRepresentativeParty(PartyIdentification taxRepresentativeParty) {
+        this.taxRepresentativeParty = taxRepresentativeParty;
+    }
+
+    public InvoiceDetail shipToParty(PartyIdentification shipToParty) {
+        this.shipToParty = shipToParty;
+        return this;
+    }
+
+    /**
+     * Get shipToParty
+     *
+     * @return shipToParty
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PartyIdentification getShipToParty() {
+        return shipToParty;
+    }
+
+    public void setShipToParty(PartyIdentification shipToParty) {
+        this.shipToParty = shipToParty;
+    }
+
     public InvoiceDetail shipToCountryCode(String shipToCountryCode) {
         this.shipToCountryCode = shipToCountryCode;
         return this;
@@ -235,6 +380,48 @@ public class InvoiceDetail {
 
     public void setInvoiceTotal(Money invoiceTotal) {
         this.invoiceTotal = invoiceTotal;
+    }
+
+    public InvoiceDetail invoiceBaseAmount(Money invoiceBaseAmount) {
+        this.invoiceBaseAmount = invoiceBaseAmount;
+        return this;
+    }
+
+    /**
+     * Get invoiceBaseAmount
+     *
+     * @return invoiceBaseAmount
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public Money getInvoiceBaseAmount() {
+        return invoiceBaseAmount;
+    }
+
+    public void setInvoiceBaseAmount(Money invoiceBaseAmount) {
+        this.invoiceBaseAmount = invoiceBaseAmount;
+    }
+
+    public InvoiceDetail exchangeRate(String exchangeRate) {
+        this.exchangeRate = exchangeRate;
+        return this;
+    }
+
+    /**
+     * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+     * Follows RFC7159 for number representation. &lt;br&gt;**Pattern** :
+     * &#x60;^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$&#x60;.
+     *
+     * @return exchangeRate
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description =
+                    "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.")
+    public String getExchangeRate() {
+        return exchangeRate;
+    }
+
+    public void setExchangeRate(String exchangeRate) {
+        this.exchangeRate = exchangeRate;
     }
 
     public InvoiceDetail taxTotals(List<TaxDetail> taxTotals) {
@@ -319,6 +506,33 @@ public class InvoiceDetail {
         this.chargeDetails = chargeDetails;
     }
 
+    public InvoiceDetail allowanceDetails(List<AllowanceDetails> allowanceDetails) {
+        this.allowanceDetails = allowanceDetails;
+        return this;
+    }
+
+    public InvoiceDetail addAllowanceDetailsItem(AllowanceDetails allowanceDetailsItem) {
+        if (this.allowanceDetails == null) {
+            this.allowanceDetails = new ArrayList<>();
+        }
+        this.allowanceDetails.add(allowanceDetailsItem);
+        return this;
+    }
+
+    /**
+     * Total allowance amount details for all line items.
+     *
+     * @return allowanceDetails
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Total allowance amount details for all line items.")
+    public List<AllowanceDetails> getAllowanceDetails() {
+        return allowanceDetails;
+    }
+
+    public void setAllowanceDetails(List<AllowanceDetails> allowanceDetails) {
+        this.allowanceDetails = allowanceDetails;
+    }
+
     public InvoiceDetail items(List<InvoiceItem> items) {
         this.items = items;
         return this;
@@ -359,16 +573,25 @@ public class InvoiceDetail {
         InvoiceDetail invoiceDetail = (InvoiceDetail) o;
         return Objects.equals(this.invoiceNumber, invoiceDetail.invoiceNumber)
                 && Objects.equals(this.invoiceDate, invoiceDetail.invoiceDate)
+                && Objects.equals(this.taxPointDate, invoiceDetail.taxPointDate)
+                && Objects.equals(this.deliveryDate, invoiceDetail.deliveryDate)
                 && Objects.equals(this.referenceNumber, invoiceDetail.referenceNumber)
                 && Objects.equals(this.remitToParty, invoiceDetail.remitToParty)
                 && Objects.equals(this.shipFromParty, invoiceDetail.shipFromParty)
                 && Objects.equals(this.billToParty, invoiceDetail.billToParty)
+                && Objects.equals(this.billFromParty, invoiceDetail.billFromParty)
+                && Objects.equals(this.vatGroupParty, invoiceDetail.vatGroupParty)
+                && Objects.equals(this.taxRepresentativeParty, invoiceDetail.taxRepresentativeParty)
+                && Objects.equals(this.shipToParty, invoiceDetail.shipToParty)
                 && Objects.equals(this.shipToCountryCode, invoiceDetail.shipToCountryCode)
                 && Objects.equals(this.paymentTermsCode, invoiceDetail.paymentTermsCode)
                 && Objects.equals(this.invoiceTotal, invoiceDetail.invoiceTotal)
+                && Objects.equals(this.invoiceBaseAmount, invoiceDetail.invoiceBaseAmount)
+                && Objects.equals(this.exchangeRate, invoiceDetail.exchangeRate)
                 && Objects.equals(this.taxTotals, invoiceDetail.taxTotals)
                 && Objects.equals(this.additionalDetails, invoiceDetail.additionalDetails)
                 && Objects.equals(this.chargeDetails, invoiceDetail.chargeDetails)
+                && Objects.equals(this.allowanceDetails, invoiceDetail.allowanceDetails)
                 && Objects.equals(this.items, invoiceDetail.items);
     }
 
@@ -377,16 +600,25 @@ public class InvoiceDetail {
         return Objects.hash(
                 invoiceNumber,
                 invoiceDate,
+                taxPointDate,
+                deliveryDate,
                 referenceNumber,
                 remitToParty,
                 shipFromParty,
                 billToParty,
+                billFromParty,
+                vatGroupParty,
+                taxRepresentativeParty,
+                shipToParty,
                 shipToCountryCode,
                 paymentTermsCode,
                 invoiceTotal,
+                invoiceBaseAmount,
+                exchangeRate,
                 taxTotals,
                 additionalDetails,
                 chargeDetails,
+                allowanceDetails,
                 items);
     }
 
@@ -396,12 +628,20 @@ public class InvoiceDetail {
         sb.append("class InvoiceDetail {\n");
         sb.append("    invoiceNumber: ").append(toIndentedString(invoiceNumber)).append("\n");
         sb.append("    invoiceDate: ").append(toIndentedString(invoiceDate)).append("\n");
+        sb.append("    taxPointDate: ").append(toIndentedString(taxPointDate)).append("\n");
+        sb.append("    deliveryDate: ").append(toIndentedString(deliveryDate)).append("\n");
         sb.append("    referenceNumber: ")
                 .append(toIndentedString(referenceNumber))
                 .append("\n");
         sb.append("    remitToParty: ").append(toIndentedString(remitToParty)).append("\n");
         sb.append("    shipFromParty: ").append(toIndentedString(shipFromParty)).append("\n");
         sb.append("    billToParty: ").append(toIndentedString(billToParty)).append("\n");
+        sb.append("    billFromParty: ").append(toIndentedString(billFromParty)).append("\n");
+        sb.append("    vatGroupParty: ").append(toIndentedString(vatGroupParty)).append("\n");
+        sb.append("    taxRepresentativeParty: ")
+                .append(toIndentedString(taxRepresentativeParty))
+                .append("\n");
+        sb.append("    shipToParty: ").append(toIndentedString(shipToParty)).append("\n");
         sb.append("    shipToCountryCode: ")
                 .append(toIndentedString(shipToCountryCode))
                 .append("\n");
@@ -409,11 +649,18 @@ public class InvoiceDetail {
                 .append(toIndentedString(paymentTermsCode))
                 .append("\n");
         sb.append("    invoiceTotal: ").append(toIndentedString(invoiceTotal)).append("\n");
+        sb.append("    invoiceBaseAmount: ")
+                .append(toIndentedString(invoiceBaseAmount))
+                .append("\n");
+        sb.append("    exchangeRate: ").append(toIndentedString(exchangeRate)).append("\n");
         sb.append("    taxTotals: ").append(toIndentedString(taxTotals)).append("\n");
         sb.append("    additionalDetails: ")
                 .append(toIndentedString(additionalDetails))
                 .append("\n");
         sb.append("    chargeDetails: ").append(toIndentedString(chargeDetails)).append("\n");
+        sb.append("    allowanceDetails: ")
+                .append(toIndentedString(allowanceDetails))
+                .append("\n");
         sb.append("    items: ").append(toIndentedString(items)).append("\n");
         sb.append("}");
         return sb.toString();

@@ -53,7 +53,7 @@ public class TrackingApiTest {
         instructBackendMock("Tracking", "getShipmentTracking", "200");
 
         ApiResponse<GetShipmentTrackingResponse> response =
-                api.getShipmentTrackingWithHttpInfo(null, null, null, null, null, null, null, null);
+                api.getShipmentTrackingWithHttpInfo(null, null, null, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

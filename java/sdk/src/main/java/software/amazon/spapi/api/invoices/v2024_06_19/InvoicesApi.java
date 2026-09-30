@@ -1093,13 +1093,15 @@ public class InvoicesApi {
      *
      * @param marketplaceId The marketplace from which you want the invoice. (required)
      * @param invoiceId The invoice identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getInvoiceCall(
-            String marketplaceId, String invoiceId, final ApiCallback progressRequestListener)
+            String marketplaceId, String invoiceId, String warehouseCode, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1118,6 +1120,8 @@ public class InvoicesApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (marketplaceId != null)
             localVarQueryParams.addAll(apiClient.parameterToPair("marketplaceId", marketplaceId));
+        if (warehouseCode != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("warehouseCode", warehouseCode));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1144,7 +1148,7 @@ public class InvoicesApi {
     }
 
     private okhttp3.Call getInvoiceValidateBeforeCall(
-            String marketplaceId, String invoiceId, final ApiCallback progressRequestListener)
+            String marketplaceId, String invoiceId, String warehouseCode, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceId' is set
@@ -1157,7 +1161,7 @@ public class InvoicesApi {
             throw new ApiException("Missing the required parameter 'invoiceId' when calling getInvoice(Async)");
         }
 
-        return getInvoiceCall(marketplaceId, invoiceId, progressRequestListener);
+        return getInvoiceCall(marketplaceId, invoiceId, warehouseCode, progressRequestListener);
     }
 
     /**
@@ -1167,14 +1171,18 @@ public class InvoicesApi {
      *
      * @param marketplaceId The marketplace from which you want the invoice. (required)
      * @param invoiceId The invoice identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return GetInvoiceResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public GetInvoiceResponse getInvoice(String marketplaceId, String invoiceId, String restrictedDataToken)
+    public GetInvoiceResponse getInvoice(
+            String marketplaceId, String invoiceId, String warehouseCode, String restrictedDataToken)
             throws ApiException, LWAException {
-        ApiResponse<GetInvoiceResponse> resp = getInvoiceWithHttpInfo(marketplaceId, invoiceId, restrictedDataToken);
+        ApiResponse<GetInvoiceResponse> resp =
+                getInvoiceWithHttpInfo(marketplaceId, invoiceId, warehouseCode, restrictedDataToken);
         return resp.getData();
     }
 
@@ -1185,12 +1193,15 @@ public class InvoicesApi {
      *
      * @param marketplaceId The marketplace from which you want the invoice. (required)
      * @param invoiceId The invoice identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @return GetInvoiceResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public GetInvoiceResponse getInvoice(String marketplaceId, String invoiceId) throws ApiException, LWAException {
-        ApiResponse<GetInvoiceResponse> resp = getInvoiceWithHttpInfo(marketplaceId, invoiceId, null);
+    public GetInvoiceResponse getInvoice(String marketplaceId, String invoiceId, String warehouseCode)
+            throws ApiException, LWAException {
+        ApiResponse<GetInvoiceResponse> resp = getInvoiceWithHttpInfo(marketplaceId, invoiceId, warehouseCode, null);
         return resp.getData();
     }
 
@@ -1201,14 +1212,17 @@ public class InvoicesApi {
      *
      * @param marketplaceId The marketplace from which you want the invoice. (required)
      * @param invoiceId The invoice identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;GetInvoiceResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<GetInvoiceResponse> getInvoiceWithHttpInfo(
-            String marketplaceId, String invoiceId, String restrictedDataToken) throws ApiException, LWAException {
-        okhttp3.Call call = getInvoiceValidateBeforeCall(marketplaceId, invoiceId, null);
+            String marketplaceId, String invoiceId, String warehouseCode, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getInvoiceValidateBeforeCall(marketplaceId, invoiceId, warehouseCode, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -1229,13 +1243,15 @@ public class InvoicesApi {
      *
      * @param marketplaceId The marketplace from which you want the invoice. (required)
      * @param invoiceId The invoice identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @return ApiResponse&lt;GetInvoiceResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<GetInvoiceResponse> getInvoiceWithHttpInfo(String marketplaceId, String invoiceId)
-            throws ApiException, LWAException {
-        return getInvoiceWithHttpInfo(marketplaceId, invoiceId, null);
+    public ApiResponse<GetInvoiceResponse> getInvoiceWithHttpInfo(
+            String marketplaceId, String invoiceId, String warehouseCode) throws ApiException, LWAException {
+        return getInvoiceWithHttpInfo(marketplaceId, invoiceId, warehouseCode, null);
     }
 
     /**
@@ -1245,15 +1261,20 @@ public class InvoicesApi {
      *
      * @param marketplaceId The marketplace from which you want the invoice. (required)
      * @param invoiceId The invoice identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getInvoiceAsync(
-            String marketplaceId, String invoiceId, final ApiCallback<GetInvoiceResponse> callback)
+            String marketplaceId,
+            String invoiceId,
+            String warehouseCode,
+            final ApiCallback<GetInvoiceResponse> callback)
             throws ApiException, LWAException {
-        return getInvoiceAsync(marketplaceId, invoiceId, callback, null);
+        return getInvoiceAsync(marketplaceId, invoiceId, warehouseCode, callback, null);
     }
     /**
      * (asynchronously) Returns invoice data for the specified invoice. This operation returns only a subset of the
@@ -1262,6 +1283,8 @@ public class InvoicesApi {
      *
      * @param marketplaceId The marketplace from which you want the invoice. (required)
      * @param invoiceId The invoice identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -1271,6 +1294,7 @@ public class InvoicesApi {
     public okhttp3.Call getInvoiceAsync(
             String marketplaceId,
             String invoiceId,
+            String warehouseCode,
             final ApiCallback<GetInvoiceResponse> callback,
             String restrictedDataToken)
             throws ApiException, LWAException {
@@ -1281,7 +1305,8 @@ public class InvoicesApi {
             progressRequestListener = callback;
         }
 
-        okhttp3.Call call = getInvoiceValidateBeforeCall(marketplaceId, invoiceId, progressRequestListener);
+        okhttp3.Call call =
+                getInvoiceValidateBeforeCall(marketplaceId, invoiceId, warehouseCode, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -1329,6 +1354,8 @@ public class InvoicesApi {
      * @param externalInvoiceId Return invoices that match this external ID. This is typically the Government Invoice
      *     ID. (optional)
      * @param sortBy The attribute by which you want to sort the invoices in the response. (optional)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1349,6 +1376,7 @@ public class InvoicesApi {
             List<String> statuses,
             String externalInvoiceId,
             String sortBy,
+            String warehouseCode,
             final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -1384,6 +1412,8 @@ public class InvoicesApi {
         if (externalInvoiceId != null)
             localVarQueryParams.addAll(apiClient.parameterToPair("externalInvoiceId", externalInvoiceId));
         if (sortBy != null) localVarQueryParams.addAll(apiClient.parameterToPair("sortBy", sortBy));
+        if (warehouseCode != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("warehouseCode", warehouseCode));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1424,6 +1454,7 @@ public class InvoicesApi {
             List<String> statuses,
             String externalInvoiceId,
             String sortBy,
+            String warehouseCode,
             final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
@@ -1447,6 +1478,7 @@ public class InvoicesApi {
                 statuses,
                 externalInvoiceId,
                 sortBy,
+                warehouseCode,
                 progressRequestListener);
     }
 
@@ -1484,6 +1516,8 @@ public class InvoicesApi {
      * @param externalInvoiceId Return invoices that match this external ID. This is typically the Government Invoice
      *     ID. (optional)
      * @param sortBy The attribute by which you want to sort the invoices in the response. (optional)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return GetInvoicesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1504,6 +1538,7 @@ public class InvoicesApi {
             List<String> statuses,
             String externalInvoiceId,
             String sortBy,
+            String warehouseCode,
             String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<GetInvoicesResponse> resp = getInvoicesWithHttpInfo(
@@ -1521,6 +1556,7 @@ public class InvoicesApi {
                 statuses,
                 externalInvoiceId,
                 sortBy,
+                warehouseCode,
                 restrictedDataToken);
         return resp.getData();
     }
@@ -1559,6 +1595,8 @@ public class InvoicesApi {
      * @param externalInvoiceId Return invoices that match this external ID. This is typically the Government Invoice
      *     ID. (optional)
      * @param sortBy The attribute by which you want to sort the invoices in the response. (optional)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @return GetInvoicesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1577,7 +1615,8 @@ public class InvoicesApi {
             String invoiceType,
             List<String> statuses,
             String externalInvoiceId,
-            String sortBy)
+            String sortBy,
+            String warehouseCode)
             throws ApiException, LWAException {
         ApiResponse<GetInvoicesResponse> resp = getInvoicesWithHttpInfo(
                 marketplaceId,
@@ -1594,6 +1633,7 @@ public class InvoicesApi {
                 statuses,
                 externalInvoiceId,
                 sortBy,
+                warehouseCode,
                 null);
         return resp.getData();
     }
@@ -1632,6 +1672,8 @@ public class InvoicesApi {
      * @param externalInvoiceId Return invoices that match this external ID. This is typically the Government Invoice
      *     ID. (optional)
      * @param sortBy The attribute by which you want to sort the invoices in the response. (optional)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;GetInvoicesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1652,6 +1694,7 @@ public class InvoicesApi {
             List<String> statuses,
             String externalInvoiceId,
             String sortBy,
+            String warehouseCode,
             String restrictedDataToken)
             throws ApiException, LWAException {
         okhttp3.Call call = getInvoicesValidateBeforeCall(
@@ -1669,6 +1712,7 @@ public class InvoicesApi {
                 statuses,
                 externalInvoiceId,
                 sortBy,
+                warehouseCode,
                 null);
 
         if (restrictedDataToken != null) {
@@ -1717,6 +1761,8 @@ public class InvoicesApi {
      * @param externalInvoiceId Return invoices that match this external ID. This is typically the Government Invoice
      *     ID. (optional)
      * @param sortBy The attribute by which you want to sort the invoices in the response. (optional)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @return ApiResponse&lt;GetInvoicesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1735,7 +1781,8 @@ public class InvoicesApi {
             String invoiceType,
             List<String> statuses,
             String externalInvoiceId,
-            String sortBy)
+            String sortBy,
+            String warehouseCode)
             throws ApiException, LWAException {
         return getInvoicesWithHttpInfo(
                 marketplaceId,
@@ -1752,6 +1799,7 @@ public class InvoicesApi {
                 statuses,
                 externalInvoiceId,
                 sortBy,
+                warehouseCode,
                 null);
     }
 
@@ -1789,6 +1837,8 @@ public class InvoicesApi {
      * @param externalInvoiceId Return invoices that match this external ID. This is typically the Government Invoice
      *     ID. (optional)
      * @param sortBy The attribute by which you want to sort the invoices in the response. (optional)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1809,6 +1859,7 @@ public class InvoicesApi {
             List<String> statuses,
             String externalInvoiceId,
             String sortBy,
+            String warehouseCode,
             final ApiCallback<GetInvoicesResponse> callback)
             throws ApiException, LWAException {
         return getInvoicesAsync(
@@ -1826,6 +1877,7 @@ public class InvoicesApi {
                 statuses,
                 externalInvoiceId,
                 sortBy,
+                warehouseCode,
                 callback,
                 null);
     }
@@ -1863,6 +1915,8 @@ public class InvoicesApi {
      * @param externalInvoiceId Return invoices that match this external ID. This is typically the Government Invoice
      *     ID. (optional)
      * @param sortBy The attribute by which you want to sort the invoices in the response. (optional)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -1884,6 +1938,7 @@ public class InvoicesApi {
             List<String> statuses,
             String externalInvoiceId,
             String sortBy,
+            String warehouseCode,
             final ApiCallback<GetInvoicesResponse> callback,
             String restrictedDataToken)
             throws ApiException, LWAException {
@@ -1909,6 +1964,7 @@ public class InvoicesApi {
                 statuses,
                 externalInvoiceId,
                 sortBy,
+                warehouseCode,
                 progressRequestListener);
 
         if (restrictedDataToken != null) {
@@ -1927,12 +1983,15 @@ public class InvoicesApi {
      * Build call for getInvoicesAttributes
      *
      * @param marketplaceId The marketplace identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getInvoicesAttributesCall(String marketplaceId, final ApiCallback progressRequestListener)
+    private okhttp3.Call getInvoicesAttributesCall(
+            String marketplaceId, String warehouseCode, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1948,6 +2007,8 @@ public class InvoicesApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (marketplaceId != null)
             localVarQueryParams.addAll(apiClient.parameterToPair("marketplaceId", marketplaceId));
+        if (warehouseCode != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("warehouseCode", warehouseCode));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1974,7 +2035,8 @@ public class InvoicesApi {
     }
 
     private okhttp3.Call getInvoicesAttributesValidateBeforeCall(
-            String marketplaceId, final ApiCallback progressRequestListener) throws ApiException, LWAException {
+            String marketplaceId, String warehouseCode, final ApiCallback progressRequestListener)
+            throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceId' is set
         if (marketplaceId == null) {
@@ -1982,22 +2044,24 @@ public class InvoicesApi {
                     "Missing the required parameter 'marketplaceId' when calling getInvoicesAttributes(Async)");
         }
 
-        return getInvoicesAttributesCall(marketplaceId, progressRequestListener);
+        return getInvoicesAttributesCall(marketplaceId, warehouseCode, progressRequestListener);
     }
 
     /**
      * Returns marketplace-dependent schemas and their respective set of possible values.
      *
      * @param marketplaceId The marketplace identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return GetInvoicesAttributesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public GetInvoicesAttributesResponse getInvoicesAttributes(String marketplaceId, String restrictedDataToken)
-            throws ApiException, LWAException {
+    public GetInvoicesAttributesResponse getInvoicesAttributes(
+            String marketplaceId, String warehouseCode, String restrictedDataToken) throws ApiException, LWAException {
         ApiResponse<GetInvoicesAttributesResponse> resp =
-                getInvoicesAttributesWithHttpInfo(marketplaceId, restrictedDataToken);
+                getInvoicesAttributesWithHttpInfo(marketplaceId, warehouseCode, restrictedDataToken);
         return resp.getData();
     }
 
@@ -2005,12 +2069,16 @@ public class InvoicesApi {
      * Returns marketplace-dependent schemas and their respective set of possible values.
      *
      * @param marketplaceId The marketplace identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @return GetInvoicesAttributesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public GetInvoicesAttributesResponse getInvoicesAttributes(String marketplaceId) throws ApiException, LWAException {
-        ApiResponse<GetInvoicesAttributesResponse> resp = getInvoicesAttributesWithHttpInfo(marketplaceId, null);
+    public GetInvoicesAttributesResponse getInvoicesAttributes(String marketplaceId, String warehouseCode)
+            throws ApiException, LWAException {
+        ApiResponse<GetInvoicesAttributesResponse> resp =
+                getInvoicesAttributesWithHttpInfo(marketplaceId, warehouseCode, null);
         return resp.getData();
     }
 
@@ -2018,14 +2086,16 @@ public class InvoicesApi {
      * Returns marketplace-dependent schemas and their respective set of possible values.
      *
      * @param marketplaceId The marketplace identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;GetInvoicesAttributesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<GetInvoicesAttributesResponse> getInvoicesAttributesWithHttpInfo(
-            String marketplaceId, String restrictedDataToken) throws ApiException, LWAException {
-        okhttp3.Call call = getInvoicesAttributesValidateBeforeCall(marketplaceId, null);
+            String marketplaceId, String warehouseCode, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getInvoicesAttributesValidateBeforeCall(marketplaceId, warehouseCode, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -2043,33 +2113,39 @@ public class InvoicesApi {
      * Returns marketplace-dependent schemas and their respective set of possible values.
      *
      * @param marketplaceId The marketplace identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @return ApiResponse&lt;GetInvoicesAttributesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<GetInvoicesAttributesResponse> getInvoicesAttributesWithHttpInfo(String marketplaceId)
-            throws ApiException, LWAException {
-        return getInvoicesAttributesWithHttpInfo(marketplaceId, null);
+    public ApiResponse<GetInvoicesAttributesResponse> getInvoicesAttributesWithHttpInfo(
+            String marketplaceId, String warehouseCode) throws ApiException, LWAException {
+        return getInvoicesAttributesWithHttpInfo(marketplaceId, warehouseCode, null);
     }
 
     /**
      * (asynchronously) Returns marketplace-dependent schemas and their respective set of possible values.
      *
      * @param marketplaceId The marketplace identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getInvoicesAttributesAsync(
-            String marketplaceId, final ApiCallback<GetInvoicesAttributesResponse> callback)
+            String marketplaceId, String warehouseCode, final ApiCallback<GetInvoicesAttributesResponse> callback)
             throws ApiException, LWAException {
-        return getInvoicesAttributesAsync(marketplaceId, callback, null);
+        return getInvoicesAttributesAsync(marketplaceId, warehouseCode, callback, null);
     }
     /**
      * (asynchronously) Returns marketplace-dependent schemas and their respective set of possible values.
      *
      * @param marketplaceId The marketplace identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -2077,7 +2153,10 @@ public class InvoicesApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getInvoicesAttributesAsync(
-            String marketplaceId, final ApiCallback<GetInvoicesAttributesResponse> callback, String restrictedDataToken)
+            String marketplaceId,
+            String warehouseCode,
+            final ApiCallback<GetInvoicesAttributesResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ApiCallback progressRequestListener = null;
@@ -2086,7 +2165,8 @@ public class InvoicesApi {
             progressRequestListener = callback;
         }
 
-        okhttp3.Call call = getInvoicesAttributesValidateBeforeCall(marketplaceId, progressRequestListener);
+        okhttp3.Call call =
+                getInvoicesAttributesValidateBeforeCall(marketplaceId, warehouseCode, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -2104,12 +2184,15 @@ public class InvoicesApi {
      * Build call for getInvoicesDocument
      *
      * @param invoicesDocumentId The export document identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getInvoicesDocumentCall(String invoicesDocumentId, final ApiCallback progressRequestListener)
+    private okhttp3.Call getInvoicesDocumentCall(
+            String invoicesDocumentId, String warehouseCode, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -2128,6 +2211,8 @@ public class InvoicesApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (warehouseCode != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("warehouseCode", warehouseCode));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2154,7 +2239,8 @@ public class InvoicesApi {
     }
 
     private okhttp3.Call getInvoicesDocumentValidateBeforeCall(
-            String invoicesDocumentId, final ApiCallback progressRequestListener) throws ApiException, LWAException {
+            String invoicesDocumentId, String warehouseCode, final ApiCallback progressRequestListener)
+            throws ApiException, LWAException {
 
         // verify the required parameter 'invoicesDocumentId' is set
         if (invoicesDocumentId == null) {
@@ -2162,7 +2248,7 @@ public class InvoicesApi {
                     "Missing the required parameter 'invoicesDocumentId' when calling getInvoicesDocument(Async)");
         }
 
-        return getInvoicesDocumentCall(invoicesDocumentId, progressRequestListener);
+        return getInvoicesDocumentCall(invoicesDocumentId, warehouseCode, progressRequestListener);
     }
 
     /**
@@ -2170,15 +2256,18 @@ public class InvoicesApi {
      * from the corresponding &#x60;createInvoicesExport&#x60; request.
      *
      * @param invoicesDocumentId The export document identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return GetInvoicesDocumentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public GetInvoicesDocumentResponse getInvoicesDocument(String invoicesDocumentId, String restrictedDataToken)
+    public GetInvoicesDocumentResponse getInvoicesDocument(
+            String invoicesDocumentId, String warehouseCode, String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<GetInvoicesDocumentResponse> resp =
-                getInvoicesDocumentWithHttpInfo(invoicesDocumentId, restrictedDataToken);
+                getInvoicesDocumentWithHttpInfo(invoicesDocumentId, warehouseCode, restrictedDataToken);
         return resp.getData();
     }
 
@@ -2187,13 +2276,16 @@ public class InvoicesApi {
      * from the corresponding &#x60;createInvoicesExport&#x60; request.
      *
      * @param invoicesDocumentId The export document identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @return GetInvoicesDocumentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public GetInvoicesDocumentResponse getInvoicesDocument(String invoicesDocumentId)
+    public GetInvoicesDocumentResponse getInvoicesDocument(String invoicesDocumentId, String warehouseCode)
             throws ApiException, LWAException {
-        ApiResponse<GetInvoicesDocumentResponse> resp = getInvoicesDocumentWithHttpInfo(invoicesDocumentId, null);
+        ApiResponse<GetInvoicesDocumentResponse> resp =
+                getInvoicesDocumentWithHttpInfo(invoicesDocumentId, warehouseCode, null);
         return resp.getData();
     }
 
@@ -2202,14 +2294,17 @@ public class InvoicesApi {
      * from the corresponding &#x60;createInvoicesExport&#x60; request.
      *
      * @param invoicesDocumentId The export document identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;GetInvoicesDocumentResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<GetInvoicesDocumentResponse> getInvoicesDocumentWithHttpInfo(
-            String invoicesDocumentId, String restrictedDataToken) throws ApiException, LWAException {
-        okhttp3.Call call = getInvoicesDocumentValidateBeforeCall(invoicesDocumentId, null);
+            String invoicesDocumentId, String warehouseCode, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getInvoicesDocumentValidateBeforeCall(invoicesDocumentId, warehouseCode, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -2228,13 +2323,15 @@ public class InvoicesApi {
      * from the corresponding &#x60;createInvoicesExport&#x60; request.
      *
      * @param invoicesDocumentId The export document identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @return ApiResponse&lt;GetInvoicesDocumentResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<GetInvoicesDocumentResponse> getInvoicesDocumentWithHttpInfo(String invoicesDocumentId)
-            throws ApiException, LWAException {
-        return getInvoicesDocumentWithHttpInfo(invoicesDocumentId, null);
+    public ApiResponse<GetInvoicesDocumentResponse> getInvoicesDocumentWithHttpInfo(
+            String invoicesDocumentId, String warehouseCode) throws ApiException, LWAException {
+        return getInvoicesDocumentWithHttpInfo(invoicesDocumentId, warehouseCode, null);
     }
 
     /**
@@ -2242,21 +2339,25 @@ public class InvoicesApi {
      * contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.
      *
      * @param invoicesDocumentId The export document identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getInvoicesDocumentAsync(
-            String invoicesDocumentId, final ApiCallback<GetInvoicesDocumentResponse> callback)
+            String invoicesDocumentId, String warehouseCode, final ApiCallback<GetInvoicesDocumentResponse> callback)
             throws ApiException, LWAException {
-        return getInvoicesDocumentAsync(invoicesDocumentId, callback, null);
+        return getInvoicesDocumentAsync(invoicesDocumentId, warehouseCode, callback, null);
     }
     /**
      * (asynchronously) Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which
      * contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.
      *
      * @param invoicesDocumentId The export document identifier. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -2265,6 +2366,7 @@ public class InvoicesApi {
      */
     public okhttp3.Call getInvoicesDocumentAsync(
             String invoicesDocumentId,
+            String warehouseCode,
             final ApiCallback<GetInvoicesDocumentResponse> callback,
             String restrictedDataToken)
             throws ApiException, LWAException {
@@ -2275,7 +2377,8 @@ public class InvoicesApi {
             progressRequestListener = callback;
         }
 
-        okhttp3.Call call = getInvoicesDocumentValidateBeforeCall(invoicesDocumentId, progressRequestListener);
+        okhttp3.Call call =
+                getInvoicesDocumentValidateBeforeCall(invoicesDocumentId, warehouseCode, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -2293,12 +2396,15 @@ public class InvoicesApi {
      * Build call for getInvoicesExport
      *
      * @param exportId The unique identifier for the export. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getInvoicesExportCall(String exportId, final ApiCallback progressRequestListener)
+    private okhttp3.Call getInvoicesExportCall(
+            String exportId, String warehouseCode, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -2314,6 +2420,8 @@ public class InvoicesApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (warehouseCode != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("warehouseCode", warehouseCode));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2339,7 +2447,8 @@ public class InvoicesApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call getInvoicesExportValidateBeforeCall(String exportId, final ApiCallback progressRequestListener)
+    private okhttp3.Call getInvoicesExportValidateBeforeCall(
+            String exportId, String warehouseCode, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'exportId' is set
@@ -2347,7 +2456,7 @@ public class InvoicesApi {
             throw new ApiException("Missing the required parameter 'exportId' when calling getInvoicesExport(Async)");
         }
 
-        return getInvoicesExportCall(exportId, progressRequestListener);
+        return getInvoicesExportCall(exportId, warehouseCode, progressRequestListener);
     }
 
     /**
@@ -2355,14 +2464,17 @@ public class InvoicesApi {
      * specify.
      *
      * @param exportId The unique identifier for the export. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return GetInvoicesExportResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public GetInvoicesExportResponse getInvoicesExport(String exportId, String restrictedDataToken)
-            throws ApiException, LWAException {
-        ApiResponse<GetInvoicesExportResponse> resp = getInvoicesExportWithHttpInfo(exportId, restrictedDataToken);
+    public GetInvoicesExportResponse getInvoicesExport(
+            String exportId, String warehouseCode, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<GetInvoicesExportResponse> resp =
+                getInvoicesExportWithHttpInfo(exportId, warehouseCode, restrictedDataToken);
         return resp.getData();
     }
 
@@ -2371,12 +2483,15 @@ public class InvoicesApi {
      * specify.
      *
      * @param exportId The unique identifier for the export. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @return GetInvoicesExportResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public GetInvoicesExportResponse getInvoicesExport(String exportId) throws ApiException, LWAException {
-        ApiResponse<GetInvoicesExportResponse> resp = getInvoicesExportWithHttpInfo(exportId, null);
+    public GetInvoicesExportResponse getInvoicesExport(String exportId, String warehouseCode)
+            throws ApiException, LWAException {
+        ApiResponse<GetInvoicesExportResponse> resp = getInvoicesExportWithHttpInfo(exportId, warehouseCode, null);
         return resp.getData();
     }
 
@@ -2385,14 +2500,16 @@ public class InvoicesApi {
      * specify.
      *
      * @param exportId The unique identifier for the export. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;GetInvoicesExportResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<GetInvoicesExportResponse> getInvoicesExportWithHttpInfo(
-            String exportId, String restrictedDataToken) throws ApiException, LWAException {
-        okhttp3.Call call = getInvoicesExportValidateBeforeCall(exportId, null);
+            String exportId, String warehouseCode, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getInvoicesExportValidateBeforeCall(exportId, warehouseCode, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -2411,13 +2528,15 @@ public class InvoicesApi {
      * specify.
      *
      * @param exportId The unique identifier for the export. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @return ApiResponse&lt;GetInvoicesExportResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<GetInvoicesExportResponse> getInvoicesExportWithHttpInfo(String exportId)
+    public ApiResponse<GetInvoicesExportResponse> getInvoicesExportWithHttpInfo(String exportId, String warehouseCode)
             throws ApiException, LWAException {
-        return getInvoicesExportWithHttpInfo(exportId, null);
+        return getInvoicesExportWithHttpInfo(exportId, warehouseCode, null);
     }
 
     /**
@@ -2425,20 +2544,25 @@ public class InvoicesApi {
      * the export that you specify.
      *
      * @param exportId The unique identifier for the export. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call getInvoicesExportAsync(String exportId, final ApiCallback<GetInvoicesExportResponse> callback)
+    public okhttp3.Call getInvoicesExportAsync(
+            String exportId, String warehouseCode, final ApiCallback<GetInvoicesExportResponse> callback)
             throws ApiException, LWAException {
-        return getInvoicesExportAsync(exportId, callback, null);
+        return getInvoicesExportAsync(exportId, warehouseCode, callback, null);
     }
     /**
      * (asynchronously) Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for
      * the export that you specify.
      *
      * @param exportId The unique identifier for the export. (required)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -2446,7 +2570,10 @@ public class InvoicesApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getInvoicesExportAsync(
-            String exportId, final ApiCallback<GetInvoicesExportResponse> callback, String restrictedDataToken)
+            String exportId,
+            String warehouseCode,
+            final ApiCallback<GetInvoicesExportResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ApiCallback progressRequestListener = null;
@@ -2455,7 +2582,7 @@ public class InvoicesApi {
             progressRequestListener = callback;
         }
 
-        okhttp3.Call call = getInvoicesExportValidateBeforeCall(exportId, progressRequestListener);
+        okhttp3.Call call = getInvoicesExportValidateBeforeCall(exportId, warehouseCode, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -2485,6 +2612,8 @@ public class InvoicesApi {
      *     Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The
      *     default value is the time of the request. (optional)
      * @param status Return exports matching the status specified. (optional)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2497,6 +2626,7 @@ public class InvoicesApi {
             Integer pageSize,
             OffsetDateTime dateEnd,
             String status,
+            String warehouseCode,
             final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -2518,6 +2648,8 @@ public class InvoicesApi {
         if (pageSize != null) localVarQueryParams.addAll(apiClient.parameterToPair("pageSize", pageSize));
         if (dateEnd != null) localVarQueryParams.addAll(apiClient.parameterToPair("dateEnd", dateEnd));
         if (status != null) localVarQueryParams.addAll(apiClient.parameterToPair("status", status));
+        if (warehouseCode != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("warehouseCode", warehouseCode));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2550,6 +2682,7 @@ public class InvoicesApi {
             Integer pageSize,
             OffsetDateTime dateEnd,
             String status,
+            String warehouseCode,
             final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
@@ -2560,7 +2693,7 @@ public class InvoicesApi {
         }
 
         return getInvoicesExportsCall(
-                marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, progressRequestListener);
+                marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, warehouseCode, progressRequestListener);
     }
 
     /**
@@ -2579,6 +2712,8 @@ public class InvoicesApi {
      *     Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The
      *     default value is the time of the request. (optional)
      * @param status Return exports matching the status specified. (optional)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return GetInvoicesExportsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2591,10 +2726,11 @@ public class InvoicesApi {
             Integer pageSize,
             OffsetDateTime dateEnd,
             String status,
+            String warehouseCode,
             String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<GetInvoicesExportsResponse> resp = getInvoicesExportsWithHttpInfo(
-                marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, restrictedDataToken);
+                marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, warehouseCode, restrictedDataToken);
         return resp.getData();
     }
 
@@ -2614,6 +2750,8 @@ public class InvoicesApi {
      *     Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The
      *     default value is the time of the request. (optional)
      * @param status Return exports matching the status specified. (optional)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @return GetInvoicesExportsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2624,10 +2762,11 @@ public class InvoicesApi {
             String nextToken,
             Integer pageSize,
             OffsetDateTime dateEnd,
-            String status)
+            String status,
+            String warehouseCode)
             throws ApiException, LWAException {
-        ApiResponse<GetInvoicesExportsResponse> resp =
-                getInvoicesExportsWithHttpInfo(marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, null);
+        ApiResponse<GetInvoicesExportsResponse> resp = getInvoicesExportsWithHttpInfo(
+                marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, warehouseCode, null);
         return resp.getData();
     }
 
@@ -2647,6 +2786,8 @@ public class InvoicesApi {
      *     Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The
      *     default value is the time of the request. (optional)
      * @param status Return exports matching the status specified. (optional)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;GetInvoicesExportsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2659,10 +2800,11 @@ public class InvoicesApi {
             Integer pageSize,
             OffsetDateTime dateEnd,
             String status,
+            String warehouseCode,
             String restrictedDataToken)
             throws ApiException, LWAException {
         okhttp3.Call call = getInvoicesExportsValidateBeforeCall(
-                marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, null);
+                marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, warehouseCode, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -2692,6 +2834,8 @@ public class InvoicesApi {
      *     Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The
      *     default value is the time of the request. (optional)
      * @param status Return exports matching the status specified. (optional)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @return ApiResponse&lt;GetInvoicesExportsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2702,9 +2846,11 @@ public class InvoicesApi {
             String nextToken,
             Integer pageSize,
             OffsetDateTime dateEnd,
-            String status)
+            String status,
+            String warehouseCode)
             throws ApiException, LWAException {
-        return getInvoicesExportsWithHttpInfo(marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, null);
+        return getInvoicesExportsWithHttpInfo(
+                marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, warehouseCode, null);
     }
 
     /**
@@ -2723,6 +2869,8 @@ public class InvoicesApi {
      *     Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The
      *     default value is the time of the request. (optional)
      * @param status Return exports matching the status specified. (optional)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2735,9 +2883,11 @@ public class InvoicesApi {
             Integer pageSize,
             OffsetDateTime dateEnd,
             String status,
+            String warehouseCode,
             final ApiCallback<GetInvoicesExportsResponse> callback)
             throws ApiException, LWAException {
-        return getInvoicesExportsAsync(marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, callback, null);
+        return getInvoicesExportsAsync(
+                marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, warehouseCode, callback, null);
     }
     /**
      * (asynchronously) Returns invoice exports details for exports that match the filters that you specify.
@@ -2755,6 +2905,8 @@ public class InvoicesApi {
      *     Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The
      *     default value is the time of the request. (optional)
      * @param status Return exports matching the status specified. (optional)
+     * @param warehouseCode The Warehouse code included in the invoice issued on behalf of the vendor. Check the
+     *     warehouse code under your WarehouseSettings in VendorCentral. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -2768,6 +2920,7 @@ public class InvoicesApi {
             Integer pageSize,
             OffsetDateTime dateEnd,
             String status,
+            String warehouseCode,
             final ApiCallback<GetInvoicesExportsResponse> callback,
             String restrictedDataToken)
             throws ApiException, LWAException {
@@ -2779,7 +2932,7 @@ public class InvoicesApi {
         }
 
         okhttp3.Call call = getInvoicesExportsValidateBeforeCall(
-                marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, progressRequestListener);
+                marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, warehouseCode, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();

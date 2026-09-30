@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for A+ Content Management
- * Use the A+ Content API to build applications that help selling partners add rich marketing content to their Amazon product detail pages. Selling partners can use A+ content to share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners use content modules to add images and text.
+ * With the A+ Content API, you can build applications that help selling partners add rich marketing content to their Amazon product detail pages. A+ Content helps selling partners share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners assemble content by choosing from content modules and adding images and text.
  *
  * The version of the OpenAPI document: 2020-11-01
  *
@@ -16,12 +16,12 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
 
 /**
- * The dimensions that extend from the top left corner of the image (this applies to cropped and uncropped images).
- * &#x60;ImageDimensions&#x60; units must be in pixels.
+ * The dimensions extending from the top left corner of the cropped image, or the top left corner of the original image
+ * if there is no cropping. Only &#x60;pixels&#x60; is allowed as the units value for ImageDimensions.
  */
 @io.swagger.v3.oas.annotations.media.Schema(
         description =
-                "The dimensions that extend from the top left corner of the image (this applies to cropped and uncropped images). `ImageDimensions` units must be in pixels.")
+                "The dimensions extending from the top left corner of the cropped image, or the top left corner of the original image if there is no cropping. Only `pixels` is allowed as the units value for ImageDimensions.")
 public class ImageDimensions {
     @SerializedName("width")
     private IntegerWithUnits width = null;
