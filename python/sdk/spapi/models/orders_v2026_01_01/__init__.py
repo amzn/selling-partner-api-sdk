@@ -75,9 +75,12 @@ from spapi.models.orders_v2026_01_01.pagination import Pagination
 from spapi.models.orders_v2026_01_01.payment_execution import PaymentExecution
 from spapi.models.orders_v2026_01_01.points_granted import PointsGranted
 from spapi.models.orders_v2026_01_01.preferred_delivery_time import PreferredDeliveryTime
+from spapi.models.orders_v2026_01_01.promise_calculation_inputs import PromiseCalculationInputs
 from spapi.models.orders_v2026_01_01.recipient import Recipient
 from spapi.models.orders_v2026_01_01.sales_channel import SalesChannel
 from spapi.models.orders_v2026_01_01.search_orders_response import SearchOrdersResponse
 from spapi.models.orders_v2026_01_01.serial_number_requirement import SerialNumberRequirement
 from spapi.models.orders_v2026_01_01.tax_registration_attribute import TaxRegistrationAttribute
 from spapi.models.orders_v2026_01_01.time_window import TimeWindow
+from spapi.models.orders_v2026_01_01.transit_time_input import TransitTimeInput
+from spapi.models.orders_v2026_01_01.transit_time_input_details import TransitTimeInputDetails

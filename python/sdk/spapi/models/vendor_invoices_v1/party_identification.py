@@ -36,15 +36,17 @@ class PartyIdentification(object):
         'party_id': 'str',
         'address': 'Address',
         'tax_registration_details': 'List[TaxRegistrationDetails]',
+        'additional_party_identifications': 'List[AdditionalPartyIdentification]',
     }
 
     attribute_map = {
         'party_id': 'partyId',
         'address': 'address',
         'tax_registration_details': 'taxRegistrationDetails',
+        'additional_party_identifications': 'additionalPartyIdentifications',
     }
 
-    def __init__(self, party_id=None, address=None, tax_registration_details=None, _configuration=None):  # noqa: E501
+    def __init__(self, party_id=None, address=None, tax_registration_details=None, additional_party_identifications=None, _configuration=None):  # noqa: E501
         """PartyIdentification - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -53,6 +55,7 @@ class PartyIdentification(object):
         self._party_id = None
         self._address = None
         self._tax_registration_details = None
+        self._additional_party_identifications = None
         self.discriminator = None
 
         self.party_id = party_id
@@ -60,6 +63,8 @@ class PartyIdentification(object):
             self.address = address
         if tax_registration_details is not None:
             self.tax_registration_details = tax_registration_details
+        if additional_party_identifications is not None:
+            self.additional_party_identifications = additional_party_identifications
 
     @property
     def party_id(self):
@@ -129,6 +134,29 @@ class PartyIdentification(object):
         """
 
         self._tax_registration_details = tax_registration_details
+
+    @property
+    def additional_party_identifications(self):
+        """Gets the additional_party_identifications of this PartyIdentification.  # noqa: E501
+
+        Additional corporate or fiscal registration identifiers for the party that are not VAT/GST registrations (e.g. FR SIREN, or DE W-IdNr.).  # noqa: E501
+
+        :return: The additional_party_identifications of this PartyIdentification.  # noqa: E501
+        :rtype: List[AdditionalPartyIdentification]
+        """
+        return self._additional_party_identifications
+
+    @additional_party_identifications.setter
+    def additional_party_identifications(self, additional_party_identifications):
+        """Sets the additional_party_identifications of this PartyIdentification.
+
+        Additional corporate or fiscal registration identifiers for the party that are not VAT/GST registrations (e.g. FR SIREN, or DE W-IdNr.).  # noqa: E501
+
+        :param additional_party_identifications: The additional_party_identifications of this PartyIdentification.  # noqa: E501
+        :type: List[AdditionalPartyIdentification]
+        """
+
+        self._additional_party_identifications = additional_party_identifications
 
     def to_dict(self):
         """Returns the model properties as a dict"""

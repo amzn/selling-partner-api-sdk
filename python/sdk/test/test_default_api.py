@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.finances_invoices_v2026_06_25.default_api import DefaultApi
+from spapi.api.finance_remittance_v2026_03_17.default_api import DefaultApi
 
-import spapi.models.finances_invoices_v2026_06_25 as models
+import spapi.models.finance_remittance_v2026_03_17 as models
 
 class TestDefaultApi(unittest.TestCase):
     """DefaultApi unit test stubs"""
@@ -32,21 +32,21 @@ class TestDefaultApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_get_invoice(self):
+    def test_get_remittance(self):
+        unique_payment_id = self._get_random_value("str", None)
         marketplace_id = self._get_random_value("str", None)
-        invoice_identifier = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("default".casefold().replace(' ', ''), self.to_camel_case("get_invoice"), "200")
-        response = self.api.get_invoice_with_http_info(marketplace_id, invoice_identifier, )
+        self.instruct_backend_mock("default".casefold().replace(' ', ''), self.to_camel_case("get_remittance"), "200")
+        response = self.api.get_remittance_with_http_info(unique_payment_id, marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
-    def test_get_invoice_headers(self):
+    def test_get_remittance_headers(self):
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("default".casefold().replace(' ', ''), self.to_camel_case("get_invoice_headers"), "200")
-        response = self.api.get_invoice_headers_with_http_info(marketplace_id, )
+        self.instruct_backend_mock("default".casefold().replace(' ', ''), self.to_camel_case("get_remittance_headers"), "200")
+        response = self.api.get_remittance_headers_with_http_info(marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass

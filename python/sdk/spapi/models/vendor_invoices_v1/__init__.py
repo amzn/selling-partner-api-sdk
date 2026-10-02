@@ -14,6 +14,7 @@
 
 # import models into model package
 from spapi.models.vendor_invoices_v1.additional_details import AdditionalDetails
+from spapi.models.vendor_invoices_v1.additional_party_identification import AdditionalPartyIdentification
 from spapi.models.vendor_invoices_v1.address import Address
 from spapi.models.vendor_invoices_v1.allowance_details import AllowanceDetails
 from spapi.models.vendor_invoices_v1.charge_details import ChargeDetails

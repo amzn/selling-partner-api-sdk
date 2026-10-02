@@ -467,7 +467,7 @@ class Order(object):
     def fulfillment_orders(self):
         """Gets the fulfillment_orders of this Order.  # noqa: E501
 
-        The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for EasyShip orders at present.  # noqa: E501
+        The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for Easy Ship and Seller Flex.  # noqa: E501
 
         :return: The fulfillment_orders of this Order.  # noqa: E501
         :rtype: List[FulfillmentOrder]
@@ -478,7 +478,7 @@ class Order(object):
     def fulfillment_orders(self, fulfillment_orders):
         """Sets the fulfillment_orders of this Order.
 
-        The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for EasyShip orders at present.  # noqa: E501
+        The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for Easy Ship and Seller Flex.  # noqa: E501
 
         :param fulfillment_orders: The fulfillment_orders of this Order.  # noqa: E501
         :type: List[FulfillmentOrder]

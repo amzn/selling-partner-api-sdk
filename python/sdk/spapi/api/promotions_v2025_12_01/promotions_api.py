@@ -38,7 +38,7 @@ class PromotionsApi(object):
     def get_promotion(self, promotion_id, **kwargs):  # noqa: E501
         """get_promotion  # noqa: E501
 
-        Retrieve details of a specified promotion.  # noqa: E501
+        Retrieve details of a specified promotion.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 2 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_promotion(promotion_id, async_req=True)
@@ -62,7 +62,7 @@ class PromotionsApi(object):
     def get_promotion_with_http_info(self, promotion_id, **kwargs):  # noqa: E501
         """get_promotion  # noqa: E501
 
-        Retrieve details of a specified promotion.  # noqa: E501
+        Retrieve details of a specified promotion.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 2 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_promotion_with_http_info(promotion_id, async_req=True)
@@ -144,7 +144,7 @@ class PromotionsApi(object):
     def get_selection(self, promotion_id, selection_id, revision_id, **kwargs):  # noqa: E501
         """get_selection  # noqa: E501
 
-        Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in `SelectionType.ITEMS`. Items found in `SelectionType.CATALOG` are not supported. Selection objects always include `selectionDetails` with item information.  # noqa: E501
+        Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in `SelectionType.ITEMS`. Items found in `SelectionType.CATALOG` are not supported. Selection objects always include `selectionDetails` with item information.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 2 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_selection(promotion_id, selection_id, revision_id, async_req=True)
@@ -172,7 +172,7 @@ class PromotionsApi(object):
     def get_selection_with_http_info(self, promotion_id, selection_id, revision_id, **kwargs):  # noqa: E501
         """get_selection  # noqa: E501
 
-        Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in `SelectionType.ITEMS`. Items found in `SelectionType.CATALOG` are not supported. Selection objects always include `selectionDetails` with item information.  # noqa: E501
+        Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in `SelectionType.ITEMS`. Items found in `SelectionType.CATALOG` are not supported. Selection objects always include `selectionDetails` with item information.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 2 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_selection_with_http_info(promotion_id, selection_id, revision_id, async_req=True)
@@ -280,7 +280,7 @@ class PromotionsApi(object):
     def search_promotions(self, marketplace_ids, **kwargs):  # noqa: E501
         """search_promotions  # noqa: E501
 
-        Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.  # noqa: E501
+        Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 4 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.search_promotions(marketplace_ids, async_req=True)
@@ -317,7 +317,7 @@ class PromotionsApi(object):
     def search_promotions_with_http_info(self, marketplace_ids, **kwargs):  # noqa: E501
         """search_promotions  # noqa: E501
 
-        Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.  # noqa: E501
+        Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 4 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.search_promotions_with_http_info(marketplace_ids, async_req=True)
