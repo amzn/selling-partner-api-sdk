@@ -29,7 +29,9 @@ public class TaxRegistrationDetail {
         @SerializedName("VAT")
         VAT("VAT"),
         @SerializedName("GST")
-        GST("GST");
+        GST("GST"),
+        @SerializedName("LocalTaxNumber")
+        LOCAL_TAX_NUMBER("LocalTaxNumber");
 
         private String value;
 

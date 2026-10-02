@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for A+ Content Management
- * Use the A+ Content API to build applications that help selling partners add rich marketing content to their Amazon product detail pages. Selling partners can use A+ content to share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners use content modules to add images and text.
+ * With the A+ Content API, you can build applications that help selling partners add rich marketing content to their Amazon product detail pages. A+ Content helps selling partners share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners assemble content by choosing from content modules and adding images and text.
  *
  * The version of the OpenAPI document: 2020-11-01
  *
@@ -15,9 +15,9 @@ package software.amazon.spapi.models.apluscontent.v2020_11_01;
 import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
 
-/** The A+ Content standard label and description block, which contains a pair of text components. */
+/** The A+ Content standard label and description block, comprised of a pair of text components. */
 @io.swagger.v3.oas.annotations.media.Schema(
-        description = "The A+ Content standard label and description block, which contains a pair of text components.")
+        description = "The A+ Content standard label and description block, comprised of a pair of text components.")
 public class StandardTextPairBlock {
     @SerializedName("label")
     private TextComponent label = null;

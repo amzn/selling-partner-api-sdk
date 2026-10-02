@@ -131,13 +131,14 @@ public class OrderItem {
     }
 
     /**
-     * A list of order items associated with this item. For example, a value-add service purchased with the product.
+     * A list of order items associated with this item. For example, a value-add service purchased with the product, or
+     * a product covered by a warranty protection plan.
      *
      * @return associatedOrderItems
      */
     @io.swagger.v3.oas.annotations.media.Schema(
             description =
-                    "A list of order items associated with this item. For example, a value-add service purchased with the product.")
+                    "A list of order items associated with this item. For example, a value-add service purchased with the product, or a product covered by a warranty protection plan.")
     public List<AssociatedOrderItem> getAssociatedOrderItems() {
         return associatedOrderItems;
     }

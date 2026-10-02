@@ -125,7 +125,7 @@ public class InvoicesApiTest {
 
         String invoiceId = easyRandom.nextObject(String.class);
 
-        ApiResponse<GetInvoiceResponse> response = api.getInvoiceWithHttpInfo(marketplaceId, invoiceId);
+        ApiResponse<GetInvoiceResponse> response = api.getInvoiceWithHttpInfo(marketplaceId, invoiceId, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
@@ -138,7 +138,7 @@ public class InvoicesApiTest {
         String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetInvoicesResponse> response = api.getInvoicesWithHttpInfo(
-                marketplaceId, null, null, null, null, null, null, null, null, null, null, null, null, null);
+                marketplaceId, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
@@ -150,7 +150,8 @@ public class InvoicesApiTest {
 
         String marketplaceId = easyRandom.nextObject(String.class);
 
-        ApiResponse<GetInvoicesAttributesResponse> response = api.getInvoicesAttributesWithHttpInfo(marketplaceId);
+        ApiResponse<GetInvoicesAttributesResponse> response =
+                api.getInvoicesAttributesWithHttpInfo(marketplaceId, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
@@ -162,7 +163,8 @@ public class InvoicesApiTest {
 
         String invoicesDocumentId = easyRandom.nextObject(String.class);
 
-        ApiResponse<GetInvoicesDocumentResponse> response = api.getInvoicesDocumentWithHttpInfo(invoicesDocumentId);
+        ApiResponse<GetInvoicesDocumentResponse> response =
+                api.getInvoicesDocumentWithHttpInfo(invoicesDocumentId, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
@@ -174,7 +176,7 @@ public class InvoicesApiTest {
 
         String exportId = easyRandom.nextObject(String.class);
 
-        ApiResponse<GetInvoicesExportResponse> response = api.getInvoicesExportWithHttpInfo(exportId);
+        ApiResponse<GetInvoicesExportResponse> response = api.getInvoicesExportWithHttpInfo(exportId, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
@@ -187,7 +189,7 @@ public class InvoicesApiTest {
         String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetInvoicesExportsResponse> response =
-                api.getInvoicesExportsWithHttpInfo(marketplaceId, null, null, null, null, null);
+                api.getInvoicesExportsWithHttpInfo(marketplaceId, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

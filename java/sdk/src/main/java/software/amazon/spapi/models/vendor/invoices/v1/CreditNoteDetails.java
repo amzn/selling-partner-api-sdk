@@ -27,6 +27,9 @@ public class CreditNoteDetails {
     @SerializedName("referenceInvoiceNumber")
     private String referenceInvoiceNumber = null;
 
+    @SerializedName("originalInvoiceDate")
+    private OffsetDateTime originalInvoiceDate = null;
+
     @SerializedName("debitNoteNumber")
     private String debitNoteNumber = null;
 
@@ -65,6 +68,25 @@ public class CreditNoteDetails {
 
     public void setReferenceInvoiceNumber(String referenceInvoiceNumber) {
         this.referenceInvoiceNumber = referenceInvoiceNumber;
+    }
+
+    public CreditNoteDetails originalInvoiceDate(OffsetDateTime originalInvoiceDate) {
+        this.originalInvoiceDate = originalInvoiceDate;
+        return this;
+    }
+
+    /**
+     * Defines a date and time according to ISO8601.
+     *
+     * @return originalInvoiceDate
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Defines a date and time according to ISO8601.")
+    public OffsetDateTime getOriginalInvoiceDate() {
+        return originalInvoiceDate;
+    }
+
+    public void setOriginalInvoiceDate(OffsetDateTime originalInvoiceDate) {
+        this.originalInvoiceDate = originalInvoiceDate;
     }
 
     public CreditNoteDetails debitNoteNumber(String debitNoteNumber) {
@@ -198,6 +220,7 @@ public class CreditNoteDetails {
         }
         CreditNoteDetails creditNoteDetails = (CreditNoteDetails) o;
         return Objects.equals(this.referenceInvoiceNumber, creditNoteDetails.referenceInvoiceNumber)
+                && Objects.equals(this.originalInvoiceDate, creditNoteDetails.originalInvoiceDate)
                 && Objects.equals(this.debitNoteNumber, creditNoteDetails.debitNoteNumber)
                 && Objects.equals(this.returnsReferenceNumber, creditNoteDetails.returnsReferenceNumber)
                 && Objects.equals(this.goodsReturnDate, creditNoteDetails.goodsReturnDate)
@@ -210,6 +233,7 @@ public class CreditNoteDetails {
     public int hashCode() {
         return Objects.hash(
                 referenceInvoiceNumber,
+                originalInvoiceDate,
                 debitNoteNumber,
                 returnsReferenceNumber,
                 goodsReturnDate,
@@ -224,6 +248,9 @@ public class CreditNoteDetails {
         sb.append("class CreditNoteDetails {\n");
         sb.append("    referenceInvoiceNumber: ")
                 .append(toIndentedString(referenceInvoiceNumber))
+                .append("\n");
+        sb.append("    originalInvoiceDate: ")
+                .append(toIndentedString(originalInvoiceDate))
                 .append("\n");
         sb.append("    debitNoteNumber: ")
                 .append(toIndentedString(debitNoteNumber))

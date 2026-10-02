@@ -36,6 +36,9 @@ public class TrackingIdentifier {
     @SerializedName("houseBillOfLadingNumber")
     private String houseBillOfLadingNumber = null;
 
+    @SerializedName("proNumber")
+    private String proNumber = null;
+
     public TrackingIdentifier id(String id) {
         this.id = id;
         return this;
@@ -152,6 +155,25 @@ public class TrackingIdentifier {
         this.houseBillOfLadingNumber = houseBillOfLadingNumber;
     }
 
+    public TrackingIdentifier proNumber(String proNumber) {
+        this.proNumber = proNumber;
+        return this;
+    }
+
+    /**
+     * The PRO number assigned by the freight carrier
+     *
+     * @return proNumber
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The PRO number assigned by the freight carrier")
+    public String getProNumber() {
+        return proNumber;
+    }
+
+    public void setProNumber(String proNumber) {
+        this.proNumber = proNumber;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -166,12 +188,13 @@ public class TrackingIdentifier {
                 && Objects.equals(this.acsin, trackingIdentifier.acsin)
                 && Objects.equals(this.aftn, trackingIdentifier.aftn)
                 && Objects.equals(this.containerNumber, trackingIdentifier.containerNumber)
-                && Objects.equals(this.houseBillOfLadingNumber, trackingIdentifier.houseBillOfLadingNumber);
+                && Objects.equals(this.houseBillOfLadingNumber, trackingIdentifier.houseBillOfLadingNumber)
+                && Objects.equals(this.proNumber, trackingIdentifier.proNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, carrierTracking, acsin, aftn, containerNumber, houseBillOfLadingNumber);
+        return Objects.hash(id, carrierTracking, acsin, aftn, containerNumber, houseBillOfLadingNumber, proNumber);
     }
 
     @Override
@@ -190,6 +213,7 @@ public class TrackingIdentifier {
         sb.append("    houseBillOfLadingNumber: ")
                 .append(toIndentedString(houseBillOfLadingNumber))
                 .append("\n");
+        sb.append("    proNumber: ").append(toIndentedString(proNumber)).append("\n");
         sb.append("}");
         return sb.toString();
     }

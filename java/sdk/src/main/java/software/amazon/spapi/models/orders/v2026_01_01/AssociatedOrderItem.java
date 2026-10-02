@@ -17,11 +17,11 @@ import java.util.Objects;
 
 /**
  * An associated order item that a customer has purchased with the product. For example, a tire installation service
- * purchased with tires.
+ * purchased with tires, or a warranty protection plan purchased with a product.
  */
 @io.swagger.v3.oas.annotations.media.Schema(
         description =
-                "An associated order item that a customer has purchased with the product. For example, a tire installation service purchased with tires.")
+                "An associated order item that a customer has purchased with the product. For example, a tire installation service purchased with tires, or a warranty protection plan purchased with a product.")
 public class AssociatedOrderItem {
     @SerializedName("orderId")
     private String orderId = null;
@@ -31,6 +31,12 @@ public class AssociatedOrderItem {
 
     @SerializedName("associationType")
     private String associationType = null;
+
+    @SerializedName("asin")
+    private String asin = null;
+
+    @SerializedName("purchasePrice")
+    private Money purchasePrice = null;
 
     public AssociatedOrderItem orderId(String orderId) {
         this.orderId = orderId;
@@ -77,19 +83,58 @@ public class AssociatedOrderItem {
 
     /**
      * The type of association between the order items. **Possible values**: - &#x60;VALUE_ADD_SERVICE&#x60; (The
-     * associated item is a service order)
+     * associated item is a service order) - &#x60;WARRANTY&#x60; (The associated item is a product covered by a
+     * warranty or protection plan)
      *
      * @return associationType
      */
     @io.swagger.v3.oas.annotations.media.Schema(
             description =
-                    "The type of association between the order items.  **Possible values**: - `VALUE_ADD_SERVICE` (The associated item is a service order)")
+                    "The type of association between the order items.  **Possible values**: - `VALUE_ADD_SERVICE` (The associated item is a service order) - `WARRANTY` (The associated item is a product covered by a warranty or protection plan)")
     public String getAssociationType() {
         return associationType;
     }
 
     public void setAssociationType(String associationType) {
         this.associationType = associationType;
+    }
+
+    public AssociatedOrderItem asin(String asin) {
+        this.asin = asin;
+        return this;
+    }
+
+    /**
+     * The ASIN of the associated order item.
+     *
+     * @return asin
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The ASIN of the associated order item.")
+    public String getAsin() {
+        return asin;
+    }
+
+    public void setAsin(String asin) {
+        this.asin = asin;
+    }
+
+    public AssociatedOrderItem purchasePrice(Money purchasePrice) {
+        this.purchasePrice = purchasePrice;
+        return this;
+    }
+
+    /**
+     * Get purchasePrice
+     *
+     * @return purchasePrice
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public Money getPurchasePrice() {
+        return purchasePrice;
+    }
+
+    public void setPurchasePrice(Money purchasePrice) {
+        this.purchasePrice = purchasePrice;
     }
 
     @Override
@@ -103,12 +148,14 @@ public class AssociatedOrderItem {
         AssociatedOrderItem associatedOrderItem = (AssociatedOrderItem) o;
         return Objects.equals(this.orderId, associatedOrderItem.orderId)
                 && Objects.equals(this.orderItemId, associatedOrderItem.orderItemId)
-                && Objects.equals(this.associationType, associatedOrderItem.associationType);
+                && Objects.equals(this.associationType, associatedOrderItem.associationType)
+                && Objects.equals(this.asin, associatedOrderItem.asin)
+                && Objects.equals(this.purchasePrice, associatedOrderItem.purchasePrice);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderId, orderItemId, associationType);
+        return Objects.hash(orderId, orderItemId, associationType, asin, purchasePrice);
     }
 
     @Override
@@ -120,6 +167,8 @@ public class AssociatedOrderItem {
         sb.append("    associationType: ")
                 .append(toIndentedString(associationType))
                 .append("\n");
+        sb.append("    asin: ").append(toIndentedString(asin)).append("\n");
+        sb.append("    purchasePrice: ").append(toIndentedString(purchasePrice)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -44,6 +44,12 @@ public class InvoiceItem {
     @SerializedName("hsnCode")
     private String hsnCode = null;
 
+    @SerializedName("itemDescription")
+    private String itemDescription = null;
+
+    @SerializedName("additionalDetails")
+    private List<AdditionalDetails> additionalDetails = null;
+
     @SerializedName("creditNoteDetails")
     private CreditNoteDetails creditNoteDetails = null;
 
@@ -216,6 +222,55 @@ public class InvoiceItem {
         this.hsnCode = hsnCode;
     }
 
+    public InvoiceItem itemDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
+        return this;
+    }
+
+    /**
+     * Product or service description for the invoiced line item.
+     *
+     * @return itemDescription
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Product or service description for the invoiced line item.")
+    public String getItemDescription() {
+        return itemDescription;
+    }
+
+    public void setItemDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
+    }
+
+    public InvoiceItem additionalDetails(List<AdditionalDetails> additionalDetails) {
+        this.additionalDetails = additionalDetails;
+        return this;
+    }
+
+    public InvoiceItem addAdditionalDetailsItem(AdditionalDetails additionalDetailsItem) {
+        if (this.additionalDetails == null) {
+            this.additionalDetails = new ArrayList<>();
+        }
+        this.additionalDetails.add(additionalDetailsItem);
+        return this;
+    }
+
+    /**
+     * Line-level additional details provided by the selling party, e.g. tax exemption reason code and text.
+     *
+     * @return additionalDetails
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description =
+                    "Line-level additional details provided by the selling party, e.g. tax exemption reason code and text.")
+    public List<AdditionalDetails> getAdditionalDetails() {
+        return additionalDetails;
+    }
+
+    public void setAdditionalDetails(List<AdditionalDetails> additionalDetails) {
+        this.additionalDetails = additionalDetails;
+    }
+
     public InvoiceItem creditNoteDetails(CreditNoteDetails creditNoteDetails) {
         this.creditNoteDetails = creditNoteDetails;
         return this;
@@ -333,6 +388,8 @@ public class InvoiceItem {
                 && Objects.equals(this.netCostUnitOfMeasure, invoiceItem.netCostUnitOfMeasure)
                 && Objects.equals(this.purchaseOrderNumber, invoiceItem.purchaseOrderNumber)
                 && Objects.equals(this.hsnCode, invoiceItem.hsnCode)
+                && Objects.equals(this.itemDescription, invoiceItem.itemDescription)
+                && Objects.equals(this.additionalDetails, invoiceItem.additionalDetails)
                 && Objects.equals(this.creditNoteDetails, invoiceItem.creditNoteDetails)
                 && Objects.equals(this.taxDetails, invoiceItem.taxDetails)
                 && Objects.equals(this.chargeDetails, invoiceItem.chargeDetails)
@@ -350,6 +407,8 @@ public class InvoiceItem {
                 netCostUnitOfMeasure,
                 purchaseOrderNumber,
                 hsnCode,
+                itemDescription,
+                additionalDetails,
                 creditNoteDetails,
                 taxDetails,
                 chargeDetails,
@@ -380,6 +439,12 @@ public class InvoiceItem {
                 .append(toIndentedString(purchaseOrderNumber))
                 .append("\n");
         sb.append("    hsnCode: ").append(toIndentedString(hsnCode)).append("\n");
+        sb.append("    itemDescription: ")
+                .append(toIndentedString(itemDescription))
+                .append("\n");
+        sb.append("    additionalDetails: ")
+                .append(toIndentedString(additionalDetails))
+                .append("\n");
         sb.append("    creditNoteDetails: ")
                 .append(toIndentedString(creditNoteDetails))
                 .append("\n");

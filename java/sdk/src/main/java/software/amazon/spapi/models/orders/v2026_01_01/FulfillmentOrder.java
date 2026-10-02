@@ -17,11 +17,11 @@ import java.util.Objects;
 
 /**
  * Information about a fulfillment order associated with a customer order. A fulfillment order represents a unit of
- * fulfillment created by Amazon for the order. **Note:** Only available for EasyShip orders at present.
+ * fulfillment created by Amazon for the order. **Note:** Only available for Easy Ship and Seller Flex.
  */
 @io.swagger.v3.oas.annotations.media.Schema(
         description =
-                "Information about a fulfillment order associated with a customer order. A fulfillment order represents a unit of fulfillment created by Amazon for the order. **Note:** Only available for EasyShip orders at present.")
+                "Information about a fulfillment order associated with a customer order. A fulfillment order represents a unit of fulfillment created by Amazon for the order. **Note:** Only available for Easy Ship and Seller Flex.")
 public class FulfillmentOrder {
     @SerializedName("fulfillmentOrderId")
     private String fulfillmentOrderId = null;
