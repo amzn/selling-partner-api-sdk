@@ -14,6 +14,7 @@
 import { ApiClient } from '../ApiClient.js'
 import { DateTimeRange } from './DateTimeRange.js'
 import { FulfillmentStatus } from './FulfillmentStatus.js'
+import { PromiseCalculationInputs } from './PromiseCalculationInputs.js'
 
 /**
  * The OrderFulfillment model module.
@@ -59,6 +60,7 @@ export class OrderFulfillment {
       if (data.hasOwnProperty('shipByWindow')) { obj.shipByWindow = DateTimeRange.constructFromObject(data.shipByWindow) }
       if (data.hasOwnProperty('deliverByWindow')) { obj.deliverByWindow = DateTimeRange.constructFromObject(data.deliverByWindow) }
       if (data.hasOwnProperty('labelPrintingWindow')) { obj.labelPrintingWindow = DateTimeRange.constructFromObject(data.labelPrintingWindow) }
+      if (data.hasOwnProperty('promiseCalculationInputs')) { obj.promiseCalculationInputs = PromiseCalculationInputs.constructFromObject(data.promiseCalculationInputs) }
     }
     return obj
   }
@@ -101,3 +103,9 @@ OrderFulfillment.prototype.deliverByWindow = undefined
  * @type {DateTimeRange}
  */
 OrderFulfillment.prototype.labelPrintingWindow = undefined
+
+/**
+ * @member {PromiseCalculationInputs} promiseCalculationInputs
+ * @type {PromiseCalculationInputs}
+ */
+OrderFulfillment.prototype.promiseCalculationInputs = undefined

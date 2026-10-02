@@ -19,7 +19,7 @@ export declare class FulfillmentOrder {
     fulfillmentOrderId: string;
     /**
      * Constructs a new <code>FulfillmentOrder</code>.
-     * Information about a fulfillment order associated with a customer order. A fulfillment order represents a unit of fulfillment created by Amazon for the order. **Note:** Only available for EasyShip orders at present.
+     * Information about a fulfillment order associated with a customer order. A fulfillment order represents a unit of fulfillment created by Amazon for the order. **Note:** Only available for Easy Ship and Seller Flex.
      * @alias module:orders_v2026_01_01/model/FulfillmentOrder
      * @class
      * @param fulfillmentOrderId {String} The Fulfillment Order ID assigned by Amazon after fulfillment planning. This identifier is identical to the Shipment ID required by External Fulfillment APIs.

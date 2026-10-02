@@ -63,6 +63,7 @@ export class ExportInvoicesRequest {
       if (data.hasOwnProperty('statuses')) { obj.statuses = ApiClient.convertToType(data.statuses, ['String']) }
       if (data.hasOwnProperty('transactionIdentifier')) { obj.transactionIdentifier = TransactionIdentifier.constructFromObject(data.transactionIdentifier) }
       if (data.hasOwnProperty('transactionType')) { obj.transactionType = ApiClient.convertToType(data.transactionType, 'String') }
+      if (data.hasOwnProperty('warehouseCode')) { obj.warehouseCode = ApiClient.convertToType(data.warehouseCode, 'String') }
     }
     return obj
   }
@@ -135,3 +136,10 @@ ExportInvoicesRequest.prototype.transactionIdentifier = undefined
  * @type {String}
  */
 ExportInvoicesRequest.prototype.transactionType = undefined
+
+/**
+ * The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
+ * @member {String} warehouseCode
+ * @type {String}
+ */
+ExportInvoicesRequest.prototype.warehouseCode = undefined

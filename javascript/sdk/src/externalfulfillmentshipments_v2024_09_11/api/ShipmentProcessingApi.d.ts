@@ -165,7 +165,7 @@ export declare class ShipmentProcessingApi {
        * @param {String} shipmentId The ID of the shipment to which the package belongs.
        * @param {String} packageId The ID of the package whose status you want to update.
        * @param {Object} [opts] Optional parameters
-       * @param {String} [opts.status] **DEPRECATED**. Do not use. Package status is defined in the body parameter.
+       * @param {String} [opts.status] **This field is only used for the Seller Flex program**. For the Self Delivery program, package statuses are defined in the body parameter.
        * @param {PackageDeliveryStatus} [opts.body] The body of the request.
        * @return {Promise<void>}
        */
@@ -178,7 +178,7 @@ export declare class ShipmentProcessingApi {
        * @param {String} shipmentId The ID of the shipment to which the package belongs.
        * @param {String} packageId The ID of the package whose status you want to update.
        * @param {Object} [opts] Optional parameters
-       * @param {String} [opts.status] **DEPRECATED**. Do not use. Package status is defined in the body parameter.
+       * @param {String} [opts.status] **This field is only used for the Seller Flex program**. For the Self Delivery program, package statuses are defined in the body parameter.
        * @param {PackageDeliveryStatus} [opts.body] The body of the request.
        * @return {Promise<void>}
        */

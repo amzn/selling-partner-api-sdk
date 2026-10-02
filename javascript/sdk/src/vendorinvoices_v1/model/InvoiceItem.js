@@ -12,6 +12,7 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
+import { AdditionalDetails } from './AdditionalDetails.js'
 import { AllowanceDetails } from './AllowanceDetails.js'
 import { ChargeDetails } from './ChargeDetails.js'
 import { CreditNoteDetails } from './CreditNoteDetails.js'
@@ -70,6 +71,8 @@ export class InvoiceItem {
       if (data.hasOwnProperty('netCostUnitOfMeasure')) { obj.netCostUnitOfMeasure = NetCostUnitOfMeasure.constructFromObject(data.netCostUnitOfMeasure) }
       if (data.hasOwnProperty('purchaseOrderNumber')) { obj.purchaseOrderNumber = ApiClient.convertToType(data.purchaseOrderNumber, 'String') }
       if (data.hasOwnProperty('hsnCode')) { obj.hsnCode = ApiClient.convertToType(data.hsnCode, 'String') }
+      if (data.hasOwnProperty('itemDescription')) { obj.itemDescription = ApiClient.convertToType(data.itemDescription, 'String') }
+      if (data.hasOwnProperty('additionalDetails')) { obj.additionalDetails = ApiClient.convertToType(data.additionalDetails, [AdditionalDetails]) }
       if (data.hasOwnProperty('creditNoteDetails')) { obj.creditNoteDetails = CreditNoteDetails.constructFromObject(data.creditNoteDetails) }
       if (data.hasOwnProperty('taxDetails')) { obj.taxDetails = ApiClient.convertToType(data.taxDetails, [TaxDetails]) }
       if (data.hasOwnProperty('chargeDetails')) { obj.chargeDetails = ApiClient.convertToType(data.chargeDetails, [ChargeDetails]) }
@@ -131,6 +134,20 @@ InvoiceItem.prototype.purchaseOrderNumber = undefined
  * @type {String}
  */
 InvoiceItem.prototype.hsnCode = undefined
+
+/**
+ * Product or service description for the invoiced line item.
+ * @member {String} itemDescription
+ * @type {String}
+ */
+InvoiceItem.prototype.itemDescription = undefined
+
+/**
+ * Line-level additional details provided by the selling party, e.g. tax exemption reason code and text.
+ * @member {AdditionalDetails[]} additionalDetails
+ * @type {AdditionalDetails[]}
+ */
+InvoiceItem.prototype.additionalDetails = undefined
 
 /**
  * @member {CreditNoteDetails} creditNoteDetails

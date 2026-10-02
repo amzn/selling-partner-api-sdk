@@ -76,7 +76,7 @@ describe('InvoicesApi', () => {
       await instructBackendMock("invoices", "getInvoice", "200")
       const params = [
         generateMockData('String'),
-        generateMockData('String')
+        generateMockData('String'),
       ];
       const response = await instance.getInvoiceWithHttpInfo(...params);
 
@@ -102,7 +102,7 @@ describe('InvoicesApi', () => {
     it('should successfully call getInvoicesAttributesWithHttpInfo', async () => {
       await instructBackendMock("invoices", "getInvoicesAttributes", "200")
       const params = [
-        generateMockData('String')
+        generateMockData('String'),
       ];
       const response = await instance.getInvoicesAttributesWithHttpInfo(...params);
 
@@ -115,7 +115,7 @@ describe('InvoicesApi', () => {
     it('should successfully call getInvoicesDocumentWithHttpInfo', async () => {
       await instructBackendMock("invoices", "getInvoicesDocument", "200")
       const params = [
-        generateMockData('String')
+        generateMockData('String'),
       ];
       const response = await instance.getInvoicesDocumentWithHttpInfo(...params);
 
@@ -128,7 +128,7 @@ describe('InvoicesApi', () => {
     it('should successfully call getInvoicesExportWithHttpInfo', async () => {
       await instructBackendMock("invoices", "getInvoicesExport", "200")
       const params = [
-        generateMockData('String')
+        generateMockData('String'),
       ];
       const response = await instance.getInvoicesExportWithHttpInfo(...params);
 

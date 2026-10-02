@@ -13,6 +13,7 @@
 
 import { ApiClient } from '../ApiClient.js'
 import { AdditionalDetails } from './AdditionalDetails.js'
+import { AllowanceDetails } from './AllowanceDetails.js'
 import { ChargeDetails } from './ChargeDetails.js'
 import { InvoiceItem } from './InvoiceItem.js'
 import { Money } from './Money.js'
@@ -69,16 +70,25 @@ export class InvoiceDetail {
       obj = obj || new InvoiceDetail()
       if (data.hasOwnProperty('invoiceNumber')) { obj.invoiceNumber = ApiClient.convertToType(data.invoiceNumber, 'String') }
       if (data.hasOwnProperty('invoiceDate')) { obj.invoiceDate = ApiClient.convertToType(data.invoiceDate, 'Date') }
+      if (data.hasOwnProperty('taxPointDate')) { obj.taxPointDate = ApiClient.convertToType(data.taxPointDate, 'Date') }
+      if (data.hasOwnProperty('deliveryDate')) { obj.deliveryDate = ApiClient.convertToType(data.deliveryDate, 'Date') }
       if (data.hasOwnProperty('referenceNumber')) { obj.referenceNumber = ApiClient.convertToType(data.referenceNumber, 'String') }
       if (data.hasOwnProperty('remitToParty')) { obj.remitToParty = PartyIdentification.constructFromObject(data.remitToParty) }
       if (data.hasOwnProperty('shipFromParty')) { obj.shipFromParty = PartyIdentification.constructFromObject(data.shipFromParty) }
       if (data.hasOwnProperty('billToParty')) { obj.billToParty = PartyIdentification.constructFromObject(data.billToParty) }
+      if (data.hasOwnProperty('billFromParty')) { obj.billFromParty = PartyIdentification.constructFromObject(data.billFromParty) }
+      if (data.hasOwnProperty('vatGroupParty')) { obj.vatGroupParty = PartyIdentification.constructFromObject(data.vatGroupParty) }
+      if (data.hasOwnProperty('taxRepresentativeParty')) { obj.taxRepresentativeParty = PartyIdentification.constructFromObject(data.taxRepresentativeParty) }
+      if (data.hasOwnProperty('shipToParty')) { obj.shipToParty = PartyIdentification.constructFromObject(data.shipToParty) }
       if (data.hasOwnProperty('shipToCountryCode')) { obj.shipToCountryCode = ApiClient.convertToType(data.shipToCountryCode, 'String') }
       if (data.hasOwnProperty('paymentTermsCode')) { obj.paymentTermsCode = ApiClient.convertToType(data.paymentTermsCode, 'String') }
       if (data.hasOwnProperty('invoiceTotal')) { obj.invoiceTotal = Money.constructFromObject(data.invoiceTotal) }
+      if (data.hasOwnProperty('invoiceBaseAmount')) { obj.invoiceBaseAmount = Money.constructFromObject(data.invoiceBaseAmount) }
+      if (data.hasOwnProperty('exchangeRate')) { obj.exchangeRate = ApiClient.convertToType(data.exchangeRate, 'String') }
       if (data.hasOwnProperty('taxTotals')) { obj.taxTotals = ApiClient.convertToType(data.taxTotals, [TaxDetail]) }
       if (data.hasOwnProperty('additionalDetails')) { obj.additionalDetails = ApiClient.convertToType(data.additionalDetails, [AdditionalDetails]) }
       if (data.hasOwnProperty('chargeDetails')) { obj.chargeDetails = ApiClient.convertToType(data.chargeDetails, [ChargeDetails]) }
+      if (data.hasOwnProperty('allowanceDetails')) { obj.allowanceDetails = ApiClient.convertToType(data.allowanceDetails, [AllowanceDetails]) }
       if (data.hasOwnProperty('items')) { obj.items = ApiClient.convertToType(data.items, [InvoiceItem]) }
     }
     return obj
@@ -98,6 +108,20 @@ InvoiceDetail.prototype.invoiceNumber = undefined
  * @type {Date}
  */
 InvoiceDetail.prototype.invoiceDate = undefined
+
+/**
+ * The date on which the tax becomes chargeable, if different from the invoice date. When absent, the invoice date applies.
+ * @member {Date} taxPointDate
+ * @type {Date}
+ */
+InvoiceDetail.prototype.taxPointDate = undefined
+
+/**
+ * Date of delivery of the goods or completion of the service.
+ * @member {Date} deliveryDate
+ * @type {Date}
+ */
+InvoiceDetail.prototype.deliveryDate = undefined
 
 /**
  * An additional unique reference number used for regulatory or other purposes.
@@ -125,6 +149,30 @@ InvoiceDetail.prototype.shipFromParty = undefined
 InvoiceDetail.prototype.billToParty = undefined
 
 /**
+ * @member {PartyIdentification} billFromParty
+ * @type {PartyIdentification}
+ */
+InvoiceDetail.prototype.billFromParty = undefined
+
+/**
+ * @member {PartyIdentification} vatGroupParty
+ * @type {PartyIdentification}
+ */
+InvoiceDetail.prototype.vatGroupParty = undefined
+
+/**
+ * @member {PartyIdentification} taxRepresentativeParty
+ * @type {PartyIdentification}
+ */
+InvoiceDetail.prototype.taxRepresentativeParty = undefined
+
+/**
+ * @member {PartyIdentification} shipToParty
+ * @type {PartyIdentification}
+ */
+InvoiceDetail.prototype.shipToParty = undefined
+
+/**
  * Ship-to country code.
  * @member {String} shipToCountryCode
  * @type {String}
@@ -143,6 +191,19 @@ InvoiceDetail.prototype.paymentTermsCode = undefined
  * @type {Money}
  */
 InvoiceDetail.prototype.invoiceTotal = undefined
+
+/**
+ * @member {Money} invoiceBaseAmount
+ * @type {Money}
+ */
+InvoiceDetail.prototype.invoiceBaseAmount = undefined
+
+/**
+ * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.
+ * @member {String} exchangeRate
+ * @type {String}
+ */
+InvoiceDetail.prototype.exchangeRate = undefined
 
 /**
  * Individual tax details per line item.
@@ -164,6 +225,13 @@ InvoiceDetail.prototype.additionalDetails = undefined
  * @type {ChargeDetails[]}
  */
 InvoiceDetail.prototype.chargeDetails = undefined
+
+/**
+ * Total allowance amount details for all line items.
+ * @member {AllowanceDetails[]} allowanceDetails
+ * @type {AllowanceDetails[]}
+ */
+InvoiceDetail.prototype.allowanceDetails = undefined
 
 /**
  * Provides the details of the items in this invoice.

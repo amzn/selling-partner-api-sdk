@@ -77,7 +77,13 @@ TaxRegistrationDetails.TaxRegistrationTypeEnum = {
      * value: "GST"
      * @const
      */
-  GST: 'GST'
+  GST: 'GST',
+
+  /**
+     * value: "LocalTaxNumber"
+     * @const
+     */
+  LocalTaxNumber: 'LocalTaxNumber'
 }
 /**
  * The tax registration type for the entity.

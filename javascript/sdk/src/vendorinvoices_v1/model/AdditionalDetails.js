@@ -84,7 +84,25 @@ AdditionalDetails.TypeEnum = {
      * value: "CartonCount"
      * @const
      */
-  CartonCount: 'CartonCount'
+  CartonCount: 'CartonCount',
+
+  /**
+     * value: "TaxExemptReason"
+     * @const
+     */
+  TaxExemptReason: 'TaxExemptReason',
+
+  /**
+     * value: "LegalTerms"
+     * @const
+     */
+  LegalTerms: 'LegalTerms',
+
+  /**
+     * value: "RegulatoryNote"
+     * @const
+     */
+  RegulatoryNote: 'RegulatoryNote'
 }
 /**
  * The type of the additional information provided by the selling party.

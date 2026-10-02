@@ -18,7 +18,7 @@
 export declare class AssociatedOrderItem {
     /**
      * Constructs a new <code>AssociatedOrderItem</code>.
-     * An associated order item that a customer has purchased with the product. For example, a tire installation service purchased with tires.
+     * An associated order item that a customer has purchased with the product. For example, a tire installation service purchased with tires, or a warranty protection plan purchased with a product.
      * @alias module:orders_v2026_01_01/model/AssociatedOrderItem
      * @class
      */

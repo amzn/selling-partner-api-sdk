@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for A+ Content Management
- * Use the A+ Content API to build applications that help selling partners add rich marketing content to their Amazon product detail pages. Selling partners can use A+ content to share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners use content modules to add images and text.
+ * With the A+ Content API, you can build applications that help selling partners add rich marketing content to their Amazon product detail pages. A+ Content helps selling partners share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners assemble content by choosing from content modules and adding images and text.
  *
  * The version of the OpenAPI document: 2020-11-01
  *
@@ -20,7 +20,7 @@ export declare class PlainTextItem {
     value: string;
     /**
      * Constructs a new <code>PlainTextItem</code>.
-     * Plain positional text that is used in collections of brief labels and descriptors.
+     * Plain positional text, used in collections of brief labels and descriptors.
      * @alias module:apluscontent_v2020_11_01/model/PlainTextItem
      * @class
      * @param position {Number} The rank or index of this text item within the collection. Different items cannot occupy the same position within a single collection.

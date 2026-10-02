@@ -78,7 +78,25 @@ AdditionalDetails.TypeEnum = {
      * value: "OCR"
      * @const
      */
-  OCR: 'OCR'
+  OCR: 'OCR',
+
+  /**
+     * value: "TaxExemptReason"
+     * @const
+     */
+  TaxExemptReason: 'TaxExemptReason',
+
+  /**
+     * value: "LegalTerms"
+     * @const
+     */
+  LegalTerms: 'LegalTerms',
+
+  /**
+     * value: "RegulatoryNote"
+     * @const
+     */
+  RegulatoryNote: 'RegulatoryNote'
 }
 /**
  * The type of the additional information provided by the selling party.
