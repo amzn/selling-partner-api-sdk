@@ -34,7 +34,7 @@ namespace SpApi\Test\Api;
 use GuzzleHttp\Client;
 use ReflectionClass;
 use PHPUnit\Framework\TestCase;
-use SpApi\Api\financesInvoices\v2026_06_25\DefaultApi;
+use SpApi\Api\FinanceRemittance\v2026_03_17\DefaultApi;
 use SpApi\Configuration;
 
 /**
@@ -73,28 +73,28 @@ class DefaultApiTest extends TestCase
     }
 
 
-    public function testgetInvoice()
+    public function testgetRemittance()
     {
-        $operationId = 'getInvoice';
+        $operationId = 'getRemittance';
         // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
         $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
         $this->instructBackendMock('default', $mockOperationId, '200');
         
+        $unique_payment_id = $this->generateMockData('string');
+        
         $marketplace_id = $this->generateMockData('string');
         
-        $invoice_identifier = $this->generateMockData('string');
-        
 
-        $response = $this->api->getInvoiceWithHttpInfo($marketplace_id, $invoice_identifier, null);
+        $response = $this->api->getRemittanceWithHttpInfo($unique_payment_id, $marketplace_id, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);
     }
 
 
-    public function testgetInvoiceHeaders()
+    public function testgetRemittanceHeaders()
     {
-        $operationId = 'getInvoiceHeaders';
+        $operationId = 'getRemittanceHeaders';
         // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
         $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
         $this->instructBackendMock('default', $mockOperationId, '200');
@@ -102,7 +102,7 @@ class DefaultApiTest extends TestCase
         $marketplace_id = $this->generateMockData('string');
         
 
-        $response = $this->api->getInvoiceHeadersWithHttpInfo($marketplace_id, null, null, null, null);
+        $response = $this->api->getRemittanceHeadersWithHttpInfo($marketplace_id, null, null, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);

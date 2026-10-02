@@ -81,7 +81,7 @@ class TrackingApiTest extends TestCase
         $this->instructBackendMock('Tracking', $mockOperationId, '200');
         
 
-        $response = $this->api->getShipmentTrackingWithHttpInfo(null, null, null, null, null, null, null, null);
+        $response = $this->api->getShipmentTrackingWithHttpInfo(null, null, null, null, null, null, null, null, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);

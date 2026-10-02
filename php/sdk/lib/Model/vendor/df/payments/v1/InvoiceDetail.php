@@ -62,16 +62,25 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'invoice_number' => 'string',
              'invoice_date' => '\DateTime',
+             'tax_point_date' => '\DateTime',
+             'delivery_date' => '\DateTime',
              'reference_number' => 'string',
              'remit_to_party' => '\SpApi\Model\vendor\df\payments\v1\PartyIdentification',
              'ship_from_party' => '\SpApi\Model\vendor\df\payments\v1\PartyIdentification',
              'bill_to_party' => '\SpApi\Model\vendor\df\payments\v1\PartyIdentification',
+             'bill_from_party' => '\SpApi\Model\vendor\df\payments\v1\PartyIdentification',
+             'vat_group_party' => '\SpApi\Model\vendor\df\payments\v1\PartyIdentification',
+             'tax_representative_party' => '\SpApi\Model\vendor\df\payments\v1\PartyIdentification',
+             'ship_to_party' => '\SpApi\Model\vendor\df\payments\v1\PartyIdentification',
              'ship_to_country_code' => 'string',
              'payment_terms_code' => 'string',
              'invoice_total' => '\SpApi\Model\vendor\df\payments\v1\Money',
+             'invoice_base_amount' => '\SpApi\Model\vendor\df\payments\v1\Money',
+             'exchange_rate' => 'string',
              'tax_totals' => '\SpApi\Model\vendor\df\payments\v1\TaxDetail[]',
              'additional_details' => '\SpApi\Model\vendor\df\payments\v1\AdditionalDetails[]',
              'charge_details' => '\SpApi\Model\vendor\df\payments\v1\ChargeDetails[]',
+             'allowance_details' => '\SpApi\Model\vendor\df\payments\v1\AllowanceDetails[]',
              'items' => '\SpApi\Model\vendor\df\payments\v1\InvoiceItem[]'    ];
 
     /**
@@ -84,16 +93,25 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPIFormats = [
             'invoice_number' => null,
             'invoice_date' => 'date-time',
+            'tax_point_date' => 'date-time',
+            'delivery_date' => 'date-time',
             'reference_number' => null,
             'remit_to_party' => null,
             'ship_from_party' => null,
             'bill_to_party' => null,
+            'bill_from_party' => null,
+            'vat_group_party' => null,
+            'tax_representative_party' => null,
+            'ship_to_party' => null,
             'ship_to_country_code' => null,
             'payment_terms_code' => null,
             'invoice_total' => null,
+            'invoice_base_amount' => null,
+            'exchange_rate' => null,
             'tax_totals' => null,
             'additional_details' => null,
             'charge_details' => null,
+            'allowance_details' => null,
             'items' => null    ];
 
     /**
@@ -104,16 +122,25 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'invoice_number' => false,
         'invoice_date' => false,
+        'tax_point_date' => true,
+        'delivery_date' => true,
         'reference_number' => true,
         'remit_to_party' => false,
         'ship_from_party' => false,
         'bill_to_party' => true,
+        'bill_from_party' => true,
+        'vat_group_party' => true,
+        'tax_representative_party' => true,
+        'ship_to_party' => true,
         'ship_to_country_code' => true,
         'payment_terms_code' => true,
         'invoice_total' => false,
+        'invoice_base_amount' => true,
+        'exchange_rate' => true,
         'tax_totals' => true,
         'additional_details' => true,
         'charge_details' => true,
+        'allowance_details' => true,
         'items' => false
     ];
 
@@ -205,16 +232,25 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $attributeMap = [
         'invoice_number' => 'invoiceNumber',
                 'invoice_date' => 'invoiceDate',
+                'tax_point_date' => 'taxPointDate',
+                'delivery_date' => 'deliveryDate',
                 'reference_number' => 'referenceNumber',
                 'remit_to_party' => 'remitToParty',
                 'ship_from_party' => 'shipFromParty',
                 'bill_to_party' => 'billToParty',
+                'bill_from_party' => 'billFromParty',
+                'vat_group_party' => 'vatGroupParty',
+                'tax_representative_party' => 'taxRepresentativeParty',
+                'ship_to_party' => 'shipToParty',
                 'ship_to_country_code' => 'shipToCountryCode',
                 'payment_terms_code' => 'paymentTermsCode',
                 'invoice_total' => 'invoiceTotal',
+                'invoice_base_amount' => 'invoiceBaseAmount',
+                'exchange_rate' => 'exchangeRate',
                 'tax_totals' => 'taxTotals',
                 'additional_details' => 'additionalDetails',
                 'charge_details' => 'chargeDetails',
+                'allowance_details' => 'allowanceDetails',
                 'items' => 'items'
         
     ];
@@ -227,16 +263,25 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $setters = [
         'invoice_number' => 'setInvoiceNumber',
         'invoice_date' => 'setInvoiceDate',
+        'tax_point_date' => 'setTaxPointDate',
+        'delivery_date' => 'setDeliveryDate',
         'reference_number' => 'setReferenceNumber',
         'remit_to_party' => 'setRemitToParty',
         'ship_from_party' => 'setShipFromParty',
         'bill_to_party' => 'setBillToParty',
+        'bill_from_party' => 'setBillFromParty',
+        'vat_group_party' => 'setVatGroupParty',
+        'tax_representative_party' => 'setTaxRepresentativeParty',
+        'ship_to_party' => 'setShipToParty',
         'ship_to_country_code' => 'setShipToCountryCode',
         'payment_terms_code' => 'setPaymentTermsCode',
         'invoice_total' => 'setInvoiceTotal',
+        'invoice_base_amount' => 'setInvoiceBaseAmount',
+        'exchange_rate' => 'setExchangeRate',
         'tax_totals' => 'setTaxTotals',
         'additional_details' => 'setAdditionalDetails',
         'charge_details' => 'setChargeDetails',
+        'allowance_details' => 'setAllowanceDetails',
         'items' => 'setItems'
     ];
 
@@ -248,16 +293,25 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $getters = [
         'invoice_number' => 'getInvoiceNumber',
         'invoice_date' => 'getInvoiceDate',
+        'tax_point_date' => 'getTaxPointDate',
+        'delivery_date' => 'getDeliveryDate',
         'reference_number' => 'getReferenceNumber',
         'remit_to_party' => 'getRemitToParty',
         'ship_from_party' => 'getShipFromParty',
         'bill_to_party' => 'getBillToParty',
+        'bill_from_party' => 'getBillFromParty',
+        'vat_group_party' => 'getVatGroupParty',
+        'tax_representative_party' => 'getTaxRepresentativeParty',
+        'ship_to_party' => 'getShipToParty',
         'ship_to_country_code' => 'getShipToCountryCode',
         'payment_terms_code' => 'getPaymentTermsCode',
         'invoice_total' => 'getInvoiceTotal',
+        'invoice_base_amount' => 'getInvoiceBaseAmount',
+        'exchange_rate' => 'getExchangeRate',
         'tax_totals' => 'getTaxTotals',
         'additional_details' => 'getAdditionalDetails',
         'charge_details' => 'getChargeDetails',
+        'allowance_details' => 'getAllowanceDetails',
         'items' => 'getItems'
     ];
 
@@ -320,16 +374,25 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('invoice_number', $data ?? [], null);
         $this->setIfExists('invoice_date', $data ?? [], null);
+        $this->setIfExists('tax_point_date', $data ?? [], null);
+        $this->setIfExists('delivery_date', $data ?? [], null);
         $this->setIfExists('reference_number', $data ?? [], null);
         $this->setIfExists('remit_to_party', $data ?? [], null);
         $this->setIfExists('ship_from_party', $data ?? [], null);
         $this->setIfExists('bill_to_party', $data ?? [], null);
+        $this->setIfExists('bill_from_party', $data ?? [], null);
+        $this->setIfExists('vat_group_party', $data ?? [], null);
+        $this->setIfExists('tax_representative_party', $data ?? [], null);
+        $this->setIfExists('ship_to_party', $data ?? [], null);
         $this->setIfExists('ship_to_country_code', $data ?? [], null);
         $this->setIfExists('payment_terms_code', $data ?? [], null);
         $this->setIfExists('invoice_total', $data ?? [], null);
+        $this->setIfExists('invoice_base_amount', $data ?? [], null);
+        $this->setIfExists('exchange_rate', $data ?? [], null);
         $this->setIfExists('tax_totals', $data ?? [], null);
         $this->setIfExists('additional_details', $data ?? [], null);
         $this->setIfExists('charge_details', $data ?? [], null);
+        $this->setIfExists('allowance_details', $data ?? [], null);
         $this->setIfExists('items', $data ?? [], null);
     }
 
@@ -443,6 +506,74 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable invoice_date cannot be null');
         }
         $this->container['invoice_date'] = $invoice_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_point_date
+     *
+     * @return \DateTime|null
+     */
+    public function getTaxPointDate(): ?\DateTime
+    {
+        return $this->container['tax_point_date'];
+    }
+
+    /**
+     * Sets tax_point_date
+     *
+     * @param \DateTime|null $tax_point_date The date on which the tax becomes chargeable, if different from the invoice date. When absent, the invoice date applies.
+     *
+     * @return self
+     */
+    public function setTaxPointDate(?\DateTime $tax_point_date): self
+    {
+        if (is_null($tax_point_date)) {
+            array_push($this->openAPINullablesSetToNull, 'tax_point_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_point_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tax_point_date'] = $tax_point_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_date
+     *
+     * @return \DateTime|null
+     */
+    public function getDeliveryDate(): ?\DateTime
+    {
+        return $this->container['delivery_date'];
+    }
+
+    /**
+     * Sets delivery_date
+     *
+     * @param \DateTime|null $delivery_date Date of delivery of the goods or completion of the service.
+     *
+     * @return self
+     */
+    public function setDeliveryDate(?\DateTime $delivery_date): self
+    {
+        if (is_null($delivery_date)) {
+            array_push($this->openAPINullablesSetToNull, 'delivery_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('delivery_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['delivery_date'] = $delivery_date;
 
         return $this;
     }
@@ -570,6 +701,142 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets bill_from_party
+     *
+     * @return \SpApi\Model\vendor\df\payments\v1\PartyIdentification|null
+     */
+    public function getBillFromParty(): ?\SpApi\Model\vendor\df\payments\v1\PartyIdentification
+    {
+        return $this->container['bill_from_party'];
+    }
+
+    /**
+     * Sets bill_from_party
+     *
+     * @param \SpApi\Model\vendor\df\payments\v1\PartyIdentification|null $bill_from_party bill_from_party
+     *
+     * @return self
+     */
+    public function setBillFromParty(?\SpApi\Model\vendor\df\payments\v1\PartyIdentification $bill_from_party): self
+    {
+        if (is_null($bill_from_party)) {
+            array_push($this->openAPINullablesSetToNull, 'bill_from_party');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bill_from_party', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['bill_from_party'] = $bill_from_party;
+
+        return $this;
+    }
+
+    /**
+     * Gets vat_group_party
+     *
+     * @return \SpApi\Model\vendor\df\payments\v1\PartyIdentification|null
+     */
+    public function getVatGroupParty(): ?\SpApi\Model\vendor\df\payments\v1\PartyIdentification
+    {
+        return $this->container['vat_group_party'];
+    }
+
+    /**
+     * Sets vat_group_party
+     *
+     * @param \SpApi\Model\vendor\df\payments\v1\PartyIdentification|null $vat_group_party vat_group_party
+     *
+     * @return self
+     */
+    public function setVatGroupParty(?\SpApi\Model\vendor\df\payments\v1\PartyIdentification $vat_group_party): self
+    {
+        if (is_null($vat_group_party)) {
+            array_push($this->openAPINullablesSetToNull, 'vat_group_party');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('vat_group_party', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['vat_group_party'] = $vat_group_party;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_representative_party
+     *
+     * @return \SpApi\Model\vendor\df\payments\v1\PartyIdentification|null
+     */
+    public function getTaxRepresentativeParty(): ?\SpApi\Model\vendor\df\payments\v1\PartyIdentification
+    {
+        return $this->container['tax_representative_party'];
+    }
+
+    /**
+     * Sets tax_representative_party
+     *
+     * @param \SpApi\Model\vendor\df\payments\v1\PartyIdentification|null $tax_representative_party tax_representative_party
+     *
+     * @return self
+     */
+    public function setTaxRepresentativeParty(?\SpApi\Model\vendor\df\payments\v1\PartyIdentification $tax_representative_party): self
+    {
+        if (is_null($tax_representative_party)) {
+            array_push($this->openAPINullablesSetToNull, 'tax_representative_party');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_representative_party', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tax_representative_party'] = $tax_representative_party;
+
+        return $this;
+    }
+
+    /**
+     * Gets ship_to_party
+     *
+     * @return \SpApi\Model\vendor\df\payments\v1\PartyIdentification|null
+     */
+    public function getShipToParty(): ?\SpApi\Model\vendor\df\payments\v1\PartyIdentification
+    {
+        return $this->container['ship_to_party'];
+    }
+
+    /**
+     * Sets ship_to_party
+     *
+     * @param \SpApi\Model\vendor\df\payments\v1\PartyIdentification|null $ship_to_party ship_to_party
+     *
+     * @return self
+     */
+    public function setShipToParty(?\SpApi\Model\vendor\df\payments\v1\PartyIdentification $ship_to_party): self
+    {
+        if (is_null($ship_to_party)) {
+            array_push($this->openAPINullablesSetToNull, 'ship_to_party');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_to_party', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ship_to_party'] = $ship_to_party;
+
+        return $this;
+    }
+
+    /**
      * Gets ship_to_country_code
      *
      * @return string|null
@@ -660,6 +927,74 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable invoice_total cannot be null');
         }
         $this->container['invoice_total'] = $invoice_total;
+
+        return $this;
+    }
+
+    /**
+     * Gets invoice_base_amount
+     *
+     * @return \SpApi\Model\vendor\df\payments\v1\Money|null
+     */
+    public function getInvoiceBaseAmount(): ?\SpApi\Model\vendor\df\payments\v1\Money
+    {
+        return $this->container['invoice_base_amount'];
+    }
+
+    /**
+     * Sets invoice_base_amount
+     *
+     * @param \SpApi\Model\vendor\df\payments\v1\Money|null $invoice_base_amount invoice_base_amount
+     *
+     * @return self
+     */
+    public function setInvoiceBaseAmount(?\SpApi\Model\vendor\df\payments\v1\Money $invoice_base_amount): self
+    {
+        if (is_null($invoice_base_amount)) {
+            array_push($this->openAPINullablesSetToNull, 'invoice_base_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoice_base_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['invoice_base_amount'] = $invoice_base_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets exchange_rate
+     *
+     * @return string|null
+     */
+    public function getExchangeRate(): ?string
+    {
+        return $this->container['exchange_rate'];
+    }
+
+    /**
+     * Sets exchange_rate
+     *
+     * @param string|null $exchange_rate A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.
+     *
+     * @return self
+     */
+    public function setExchangeRate(?string $exchange_rate): self
+    {
+        if (is_null($exchange_rate)) {
+            array_push($this->openAPINullablesSetToNull, 'exchange_rate');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('exchange_rate', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['exchange_rate'] = $exchange_rate;
 
         return $this;
     }
@@ -762,6 +1097,40 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['charge_details'] = $charge_details;
+
+        return $this;
+    }
+
+    /**
+     * Gets allowance_details
+     *
+     * @return array|null
+     */
+    public function getAllowanceDetails(): ?array
+    {
+        return $this->container['allowance_details'];
+    }
+
+    /**
+     * Sets allowance_details
+     *
+     * @param array|null $allowance_details Total allowance amount details for all line items.
+     *
+     * @return self
+     */
+    public function setAllowanceDetails(?array $allowance_details): self
+    {
+        if (is_null($allowance_details)) {
+            array_push($this->openAPINullablesSetToNull, 'allowance_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('allowance_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['allowance_details'] = $allowance_details;
 
         return $this;
     }

@@ -64,6 +64,15 @@ AplusContentApi-postContentDocumentApprovalSubmission:
 AplusContentApi-postContentDocumentSuspendSubmission:
   - 5
   - 5
+AplusContentApi-createMedia:
+  - 10
+  - 10
+AplusContentApi-getMedia:
+  - 10
+  - 10
+AplusContentApi-updateMedia:
+  - 10
+  - 10
 # App Integrations API
 AppIntegrationsApi-createNotification:
   - 1
@@ -1158,3 +1167,22 @@ PromotionsApi-getPromotion:
   - 1
   - 2
   - 10
+# Finance Remittance API
+DefaultApi-getRemittanceHeaders:
+  - 1
+  - 2
+  - 4
+DefaultApi-getRemittance:
+  - 1
+  - 2
+  - 2
+# Support API
+SupportApi-getCase:
+  - 1
+  - 1
+SupportApi-listCase:
+  - 1
+  - 1
+SupportApi-listContacts:
+  - 1
+  - 1

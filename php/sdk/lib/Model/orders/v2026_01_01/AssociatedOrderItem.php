@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description An associated order item that a customer has purchased with the product. For example, a tire installation service purchased with tires.
+ * @description An associated order item that a customer has purchased with the product. For example, a tire installation service purchased with tires, or a warranty protection plan purchased with a product.
  *
  * @author   OpenAPI Generator team
  *
@@ -63,7 +63,9 @@ class AssociatedOrderItem implements ModelInterface, \ArrayAccess, \JsonSerializ
     protected static array $openAPITypes = [
         'order_id' => 'string',
         'order_item_id' => 'string',
-        'association_type' => 'string'];
+        'association_type' => 'string',
+        'asin' => 'string',
+        'purchase_price' => '\SpApi\Model\orders\v2026_01_01\Money'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -77,7 +79,9 @@ class AssociatedOrderItem implements ModelInterface, \ArrayAccess, \JsonSerializ
     protected static array $openAPIFormats = [
         'order_id' => null,
         'order_item_id' => null,
-        'association_type' => null];
+        'association_type' => null,
+        'asin' => null,
+        'purchase_price' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -88,6 +92,8 @@ class AssociatedOrderItem implements ModelInterface, \ArrayAccess, \JsonSerializ
         'order_id' => true,
         'order_item_id' => true,
         'association_type' => true,
+        'asin' => true,
+        'purchase_price' => true,
     ];
 
     /**
@@ -107,6 +113,8 @@ class AssociatedOrderItem implements ModelInterface, \ArrayAccess, \JsonSerializ
         'order_id' => 'orderId',
         'order_item_id' => 'orderItemId',
         'association_type' => 'associationType',
+        'asin' => 'asin',
+        'purchase_price' => 'purchasePrice',
     ];
 
     /**
@@ -118,6 +126,8 @@ class AssociatedOrderItem implements ModelInterface, \ArrayAccess, \JsonSerializ
         'order_id' => 'setOrderId',
         'order_item_id' => 'setOrderItemId',
         'association_type' => 'setAssociationType',
+        'asin' => 'setAsin',
+        'purchase_price' => 'setPurchasePrice',
     ];
 
     /**
@@ -129,6 +139,8 @@ class AssociatedOrderItem implements ModelInterface, \ArrayAccess, \JsonSerializ
         'order_id' => 'getOrderId',
         'order_item_id' => 'getOrderItemId',
         'association_type' => 'getAssociationType',
+        'asin' => 'getAsin',
+        'purchase_price' => 'getPurchasePrice',
     ];
 
     /**
@@ -147,6 +159,8 @@ class AssociatedOrderItem implements ModelInterface, \ArrayAccess, \JsonSerializ
         $this->setIfExists('order_id', $data ?? [], null);
         $this->setIfExists('order_item_id', $data ?? [], null);
         $this->setIfExists('association_type', $data ?? [], null);
+        $this->setIfExists('asin', $data ?? [], null);
+        $this->setIfExists('purchase_price', $data ?? [], null);
     }
 
     /**
@@ -319,7 +333,7 @@ class AssociatedOrderItem implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Sets association_type.
      *
-     * @param null|string $association_type The type of association between the order items.  **Possible values**: - `VALUE_ADD_SERVICE` (The associated item is a service order)
+     * @param null|string $association_type The type of association between the order items.  **Possible values**: - `VALUE_ADD_SERVICE` (The associated item is a service order) - `WARRANTY` (The associated item is a product covered by a warranty or protection plan)
      */
     public function setAssociationType(?string $association_type): self
     {
@@ -334,6 +348,66 @@ class AssociatedOrderItem implements ModelInterface, \ArrayAccess, \JsonSerializ
             }
         }
         $this->container['association_type'] = $association_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets asin.
+     */
+    public function getAsin(): ?string
+    {
+        return $this->container['asin'];
+    }
+
+    /**
+     * Sets asin.
+     *
+     * @param null|string $asin the ASIN of the associated order item
+     */
+    public function setAsin(?string $asin): self
+    {
+        if (is_null($asin)) {
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['asin'] = $asin;
+
+        return $this;
+    }
+
+    /**
+     * Gets purchase_price.
+     */
+    public function getPurchasePrice(): ?Money
+    {
+        return $this->container['purchase_price'];
+    }
+
+    /**
+     * Sets purchase_price.
+     *
+     * @param null|Money $purchase_price purchase_price
+     */
+    public function setPurchasePrice(?Money $purchase_price): self
+    {
+        if (is_null($purchase_price)) {
+            array_push($this->openAPINullablesSetToNull, 'purchase_price');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('purchase_price', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['purchase_price'] = $purchase_price;
 
         return $this;
     }

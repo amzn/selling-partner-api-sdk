@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Details of how the cancellation was executed for a specific order item, including who performed the cancellation and the reason.
+ * @description Detailed information about how the cancellation was processed for a specific order item.
  *
  * @author   OpenAPI Generator team
  *
@@ -252,7 +252,7 @@ class ItemCancellationExecution implements ModelInterface, \ArrayAccess, \JsonSe
     /**
      * Sets cancelled_by.
      *
-     * @param null|string $cancelled_by Entity that executed the cancellation for this item.   **Possible values**: `BUYER`, `MERCHANT`, `AMAZON`
+     * @param null|string $cancelled_by The entity that executed the cancellation for this item.   **Possible values**: `BUYER`, `MERCHANT`, `AMAZON`.
      */
     public function setCancelledBy(?string $cancelled_by): self
     {
@@ -282,7 +282,7 @@ class ItemCancellationExecution implements ModelInterface, \ArrayAccess, \JsonSe
     /**
      * Sets cancel_reason.
      *
-     * @param null|string $cancel_reason explanation provided for why the cancellation was executed
+     * @param null|string $cancel_reason the provided explanation for why the cancellation occurred
      */
     public function setCancelReason(?string $cancel_reason): self
     {

@@ -783,7 +783,7 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets fulfillment_orders.
      *
-     * @param null|array $fulfillment_orders The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for EasyShip orders at present.
+     * @param null|array $fulfillment_orders The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for Easy Ship and Seller Flex.
      */
     public function setFulfillmentOrders(?array $fulfillment_orders): self
     {
