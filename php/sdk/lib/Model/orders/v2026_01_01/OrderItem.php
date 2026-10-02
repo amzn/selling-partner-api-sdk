@@ -410,7 +410,7 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets associated_order_items.
      *
-     * @param null|array $associated_order_items A list of order items associated with this item. For example, a value-add service purchased with the product.
+     * @param null|array $associated_order_items A list of order items associated with this item. For example, a value-add service purchased with the product, or a product covered by a warranty protection plan.
      */
     public function setAssociatedOrderItems(?array $associated_order_items): self
     {

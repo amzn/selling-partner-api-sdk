@@ -92,6 +92,23 @@ class AplusContentApiTest extends TestCase
     }
 
 
+    public function testcreateMedia()
+    {
+        $operationId = 'createMedia';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('aplusContent', $mockOperationId, '200');
+        
+        $create_media_request = $this->generateMockData('\SpApi\Model\aplusContent\v2020_11_01\CreateMediaRequest');
+        
+
+        $response = $this->api->createMediaWithHttpInfo($create_media_request);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
     public function testgetContentDocument()
     {
         $operationId = 'getContentDocument';
@@ -107,6 +124,23 @@ class AplusContentApiTest extends TestCase
         
 
         $response = $this->api->getContentDocumentWithHttpInfo($content_reference_key, $marketplace_id, $included_data_set);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testgetMedia()
+    {
+        $operationId = 'getMedia';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('aplusContent', $mockOperationId, '200');
+        
+        $media_id = $this->generateMockData('string');
+        
+
+        $response = $this->api->getMediaWithHttpInfo($media_id, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);
@@ -242,6 +276,25 @@ class AplusContentApiTest extends TestCase
         
 
         $response = $this->api->updateContentDocumentWithHttpInfo($content_reference_key, $marketplace_id, $post_content_document_request);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testupdateMedia()
+    {
+        $operationId = 'updateMedia';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('aplusContent', $mockOperationId, '200');
+        
+        $media_id = $this->generateMockData('string');
+        
+        $update_media_request = $this->generateMockData('\SpApi\Model\aplusContent\v2020_11_01\UpdateMediaRequest');
+        
+
+        $response = $this->api->updateMediaWithHttpInfo($media_id, $update_media_request, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);

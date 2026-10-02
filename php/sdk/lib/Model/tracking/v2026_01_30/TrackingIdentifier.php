@@ -66,7 +66,8 @@ class TrackingIdentifier implements ModelInterface, \ArrayAccess, \JsonSerializa
         'acsin' => 'string',
         'aftn' => 'string',
         'container_number' => 'string',
-        'house_bill_of_lading_number' => 'string'];
+        'house_bill_of_lading_number' => 'string',
+        'pro_number' => 'string'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -83,7 +84,8 @@ class TrackingIdentifier implements ModelInterface, \ArrayAccess, \JsonSerializa
         'acsin' => null,
         'aftn' => null,
         'container_number' => null,
-        'house_bill_of_lading_number' => null];
+        'house_bill_of_lading_number' => null,
+        'pro_number' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -97,6 +99,7 @@ class TrackingIdentifier implements ModelInterface, \ArrayAccess, \JsonSerializa
         'aftn' => true,
         'container_number' => true,
         'house_bill_of_lading_number' => true,
+        'pro_number' => true,
     ];
 
     /**
@@ -119,6 +122,7 @@ class TrackingIdentifier implements ModelInterface, \ArrayAccess, \JsonSerializa
         'aftn' => 'aftn',
         'container_number' => 'containerNumber',
         'house_bill_of_lading_number' => 'houseBillOfLadingNumber',
+        'pro_number' => 'proNumber',
     ];
 
     /**
@@ -133,6 +137,7 @@ class TrackingIdentifier implements ModelInterface, \ArrayAccess, \JsonSerializa
         'aftn' => 'setAftn',
         'container_number' => 'setContainerNumber',
         'house_bill_of_lading_number' => 'setHouseBillOfLadingNumber',
+        'pro_number' => 'setProNumber',
     ];
 
     /**
@@ -147,6 +152,7 @@ class TrackingIdentifier implements ModelInterface, \ArrayAccess, \JsonSerializa
         'aftn' => 'getAftn',
         'container_number' => 'getContainerNumber',
         'house_bill_of_lading_number' => 'getHouseBillOfLadingNumber',
+        'pro_number' => 'getProNumber',
     ];
 
     /**
@@ -168,6 +174,7 @@ class TrackingIdentifier implements ModelInterface, \ArrayAccess, \JsonSerializa
         $this->setIfExists('aftn', $data ?? [], null);
         $this->setIfExists('container_number', $data ?? [], null);
         $this->setIfExists('house_bill_of_lading_number', $data ?? [], null);
+        $this->setIfExists('pro_number', $data ?? [], null);
     }
 
     /**
@@ -445,6 +452,36 @@ class TrackingIdentifier implements ModelInterface, \ArrayAccess, \JsonSerializa
             }
         }
         $this->container['house_bill_of_lading_number'] = $house_bill_of_lading_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets pro_number.
+     */
+    public function getProNumber(): ?string
+    {
+        return $this->container['pro_number'];
+    }
+
+    /**
+     * Sets pro_number.
+     *
+     * @param null|string $pro_number The PRO number assigned by the freight carrier
+     */
+    public function setProNumber(?string $pro_number): self
+    {
+        if (is_null($pro_number)) {
+            array_push($this->openAPINullablesSetToNull, 'pro_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pro_number', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['pro_number'] = $pro_number;
 
         return $this;
     }
