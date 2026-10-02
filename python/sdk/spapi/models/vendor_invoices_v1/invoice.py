@@ -41,8 +41,13 @@ class Invoice(object):
         'ship_to_party': 'PartyIdentification',
         'ship_from_party': 'PartyIdentification',
         'bill_to_party': 'PartyIdentification',
+        'bill_from_party': 'PartyIdentification',
+        'vat_group_party': 'PartyIdentification',
+        'tax_representative_party': 'PartyIdentification',
         'payment_terms': 'PaymentTerms',
         'invoice_total': 'Money',
+        'invoice_base_amount': 'Money',
+        'tax_point_date': 'datetime',
         'tax_details': 'List[TaxDetails]',
         'additional_details': 'List[AdditionalDetails]',
         'charge_details': 'List[ChargeDetails]',
@@ -59,8 +64,13 @@ class Invoice(object):
         'ship_to_party': 'shipToParty',
         'ship_from_party': 'shipFromParty',
         'bill_to_party': 'billToParty',
+        'bill_from_party': 'billFromParty',
+        'vat_group_party': 'vatGroupParty',
+        'tax_representative_party': 'taxRepresentativeParty',
         'payment_terms': 'paymentTerms',
         'invoice_total': 'invoiceTotal',
+        'invoice_base_amount': 'invoiceBaseAmount',
+        'tax_point_date': 'taxPointDate',
         'tax_details': 'taxDetails',
         'additional_details': 'additionalDetails',
         'charge_details': 'chargeDetails',
@@ -68,7 +78,7 @@ class Invoice(object):
         'items': 'items',
     }
 
-    def __init__(self, invoice_type=None, id=None, reference_number=None, var_date=None, remit_to_party=None, ship_to_party=None, ship_from_party=None, bill_to_party=None, payment_terms=None, invoice_total=None, tax_details=None, additional_details=None, charge_details=None, allowance_details=None, items=None, _configuration=None):  # noqa: E501
+    def __init__(self, invoice_type=None, id=None, reference_number=None, var_date=None, remit_to_party=None, ship_to_party=None, ship_from_party=None, bill_to_party=None, bill_from_party=None, vat_group_party=None, tax_representative_party=None, payment_terms=None, invoice_total=None, invoice_base_amount=None, tax_point_date=None, tax_details=None, additional_details=None, charge_details=None, allowance_details=None, items=None, _configuration=None):  # noqa: E501
         """Invoice - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -82,8 +92,13 @@ class Invoice(object):
         self._ship_to_party = None
         self._ship_from_party = None
         self._bill_to_party = None
+        self._bill_from_party = None
+        self._vat_group_party = None
+        self._tax_representative_party = None
         self._payment_terms = None
         self._invoice_total = None
+        self._invoice_base_amount = None
+        self._tax_point_date = None
         self._tax_details = None
         self._additional_details = None
         self._charge_details = None
@@ -103,9 +118,19 @@ class Invoice(object):
             self.ship_from_party = ship_from_party
         if bill_to_party is not None:
             self.bill_to_party = bill_to_party
+        if bill_from_party is not None:
+            self.bill_from_party = bill_from_party
+        if vat_group_party is not None:
+            self.vat_group_party = vat_group_party
+        if tax_representative_party is not None:
+            self.tax_representative_party = tax_representative_party
         if payment_terms is not None:
             self.payment_terms = payment_terms
         self.invoice_total = invoice_total
+        if invoice_base_amount is not None:
+            self.invoice_base_amount = invoice_base_amount
+        if tax_point_date is not None:
+            self.tax_point_date = tax_point_date
         if tax_details is not None:
             self.tax_details = tax_details
         if additional_details is not None:
@@ -309,6 +334,69 @@ class Invoice(object):
         self._bill_to_party = bill_to_party
 
     @property
+    def bill_from_party(self):
+        """Gets the bill_from_party of this Invoice.  # noqa: E501
+
+
+        :return: The bill_from_party of this Invoice.  # noqa: E501
+        :rtype: PartyIdentification
+        """
+        return self._bill_from_party
+
+    @bill_from_party.setter
+    def bill_from_party(self, bill_from_party):
+        """Sets the bill_from_party of this Invoice.
+
+
+        :param bill_from_party: The bill_from_party of this Invoice.  # noqa: E501
+        :type: PartyIdentification
+        """
+
+        self._bill_from_party = bill_from_party
+
+    @property
+    def vat_group_party(self):
+        """Gets the vat_group_party of this Invoice.  # noqa: E501
+
+
+        :return: The vat_group_party of this Invoice.  # noqa: E501
+        :rtype: PartyIdentification
+        """
+        return self._vat_group_party
+
+    @vat_group_party.setter
+    def vat_group_party(self, vat_group_party):
+        """Sets the vat_group_party of this Invoice.
+
+
+        :param vat_group_party: The vat_group_party of this Invoice.  # noqa: E501
+        :type: PartyIdentification
+        """
+
+        self._vat_group_party = vat_group_party
+
+    @property
+    def tax_representative_party(self):
+        """Gets the tax_representative_party of this Invoice.  # noqa: E501
+
+
+        :return: The tax_representative_party of this Invoice.  # noqa: E501
+        :rtype: PartyIdentification
+        """
+        return self._tax_representative_party
+
+    @tax_representative_party.setter
+    def tax_representative_party(self, tax_representative_party):
+        """Sets the tax_representative_party of this Invoice.
+
+
+        :param tax_representative_party: The tax_representative_party of this Invoice.  # noqa: E501
+        :type: PartyIdentification
+        """
+
+        self._tax_representative_party = tax_representative_party
+
+    @property
     def payment_terms(self):
         """Gets the payment_terms of this Invoice.  # noqa: E501
 
@@ -351,6 +439,50 @@ class Invoice(object):
             raise ValueError("Invalid value for `invoice_total`, must not be `None`")  # noqa: E501
 
         self._invoice_total = invoice_total
+
+    @property
+    def invoice_base_amount(self):
+        """Gets the invoice_base_amount of this Invoice.  # noqa: E501
+
+
+        :return: The invoice_base_amount of this Invoice.  # noqa: E501
+        :rtype: Money
+        """
+        return self._invoice_base_amount
+
+    @invoice_base_amount.setter
+    def invoice_base_amount(self, invoice_base_amount):
+        """Sets the invoice_base_amount of this Invoice.
+
+
+        :param invoice_base_amount: The invoice_base_amount of this Invoice.  # noqa: E501
+        :type: Money
+        """
+
+        self._invoice_base_amount = invoice_base_amount
+
+    @property
+    def tax_point_date(self):
+        """Gets the tax_point_date of this Invoice.  # noqa: E501
+
+        Defines a date and time according to ISO8601.  # noqa: E501
+
+        :return: The tax_point_date of this Invoice.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._tax_point_date
+
+    @tax_point_date.setter
+    def tax_point_date(self, tax_point_date):
+        """Sets the tax_point_date of this Invoice.
+
+        Defines a date and time according to ISO8601.  # noqa: E501
+
+        :param tax_point_date: The tax_point_date of this Invoice.  # noqa: E501
+        :type: datetime
+        """
+
+        self._tax_point_date = tax_point_date
 
     @property
     def tax_details(self):

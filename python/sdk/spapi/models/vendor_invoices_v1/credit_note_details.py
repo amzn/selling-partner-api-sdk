@@ -34,6 +34,7 @@ class CreditNoteDetails(object):
     """
     swagger_types = {
         'reference_invoice_number': 'str',
+        'original_invoice_date': 'datetime',
         'debit_note_number': 'str',
         'returns_reference_number': 'str',
         'goods_return_date': 'datetime',
@@ -44,6 +45,7 @@ class CreditNoteDetails(object):
 
     attribute_map = {
         'reference_invoice_number': 'referenceInvoiceNumber',
+        'original_invoice_date': 'originalInvoiceDate',
         'debit_note_number': 'debitNoteNumber',
         'returns_reference_number': 'returnsReferenceNumber',
         'goods_return_date': 'goodsReturnDate',
@@ -52,13 +54,14 @@ class CreditNoteDetails(object):
         'consignors_reference_number': 'consignorsReferenceNumber',
     }
 
-    def __init__(self, reference_invoice_number=None, debit_note_number=None, returns_reference_number=None, goods_return_date=None, rma_id=None, coop_reference_number=None, consignors_reference_number=None, _configuration=None):  # noqa: E501
+    def __init__(self, reference_invoice_number=None, original_invoice_date=None, debit_note_number=None, returns_reference_number=None, goods_return_date=None, rma_id=None, coop_reference_number=None, consignors_reference_number=None, _configuration=None):  # noqa: E501
         """CreditNoteDetails - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
         self._reference_invoice_number = None
+        self._original_invoice_date = None
         self._debit_note_number = None
         self._returns_reference_number = None
         self._goods_return_date = None
@@ -69,6 +72,8 @@ class CreditNoteDetails(object):
 
         if reference_invoice_number is not None:
             self.reference_invoice_number = reference_invoice_number
+        if original_invoice_date is not None:
+            self.original_invoice_date = original_invoice_date
         if debit_note_number is not None:
             self.debit_note_number = debit_note_number
         if returns_reference_number is not None:
@@ -104,6 +109,29 @@ class CreditNoteDetails(object):
         """
 
         self._reference_invoice_number = reference_invoice_number
+
+    @property
+    def original_invoice_date(self):
+        """Gets the original_invoice_date of this CreditNoteDetails.  # noqa: E501
+
+        Defines a date and time according to ISO8601.  # noqa: E501
+
+        :return: The original_invoice_date of this CreditNoteDetails.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._original_invoice_date
+
+    @original_invoice_date.setter
+    def original_invoice_date(self, original_invoice_date):
+        """Sets the original_invoice_date of this CreditNoteDetails.
+
+        Defines a date and time according to ISO8601.  # noqa: E501
+
+        :param original_invoice_date: The original_invoice_date of this CreditNoteDetails.  # noqa: E501
+        :type: datetime
+        """
+
+        self._original_invoice_date = original_invoice_date
 
     @property
     def debit_note_number(self):

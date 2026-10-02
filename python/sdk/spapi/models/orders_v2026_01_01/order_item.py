@@ -179,7 +179,7 @@ class OrderItem(object):
     def associated_order_items(self):
         """Gets the associated_order_items of this OrderItem.  # noqa: E501
 
-        A list of order items associated with this item. For example, a value-add service purchased with the product.  # noqa: E501
+        A list of order items associated with this item. For example, a value-add service purchased with the product, or a product covered by a warranty protection plan.  # noqa: E501
 
         :return: The associated_order_items of this OrderItem.  # noqa: E501
         :rtype: List[AssociatedOrderItem]
@@ -190,7 +190,7 @@ class OrderItem(object):
     def associated_order_items(self, associated_order_items):
         """Sets the associated_order_items of this OrderItem.
 
-        A list of order items associated with this item. For example, a value-add service purchased with the product.  # noqa: E501
+        A list of order items associated with this item. For example, a value-add service purchased with the product, or a product covered by a warranty protection plan.  # noqa: E501
 
         :param associated_order_items: The associated_order_items of this OrderItem.  # noqa: E501
         :type: List[AssociatedOrderItem]

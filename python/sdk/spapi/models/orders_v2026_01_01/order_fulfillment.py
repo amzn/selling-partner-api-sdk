@@ -39,6 +39,7 @@ class OrderFulfillment(object):
         'ship_by_window': 'DateTimeRange',
         'deliver_by_window': 'DateTimeRange',
         'label_printing_window': 'DateTimeRange',
+        'promise_calculation_inputs': 'PromiseCalculationInputs',
     }
 
     attribute_map = {
@@ -48,9 +49,10 @@ class OrderFulfillment(object):
         'ship_by_window': 'shipByWindow',
         'deliver_by_window': 'deliverByWindow',
         'label_printing_window': 'labelPrintingWindow',
+        'promise_calculation_inputs': 'promiseCalculationInputs',
     }
 
-    def __init__(self, fulfillment_status=None, fulfilled_by=None, fulfillment_service_level=None, ship_by_window=None, deliver_by_window=None, label_printing_window=None, _configuration=None):  # noqa: E501
+    def __init__(self, fulfillment_status=None, fulfilled_by=None, fulfillment_service_level=None, ship_by_window=None, deliver_by_window=None, label_printing_window=None, promise_calculation_inputs=None, _configuration=None):  # noqa: E501
         """OrderFulfillment - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -62,6 +64,7 @@ class OrderFulfillment(object):
         self._ship_by_window = None
         self._deliver_by_window = None
         self._label_printing_window = None
+        self._promise_calculation_inputs = None
         self.discriminator = None
 
         self.fulfillment_status = fulfillment_status
@@ -75,6 +78,8 @@ class OrderFulfillment(object):
             self.deliver_by_window = deliver_by_window
         if label_printing_window is not None:
             self.label_printing_window = label_printing_window
+        if promise_calculation_inputs is not None:
+            self.promise_calculation_inputs = promise_calculation_inputs
 
     @property
     def fulfillment_status(self):
@@ -207,6 +212,27 @@ class OrderFulfillment(object):
         """
 
         self._label_printing_window = label_printing_window
+
+    @property
+    def promise_calculation_inputs(self):
+        """Gets the promise_calculation_inputs of this OrderFulfillment.  # noqa: E501
+
+
+        :return: The promise_calculation_inputs of this OrderFulfillment.  # noqa: E501
+        :rtype: PromiseCalculationInputs
+        """
+        return self._promise_calculation_inputs
+
+    @promise_calculation_inputs.setter
+    def promise_calculation_inputs(self, promise_calculation_inputs):
+        """Sets the promise_calculation_inputs of this OrderFulfillment.
+
+
+        :param promise_calculation_inputs: The promise_calculation_inputs of this OrderFulfillment.  # noqa: E501
+        :type: PromiseCalculationInputs
+        """
+
+        self._promise_calculation_inputs = promise_calculation_inputs
 
     def to_dict(self):
         """Returns the model properties as a dict"""

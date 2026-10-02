@@ -50,6 +50,7 @@ class TrackingApi(object):
         :param str aftn: The Amazon Fulfillment Tracking Number.
         :param str container_number: The container number provided by the Logistics Service Provider.
         :param str house_bill_of_lading_number: The House Bill of Lading (HBL) number.
+        :param str pro_number: The PRO number assigned by the freight carrier
         :param str carrier_tracking_tracking_number: The tracking number assigned by the carrier.
         :param str carrier_tracking_carrier_code: The carrier code associated with the carrier tracking number.
         :param str accept_language: The preferred natural language and locale of the client, in POSIX locale format. Currently supports `en-US` only.
@@ -79,6 +80,7 @@ class TrackingApi(object):
         :param str aftn: The Amazon Fulfillment Tracking Number.
         :param str container_number: The container number provided by the Logistics Service Provider.
         :param str house_bill_of_lading_number: The House Bill of Lading (HBL) number.
+        :param str pro_number: The PRO number assigned by the freight carrier
         :param str carrier_tracking_tracking_number: The tracking number assigned by the carrier.
         :param str carrier_tracking_carrier_code: The carrier code associated with the carrier tracking number.
         :param str accept_language: The preferred natural language and locale of the client, in POSIX locale format. Currently supports `en-US` only.
@@ -87,7 +89,7 @@ class TrackingApi(object):
                  returns the request thread.
         """
 
-        all_params = ['id', 'acsin', 'aftn', 'container_number', 'house_bill_of_lading_number', 'carrier_tracking_tracking_number', 'carrier_tracking_carrier_code', 'accept_language']  # noqa: E501
+        all_params = ['id', 'acsin', 'aftn', 'container_number', 'house_bill_of_lading_number', 'pro_number', 'carrier_tracking_tracking_number', 'carrier_tracking_carrier_code', 'accept_language']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -120,6 +122,8 @@ class TrackingApi(object):
             query_params.append(('containerNumber', params['container_number']))  # noqa: E501
         if 'house_bill_of_lading_number' in params:
             query_params.append(('houseBillOfLadingNumber', params['house_bill_of_lading_number']))  # noqa: E501
+        if 'pro_number' in params:
+            query_params.append(('proNumber', params['pro_number']))  # noqa: E501
         if 'carrier_tracking_tracking_number' in params:
             query_params.append(('carrierTracking.trackingNumber', params['carrier_tracking_tracking_number']))  # noqa: E501
         if 'carrier_tracking_carrier_code' in params:

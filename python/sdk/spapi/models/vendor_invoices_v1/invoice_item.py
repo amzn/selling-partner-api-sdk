@@ -41,6 +41,8 @@ class InvoiceItem(object):
         'net_cost_unit_of_measure': 'NetCostUnitOfMeasure',
         'purchase_order_number': 'str',
         'hsn_code': 'str',
+        'item_description': 'str',
+        'additional_details': 'List[AdditionalDetails]',
         'credit_note_details': 'CreditNoteDetails',
         'tax_details': 'List[TaxDetails]',
         'charge_details': 'List[ChargeDetails]',
@@ -56,13 +58,15 @@ class InvoiceItem(object):
         'net_cost_unit_of_measure': 'netCostUnitOfMeasure',
         'purchase_order_number': 'purchaseOrderNumber',
         'hsn_code': 'hsnCode',
+        'item_description': 'itemDescription',
+        'additional_details': 'additionalDetails',
         'credit_note_details': 'creditNoteDetails',
         'tax_details': 'taxDetails',
         'charge_details': 'chargeDetails',
         'allowance_details': 'allowanceDetails',
     }
 
-    def __init__(self, item_sequence_number=None, amazon_product_identifier=None, vendor_product_identifier=None, invoiced_quantity=None, net_cost=None, net_cost_unit_of_measure=None, purchase_order_number=None, hsn_code=None, credit_note_details=None, tax_details=None, charge_details=None, allowance_details=None, _configuration=None):  # noqa: E501
+    def __init__(self, item_sequence_number=None, amazon_product_identifier=None, vendor_product_identifier=None, invoiced_quantity=None, net_cost=None, net_cost_unit_of_measure=None, purchase_order_number=None, hsn_code=None, item_description=None, additional_details=None, credit_note_details=None, tax_details=None, charge_details=None, allowance_details=None, _configuration=None):  # noqa: E501
         """InvoiceItem - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -76,6 +80,8 @@ class InvoiceItem(object):
         self._net_cost_unit_of_measure = None
         self._purchase_order_number = None
         self._hsn_code = None
+        self._item_description = None
+        self._additional_details = None
         self._credit_note_details = None
         self._tax_details = None
         self._charge_details = None
@@ -95,6 +101,10 @@ class InvoiceItem(object):
             self.purchase_order_number = purchase_order_number
         if hsn_code is not None:
             self.hsn_code = hsn_code
+        if item_description is not None:
+            self.item_description = item_description
+        if additional_details is not None:
+            self.additional_details = additional_details
         if credit_note_details is not None:
             self.credit_note_details = credit_note_details
         if tax_details is not None:
@@ -287,6 +297,52 @@ class InvoiceItem(object):
         """
 
         self._hsn_code = hsn_code
+
+    @property
+    def item_description(self):
+        """Gets the item_description of this InvoiceItem.  # noqa: E501
+
+        Product or service description for the invoiced line item.  # noqa: E501
+
+        :return: The item_description of this InvoiceItem.  # noqa: E501
+        :rtype: str
+        """
+        return self._item_description
+
+    @item_description.setter
+    def item_description(self, item_description):
+        """Sets the item_description of this InvoiceItem.
+
+        Product or service description for the invoiced line item.  # noqa: E501
+
+        :param item_description: The item_description of this InvoiceItem.  # noqa: E501
+        :type: str
+        """
+
+        self._item_description = item_description
+
+    @property
+    def additional_details(self):
+        """Gets the additional_details of this InvoiceItem.  # noqa: E501
+
+        Line-level additional details provided by the selling party, e.g. tax exemption reason code and text.  # noqa: E501
+
+        :return: The additional_details of this InvoiceItem.  # noqa: E501
+        :rtype: List[AdditionalDetails]
+        """
+        return self._additional_details
+
+    @additional_details.setter
+    def additional_details(self, additional_details):
+        """Sets the additional_details of this InvoiceItem.
+
+        Line-level additional details provided by the selling party, e.g. tax exemption reason code and text.  # noqa: E501
+
+        :param additional_details: The additional_details of this InvoiceItem.  # noqa: E501
+        :type: List[AdditionalDetails]
+        """
+
+        self._additional_details = additional_details
 
     @property
     def credit_note_details(self):

@@ -42,6 +42,15 @@ class TestAplusContentApi(unittest.TestCase):
         self.assert_valid_response_payload(200, response[0])
         pass
 
+    def test_create_media(self):
+        create_media_request = self._get_random_value("CreateMediaRequest", None)
+        
+        self.instruct_backend_mock("aplusContent".casefold().replace(' ', ''), self.to_camel_case("create_media"), "200")
+        response = self.api.create_media_with_http_info(create_media_request, )
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
     def test_get_content_document(self):
         content_reference_key = self._get_random_value("str", None)
         marketplace_id = self._get_random_value("str", None)
@@ -49,6 +58,15 @@ class TestAplusContentApi(unittest.TestCase):
         
         self.instruct_backend_mock("aplusContent".casefold().replace(' ', ''), self.to_camel_case("get_content_document"), "200")
         response = self.api.get_content_document_with_http_info(content_reference_key, marketplace_id, included_data_set, )
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
+    def test_get_media(self):
+        media_id = self._get_random_value("str", None)
+        
+        self.instruct_backend_mock("aplusContent".casefold().replace(' ', ''), self.to_camel_case("get_media"), "200")
+        response = self.api.get_media_with_http_info(media_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
@@ -120,6 +138,16 @@ class TestAplusContentApi(unittest.TestCase):
         
         self.instruct_backend_mock("aplusContent".casefold().replace(' ', ''), self.to_camel_case("update_content_document"), "200")
         response = self.api.update_content_document_with_http_info(content_reference_key, marketplace_id, post_content_document_request, )
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
+    def test_update_media(self):
+        media_id = self._get_random_value("str", None)
+        update_media_request = self._get_random_value("UpdateMediaRequest", None)
+        
+        self.instruct_backend_mock("aplusContent".casefold().replace(' ', ''), self.to_camel_case("update_media"), "200")
+        response = self.api.update_media_with_http_info(media_id, update_media_request, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass

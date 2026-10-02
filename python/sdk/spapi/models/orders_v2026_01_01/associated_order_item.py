@@ -36,15 +36,19 @@ class AssociatedOrderItem(object):
         'order_id': 'str',
         'order_item_id': 'str',
         'association_type': 'str',
+        'asin': 'str',
+        'purchase_price': 'Money',
     }
 
     attribute_map = {
         'order_id': 'orderId',
         'order_item_id': 'orderItemId',
         'association_type': 'associationType',
+        'asin': 'asin',
+        'purchase_price': 'purchasePrice',
     }
 
-    def __init__(self, order_id=None, order_item_id=None, association_type=None, _configuration=None):  # noqa: E501
+    def __init__(self, order_id=None, order_item_id=None, association_type=None, asin=None, purchase_price=None, _configuration=None):  # noqa: E501
         """AssociatedOrderItem - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -53,6 +57,8 @@ class AssociatedOrderItem(object):
         self._order_id = None
         self._order_item_id = None
         self._association_type = None
+        self._asin = None
+        self._purchase_price = None
         self.discriminator = None
 
         if order_id is not None:
@@ -61,6 +67,10 @@ class AssociatedOrderItem(object):
             self.order_item_id = order_item_id
         if association_type is not None:
             self.association_type = association_type
+        if asin is not None:
+            self.asin = asin
+        if purchase_price is not None:
+            self.purchase_price = purchase_price
 
     @property
     def order_id(self):
@@ -112,7 +122,7 @@ class AssociatedOrderItem(object):
     def association_type(self):
         """Gets the association_type of this AssociatedOrderItem.  # noqa: E501
 
-        The type of association between the order items.  **Possible values**: - `VALUE_ADD_SERVICE` (The associated item is a service order)  # noqa: E501
+        The type of association between the order items.  **Possible values**: - `VALUE_ADD_SERVICE` (The associated item is a service order) - `WARRANTY` (The associated item is a product covered by a warranty or protection plan)  # noqa: E501
 
         :return: The association_type of this AssociatedOrderItem.  # noqa: E501
         :rtype: str
@@ -123,13 +133,57 @@ class AssociatedOrderItem(object):
     def association_type(self, association_type):
         """Sets the association_type of this AssociatedOrderItem.
 
-        The type of association between the order items.  **Possible values**: - `VALUE_ADD_SERVICE` (The associated item is a service order)  # noqa: E501
+        The type of association between the order items.  **Possible values**: - `VALUE_ADD_SERVICE` (The associated item is a service order) - `WARRANTY` (The associated item is a product covered by a warranty or protection plan)  # noqa: E501
 
         :param association_type: The association_type of this AssociatedOrderItem.  # noqa: E501
         :type: str
         """
 
         self._association_type = association_type
+
+    @property
+    def asin(self):
+        """Gets the asin of this AssociatedOrderItem.  # noqa: E501
+
+        The ASIN of the associated order item.  # noqa: E501
+
+        :return: The asin of this AssociatedOrderItem.  # noqa: E501
+        :rtype: str
+        """
+        return self._asin
+
+    @asin.setter
+    def asin(self, asin):
+        """Sets the asin of this AssociatedOrderItem.
+
+        The ASIN of the associated order item.  # noqa: E501
+
+        :param asin: The asin of this AssociatedOrderItem.  # noqa: E501
+        :type: str
+        """
+
+        self._asin = asin
+
+    @property
+    def purchase_price(self):
+        """Gets the purchase_price of this AssociatedOrderItem.  # noqa: E501
+
+
+        :return: The purchase_price of this AssociatedOrderItem.  # noqa: E501
+        :rtype: Money
+        """
+        return self._purchase_price
+
+    @purchase_price.setter
+    def purchase_price(self, purchase_price):
+        """Sets the purchase_price of this AssociatedOrderItem.
+
+
+        :param purchase_price: The purchase_price of this AssociatedOrderItem.  # noqa: E501
+        :type: Money
+        """
+
+        self._purchase_price = purchase_price
 
     def to_dict(self):
         """Returns the model properties as a dict"""
