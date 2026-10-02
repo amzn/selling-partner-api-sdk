@@ -29,6 +29,9 @@ public class InvoiceItem {
     @SerializedName("vendorProductIdentifier")
     private String vendorProductIdentifier = null;
 
+    @SerializedName("itemDescription")
+    private String itemDescription = null;
+
     @SerializedName("invoicedQuantity")
     private ItemQuantity invoicedQuantity = null;
 
@@ -47,8 +50,14 @@ public class InvoiceItem {
     @SerializedName("taxDetails")
     private List<TaxDetail> taxDetails = null;
 
+    @SerializedName("additionalDetails")
+    private List<AdditionalDetails> additionalDetails = null;
+
     @SerializedName("chargeDetails")
     private List<ChargeDetails> chargeDetails = null;
+
+    @SerializedName("allowanceDetails")
+    private List<AllowanceDetails> allowanceDetails = null;
 
     public InvoiceItem itemSequenceNumber(String itemSequenceNumber) {
         this.itemSequenceNumber = itemSequenceNumber;
@@ -109,6 +118,26 @@ public class InvoiceItem {
 
     public void setVendorProductIdentifier(String vendorProductIdentifier) {
         this.vendorProductIdentifier = vendorProductIdentifier;
+    }
+
+    public InvoiceItem itemDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
+        return this;
+    }
+
+    /**
+     * Product or service description for the invoiced line item.
+     *
+     * @return itemDescription
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Product or service description for the invoiced line item.")
+    public String getItemDescription() {
+        return itemDescription;
+    }
+
+    public void setItemDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
     }
 
     public InvoiceItem invoicedQuantity(ItemQuantity invoicedQuantity) {
@@ -236,6 +265,35 @@ public class InvoiceItem {
         this.taxDetails = taxDetails;
     }
 
+    public InvoiceItem additionalDetails(List<AdditionalDetails> additionalDetails) {
+        this.additionalDetails = additionalDetails;
+        return this;
+    }
+
+    public InvoiceItem addAdditionalDetailsItem(AdditionalDetails additionalDetailsItem) {
+        if (this.additionalDetails == null) {
+            this.additionalDetails = new ArrayList<>();
+        }
+        this.additionalDetails.add(additionalDetailsItem);
+        return this;
+    }
+
+    /**
+     * Line-level additional details provided by the selling party, e.g. tax exemption reason code and text.
+     *
+     * @return additionalDetails
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description =
+                    "Line-level additional details provided by the selling party, e.g. tax exemption reason code and text.")
+    public List<AdditionalDetails> getAdditionalDetails() {
+        return additionalDetails;
+    }
+
+    public void setAdditionalDetails(List<AdditionalDetails> additionalDetails) {
+        this.additionalDetails = additionalDetails;
+    }
+
     public InvoiceItem chargeDetails(List<ChargeDetails> chargeDetails) {
         this.chargeDetails = chargeDetails;
         return this;
@@ -263,6 +321,33 @@ public class InvoiceItem {
         this.chargeDetails = chargeDetails;
     }
 
+    public InvoiceItem allowanceDetails(List<AllowanceDetails> allowanceDetails) {
+        this.allowanceDetails = allowanceDetails;
+        return this;
+    }
+
+    public InvoiceItem addAllowanceDetailsItem(AllowanceDetails allowanceDetailsItem) {
+        if (this.allowanceDetails == null) {
+            this.allowanceDetails = new ArrayList<>();
+        }
+        this.allowanceDetails.add(allowanceDetailsItem);
+        return this;
+    }
+
+    /**
+     * Individual allowance details per line item.
+     *
+     * @return allowanceDetails
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Individual allowance details per line item.")
+    public List<AllowanceDetails> getAllowanceDetails() {
+        return allowanceDetails;
+    }
+
+    public void setAllowanceDetails(List<AllowanceDetails> allowanceDetails) {
+        this.allowanceDetails = allowanceDetails;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -275,13 +360,16 @@ public class InvoiceItem {
         return Objects.equals(this.itemSequenceNumber, invoiceItem.itemSequenceNumber)
                 && Objects.equals(this.buyerProductIdentifier, invoiceItem.buyerProductIdentifier)
                 && Objects.equals(this.vendorProductIdentifier, invoiceItem.vendorProductIdentifier)
+                && Objects.equals(this.itemDescription, invoiceItem.itemDescription)
                 && Objects.equals(this.invoicedQuantity, invoiceItem.invoicedQuantity)
                 && Objects.equals(this.netCost, invoiceItem.netCost)
                 && Objects.equals(this.purchaseOrderNumber, invoiceItem.purchaseOrderNumber)
                 && Objects.equals(this.vendorOrderNumber, invoiceItem.vendorOrderNumber)
                 && Objects.equals(this.hsnCode, invoiceItem.hsnCode)
                 && Objects.equals(this.taxDetails, invoiceItem.taxDetails)
-                && Objects.equals(this.chargeDetails, invoiceItem.chargeDetails);
+                && Objects.equals(this.additionalDetails, invoiceItem.additionalDetails)
+                && Objects.equals(this.chargeDetails, invoiceItem.chargeDetails)
+                && Objects.equals(this.allowanceDetails, invoiceItem.allowanceDetails);
     }
 
     @Override
@@ -290,13 +378,16 @@ public class InvoiceItem {
                 itemSequenceNumber,
                 buyerProductIdentifier,
                 vendorProductIdentifier,
+                itemDescription,
                 invoicedQuantity,
                 netCost,
                 purchaseOrderNumber,
                 vendorOrderNumber,
                 hsnCode,
                 taxDetails,
-                chargeDetails);
+                additionalDetails,
+                chargeDetails,
+                allowanceDetails);
     }
 
     @Override
@@ -312,6 +403,9 @@ public class InvoiceItem {
         sb.append("    vendorProductIdentifier: ")
                 .append(toIndentedString(vendorProductIdentifier))
                 .append("\n");
+        sb.append("    itemDescription: ")
+                .append(toIndentedString(itemDescription))
+                .append("\n");
         sb.append("    invoicedQuantity: ")
                 .append(toIndentedString(invoicedQuantity))
                 .append("\n");
@@ -324,7 +418,13 @@ public class InvoiceItem {
                 .append("\n");
         sb.append("    hsnCode: ").append(toIndentedString(hsnCode)).append("\n");
         sb.append("    taxDetails: ").append(toIndentedString(taxDetails)).append("\n");
+        sb.append("    additionalDetails: ")
+                .append(toIndentedString(additionalDetails))
+                .append("\n");
         sb.append("    chargeDetails: ").append(toIndentedString(chargeDetails)).append("\n");
+        sb.append("    allowanceDetails: ")
+                .append(toIndentedString(allowanceDetails))
+                .append("\n");
         sb.append("}");
         return sb.toString();
     }

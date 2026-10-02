@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for A+ Content Management
- * Use the A+ Content API to build applications that help selling partners add rich marketing content to their Amazon product detail pages. Selling partners can use A+ content to share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners use content modules to add images and text.
+ * With the A+ Content API, you can build applications that help selling partners add rich marketing content to their Amazon product detail pages. A+ Content helps selling partners share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners assemble content by choosing from content modules and adding images and text.
  *
  * The version of the OpenAPI document: 2020-11-01
  *
@@ -16,12 +16,12 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
 
 /**
- * An A+ Content module. An A+ Content document is composed of content modules. The &#x60;contentModuleType&#x60;
- * property selects which content module types to use.
+ * An A+ Content module. An A+ Content document is composed of content modules. The contentModuleType property selects
+ * which content module types to use.
  */
 @io.swagger.v3.oas.annotations.media.Schema(
         description =
-                "An A+ Content module. An A+ Content document is composed of content modules. The `contentModuleType` property selects which content module types to use.")
+                "An A+ Content module. An A+ Content document is composed of content modules. The contentModuleType property selects which content module types to use.")
 public class ContentModule {
     @SerializedName("contentModuleType")
     private ContentModuleType contentModuleType = null;
@@ -70,6 +70,78 @@ public class ContentModule {
 
     @SerializedName("standardThreeImageText")
     private StandardThreeImageTextModule standardThreeImageText = null;
+
+    @SerializedName("premiumImageText")
+    private PremiumImageTextModule premiumImageText = null;
+
+    @SerializedName("premiumText")
+    private PremiumTextModule premiumText = null;
+
+    @SerializedName("premiumFullBackgroundText")
+    private PremiumFullBackgroundTextModule premiumFullBackgroundText = null;
+
+    @SerializedName("premiumFullBackgroundImage")
+    private PremiumFullBackgroundImageModule premiumFullBackgroundImage = null;
+
+    @SerializedName("premiumFourColumnImages")
+    private PremiumFourColumnImagesModule premiumFourColumnImages = null;
+
+    @SerializedName("premiumDualImageText")
+    private PremiumDualImageTextModule premiumDualImageText = null;
+
+    @SerializedName("premiumImageCarousel")
+    private PremiumImageCarouselModule premiumImageCarousel = null;
+
+    @SerializedName("premiumNavigationCarousel")
+    private PremiumNavigationCarouselModule premiumNavigationCarousel = null;
+
+    @SerializedName("premiumRegimenCarousel")
+    private PremiumRegimenCarouselModule premiumRegimenCarousel = null;
+
+    @SerializedName("premiumThreeColumnComparison")
+    private PremiumThreeColumnComparisonModule premiumThreeColumnComparison = null;
+
+    @SerializedName("premiumComparisonCarousel")
+    private PremiumComparisonCarouselModule premiumComparisonCarousel = null;
+
+    @SerializedName("premiumComparisonScroller")
+    private PremiumComparisonScrollerModule premiumComparisonScroller = null;
+
+    @SerializedName("premiumHotspotImage")
+    private PremiumHotspotImageModule premiumHotspotImage = null;
+
+    @SerializedName("premiumHotspotImageText")
+    private PremiumHotspotImageTextModule premiumHotspotImageText = null;
+
+    @SerializedName("premiumFaq")
+    private PremiumFaqModule premiumFaq = null;
+
+    @SerializedName("premiumTechSpecs")
+    private PremiumTechSpecsModule premiumTechSpecs = null;
+
+    @SerializedName("premiumVideoText")
+    private PremiumVideoTextModule premiumVideoText = null;
+
+    @SerializedName("premiumHeroVideo")
+    private PremiumHeroVideoModule premiumHeroVideo = null;
+
+    @SerializedName("premiumVideoImageCarousel")
+    private PremiumVideoImageCarouselModule premiumVideoImageCarousel = null;
+
+    @SerializedName("brandStoryImageWithLogo")
+    private BrandStoryImageWithLogoModule brandStoryImageWithLogo = null;
+
+    @SerializedName("brandStoryFourAsin")
+    private BrandStoryFourAsinModule brandStoryFourAsin = null;
+
+    @SerializedName("brandStoryMediaAsset")
+    private BrandStoryMediaAssetModule brandStoryMediaAsset = null;
+
+    @SerializedName("brandStoryAbout")
+    private BrandStoryAboutModule brandStoryAbout = null;
+
+    @SerializedName("brandStoryQuestions")
+    private BrandStoryQuestionsModule brandStoryQuestions = null;
 
     public ContentModule contentModuleType(ContentModuleType contentModuleType) {
         this.contentModuleType = contentModuleType;
@@ -378,6 +450,462 @@ public class ContentModule {
         this.standardThreeImageText = standardThreeImageText;
     }
 
+    public ContentModule premiumImageText(PremiumImageTextModule premiumImageText) {
+        this.premiumImageText = premiumImageText;
+        return this;
+    }
+
+    /**
+     * Get premiumImageText
+     *
+     * @return premiumImageText
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumImageTextModule getPremiumImageText() {
+        return premiumImageText;
+    }
+
+    public void setPremiumImageText(PremiumImageTextModule premiumImageText) {
+        this.premiumImageText = premiumImageText;
+    }
+
+    public ContentModule premiumText(PremiumTextModule premiumText) {
+        this.premiumText = premiumText;
+        return this;
+    }
+
+    /**
+     * Get premiumText
+     *
+     * @return premiumText
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumTextModule getPremiumText() {
+        return premiumText;
+    }
+
+    public void setPremiumText(PremiumTextModule premiumText) {
+        this.premiumText = premiumText;
+    }
+
+    public ContentModule premiumFullBackgroundText(PremiumFullBackgroundTextModule premiumFullBackgroundText) {
+        this.premiumFullBackgroundText = premiumFullBackgroundText;
+        return this;
+    }
+
+    /**
+     * Get premiumFullBackgroundText
+     *
+     * @return premiumFullBackgroundText
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumFullBackgroundTextModule getPremiumFullBackgroundText() {
+        return premiumFullBackgroundText;
+    }
+
+    public void setPremiumFullBackgroundText(PremiumFullBackgroundTextModule premiumFullBackgroundText) {
+        this.premiumFullBackgroundText = premiumFullBackgroundText;
+    }
+
+    public ContentModule premiumFullBackgroundImage(PremiumFullBackgroundImageModule premiumFullBackgroundImage) {
+        this.premiumFullBackgroundImage = premiumFullBackgroundImage;
+        return this;
+    }
+
+    /**
+     * Get premiumFullBackgroundImage
+     *
+     * @return premiumFullBackgroundImage
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumFullBackgroundImageModule getPremiumFullBackgroundImage() {
+        return premiumFullBackgroundImage;
+    }
+
+    public void setPremiumFullBackgroundImage(PremiumFullBackgroundImageModule premiumFullBackgroundImage) {
+        this.premiumFullBackgroundImage = premiumFullBackgroundImage;
+    }
+
+    public ContentModule premiumFourColumnImages(PremiumFourColumnImagesModule premiumFourColumnImages) {
+        this.premiumFourColumnImages = premiumFourColumnImages;
+        return this;
+    }
+
+    /**
+     * Get premiumFourColumnImages
+     *
+     * @return premiumFourColumnImages
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumFourColumnImagesModule getPremiumFourColumnImages() {
+        return premiumFourColumnImages;
+    }
+
+    public void setPremiumFourColumnImages(PremiumFourColumnImagesModule premiumFourColumnImages) {
+        this.premiumFourColumnImages = premiumFourColumnImages;
+    }
+
+    public ContentModule premiumDualImageText(PremiumDualImageTextModule premiumDualImageText) {
+        this.premiumDualImageText = premiumDualImageText;
+        return this;
+    }
+
+    /**
+     * Get premiumDualImageText
+     *
+     * @return premiumDualImageText
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumDualImageTextModule getPremiumDualImageText() {
+        return premiumDualImageText;
+    }
+
+    public void setPremiumDualImageText(PremiumDualImageTextModule premiumDualImageText) {
+        this.premiumDualImageText = premiumDualImageText;
+    }
+
+    public ContentModule premiumImageCarousel(PremiumImageCarouselModule premiumImageCarousel) {
+        this.premiumImageCarousel = premiumImageCarousel;
+        return this;
+    }
+
+    /**
+     * Get premiumImageCarousel
+     *
+     * @return premiumImageCarousel
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumImageCarouselModule getPremiumImageCarousel() {
+        return premiumImageCarousel;
+    }
+
+    public void setPremiumImageCarousel(PremiumImageCarouselModule premiumImageCarousel) {
+        this.premiumImageCarousel = premiumImageCarousel;
+    }
+
+    public ContentModule premiumNavigationCarousel(PremiumNavigationCarouselModule premiumNavigationCarousel) {
+        this.premiumNavigationCarousel = premiumNavigationCarousel;
+        return this;
+    }
+
+    /**
+     * Get premiumNavigationCarousel
+     *
+     * @return premiumNavigationCarousel
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumNavigationCarouselModule getPremiumNavigationCarousel() {
+        return premiumNavigationCarousel;
+    }
+
+    public void setPremiumNavigationCarousel(PremiumNavigationCarouselModule premiumNavigationCarousel) {
+        this.premiumNavigationCarousel = premiumNavigationCarousel;
+    }
+
+    public ContentModule premiumRegimenCarousel(PremiumRegimenCarouselModule premiumRegimenCarousel) {
+        this.premiumRegimenCarousel = premiumRegimenCarousel;
+        return this;
+    }
+
+    /**
+     * Get premiumRegimenCarousel
+     *
+     * @return premiumRegimenCarousel
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumRegimenCarouselModule getPremiumRegimenCarousel() {
+        return premiumRegimenCarousel;
+    }
+
+    public void setPremiumRegimenCarousel(PremiumRegimenCarouselModule premiumRegimenCarousel) {
+        this.premiumRegimenCarousel = premiumRegimenCarousel;
+    }
+
+    public ContentModule premiumThreeColumnComparison(PremiumThreeColumnComparisonModule premiumThreeColumnComparison) {
+        this.premiumThreeColumnComparison = premiumThreeColumnComparison;
+        return this;
+    }
+
+    /**
+     * Get premiumThreeColumnComparison
+     *
+     * @return premiumThreeColumnComparison
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumThreeColumnComparisonModule getPremiumThreeColumnComparison() {
+        return premiumThreeColumnComparison;
+    }
+
+    public void setPremiumThreeColumnComparison(PremiumThreeColumnComparisonModule premiumThreeColumnComparison) {
+        this.premiumThreeColumnComparison = premiumThreeColumnComparison;
+    }
+
+    public ContentModule premiumComparisonCarousel(PremiumComparisonCarouselModule premiumComparisonCarousel) {
+        this.premiumComparisonCarousel = premiumComparisonCarousel;
+        return this;
+    }
+
+    /**
+     * Get premiumComparisonCarousel
+     *
+     * @return premiumComparisonCarousel
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumComparisonCarouselModule getPremiumComparisonCarousel() {
+        return premiumComparisonCarousel;
+    }
+
+    public void setPremiumComparisonCarousel(PremiumComparisonCarouselModule premiumComparisonCarousel) {
+        this.premiumComparisonCarousel = premiumComparisonCarousel;
+    }
+
+    public ContentModule premiumComparisonScroller(PremiumComparisonScrollerModule premiumComparisonScroller) {
+        this.premiumComparisonScroller = premiumComparisonScroller;
+        return this;
+    }
+
+    /**
+     * Get premiumComparisonScroller
+     *
+     * @return premiumComparisonScroller
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumComparisonScrollerModule getPremiumComparisonScroller() {
+        return premiumComparisonScroller;
+    }
+
+    public void setPremiumComparisonScroller(PremiumComparisonScrollerModule premiumComparisonScroller) {
+        this.premiumComparisonScroller = premiumComparisonScroller;
+    }
+
+    public ContentModule premiumHotspotImage(PremiumHotspotImageModule premiumHotspotImage) {
+        this.premiumHotspotImage = premiumHotspotImage;
+        return this;
+    }
+
+    /**
+     * Get premiumHotspotImage
+     *
+     * @return premiumHotspotImage
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumHotspotImageModule getPremiumHotspotImage() {
+        return premiumHotspotImage;
+    }
+
+    public void setPremiumHotspotImage(PremiumHotspotImageModule premiumHotspotImage) {
+        this.premiumHotspotImage = premiumHotspotImage;
+    }
+
+    public ContentModule premiumHotspotImageText(PremiumHotspotImageTextModule premiumHotspotImageText) {
+        this.premiumHotspotImageText = premiumHotspotImageText;
+        return this;
+    }
+
+    /**
+     * Get premiumHotspotImageText
+     *
+     * @return premiumHotspotImageText
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumHotspotImageTextModule getPremiumHotspotImageText() {
+        return premiumHotspotImageText;
+    }
+
+    public void setPremiumHotspotImageText(PremiumHotspotImageTextModule premiumHotspotImageText) {
+        this.premiumHotspotImageText = premiumHotspotImageText;
+    }
+
+    public ContentModule premiumFaq(PremiumFaqModule premiumFaq) {
+        this.premiumFaq = premiumFaq;
+        return this;
+    }
+
+    /**
+     * Get premiumFaq
+     *
+     * @return premiumFaq
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumFaqModule getPremiumFaq() {
+        return premiumFaq;
+    }
+
+    public void setPremiumFaq(PremiumFaqModule premiumFaq) {
+        this.premiumFaq = premiumFaq;
+    }
+
+    public ContentModule premiumTechSpecs(PremiumTechSpecsModule premiumTechSpecs) {
+        this.premiumTechSpecs = premiumTechSpecs;
+        return this;
+    }
+
+    /**
+     * Get premiumTechSpecs
+     *
+     * @return premiumTechSpecs
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumTechSpecsModule getPremiumTechSpecs() {
+        return premiumTechSpecs;
+    }
+
+    public void setPremiumTechSpecs(PremiumTechSpecsModule premiumTechSpecs) {
+        this.premiumTechSpecs = premiumTechSpecs;
+    }
+
+    public ContentModule premiumVideoText(PremiumVideoTextModule premiumVideoText) {
+        this.premiumVideoText = premiumVideoText;
+        return this;
+    }
+
+    /**
+     * Get premiumVideoText
+     *
+     * @return premiumVideoText
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumVideoTextModule getPremiumVideoText() {
+        return premiumVideoText;
+    }
+
+    public void setPremiumVideoText(PremiumVideoTextModule premiumVideoText) {
+        this.premiumVideoText = premiumVideoText;
+    }
+
+    public ContentModule premiumHeroVideo(PremiumHeroVideoModule premiumHeroVideo) {
+        this.premiumHeroVideo = premiumHeroVideo;
+        return this;
+    }
+
+    /**
+     * Get premiumHeroVideo
+     *
+     * @return premiumHeroVideo
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumHeroVideoModule getPremiumHeroVideo() {
+        return premiumHeroVideo;
+    }
+
+    public void setPremiumHeroVideo(PremiumHeroVideoModule premiumHeroVideo) {
+        this.premiumHeroVideo = premiumHeroVideo;
+    }
+
+    public ContentModule premiumVideoImageCarousel(PremiumVideoImageCarouselModule premiumVideoImageCarousel) {
+        this.premiumVideoImageCarousel = premiumVideoImageCarousel;
+        return this;
+    }
+
+    /**
+     * Get premiumVideoImageCarousel
+     *
+     * @return premiumVideoImageCarousel
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public PremiumVideoImageCarouselModule getPremiumVideoImageCarousel() {
+        return premiumVideoImageCarousel;
+    }
+
+    public void setPremiumVideoImageCarousel(PremiumVideoImageCarouselModule premiumVideoImageCarousel) {
+        this.premiumVideoImageCarousel = premiumVideoImageCarousel;
+    }
+
+    public ContentModule brandStoryImageWithLogo(BrandStoryImageWithLogoModule brandStoryImageWithLogo) {
+        this.brandStoryImageWithLogo = brandStoryImageWithLogo;
+        return this;
+    }
+
+    /**
+     * Get brandStoryImageWithLogo
+     *
+     * @return brandStoryImageWithLogo
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public BrandStoryImageWithLogoModule getBrandStoryImageWithLogo() {
+        return brandStoryImageWithLogo;
+    }
+
+    public void setBrandStoryImageWithLogo(BrandStoryImageWithLogoModule brandStoryImageWithLogo) {
+        this.brandStoryImageWithLogo = brandStoryImageWithLogo;
+    }
+
+    public ContentModule brandStoryFourAsin(BrandStoryFourAsinModule brandStoryFourAsin) {
+        this.brandStoryFourAsin = brandStoryFourAsin;
+        return this;
+    }
+
+    /**
+     * Get brandStoryFourAsin
+     *
+     * @return brandStoryFourAsin
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public BrandStoryFourAsinModule getBrandStoryFourAsin() {
+        return brandStoryFourAsin;
+    }
+
+    public void setBrandStoryFourAsin(BrandStoryFourAsinModule brandStoryFourAsin) {
+        this.brandStoryFourAsin = brandStoryFourAsin;
+    }
+
+    public ContentModule brandStoryMediaAsset(BrandStoryMediaAssetModule brandStoryMediaAsset) {
+        this.brandStoryMediaAsset = brandStoryMediaAsset;
+        return this;
+    }
+
+    /**
+     * Get brandStoryMediaAsset
+     *
+     * @return brandStoryMediaAsset
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public BrandStoryMediaAssetModule getBrandStoryMediaAsset() {
+        return brandStoryMediaAsset;
+    }
+
+    public void setBrandStoryMediaAsset(BrandStoryMediaAssetModule brandStoryMediaAsset) {
+        this.brandStoryMediaAsset = brandStoryMediaAsset;
+    }
+
+    public ContentModule brandStoryAbout(BrandStoryAboutModule brandStoryAbout) {
+        this.brandStoryAbout = brandStoryAbout;
+        return this;
+    }
+
+    /**
+     * Get brandStoryAbout
+     *
+     * @return brandStoryAbout
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public BrandStoryAboutModule getBrandStoryAbout() {
+        return brandStoryAbout;
+    }
+
+    public void setBrandStoryAbout(BrandStoryAboutModule brandStoryAbout) {
+        this.brandStoryAbout = brandStoryAbout;
+    }
+
+    public ContentModule brandStoryQuestions(BrandStoryQuestionsModule brandStoryQuestions) {
+        this.brandStoryQuestions = brandStoryQuestions;
+        return this;
+    }
+
+    /**
+     * Get brandStoryQuestions
+     *
+     * @return brandStoryQuestions
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public BrandStoryQuestionsModule getBrandStoryQuestions() {
+        return brandStoryQuestions;
+    }
+
+    public void setBrandStoryQuestions(BrandStoryQuestionsModule brandStoryQuestions) {
+        this.brandStoryQuestions = brandStoryQuestions;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -402,7 +930,31 @@ public class ContentModule {
                 && Objects.equals(this.standardSingleSideImage, contentModule.standardSingleSideImage)
                 && Objects.equals(this.standardTechSpecs, contentModule.standardTechSpecs)
                 && Objects.equals(this.standardText, contentModule.standardText)
-                && Objects.equals(this.standardThreeImageText, contentModule.standardThreeImageText);
+                && Objects.equals(this.standardThreeImageText, contentModule.standardThreeImageText)
+                && Objects.equals(this.premiumImageText, contentModule.premiumImageText)
+                && Objects.equals(this.premiumText, contentModule.premiumText)
+                && Objects.equals(this.premiumFullBackgroundText, contentModule.premiumFullBackgroundText)
+                && Objects.equals(this.premiumFullBackgroundImage, contentModule.premiumFullBackgroundImage)
+                && Objects.equals(this.premiumFourColumnImages, contentModule.premiumFourColumnImages)
+                && Objects.equals(this.premiumDualImageText, contentModule.premiumDualImageText)
+                && Objects.equals(this.premiumImageCarousel, contentModule.premiumImageCarousel)
+                && Objects.equals(this.premiumNavigationCarousel, contentModule.premiumNavigationCarousel)
+                && Objects.equals(this.premiumRegimenCarousel, contentModule.premiumRegimenCarousel)
+                && Objects.equals(this.premiumThreeColumnComparison, contentModule.premiumThreeColumnComparison)
+                && Objects.equals(this.premiumComparisonCarousel, contentModule.premiumComparisonCarousel)
+                && Objects.equals(this.premiumComparisonScroller, contentModule.premiumComparisonScroller)
+                && Objects.equals(this.premiumHotspotImage, contentModule.premiumHotspotImage)
+                && Objects.equals(this.premiumHotspotImageText, contentModule.premiumHotspotImageText)
+                && Objects.equals(this.premiumFaq, contentModule.premiumFaq)
+                && Objects.equals(this.premiumTechSpecs, contentModule.premiumTechSpecs)
+                && Objects.equals(this.premiumVideoText, contentModule.premiumVideoText)
+                && Objects.equals(this.premiumHeroVideo, contentModule.premiumHeroVideo)
+                && Objects.equals(this.premiumVideoImageCarousel, contentModule.premiumVideoImageCarousel)
+                && Objects.equals(this.brandStoryImageWithLogo, contentModule.brandStoryImageWithLogo)
+                && Objects.equals(this.brandStoryFourAsin, contentModule.brandStoryFourAsin)
+                && Objects.equals(this.brandStoryMediaAsset, contentModule.brandStoryMediaAsset)
+                && Objects.equals(this.brandStoryAbout, contentModule.brandStoryAbout)
+                && Objects.equals(this.brandStoryQuestions, contentModule.brandStoryQuestions);
     }
 
     @Override
@@ -423,7 +975,31 @@ public class ContentModule {
                 standardSingleSideImage,
                 standardTechSpecs,
                 standardText,
-                standardThreeImageText);
+                standardThreeImageText,
+                premiumImageText,
+                premiumText,
+                premiumFullBackgroundText,
+                premiumFullBackgroundImage,
+                premiumFourColumnImages,
+                premiumDualImageText,
+                premiumImageCarousel,
+                premiumNavigationCarousel,
+                premiumRegimenCarousel,
+                premiumThreeColumnComparison,
+                premiumComparisonCarousel,
+                premiumComparisonScroller,
+                premiumHotspotImage,
+                premiumHotspotImageText,
+                premiumFaq,
+                premiumTechSpecs,
+                premiumVideoText,
+                premiumHeroVideo,
+                premiumVideoImageCarousel,
+                brandStoryImageWithLogo,
+                brandStoryFourAsin,
+                brandStoryMediaAsset,
+                brandStoryAbout,
+                brandStoryQuestions);
     }
 
     @Override
@@ -475,6 +1051,74 @@ public class ContentModule {
         sb.append("    standardText: ").append(toIndentedString(standardText)).append("\n");
         sb.append("    standardThreeImageText: ")
                 .append(toIndentedString(standardThreeImageText))
+                .append("\n");
+        sb.append("    premiumImageText: ")
+                .append(toIndentedString(premiumImageText))
+                .append("\n");
+        sb.append("    premiumText: ").append(toIndentedString(premiumText)).append("\n");
+        sb.append("    premiumFullBackgroundText: ")
+                .append(toIndentedString(premiumFullBackgroundText))
+                .append("\n");
+        sb.append("    premiumFullBackgroundImage: ")
+                .append(toIndentedString(premiumFullBackgroundImage))
+                .append("\n");
+        sb.append("    premiumFourColumnImages: ")
+                .append(toIndentedString(premiumFourColumnImages))
+                .append("\n");
+        sb.append("    premiumDualImageText: ")
+                .append(toIndentedString(premiumDualImageText))
+                .append("\n");
+        sb.append("    premiumImageCarousel: ")
+                .append(toIndentedString(premiumImageCarousel))
+                .append("\n");
+        sb.append("    premiumNavigationCarousel: ")
+                .append(toIndentedString(premiumNavigationCarousel))
+                .append("\n");
+        sb.append("    premiumRegimenCarousel: ")
+                .append(toIndentedString(premiumRegimenCarousel))
+                .append("\n");
+        sb.append("    premiumThreeColumnComparison: ")
+                .append(toIndentedString(premiumThreeColumnComparison))
+                .append("\n");
+        sb.append("    premiumComparisonCarousel: ")
+                .append(toIndentedString(premiumComparisonCarousel))
+                .append("\n");
+        sb.append("    premiumComparisonScroller: ")
+                .append(toIndentedString(premiumComparisonScroller))
+                .append("\n");
+        sb.append("    premiumHotspotImage: ")
+                .append(toIndentedString(premiumHotspotImage))
+                .append("\n");
+        sb.append("    premiumHotspotImageText: ")
+                .append(toIndentedString(premiumHotspotImageText))
+                .append("\n");
+        sb.append("    premiumFaq: ").append(toIndentedString(premiumFaq)).append("\n");
+        sb.append("    premiumTechSpecs: ")
+                .append(toIndentedString(premiumTechSpecs))
+                .append("\n");
+        sb.append("    premiumVideoText: ")
+                .append(toIndentedString(premiumVideoText))
+                .append("\n");
+        sb.append("    premiumHeroVideo: ")
+                .append(toIndentedString(premiumHeroVideo))
+                .append("\n");
+        sb.append("    premiumVideoImageCarousel: ")
+                .append(toIndentedString(premiumVideoImageCarousel))
+                .append("\n");
+        sb.append("    brandStoryImageWithLogo: ")
+                .append(toIndentedString(brandStoryImageWithLogo))
+                .append("\n");
+        sb.append("    brandStoryFourAsin: ")
+                .append(toIndentedString(brandStoryFourAsin))
+                .append("\n");
+        sb.append("    brandStoryMediaAsset: ")
+                .append(toIndentedString(brandStoryMediaAsset))
+                .append("\n");
+        sb.append("    brandStoryAbout: ")
+                .append(toIndentedString(brandStoryAbout))
+                .append("\n");
+        sb.append("    brandStoryQuestions: ")
+                .append(toIndentedString(brandStoryQuestions))
                 .append("\n");
         sb.append("}");
         return sb.toString();

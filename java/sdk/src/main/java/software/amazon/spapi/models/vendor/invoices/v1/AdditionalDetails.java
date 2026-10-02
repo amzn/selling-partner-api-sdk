@@ -32,7 +32,13 @@ public class AdditionalDetails {
         @SerializedName("OCR")
         OCR("OCR"),
         @SerializedName("CartonCount")
-        CARTON_COUNT("CartonCount");
+        CARTON_COUNT("CartonCount"),
+        @SerializedName("TaxExemptReason")
+        TAX_EXEMPT_REASON("TaxExemptReason"),
+        @SerializedName("LegalTerms")
+        LEGAL_TERMS("LegalTerms"),
+        @SerializedName("RegulatoryNote")
+        REGULATORY_NOTE("RegulatoryNote");
 
         private String value;
 

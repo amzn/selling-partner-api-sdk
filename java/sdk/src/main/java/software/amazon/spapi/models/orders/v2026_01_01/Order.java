@@ -432,13 +432,13 @@ public class Order {
 
     /**
      * The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment
-     * unit created by Amazon for this order. **Note:** Only available for EasyShip orders at present.
+     * unit created by Amazon for this order. **Note:** Only available for Easy Ship and Seller Flex.
      *
      * @return fulfillmentOrders
      */
     @io.swagger.v3.oas.annotations.media.Schema(
             description =
-                    "The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for EasyShip orders at present.")
+                    "The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for Easy Ship and Seller Flex.")
     public List<FulfillmentOrder> getFulfillmentOrders() {
         return fulfillmentOrders;
     }

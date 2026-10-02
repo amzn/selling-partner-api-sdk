@@ -829,7 +829,7 @@ public class FeedsApi {
     }
 
     /**
-     * Returns feed details (including the &#x60;resultDocumentId&#x60;, if available) for the feed that you specify.
+     * Returns feed details (including the &#x60;feedDocumentId&#x60;, if available) for the feed that you specify.
      * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
      * requested operation, when available. The preceding table indicates the default rate and burst values for this
@@ -850,7 +850,7 @@ public class FeedsApi {
     }
 
     /**
-     * Returns feed details (including the &#x60;resultDocumentId&#x60;, if available) for the feed that you specify.
+     * Returns feed details (including the &#x60;feedDocumentId&#x60;, if available) for the feed that you specify.
      * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
      * requested operation, when available. The preceding table indicates the default rate and burst values for this
@@ -870,7 +870,7 @@ public class FeedsApi {
     }
 
     /**
-     * Returns feed details (including the &#x60;resultDocumentId&#x60;, if available) for the feed that you specify.
+     * Returns feed details (including the &#x60;feedDocumentId&#x60;, if available) for the feed that you specify.
      * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
      * requested operation, when available. The preceding table indicates the default rate and burst values for this
@@ -902,7 +902,7 @@ public class FeedsApi {
     }
 
     /**
-     * Returns feed details (including the &#x60;resultDocumentId&#x60;, if available) for the feed that you specify.
+     * Returns feed details (including the &#x60;feedDocumentId&#x60;, if available) for the feed that you specify.
      * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
      * requested operation, when available. The preceding table indicates the default rate and burst values for this
@@ -921,8 +921,8 @@ public class FeedsApi {
     }
 
     /**
-     * (asynchronously) Returns feed details (including the &#x60;resultDocumentId&#x60;, if available) for the feed
-     * that you specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 | The
+     * (asynchronously) Returns feed details (including the &#x60;feedDocumentId&#x60;, if available) for the feed that
+     * you specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
      * requested operation, when available. The preceding table indicates the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
@@ -941,8 +941,8 @@ public class FeedsApi {
         return getFeedAsync(feedId, callback, null);
     }
     /**
-     * (asynchronously) Returns feed details (including the &#x60;resultDocumentId&#x60;, if available) for the feed
-     * that you specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 | The
+     * (asynchronously) Returns feed details (including the &#x60;feedDocumentId&#x60;, if available) for the feed that
+     * you specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
      * requested operation, when available. The preceding table indicates the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may have higher rate and burst

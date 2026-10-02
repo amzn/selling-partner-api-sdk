@@ -57,6 +57,7 @@ public class TrackingApi {
      * @param aftn The Amazon Fulfillment Tracking Number. (optional)
      * @param containerNumber The container number provided by the Logistics Service Provider. (optional)
      * @param houseBillOfLadingNumber The House Bill of Lading (HBL) number. (optional)
+     * @param proNumber The PRO number assigned by the freight carrier (optional)
      * @param carrierTrackingTrackingNumber The tracking number assigned by the carrier. (optional)
      * @param carrierTrackingCarrierCode The carrier code associated with the carrier tracking number. (optional)
      * @param acceptLanguage The preferred natural language and locale of the client, in POSIX locale format. Currently
@@ -72,6 +73,7 @@ public class TrackingApi {
             String aftn,
             String containerNumber,
             String houseBillOfLadingNumber,
+            String proNumber,
             String carrierTrackingTrackingNumber,
             String carrierTrackingCarrierCode,
             String acceptLanguage,
@@ -96,6 +98,7 @@ public class TrackingApi {
             localVarQueryParams.addAll(apiClient.parameterToPair("containerNumber", containerNumber));
         if (houseBillOfLadingNumber != null)
             localVarQueryParams.addAll(apiClient.parameterToPair("houseBillOfLadingNumber", houseBillOfLadingNumber));
+        if (proNumber != null) localVarQueryParams.addAll(apiClient.parameterToPair("proNumber", proNumber));
         if (carrierTrackingTrackingNumber != null)
             localVarQueryParams.addAll(
                     apiClient.parameterToPair("carrierTracking.trackingNumber", carrierTrackingTrackingNumber));
@@ -135,6 +138,7 @@ public class TrackingApi {
             String aftn,
             String containerNumber,
             String houseBillOfLadingNumber,
+            String proNumber,
             String carrierTrackingTrackingNumber,
             String carrierTrackingCarrierCode,
             String acceptLanguage,
@@ -147,6 +151,7 @@ public class TrackingApi {
                 aftn,
                 containerNumber,
                 houseBillOfLadingNumber,
+                proNumber,
                 carrierTrackingTrackingNumber,
                 carrierTrackingCarrierCode,
                 acceptLanguage,
@@ -161,6 +166,7 @@ public class TrackingApi {
      * @param aftn The Amazon Fulfillment Tracking Number. (optional)
      * @param containerNumber The container number provided by the Logistics Service Provider. (optional)
      * @param houseBillOfLadingNumber The House Bill of Lading (HBL) number. (optional)
+     * @param proNumber The PRO number assigned by the freight carrier (optional)
      * @param carrierTrackingTrackingNumber The tracking number assigned by the carrier. (optional)
      * @param carrierTrackingCarrierCode The carrier code associated with the carrier tracking number. (optional)
      * @param acceptLanguage The preferred natural language and locale of the client, in POSIX locale format. Currently
@@ -176,6 +182,7 @@ public class TrackingApi {
             String aftn,
             String containerNumber,
             String houseBillOfLadingNumber,
+            String proNumber,
             String carrierTrackingTrackingNumber,
             String carrierTrackingCarrierCode,
             String acceptLanguage,
@@ -187,6 +194,7 @@ public class TrackingApi {
                 aftn,
                 containerNumber,
                 houseBillOfLadingNumber,
+                proNumber,
                 carrierTrackingTrackingNumber,
                 carrierTrackingCarrierCode,
                 acceptLanguage,
@@ -202,6 +210,7 @@ public class TrackingApi {
      * @param aftn The Amazon Fulfillment Tracking Number. (optional)
      * @param containerNumber The container number provided by the Logistics Service Provider. (optional)
      * @param houseBillOfLadingNumber The House Bill of Lading (HBL) number. (optional)
+     * @param proNumber The PRO number assigned by the freight carrier (optional)
      * @param carrierTrackingTrackingNumber The tracking number assigned by the carrier. (optional)
      * @param carrierTrackingCarrierCode The carrier code associated with the carrier tracking number. (optional)
      * @param acceptLanguage The preferred natural language and locale of the client, in POSIX locale format. Currently
@@ -216,6 +225,7 @@ public class TrackingApi {
             String aftn,
             String containerNumber,
             String houseBillOfLadingNumber,
+            String proNumber,
             String carrierTrackingTrackingNumber,
             String carrierTrackingCarrierCode,
             String acceptLanguage)
@@ -226,6 +236,7 @@ public class TrackingApi {
                 aftn,
                 containerNumber,
                 houseBillOfLadingNumber,
+                proNumber,
                 carrierTrackingTrackingNumber,
                 carrierTrackingCarrierCode,
                 acceptLanguage,
@@ -241,6 +252,7 @@ public class TrackingApi {
      * @param aftn The Amazon Fulfillment Tracking Number. (optional)
      * @param containerNumber The container number provided by the Logistics Service Provider. (optional)
      * @param houseBillOfLadingNumber The House Bill of Lading (HBL) number. (optional)
+     * @param proNumber The PRO number assigned by the freight carrier (optional)
      * @param carrierTrackingTrackingNumber The tracking number assigned by the carrier. (optional)
      * @param carrierTrackingCarrierCode The carrier code associated with the carrier tracking number. (optional)
      * @param acceptLanguage The preferred natural language and locale of the client, in POSIX locale format. Currently
@@ -256,6 +268,7 @@ public class TrackingApi {
             String aftn,
             String containerNumber,
             String houseBillOfLadingNumber,
+            String proNumber,
             String carrierTrackingTrackingNumber,
             String carrierTrackingCarrierCode,
             String acceptLanguage,
@@ -267,6 +280,7 @@ public class TrackingApi {
                 aftn,
                 containerNumber,
                 houseBillOfLadingNumber,
+                proNumber,
                 carrierTrackingTrackingNumber,
                 carrierTrackingCarrierCode,
                 acceptLanguage,
@@ -292,6 +306,7 @@ public class TrackingApi {
      * @param aftn The Amazon Fulfillment Tracking Number. (optional)
      * @param containerNumber The container number provided by the Logistics Service Provider. (optional)
      * @param houseBillOfLadingNumber The House Bill of Lading (HBL) number. (optional)
+     * @param proNumber The PRO number assigned by the freight carrier (optional)
      * @param carrierTrackingTrackingNumber The tracking number assigned by the carrier. (optional)
      * @param carrierTrackingCarrierCode The carrier code associated with the carrier tracking number. (optional)
      * @param acceptLanguage The preferred natural language and locale of the client, in POSIX locale format. Currently
@@ -306,6 +321,7 @@ public class TrackingApi {
             String aftn,
             String containerNumber,
             String houseBillOfLadingNumber,
+            String proNumber,
             String carrierTrackingTrackingNumber,
             String carrierTrackingCarrierCode,
             String acceptLanguage)
@@ -316,6 +332,7 @@ public class TrackingApi {
                 aftn,
                 containerNumber,
                 houseBillOfLadingNumber,
+                proNumber,
                 carrierTrackingTrackingNumber,
                 carrierTrackingCarrierCode,
                 acceptLanguage,
@@ -330,6 +347,7 @@ public class TrackingApi {
      * @param aftn The Amazon Fulfillment Tracking Number. (optional)
      * @param containerNumber The container number provided by the Logistics Service Provider. (optional)
      * @param houseBillOfLadingNumber The House Bill of Lading (HBL) number. (optional)
+     * @param proNumber The PRO number assigned by the freight carrier (optional)
      * @param carrierTrackingTrackingNumber The tracking number assigned by the carrier. (optional)
      * @param carrierTrackingCarrierCode The carrier code associated with the carrier tracking number. (optional)
      * @param acceptLanguage The preferred natural language and locale of the client, in POSIX locale format. Currently
@@ -345,6 +363,7 @@ public class TrackingApi {
             String aftn,
             String containerNumber,
             String houseBillOfLadingNumber,
+            String proNumber,
             String carrierTrackingTrackingNumber,
             String carrierTrackingCarrierCode,
             String acceptLanguage,
@@ -356,6 +375,7 @@ public class TrackingApi {
                 aftn,
                 containerNumber,
                 houseBillOfLadingNumber,
+                proNumber,
                 carrierTrackingTrackingNumber,
                 carrierTrackingCarrierCode,
                 acceptLanguage,
@@ -370,6 +390,7 @@ public class TrackingApi {
      * @param aftn The Amazon Fulfillment Tracking Number. (optional)
      * @param containerNumber The container number provided by the Logistics Service Provider. (optional)
      * @param houseBillOfLadingNumber The House Bill of Lading (HBL) number. (optional)
+     * @param proNumber The PRO number assigned by the freight carrier (optional)
      * @param carrierTrackingTrackingNumber The tracking number assigned by the carrier. (optional)
      * @param carrierTrackingCarrierCode The carrier code associated with the carrier tracking number. (optional)
      * @param acceptLanguage The preferred natural language and locale of the client, in POSIX locale format. Currently
@@ -386,6 +407,7 @@ public class TrackingApi {
             String aftn,
             String containerNumber,
             String houseBillOfLadingNumber,
+            String proNumber,
             String carrierTrackingTrackingNumber,
             String carrierTrackingCarrierCode,
             String acceptLanguage,
@@ -405,6 +427,7 @@ public class TrackingApi {
                 aftn,
                 containerNumber,
                 houseBillOfLadingNumber,
+                proNumber,
                 carrierTrackingTrackingNumber,
                 carrierTrackingCarrierCode,
                 acceptLanguage,

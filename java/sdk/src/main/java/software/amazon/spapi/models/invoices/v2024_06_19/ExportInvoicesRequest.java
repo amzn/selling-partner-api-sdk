@@ -51,6 +51,9 @@ public class ExportInvoicesRequest {
     @SerializedName("transactionType")
     private String transactionType = null;
 
+    @SerializedName("warehouseCode")
+    private String warehouseCode = null;
+
     public ExportInvoicesRequest dateEnd(LocalDate dateEnd) {
         this.dateEnd = dateEnd;
         return this;
@@ -270,6 +273,28 @@ public class ExportInvoicesRequest {
         this.transactionType = transactionType;
     }
 
+    public ExportInvoicesRequest warehouseCode(String warehouseCode) {
+        this.warehouseCode = warehouseCode;
+        return this;
+    }
+
+    /**
+     * The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your
+     * WarehouseSettings in VendorCentral.
+     *
+     * @return warehouseCode
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description =
+                    "The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.")
+    public String getWarehouseCode() {
+        return warehouseCode;
+    }
+
+    public void setWarehouseCode(String warehouseCode) {
+        this.warehouseCode = warehouseCode;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -288,7 +313,8 @@ public class ExportInvoicesRequest {
                 && Objects.equals(this.series, exportInvoicesRequest.series)
                 && Objects.equals(this.statuses, exportInvoicesRequest.statuses)
                 && Objects.equals(this.transactionIdentifier, exportInvoicesRequest.transactionIdentifier)
-                && Objects.equals(this.transactionType, exportInvoicesRequest.transactionType);
+                && Objects.equals(this.transactionType, exportInvoicesRequest.transactionType)
+                && Objects.equals(this.warehouseCode, exportInvoicesRequest.warehouseCode);
     }
 
     @Override
@@ -303,7 +329,8 @@ public class ExportInvoicesRequest {
                 series,
                 statuses,
                 transactionIdentifier,
-                transactionType);
+                transactionType,
+                warehouseCode);
     }
 
     @Override
@@ -326,6 +353,7 @@ public class ExportInvoicesRequest {
         sb.append("    transactionType: ")
                 .append(toIndentedString(transactionType))
                 .append("\n");
+        sb.append("    warehouseCode: ").append(toIndentedString(warehouseCode)).append("\n");
         sb.append("}");
         return sb.toString();
     }

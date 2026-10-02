@@ -31,7 +31,13 @@ public class AdditionalDetails {
         @SerializedName("SUR")
         SUR("SUR"),
         @SerializedName("OCR")
-        OCR("OCR");
+        OCR("OCR"),
+        @SerializedName("TaxExemptReason")
+        TAX_EXEMPT_REASON("TaxExemptReason"),
+        @SerializedName("LegalTerms")
+        LEGAL_TERMS("LegalTerms"),
+        @SerializedName("RegulatoryNote")
+        REGULATORY_NOTE("RegulatoryNote");
 
         private String value;
 

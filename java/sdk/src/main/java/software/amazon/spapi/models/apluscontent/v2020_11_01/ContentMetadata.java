@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for A+ Content Management
- * Use the A+ Content API to build applications that help selling partners add rich marketing content to their Amazon product detail pages. Selling partners can use A+ content to share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners use content modules to add images and text.
+ * With the A+ Content API, you can build applications that help selling partners add rich marketing content to their Amazon product detail pages. A+ Content helps selling partners share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners assemble content by choosing from content modules and adding images and text.
  *
  * The version of the OpenAPI document: 2020-11-01
  *
@@ -16,8 +16,8 @@ import com.google.gson.annotations.SerializedName;
 import java.time.OffsetDateTime;
 import java.util.Objects;
 
-/** The A+ Content document&#39;s metadata. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The A+ Content document's metadata.")
+/** The metadata of an A+ Content document. */
+@io.swagger.v3.oas.annotations.media.Schema(description = "The metadata of an A+ Content document.")
 public class ContentMetadata {
     @SerializedName("name")
     private String name = null;
@@ -40,11 +40,11 @@ public class ContentMetadata {
     }
 
     /**
-     * The A+ Content document&#39;s name.
+     * The A+ Content document name.
      *
      * @return name
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The A+ Content document's name.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The A+ Content document name.")
     public String getName() {
         return name;
     }
@@ -59,15 +59,13 @@ public class ContentMetadata {
     }
 
     /**
-     * The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer
-     * to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     * The identifier for the Amazon store where the A+ Content is published.
      *
      * @return marketplaceId
      */
     @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
-            description =
-                    "The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
+            description = "The identifier for the Amazon store where the A+ Content is published.")
     public String getMarketplaceId() {
         return marketplaceId;
     }

@@ -29,6 +29,9 @@ public class PartyIdentification {
     @SerializedName("taxRegistrationDetails")
     private List<TaxRegistrationDetail> taxRegistrationDetails = null;
 
+    @SerializedName("additionalPartyIdentifications")
+    private List<AdditionalPartyIdentification> additionalPartyIdentifications = null;
+
     public PartyIdentification partyId(String partyId) {
         this.partyId = partyId;
         return this;
@@ -94,6 +97,38 @@ public class PartyIdentification {
         this.taxRegistrationDetails = taxRegistrationDetails;
     }
 
+    public PartyIdentification additionalPartyIdentifications(
+            List<AdditionalPartyIdentification> additionalPartyIdentifications) {
+        this.additionalPartyIdentifications = additionalPartyIdentifications;
+        return this;
+    }
+
+    public PartyIdentification addAdditionalPartyIdentificationsItem(
+            AdditionalPartyIdentification additionalPartyIdentificationsItem) {
+        if (this.additionalPartyIdentifications == null) {
+            this.additionalPartyIdentifications = new ArrayList<>();
+        }
+        this.additionalPartyIdentifications.add(additionalPartyIdentificationsItem);
+        return this;
+    }
+
+    /**
+     * Additional corporate or fiscal registration identifiers for the party that are not VAT/GST registrations (e.g. FR
+     * SIREN, or DE W-IdNr.).
+     *
+     * @return additionalPartyIdentifications
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description =
+                    "Additional corporate or fiscal registration identifiers for the party that are not VAT/GST registrations (e.g. FR SIREN, or DE W-IdNr.).")
+    public List<AdditionalPartyIdentification> getAdditionalPartyIdentifications() {
+        return additionalPartyIdentifications;
+    }
+
+    public void setAdditionalPartyIdentifications(List<AdditionalPartyIdentification> additionalPartyIdentifications) {
+        this.additionalPartyIdentifications = additionalPartyIdentifications;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -105,12 +140,14 @@ public class PartyIdentification {
         PartyIdentification partyIdentification = (PartyIdentification) o;
         return Objects.equals(this.partyId, partyIdentification.partyId)
                 && Objects.equals(this.address, partyIdentification.address)
-                && Objects.equals(this.taxRegistrationDetails, partyIdentification.taxRegistrationDetails);
+                && Objects.equals(this.taxRegistrationDetails, partyIdentification.taxRegistrationDetails)
+                && Objects.equals(
+                        this.additionalPartyIdentifications, partyIdentification.additionalPartyIdentifications);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(partyId, address, taxRegistrationDetails);
+        return Objects.hash(partyId, address, taxRegistrationDetails, additionalPartyIdentifications);
     }
 
     @Override
@@ -121,6 +158,9 @@ public class PartyIdentification {
         sb.append("    address: ").append(toIndentedString(address)).append("\n");
         sb.append("    taxRegistrationDetails: ")
                 .append(toIndentedString(taxRegistrationDetails))
+                .append("\n");
+        sb.append("    additionalPartyIdentifications: ")
+                .append(toIndentedString(additionalPartyIdentifications))
                 .append("\n");
         sb.append("}");
         return sb.toString();

@@ -34,11 +34,11 @@ public class CustomAttribute {
     }
 
     /**
-     * The key of the custom attribute. Must be unique.
+     * The attribute key.
      *
      * @return key
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The key of the custom attribute. Must be unique.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The attribute key.")
     public String getKey() {
         return key;
     }
@@ -72,11 +72,11 @@ public class CustomAttribute {
     }
 
     /**
-     * The value of the custom attribute.
+     * The attribute value.
      *
      * @return value
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The value of the custom attribute.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The attribute value.")
     public String getValue() {
         return value;
     }

@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for A+ Content Management
- * Use the A+ Content API to build applications that help selling partners add rich marketing content to their Amazon product detail pages. Selling partners can use A+ content to share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners use content modules to add images and text.
+ * With the A+ Content API, you can build applications that help selling partners add rich marketing content to their Amazon product detail pages. A+ Content helps selling partners share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners assemble content by choosing from content modules and adding images and text.
  *
  * The version of the OpenAPI document: 2020-11-01
  *
@@ -26,7 +26,10 @@ import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
 import org.junit.jupiter.api.Test;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.models.apluscontent.v2020_11_01.CreateMediaRequest;
+import software.amazon.spapi.models.apluscontent.v2020_11_01.CreateMediaResponse;
 import software.amazon.spapi.models.apluscontent.v2020_11_01.GetContentDocumentResponse;
+import software.amazon.spapi.models.apluscontent.v2020_11_01.GetMediaResponse;
 import software.amazon.spapi.models.apluscontent.v2020_11_01.ListContentDocumentAsinRelationsResponse;
 import software.amazon.spapi.models.apluscontent.v2020_11_01.PostContentDocumentApprovalSubmissionResponse;
 import software.amazon.spapi.models.apluscontent.v2020_11_01.PostContentDocumentAsinRelationsRequest;
@@ -36,6 +39,8 @@ import software.amazon.spapi.models.apluscontent.v2020_11_01.PostContentDocument
 import software.amazon.spapi.models.apluscontent.v2020_11_01.PostContentDocumentSuspendSubmissionResponse;
 import software.amazon.spapi.models.apluscontent.v2020_11_01.SearchContentDocumentsResponse;
 import software.amazon.spapi.models.apluscontent.v2020_11_01.SearchContentPublishRecordsResponse;
+import software.amazon.spapi.models.apluscontent.v2020_11_01.UpdateMediaRequest;
+import software.amazon.spapi.models.apluscontent.v2020_11_01.UpdateMediaResponse;
 import software.amazon.spapi.models.apluscontent.v2020_11_01.ValidateContentDocumentAsinRelationsResponse;
 import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
@@ -76,6 +81,18 @@ public class AplusContentApiTest {
     }
 
     @Test
+    public void createMediaTest() throws Exception {
+        instructBackendMock("aplusContent", "createMedia", "200");
+
+        CreateMediaRequest createMediaRequest = easyRandom.nextObject(CreateMediaRequest.class);
+
+        ApiResponse<CreateMediaResponse> response = api.createMediaWithHttpInfo(createMediaRequest);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
     public void getContentDocumentTest() throws Exception {
         instructBackendMock("aplusContent", "getContentDocument", "200");
 
@@ -87,6 +104,18 @@ public class AplusContentApiTest {
 
         ApiResponse<GetContentDocumentResponse> response =
                 api.getContentDocumentWithHttpInfo(contentReferenceKey, marketplaceId, includedDataSet);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
+    public void getMediaTest() throws Exception {
+        instructBackendMock("aplusContent", "getMedia", "200");
+
+        String mediaId = easyRandom.nextObject(String.class);
+
+        ApiResponse<GetMediaResponse> response = api.getMediaWithHttpInfo(mediaId, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
@@ -196,6 +225,20 @@ public class AplusContentApiTest {
 
         ApiResponse<PostContentDocumentResponse> response =
                 api.updateContentDocumentWithHttpInfo(contentReferenceKey, marketplaceId, postContentDocumentRequest);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
+    public void updateMediaTest() throws Exception {
+        instructBackendMock("aplusContent", "updateMedia", "200");
+
+        String mediaId = easyRandom.nextObject(String.class);
+
+        UpdateMediaRequest updateMediaRequest = easyRandom.nextObject(UpdateMediaRequest.class);
+
+        ApiResponse<UpdateMediaResponse> response = api.updateMediaWithHttpInfo(mediaId, updateMediaRequest, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

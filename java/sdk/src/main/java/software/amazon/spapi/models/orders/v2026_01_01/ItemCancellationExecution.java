@@ -15,13 +15,9 @@ package software.amazon.spapi.models.orders.v2026_01_01;
 import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
 
-/**
- * Details of how the cancellation was executed for a specific order item, including who performed the cancellation and
- * the reason.
- */
+/** Detailed information about how the cancellation was processed for a specific order item. */
 @io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Details of how the cancellation was executed for a specific order item, including who performed the cancellation and the reason.")
+        description = "Detailed information about how the cancellation was processed for a specific order item.")
 public class ItemCancellationExecution {
     @SerializedName("cancelledBy")
     private String cancelledBy = null;
@@ -35,14 +31,14 @@ public class ItemCancellationExecution {
     }
 
     /**
-     * Entity that executed the cancellation for this item. **Possible values**: &#x60;BUYER&#x60;,
-     * &#x60;MERCHANT&#x60;, &#x60;AMAZON&#x60;
+     * The entity that executed the cancellation for this item. **Possible values**: &#x60;BUYER&#x60;,
+     * &#x60;MERCHANT&#x60;, &#x60;AMAZON&#x60;.
      *
      * @return cancelledBy
      */
     @io.swagger.v3.oas.annotations.media.Schema(
             description =
-                    "Entity that executed the cancellation for this item.   **Possible values**: `BUYER`, `MERCHANT`, `AMAZON`")
+                    "The entity that executed the cancellation for this item.   **Possible values**: `BUYER`, `MERCHANT`, `AMAZON`.")
     public String getCancelledBy() {
         return cancelledBy;
     }
@@ -57,12 +53,12 @@ public class ItemCancellationExecution {
     }
 
     /**
-     * Explanation provided for why the cancellation was executed.
+     * The provided explanation for why the cancellation occurred.
      *
      * @return cancelReason
      */
     @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Explanation provided for why the cancellation was executed.")
+            description = "The provided explanation for why the cancellation occurred.")
     public String getCancelReason() {
         return cancelReason;
     }
