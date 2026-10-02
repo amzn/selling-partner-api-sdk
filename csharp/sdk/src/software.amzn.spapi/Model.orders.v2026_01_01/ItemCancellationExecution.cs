@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.orders.v2026_01_01
 {
     /// <summary>
-    /// Details of how the cancellation was executed for a specific order item, including who performed the cancellation and the reason.
+    /// Detailed information about how the cancellation was processed for a specific order item.
     /// </summary>
     [DataContract(Name = "ItemCancellationExecution")]
     public partial class ItemCancellationExecution : IValidatableObject
@@ -34,8 +34,8 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// <summary>
         /// Initializes a new instance of the <see cref="ItemCancellationExecution" /> class.
         /// </summary>
-        /// <param name="cancelledBy">Entity that executed the cancellation for this item.   **Possible values**: &#x60;BUYER&#x60;, &#x60;MERCHANT&#x60;, &#x60;AMAZON&#x60;.</param>
-        /// <param name="cancelReason">Explanation provided for why the cancellation was executed..</param>
+        /// <param name="cancelledBy">The entity that executed the cancellation for this item.   **Possible values**: &#x60;BUYER&#x60;, &#x60;MERCHANT&#x60;, &#x60;AMAZON&#x60;..</param>
+        /// <param name="cancelReason">The provided explanation for why the cancellation occurred..</param>
         public ItemCancellationExecution(string? cancelledBy = default(string?), string? cancelReason = default(string?))
         {
             this.CancelledBy = cancelledBy;
@@ -43,16 +43,16 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         }
 
         /// <summary>
-        /// Entity that executed the cancellation for this item.   **Possible values**: &#x60;BUYER&#x60;, &#x60;MERCHANT&#x60;, &#x60;AMAZON&#x60;
+        /// The entity that executed the cancellation for this item.   **Possible values**: &#x60;BUYER&#x60;, &#x60;MERCHANT&#x60;, &#x60;AMAZON&#x60;.
         /// </summary>
-        /// <value>Entity that executed the cancellation for this item.   **Possible values**: &#x60;BUYER&#x60;, &#x60;MERCHANT&#x60;, &#x60;AMAZON&#x60;</value>
+        /// <value>The entity that executed the cancellation for this item.   **Possible values**: &#x60;BUYER&#x60;, &#x60;MERCHANT&#x60;, &#x60;AMAZON&#x60;.</value>
         [DataMember(Name = "cancelledBy", EmitDefaultValue = false)]
         public string? CancelledBy { get; set; }
 
         /// <summary>
-        /// Explanation provided for why the cancellation was executed.
+        /// The provided explanation for why the cancellation occurred.
         /// </summary>
-        /// <value>Explanation provided for why the cancellation was executed.</value>
+        /// <value>The provided explanation for why the cancellation occurred.</value>
         [DataMember(Name = "cancelReason", EmitDefaultValue = false)]
         public string? CancelReason { get; set; }
 

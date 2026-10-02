@@ -55,7 +55,8 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// <param name="statuses">A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1.</param>
         /// <param name="transactionIdentifier">transactionIdentifier.</param>
         /// <param name="transactionType">The marketplace-specific classification of the transaction type for which the invoice was created. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;transactionType&#x60; options.</param>
-        public ExportInvoicesRequest(DateOnly? dateEnd = default(DateOnly?), DateOnly? dateStart = default(DateOnly?), string? externalInvoiceId = default(string?), FileFormat? fileFormat = default(FileFormat?), string? invoiceType = default(string?), string marketplaceId = default(string), string? series = default(string?), List<string>? statuses = default(List<string>?), TransactionIdentifier? transactionIdentifier = default(TransactionIdentifier?), string? transactionType = default(string?))
+        /// <param name="warehouseCode">The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral..</param>
+        public ExportInvoicesRequest(DateOnly? dateEnd = default(DateOnly?), DateOnly? dateStart = default(DateOnly?), string? externalInvoiceId = default(string?), FileFormat? fileFormat = default(FileFormat?), string? invoiceType = default(string?), string marketplaceId = default(string), string? series = default(string?), List<string>? statuses = default(List<string>?), TransactionIdentifier? transactionIdentifier = default(TransactionIdentifier?), string? transactionType = default(string?), string? warehouseCode = default(string?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -72,6 +73,7 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
             this.Statuses = statuses;
             this.TransactionIdentifier = transactionIdentifier;
             this.TransactionType = transactionType;
+            this.WarehouseCode = warehouseCode;
         }
 
         /// <summary>
@@ -137,6 +139,13 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         public string? TransactionType { get; set; }
 
         /// <summary>
+        /// The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
+        /// </summary>
+        /// <value>The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.</value>
+        [DataMember(Name = "warehouseCode", EmitDefaultValue = false)]
+        public string? WarehouseCode { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -154,6 +163,7 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
             sb.Append("  Statuses: ").Append(Statuses).Append("\n");
             sb.Append("  TransactionIdentifier: ").Append(TransactionIdentifier).Append("\n");
             sb.Append("  TransactionType: ").Append(TransactionType).Append("\n");
+            sb.Append("  WarehouseCode: ").Append(WarehouseCode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

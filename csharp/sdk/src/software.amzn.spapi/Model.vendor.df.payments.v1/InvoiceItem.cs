@@ -42,14 +42,17 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// <param name="itemSequenceNumber">Numbering of the item on the purchase order. The first item will be 1, the second 2, and so on. (required).</param>
         /// <param name="buyerProductIdentifier">Buyer&#39;s standard identification number (ASIN) of an item..</param>
         /// <param name="vendorProductIdentifier">The vendor selected product identification of the item..</param>
+        /// <param name="itemDescription">Product or service description for the invoiced line item..</param>
         /// <param name="invoicedQuantity">invoicedQuantity (required).</param>
         /// <param name="netCost">netCost (required).</param>
         /// <param name="purchaseOrderNumber">The purchase order number for this order. Formatting Notes: 8-character alpha-numeric code. (required).</param>
         /// <param name="vendorOrderNumber">The vendor&#39;s order number for this order..</param>
         /// <param name="hsnCode">Harmonized System of Nomenclature (HSN) tax code. The HSN number cannot contain alphabets..</param>
         /// <param name="taxDetails">Individual tax details per line item..</param>
+        /// <param name="additionalDetails">Line-level additional details provided by the selling party, e.g. tax exemption reason code and text..</param>
         /// <param name="chargeDetails">Individual charge details per line item..</param>
-        public InvoiceItem(string itemSequenceNumber = default(string), string? buyerProductIdentifier = default(string?), string? vendorProductIdentifier = default(string?), ItemQuantity invoicedQuantity = default(ItemQuantity), Money netCost = default(Money), string purchaseOrderNumber = default(string), string? vendorOrderNumber = default(string?), string? hsnCode = default(string?), List<TaxDetail>? taxDetails = default(List<TaxDetail>?), List<ChargeDetails>? chargeDetails = default(List<ChargeDetails>?))
+        /// <param name="allowanceDetails">Individual allowance details per line item..</param>
+        public InvoiceItem(string itemSequenceNumber = default(string), string? buyerProductIdentifier = default(string?), string? vendorProductIdentifier = default(string?), string? itemDescription = default(string?), ItemQuantity invoicedQuantity = default(ItemQuantity), Money netCost = default(Money), string purchaseOrderNumber = default(string), string? vendorOrderNumber = default(string?), string? hsnCode = default(string?), List<TaxDetail>? taxDetails = default(List<TaxDetail>?), List<AdditionalDetails>? additionalDetails = default(List<AdditionalDetails>?), List<ChargeDetails>? chargeDetails = default(List<ChargeDetails>?), List<AllowanceDetails>? allowanceDetails = default(List<AllowanceDetails>?))
         {
             // to ensure "itemSequenceNumber" is required (not null)
             if (itemSequenceNumber == null)
@@ -77,10 +80,13 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
             this.PurchaseOrderNumber = purchaseOrderNumber;
             this.BuyerProductIdentifier = buyerProductIdentifier;
             this.VendorProductIdentifier = vendorProductIdentifier;
+            this.ItemDescription = itemDescription;
             this.VendorOrderNumber = vendorOrderNumber;
             this.HsnCode = hsnCode;
             this.TaxDetails = taxDetails;
+            this.AdditionalDetails = additionalDetails;
             this.ChargeDetails = chargeDetails;
+            this.AllowanceDetails = allowanceDetails;
         }
 
         /// <summary>
@@ -103,6 +109,13 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// <value>The vendor selected product identification of the item.</value>
         [DataMember(Name = "vendorProductIdentifier", EmitDefaultValue = false)]
         public string? VendorProductIdentifier { get; set; }
+
+        /// <summary>
+        /// Product or service description for the invoiced line item.
+        /// </summary>
+        /// <value>Product or service description for the invoiced line item.</value>
+        [DataMember(Name = "itemDescription", EmitDefaultValue = false)]
+        public string? ItemDescription { get; set; }
 
         /// <summary>
         /// Gets or Sets InvoicedQuantity
@@ -145,11 +158,25 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         public List<TaxDetail>? TaxDetails { get; set; }
 
         /// <summary>
+        /// Line-level additional details provided by the selling party, e.g. tax exemption reason code and text.
+        /// </summary>
+        /// <value>Line-level additional details provided by the selling party, e.g. tax exemption reason code and text.</value>
+        [DataMember(Name = "additionalDetails", EmitDefaultValue = false)]
+        public List<AdditionalDetails>? AdditionalDetails { get; set; }
+
+        /// <summary>
         /// Individual charge details per line item.
         /// </summary>
         /// <value>Individual charge details per line item.</value>
         [DataMember(Name = "chargeDetails", EmitDefaultValue = false)]
         public List<ChargeDetails>? ChargeDetails { get; set; }
+
+        /// <summary>
+        /// Individual allowance details per line item.
+        /// </summary>
+        /// <value>Individual allowance details per line item.</value>
+        [DataMember(Name = "allowanceDetails", EmitDefaultValue = false)]
+        public List<AllowanceDetails>? AllowanceDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -162,13 +189,16 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
             sb.Append("  ItemSequenceNumber: ").Append(ItemSequenceNumber).Append("\n");
             sb.Append("  BuyerProductIdentifier: ").Append(BuyerProductIdentifier).Append("\n");
             sb.Append("  VendorProductIdentifier: ").Append(VendorProductIdentifier).Append("\n");
+            sb.Append("  ItemDescription: ").Append(ItemDescription).Append("\n");
             sb.Append("  InvoicedQuantity: ").Append(InvoicedQuantity).Append("\n");
             sb.Append("  NetCost: ").Append(NetCost).Append("\n");
             sb.Append("  PurchaseOrderNumber: ").Append(PurchaseOrderNumber).Append("\n");
             sb.Append("  VendorOrderNumber: ").Append(VendorOrderNumber).Append("\n");
             sb.Append("  HsnCode: ").Append(HsnCode).Append("\n");
             sb.Append("  TaxDetails: ").Append(TaxDetails).Append("\n");
+            sb.Append("  AdditionalDetails: ").Append(AdditionalDetails).Append("\n");
             sb.Append("  ChargeDetails: ").Append(ChargeDetails).Append("\n");
+            sb.Append("  AllowanceDetails: ").Append(AllowanceDetails).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

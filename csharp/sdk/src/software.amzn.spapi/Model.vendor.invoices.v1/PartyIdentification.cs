@@ -42,7 +42,8 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// <param name="partyId">Assigned identification for the party. (required).</param>
         /// <param name="address">address.</param>
         /// <param name="taxRegistrationDetails">Tax registration details of the party..</param>
-        public PartyIdentification(string partyId = default(string), Address? address = default(Address?), List<TaxRegistrationDetails>? taxRegistrationDetails = default(List<TaxRegistrationDetails>?))
+        /// <param name="additionalPartyIdentifications">Additional corporate or fiscal registration identifiers for the party that are not VAT/GST registrations (e.g. FR SIREN, or DE W-IdNr.)..</param>
+        public PartyIdentification(string partyId = default(string), Address? address = default(Address?), List<TaxRegistrationDetails>? taxRegistrationDetails = default(List<TaxRegistrationDetails>?), List<AdditionalPartyIdentification>? additionalPartyIdentifications = default(List<AdditionalPartyIdentification>?))
         {
             // to ensure "partyId" is required (not null)
             if (partyId == null)
@@ -52,6 +53,7 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
             this.PartyId = partyId;
             this.Address = address;
             this.TaxRegistrationDetails = taxRegistrationDetails;
+            this.AdditionalPartyIdentifications = additionalPartyIdentifications;
         }
 
         /// <summary>
@@ -75,6 +77,13 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         public List<TaxRegistrationDetails>? TaxRegistrationDetails { get; set; }
 
         /// <summary>
+        /// Additional corporate or fiscal registration identifiers for the party that are not VAT/GST registrations (e.g. FR SIREN, or DE W-IdNr.).
+        /// </summary>
+        /// <value>Additional corporate or fiscal registration identifiers for the party that are not VAT/GST registrations (e.g. FR SIREN, or DE W-IdNr.).</value>
+        [DataMember(Name = "additionalPartyIdentifications", EmitDefaultValue = false)]
+        public List<AdditionalPartyIdentification>? AdditionalPartyIdentifications { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -85,6 +94,7 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
             sb.Append("  PartyId: ").Append(PartyId).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  TaxRegistrationDetails: ").Append(TaxRegistrationDetails).Append("\n");
+            sb.Append("  AdditionalPartyIdentifications: ").Append(AdditionalPartyIdentifications).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

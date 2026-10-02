@@ -48,7 +48,25 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
             /// Enum OCR for value: OCR
             /// </summary>
             [EnumMember(Value = "OCR")]
-            OCR = 2
+            OCR = 2,
+
+            /// <summary>
+            /// Enum TaxExemptReason for value: TaxExemptReason
+            /// </summary>
+            [EnumMember(Value = "TaxExemptReason")]
+            TaxExemptReason = 3,
+
+            /// <summary>
+            /// Enum LegalTerms for value: LegalTerms
+            /// </summary>
+            [EnumMember(Value = "LegalTerms")]
+            LegalTerms = 4,
+
+            /// <summary>
+            /// Enum RegulatoryNote for value: RegulatoryNote
+            /// </summary>
+            [EnumMember(Value = "RegulatoryNote")]
+            RegulatoryNote = 5
         }
 
 

@@ -68,7 +68,7 @@ namespace software.amzn.spapi.Test.Api.tracking.v2026_01_30
             httpClient.Send(request);
             
 
-            var response = api.GetShipmentTrackingWithHttpInfo(null, null, null, null, null, null, null, null);
+            var response = api.GetShipmentTrackingWithHttpInfo(null, null, null, null, null, null, null, null, null);
 
             Assert.Equal(200, (int) response.StatusCode);
             AssertValidResponsePayload(200, response.Content);

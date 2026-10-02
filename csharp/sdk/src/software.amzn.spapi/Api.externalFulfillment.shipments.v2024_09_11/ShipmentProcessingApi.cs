@@ -200,7 +200,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId">The ID of the shipment to which the package belongs.</param>
         /// <param name="packageId">The ID of the package whose status you want to update.</param>
-        /// <param name="status">**DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)</param>
+        /// <param name="status">**This field is only used for the Seller Flex program**. For the Self Delivery program, package statuses are defined in the body parameter. (optional)</param>
         /// <param name="body">The body of the request. (optional)</param>
         /// <returns></returns>
         void UpdatePackageStatus (string shipmentId, string packageId, string? status = null, PackageDeliveryStatus? body = null);
@@ -214,7 +214,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId">The ID of the shipment to which the package belongs.</param>
         /// <param name="packageId">The ID of the package whose status you want to update.</param>
-        /// <param name="status">**DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)</param>
+        /// <param name="status">**This field is only used for the Seller Flex program**. For the Self Delivery program, package statuses are defined in the body parameter. (optional)</param>
         /// <param name="body">The body of the request. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UpdatePackageStatusWithHttpInfo (string shipmentId, string packageId, string? status = null, PackageDeliveryStatus? body = null);
@@ -394,7 +394,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId">The ID of the shipment to which the package belongs.</param>
         /// <param name="packageId">The ID of the package whose status you want to update.</param>
-        /// <param name="status">**DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)</param>
+        /// <param name="status">**This field is only used for the Seller Flex program**. For the Self Delivery program, package statuses are defined in the body parameter. (optional)</param>
         /// <param name="body">The body of the request. (optional)</param>
         /// <returns>Task of void</returns>
         System.Threading.Tasks.Task UpdatePackageStatusAsync (string shipmentId, string packageId, string? status = null, PackageDeliveryStatus? body = null);
@@ -408,7 +408,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId">The ID of the shipment to which the package belongs.</param>
         /// <param name="packageId">The ID of the package whose status you want to update.</param>
-        /// <param name="status">**DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)</param>
+        /// <param name="status">**This field is only used for the Seller Flex program**. For the Self Delivery program, package statuses are defined in the body parameter. (optional)</param>
         /// <param name="body">The body of the request. (optional)</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> UpdatePackageStatusAsyncWithHttpInfo (string shipmentId, string packageId, string? status = null, PackageDeliveryStatus? body = null);
@@ -1559,7 +1559,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId">The ID of the shipment to which the package belongs.</param>
         /// <param name="packageId">The ID of the package whose status you want to update.</param>
-        /// <param name="status">**DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)</param>
+        /// <param name="status">**This field is only used for the Seller Flex program**. For the Self Delivery program, package statuses are defined in the body parameter. (optional)</param>
         /// <param name="body">The body of the request. (optional)</param>
         /// <returns></returns>
         public void UpdatePackageStatus (string shipmentId, string packageId, string? status = null, PackageDeliveryStatus? body = null)
@@ -1573,7 +1573,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId">The ID of the shipment to which the package belongs.</param>
         /// <param name="packageId">The ID of the package whose status you want to update.</param>
-        /// <param name="status">**DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)</param>
+        /// <param name="status">**This field is only used for the Seller Flex program**. For the Self Delivery program, package statuses are defined in the body parameter. (optional)</param>
         /// <param name="body">The body of the request. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
         public ApiResponse<Object> UpdatePackageStatusWithHttpInfo (string shipmentId, string packageId, string? status = null, PackageDeliveryStatus? body = null)
@@ -1643,7 +1643,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId">The ID of the shipment to which the package belongs.</param>
         /// <param name="packageId">The ID of the package whose status you want to update.</param>
-        /// <param name="status">**DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)</param>
+        /// <param name="status">**This field is only used for the Seller Flex program**. For the Self Delivery program, package statuses are defined in the body parameter. (optional)</param>
         /// <param name="body">The body of the request. (optional)</param>
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task UpdatePackageStatusAsync (string shipmentId, string packageId, string? status = null, PackageDeliveryStatus? body = null)
@@ -1658,7 +1658,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId">The ID of the shipment to which the package belongs.</param>
         /// <param name="packageId">The ID of the package whose status you want to update.</param>
-        /// <param name="status">**DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)</param>
+        /// <param name="status">**This field is only used for the Seller Flex program**. For the Self Delivery program, package statuses are defined in the body parameter. (optional)</param>
         /// <param name="body">The body of the request. (optional)</param>
         /// <returns>Task of ApiResponse</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdatePackageStatusAsyncWithHttpInfo (string shipmentId, string packageId, string? status = null, PackageDeliveryStatus? body = null)

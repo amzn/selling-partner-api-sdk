@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.orders.v2026_01_01
 {
     /// <summary>
-    /// An associated order item that a customer has purchased with the product. For example, a tire installation service purchased with tires.
+    /// An associated order item that a customer has purchased with the product. For example, a tire installation service purchased with tires, or a warranty protection plan purchased with a product.
     /// </summary>
     [DataContract(Name = "AssociatedOrderItem")]
     public partial class AssociatedOrderItem : IValidatableObject
@@ -36,12 +36,16 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// </summary>
         /// <param name="orderId">The order identifier of the associated order item..</param>
         /// <param name="orderItemId">The order item identifier of the associated order item..</param>
-        /// <param name="associationType">The type of association between the order items.  **Possible values**: - &#x60;VALUE_ADD_SERVICE&#x60; (The associated item is a service order).</param>
-        public AssociatedOrderItem(string? orderId = default(string?), string? orderItemId = default(string?), string? associationType = default(string?))
+        /// <param name="associationType">The type of association between the order items.  **Possible values**: - &#x60;VALUE_ADD_SERVICE&#x60; (The associated item is a service order) - &#x60;WARRANTY&#x60; (The associated item is a product covered by a warranty or protection plan).</param>
+        /// <param name="asin">The ASIN of the associated order item..</param>
+        /// <param name="purchasePrice">purchasePrice.</param>
+        public AssociatedOrderItem(string? orderId = default(string?), string? orderItemId = default(string?), string? associationType = default(string?), string? asin = default(string?), Money? purchasePrice = default(Money?))
         {
             this.OrderId = orderId;
             this.OrderItemId = orderItemId;
             this.AssociationType = associationType;
+            this.Asin = asin;
+            this.PurchasePrice = purchasePrice;
         }
 
         /// <summary>
@@ -59,11 +63,24 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         public string? OrderItemId { get; set; }
 
         /// <summary>
-        /// The type of association between the order items.  **Possible values**: - &#x60;VALUE_ADD_SERVICE&#x60; (The associated item is a service order)
+        /// The type of association between the order items.  **Possible values**: - &#x60;VALUE_ADD_SERVICE&#x60; (The associated item is a service order) - &#x60;WARRANTY&#x60; (The associated item is a product covered by a warranty or protection plan)
         /// </summary>
-        /// <value>The type of association between the order items.  **Possible values**: - &#x60;VALUE_ADD_SERVICE&#x60; (The associated item is a service order)</value>
+        /// <value>The type of association between the order items.  **Possible values**: - &#x60;VALUE_ADD_SERVICE&#x60; (The associated item is a service order) - &#x60;WARRANTY&#x60; (The associated item is a product covered by a warranty or protection plan)</value>
         [DataMember(Name = "associationType", EmitDefaultValue = false)]
         public string? AssociationType { get; set; }
+
+        /// <summary>
+        /// The ASIN of the associated order item.
+        /// </summary>
+        /// <value>The ASIN of the associated order item.</value>
+        [DataMember(Name = "asin", EmitDefaultValue = false)]
+        public string? Asin { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PurchasePrice
+        /// </summary>
+        [DataMember(Name = "purchasePrice", EmitDefaultValue = false)]
+        public Money? PurchasePrice { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -76,6 +93,8 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  OrderItemId: ").Append(OrderItemId).Append("\n");
             sb.Append("  AssociationType: ").Append(AssociationType).Append("\n");
+            sb.Append("  Asin: ").Append(Asin).Append("\n");
+            sb.Append("  PurchasePrice: ").Append(PurchasePrice).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
