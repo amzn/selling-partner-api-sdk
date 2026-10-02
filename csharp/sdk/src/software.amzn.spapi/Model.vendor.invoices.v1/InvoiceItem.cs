@@ -53,11 +53,13 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// <param name="netCostUnitOfMeasure">netCostUnitOfMeasure.</param>
         /// <param name="purchaseOrderNumber">The Amazon purchase order number for this invoiced line item. Formatting Notes: 8-character alpha-numeric code. This value is mandatory only when invoiceType is Invoice, and is not required when invoiceType is CreditNote..</param>
         /// <param name="hsnCode">HSN Tax code. The HSN number cannot contain alphabets..</param>
+        /// <param name="itemDescription">Product or service description for the invoiced line item..</param>
+        /// <param name="additionalDetails">Line-level additional details provided by the selling party, e.g. tax exemption reason code and text..</param>
         /// <param name="creditNoteDetails">creditNoteDetails.</param>
         /// <param name="taxDetails">Individual tax details per line item..</param>
         /// <param name="chargeDetails">Individual charge details per line item..</param>
         /// <param name="allowanceDetails">Individual allowance details per line item..</param>
-        public InvoiceItem(int itemSequenceNumber = default(int), string? amazonProductIdentifier = default(string?), string? vendorProductIdentifier = default(string?), ItemQuantity invoicedQuantity = default(ItemQuantity), Money netCost = default(Money), NetCostUnitOfMeasure? netCostUnitOfMeasure = default(NetCostUnitOfMeasure?), string? purchaseOrderNumber = default(string?), string? hsnCode = default(string?), CreditNoteDetails? creditNoteDetails = default(CreditNoteDetails?), List<TaxDetails>? taxDetails = default(List<TaxDetails>?), List<ChargeDetails>? chargeDetails = default(List<ChargeDetails>?), List<AllowanceDetails>? allowanceDetails = default(List<AllowanceDetails>?))
+        public InvoiceItem(int itemSequenceNumber = default(int), string? amazonProductIdentifier = default(string?), string? vendorProductIdentifier = default(string?), ItemQuantity invoicedQuantity = default(ItemQuantity), Money netCost = default(Money), NetCostUnitOfMeasure? netCostUnitOfMeasure = default(NetCostUnitOfMeasure?), string? purchaseOrderNumber = default(string?), string? hsnCode = default(string?), string? itemDescription = default(string?), List<AdditionalDetails>? additionalDetails = default(List<AdditionalDetails>?), CreditNoteDetails? creditNoteDetails = default(CreditNoteDetails?), List<TaxDetails>? taxDetails = default(List<TaxDetails>?), List<ChargeDetails>? chargeDetails = default(List<ChargeDetails>?), List<AllowanceDetails>? allowanceDetails = default(List<AllowanceDetails>?))
         {
             this.ItemSequenceNumber = itemSequenceNumber;
             // to ensure "invoicedQuantity" is required (not null)
@@ -77,6 +79,8 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
             this.NetCostUnitOfMeasure = netCostUnitOfMeasure;
             this.PurchaseOrderNumber = purchaseOrderNumber;
             this.HsnCode = hsnCode;
+            this.ItemDescription = itemDescription;
+            this.AdditionalDetails = additionalDetails;
             this.CreditNoteDetails = creditNoteDetails;
             this.TaxDetails = taxDetails;
             this.ChargeDetails = chargeDetails;
@@ -131,6 +135,20 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         public string? HsnCode { get; set; }
 
         /// <summary>
+        /// Product or service description for the invoiced line item.
+        /// </summary>
+        /// <value>Product or service description for the invoiced line item.</value>
+        [DataMember(Name = "itemDescription", EmitDefaultValue = false)]
+        public string? ItemDescription { get; set; }
+
+        /// <summary>
+        /// Line-level additional details provided by the selling party, e.g. tax exemption reason code and text.
+        /// </summary>
+        /// <value>Line-level additional details provided by the selling party, e.g. tax exemption reason code and text.</value>
+        [DataMember(Name = "additionalDetails", EmitDefaultValue = false)]
+        public List<AdditionalDetails>? AdditionalDetails { get; set; }
+
+        /// <summary>
         /// Gets or Sets CreditNoteDetails
         /// </summary>
         [DataMember(Name = "creditNoteDetails", EmitDefaultValue = false)]
@@ -173,6 +191,8 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
             sb.Append("  NetCostUnitOfMeasure: ").Append(NetCostUnitOfMeasure).Append("\n");
             sb.Append("  PurchaseOrderNumber: ").Append(PurchaseOrderNumber).Append("\n");
             sb.Append("  HsnCode: ").Append(HsnCode).Append("\n");
+            sb.Append("  ItemDescription: ").Append(ItemDescription).Append("\n");
+            sb.Append("  AdditionalDetails: ").Append(AdditionalDetails).Append("\n");
             sb.Append("  CreditNoteDetails: ").Append(CreditNoteDetails).Append("\n");
             sb.Append("  TaxDetails: ").Append(TaxDetails).Append("\n");
             sb.Append("  ChargeDetails: ").Append(ChargeDetails).Append("\n");

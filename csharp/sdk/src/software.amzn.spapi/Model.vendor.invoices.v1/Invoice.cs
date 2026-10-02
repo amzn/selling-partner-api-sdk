@@ -74,14 +74,19 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// <param name="shipToParty">shipToParty.</param>
         /// <param name="shipFromParty">shipFromParty.</param>
         /// <param name="billToParty">billToParty.</param>
+        /// <param name="billFromParty">billFromParty.</param>
+        /// <param name="vatGroupParty">vatGroupParty.</param>
+        /// <param name="taxRepresentativeParty">taxRepresentativeParty.</param>
         /// <param name="paymentTerms">paymentTerms.</param>
         /// <param name="invoiceTotal">invoiceTotal (required).</param>
+        /// <param name="invoiceBaseAmount">invoiceBaseAmount.</param>
+        /// <param name="taxPointDate">Defines a date and time according to ISO8601..</param>
         /// <param name="taxDetails">Total tax amount details for all line items..</param>
         /// <param name="additionalDetails">Additional details provided by the selling party, for tax related or other purposes..</param>
         /// <param name="chargeDetails">Total charge amount details for all line items..</param>
         /// <param name="allowanceDetails">Total allowance amount details for all line items..</param>
         /// <param name="items">The list of invoice items..</param>
-        public Invoice(InvoiceTypeEnum invoiceType = default(InvoiceTypeEnum), string id = default(string), string? referenceNumber = default(string?), DateTime date = default(DateTime), PartyIdentification remitToParty = default(PartyIdentification), PartyIdentification? shipToParty = default(PartyIdentification?), PartyIdentification? shipFromParty = default(PartyIdentification?), PartyIdentification? billToParty = default(PartyIdentification?), PaymentTerms? paymentTerms = default(PaymentTerms?), Money invoiceTotal = default(Money), List<TaxDetails>? taxDetails = default(List<TaxDetails>?), List<AdditionalDetails>? additionalDetails = default(List<AdditionalDetails>?), List<ChargeDetails>? chargeDetails = default(List<ChargeDetails>?), List<AllowanceDetails>? allowanceDetails = default(List<AllowanceDetails>?), List<InvoiceItem>? items = default(List<InvoiceItem>?))
+        public Invoice(InvoiceTypeEnum invoiceType = default(InvoiceTypeEnum), string id = default(string), string? referenceNumber = default(string?), DateTime date = default(DateTime), PartyIdentification remitToParty = default(PartyIdentification), PartyIdentification? shipToParty = default(PartyIdentification?), PartyIdentification? shipFromParty = default(PartyIdentification?), PartyIdentification? billToParty = default(PartyIdentification?), PartyIdentification? billFromParty = default(PartyIdentification?), PartyIdentification? vatGroupParty = default(PartyIdentification?), PartyIdentification? taxRepresentativeParty = default(PartyIdentification?), PaymentTerms? paymentTerms = default(PaymentTerms?), Money invoiceTotal = default(Money), Money? invoiceBaseAmount = default(Money?), DateTime? taxPointDate = default(DateTime?), List<TaxDetails>? taxDetails = default(List<TaxDetails>?), List<AdditionalDetails>? additionalDetails = default(List<AdditionalDetails>?), List<ChargeDetails>? chargeDetails = default(List<ChargeDetails>?), List<AllowanceDetails>? allowanceDetails = default(List<AllowanceDetails>?), List<InvoiceItem>? items = default(List<InvoiceItem>?))
         {
             this.InvoiceType = invoiceType;
             // to ensure "id" is required (not null)
@@ -107,7 +112,12 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
             this.ShipToParty = shipToParty;
             this.ShipFromParty = shipFromParty;
             this.BillToParty = billToParty;
+            this.BillFromParty = billFromParty;
+            this.VatGroupParty = vatGroupParty;
+            this.TaxRepresentativeParty = taxRepresentativeParty;
             this.PaymentTerms = paymentTerms;
+            this.InvoiceBaseAmount = invoiceBaseAmount;
+            this.TaxPointDate = taxPointDate;
             this.TaxDetails = taxDetails;
             this.AdditionalDetails = additionalDetails;
             this.ChargeDetails = chargeDetails;
@@ -161,6 +171,24 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         public PartyIdentification? BillToParty { get; set; }
 
         /// <summary>
+        /// Gets or Sets BillFromParty
+        /// </summary>
+        [DataMember(Name = "billFromParty", EmitDefaultValue = false)]
+        public PartyIdentification? BillFromParty { get; set; }
+
+        /// <summary>
+        /// Gets or Sets VatGroupParty
+        /// </summary>
+        [DataMember(Name = "vatGroupParty", EmitDefaultValue = false)]
+        public PartyIdentification? VatGroupParty { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TaxRepresentativeParty
+        /// </summary>
+        [DataMember(Name = "taxRepresentativeParty", EmitDefaultValue = false)]
+        public PartyIdentification? TaxRepresentativeParty { get; set; }
+
+        /// <summary>
         /// Gets or Sets PaymentTerms
         /// </summary>
         [DataMember(Name = "paymentTerms", EmitDefaultValue = false)]
@@ -171,6 +199,19 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// </summary>
         [DataMember(Name = "invoiceTotal", IsRequired = true, EmitDefaultValue = true)]
         public Money InvoiceTotal { get; set; }
+
+        /// <summary>
+        /// Gets or Sets InvoiceBaseAmount
+        /// </summary>
+        [DataMember(Name = "invoiceBaseAmount", EmitDefaultValue = false)]
+        public Money? InvoiceBaseAmount { get; set; }
+
+        /// <summary>
+        /// Defines a date and time according to ISO8601.
+        /// </summary>
+        /// <value>Defines a date and time according to ISO8601.</value>
+        [DataMember(Name = "taxPointDate", EmitDefaultValue = false)]
+        public DateTime? TaxPointDate { get; set; }
 
         /// <summary>
         /// Total tax amount details for all line items.
@@ -223,8 +264,13 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
             sb.Append("  ShipToParty: ").Append(ShipToParty).Append("\n");
             sb.Append("  ShipFromParty: ").Append(ShipFromParty).Append("\n");
             sb.Append("  BillToParty: ").Append(BillToParty).Append("\n");
+            sb.Append("  BillFromParty: ").Append(BillFromParty).Append("\n");
+            sb.Append("  VatGroupParty: ").Append(VatGroupParty).Append("\n");
+            sb.Append("  TaxRepresentativeParty: ").Append(TaxRepresentativeParty).Append("\n");
             sb.Append("  PaymentTerms: ").Append(PaymentTerms).Append("\n");
             sb.Append("  InvoiceTotal: ").Append(InvoiceTotal).Append("\n");
+            sb.Append("  InvoiceBaseAmount: ").Append(InvoiceBaseAmount).Append("\n");
+            sb.Append("  TaxPointDate: ").Append(TaxPointDate).Append("\n");
             sb.Append("  TaxDetails: ").Append(TaxDetails).Append("\n");
             sb.Append("  AdditionalDetails: ").Append(AdditionalDetails).Append("\n");
             sb.Append("  ChargeDetails: ").Append(ChargeDetails).Append("\n");

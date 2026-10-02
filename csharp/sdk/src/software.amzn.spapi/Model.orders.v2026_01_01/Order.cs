@@ -54,7 +54,7 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// <param name="fulfillment">fulfillment.</param>
         /// <param name="orderItems">The list of all order items included in this order. (required).</param>
         /// <param name="packages">Shipping packages created for this order, including tracking information. **Note:** Only available for merchant-fulfilled (FBM) orders..</param>
-        /// <param name="fulfillmentOrders">The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for EasyShip orders at present..</param>
+        /// <param name="fulfillmentOrders">The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for Easy Ship and Seller Flex..</param>
         public Order(string orderId = default(string), List<Alias>? orderAliases = default(List<Alias>?), DateTime createdTime = default(DateTime), DateTime lastUpdatedTime = default(DateTime), List<string>? programs = default(List<string>?), List<AssociatedOrder>? associatedOrders = default(List<AssociatedOrder>?), SalesChannel salesChannel = default(SalesChannel), Buyer? buyer = default(Buyer?), Recipient? recipient = default(Recipient?), OrderProceeds? proceeds = default(OrderProceeds?), OrderPayment? payment = default(OrderPayment?), OrderTax? tax = default(OrderTax?), OrderFulfillment? fulfillment = default(OrderFulfillment?), List<OrderItem> orderItems = default(List<OrderItem>), List<OrderPackage>? packages = default(List<OrderPackage>?), List<FulfillmentOrder>? fulfillmentOrders = default(List<FulfillmentOrder>?))
         {
             // to ensure "orderId" is required (not null)
@@ -189,9 +189,9 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         public List<OrderPackage>? Packages { get; set; }
 
         /// <summary>
-        /// The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for EasyShip orders at present.
+        /// The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for Easy Ship and Seller Flex.
         /// </summary>
-        /// <value>The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for EasyShip orders at present.</value>
+        /// <value>The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for Easy Ship and Seller Flex.</value>
         [DataMember(Name = "fulfillmentOrders", EmitDefaultValue = false)]
         public List<FulfillmentOrder>? FulfillmentOrders { get; set; }
 

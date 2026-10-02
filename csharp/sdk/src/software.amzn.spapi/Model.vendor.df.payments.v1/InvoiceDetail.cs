@@ -41,18 +41,27 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// </summary>
         /// <param name="invoiceNumber">The unique invoice number. (required).</param>
         /// <param name="invoiceDate">Invoice date. (required).</param>
+        /// <param name="taxPointDate">The date on which the tax becomes chargeable, if different from the invoice date. When absent, the invoice date applies..</param>
+        /// <param name="deliveryDate">Date of delivery of the goods or completion of the service..</param>
         /// <param name="referenceNumber">An additional unique reference number used for regulatory or other purposes..</param>
         /// <param name="remitToParty">remitToParty (required).</param>
         /// <param name="shipFromParty">shipFromParty (required).</param>
         /// <param name="billToParty">billToParty.</param>
+        /// <param name="billFromParty">billFromParty.</param>
+        /// <param name="vatGroupParty">vatGroupParty.</param>
+        /// <param name="taxRepresentativeParty">taxRepresentativeParty.</param>
+        /// <param name="shipToParty">shipToParty.</param>
         /// <param name="shipToCountryCode">Ship-to country code..</param>
         /// <param name="paymentTermsCode">The payment terms for the invoice..</param>
         /// <param name="invoiceTotal">invoiceTotal (required).</param>
+        /// <param name="invoiceBaseAmount">invoiceBaseAmount.</param>
+        /// <param name="exchangeRate">A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. &lt;br&gt;**Pattern** : &#x60;^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$&#x60;..</param>
         /// <param name="taxTotals">Individual tax details per line item..</param>
         /// <param name="additionalDetails">Additional details provided by the selling party, for tax-related or other purposes..</param>
         /// <param name="chargeDetails">Total charge amount details for all line items..</param>
+        /// <param name="allowanceDetails">Total allowance amount details for all line items..</param>
         /// <param name="items">Provides the details of the items in this invoice. (required).</param>
-        public InvoiceDetail(string invoiceNumber = default(string), DateTime invoiceDate = default(DateTime), string? referenceNumber = default(string?), PartyIdentification remitToParty = default(PartyIdentification), PartyIdentification shipFromParty = default(PartyIdentification), PartyIdentification? billToParty = default(PartyIdentification?), string? shipToCountryCode = default(string?), string? paymentTermsCode = default(string?), Money invoiceTotal = default(Money), List<TaxDetail>? taxTotals = default(List<TaxDetail>?), List<AdditionalDetails>? additionalDetails = default(List<AdditionalDetails>?), List<ChargeDetails>? chargeDetails = default(List<ChargeDetails>?), List<InvoiceItem> items = default(List<InvoiceItem>))
+        public InvoiceDetail(string invoiceNumber = default(string), DateTime invoiceDate = default(DateTime), DateTime? taxPointDate = default(DateTime?), DateTime? deliveryDate = default(DateTime?), string? referenceNumber = default(string?), PartyIdentification remitToParty = default(PartyIdentification), PartyIdentification shipFromParty = default(PartyIdentification), PartyIdentification? billToParty = default(PartyIdentification?), PartyIdentification? billFromParty = default(PartyIdentification?), PartyIdentification? vatGroupParty = default(PartyIdentification?), PartyIdentification? taxRepresentativeParty = default(PartyIdentification?), PartyIdentification? shipToParty = default(PartyIdentification?), string? shipToCountryCode = default(string?), string? paymentTermsCode = default(string?), Money invoiceTotal = default(Money), Money? invoiceBaseAmount = default(Money?), string? exchangeRate = default(string?), List<TaxDetail>? taxTotals = default(List<TaxDetail>?), List<AdditionalDetails>? additionalDetails = default(List<AdditionalDetails>?), List<ChargeDetails>? chargeDetails = default(List<ChargeDetails>?), List<AllowanceDetails>? allowanceDetails = default(List<AllowanceDetails>?), List<InvoiceItem> items = default(List<InvoiceItem>))
         {
             // to ensure "invoiceNumber" is required (not null)
             if (invoiceNumber == null)
@@ -85,13 +94,22 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
                 throw new ArgumentNullException("items is a required property for InvoiceDetail and cannot be null");
             }
             this.Items = items;
+            this.TaxPointDate = taxPointDate;
+            this.DeliveryDate = deliveryDate;
             this.ReferenceNumber = referenceNumber;
             this.BillToParty = billToParty;
+            this.BillFromParty = billFromParty;
+            this.VatGroupParty = vatGroupParty;
+            this.TaxRepresentativeParty = taxRepresentativeParty;
+            this.ShipToParty = shipToParty;
             this.ShipToCountryCode = shipToCountryCode;
             this.PaymentTermsCode = paymentTermsCode;
+            this.InvoiceBaseAmount = invoiceBaseAmount;
+            this.ExchangeRate = exchangeRate;
             this.TaxTotals = taxTotals;
             this.AdditionalDetails = additionalDetails;
             this.ChargeDetails = chargeDetails;
+            this.AllowanceDetails = allowanceDetails;
         }
 
         /// <summary>
@@ -107,6 +125,20 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// <value>Invoice date.</value>
         [DataMember(Name = "invoiceDate", IsRequired = true, EmitDefaultValue = true)]
         public DateTime InvoiceDate { get; set; }
+
+        /// <summary>
+        /// The date on which the tax becomes chargeable, if different from the invoice date. When absent, the invoice date applies.
+        /// </summary>
+        /// <value>The date on which the tax becomes chargeable, if different from the invoice date. When absent, the invoice date applies.</value>
+        [DataMember(Name = "taxPointDate", EmitDefaultValue = false)]
+        public DateTime? TaxPointDate { get; set; }
+
+        /// <summary>
+        /// Date of delivery of the goods or completion of the service.
+        /// </summary>
+        /// <value>Date of delivery of the goods or completion of the service.</value>
+        [DataMember(Name = "deliveryDate", EmitDefaultValue = false)]
+        public DateTime? DeliveryDate { get; set; }
 
         /// <summary>
         /// An additional unique reference number used for regulatory or other purposes.
@@ -134,6 +166,30 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         public PartyIdentification? BillToParty { get; set; }
 
         /// <summary>
+        /// Gets or Sets BillFromParty
+        /// </summary>
+        [DataMember(Name = "billFromParty", EmitDefaultValue = false)]
+        public PartyIdentification? BillFromParty { get; set; }
+
+        /// <summary>
+        /// Gets or Sets VatGroupParty
+        /// </summary>
+        [DataMember(Name = "vatGroupParty", EmitDefaultValue = false)]
+        public PartyIdentification? VatGroupParty { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TaxRepresentativeParty
+        /// </summary>
+        [DataMember(Name = "taxRepresentativeParty", EmitDefaultValue = false)]
+        public PartyIdentification? TaxRepresentativeParty { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ShipToParty
+        /// </summary>
+        [DataMember(Name = "shipToParty", EmitDefaultValue = false)]
+        public PartyIdentification? ShipToParty { get; set; }
+
+        /// <summary>
         /// Ship-to country code.
         /// </summary>
         /// <value>Ship-to country code.</value>
@@ -152,6 +208,19 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// </summary>
         [DataMember(Name = "invoiceTotal", IsRequired = true, EmitDefaultValue = true)]
         public Money InvoiceTotal { get; set; }
+
+        /// <summary>
+        /// Gets or Sets InvoiceBaseAmount
+        /// </summary>
+        [DataMember(Name = "invoiceBaseAmount", EmitDefaultValue = false)]
+        public Money? InvoiceBaseAmount { get; set; }
+
+        /// <summary>
+        /// A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. &lt;br&gt;**Pattern** : &#x60;^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$&#x60;.
+        /// </summary>
+        /// <value>A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. &lt;br&gt;**Pattern** : &#x60;^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$&#x60;.</value>
+        [DataMember(Name = "exchangeRate", EmitDefaultValue = false)]
+        public string? ExchangeRate { get; set; }
 
         /// <summary>
         /// Individual tax details per line item.
@@ -175,6 +244,13 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         public List<ChargeDetails>? ChargeDetails { get; set; }
 
         /// <summary>
+        /// Total allowance amount details for all line items.
+        /// </summary>
+        /// <value>Total allowance amount details for all line items.</value>
+        [DataMember(Name = "allowanceDetails", EmitDefaultValue = false)]
+        public List<AllowanceDetails>? AllowanceDetails { get; set; }
+
+        /// <summary>
         /// Provides the details of the items in this invoice.
         /// </summary>
         /// <value>Provides the details of the items in this invoice.</value>
@@ -191,16 +267,25 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
             sb.Append("class InvoiceDetail {\n");
             sb.Append("  InvoiceNumber: ").Append(InvoiceNumber).Append("\n");
             sb.Append("  InvoiceDate: ").Append(InvoiceDate).Append("\n");
+            sb.Append("  TaxPointDate: ").Append(TaxPointDate).Append("\n");
+            sb.Append("  DeliveryDate: ").Append(DeliveryDate).Append("\n");
             sb.Append("  ReferenceNumber: ").Append(ReferenceNumber).Append("\n");
             sb.Append("  RemitToParty: ").Append(RemitToParty).Append("\n");
             sb.Append("  ShipFromParty: ").Append(ShipFromParty).Append("\n");
             sb.Append("  BillToParty: ").Append(BillToParty).Append("\n");
+            sb.Append("  BillFromParty: ").Append(BillFromParty).Append("\n");
+            sb.Append("  VatGroupParty: ").Append(VatGroupParty).Append("\n");
+            sb.Append("  TaxRepresentativeParty: ").Append(TaxRepresentativeParty).Append("\n");
+            sb.Append("  ShipToParty: ").Append(ShipToParty).Append("\n");
             sb.Append("  ShipToCountryCode: ").Append(ShipToCountryCode).Append("\n");
             sb.Append("  PaymentTermsCode: ").Append(PaymentTermsCode).Append("\n");
             sb.Append("  InvoiceTotal: ").Append(InvoiceTotal).Append("\n");
+            sb.Append("  InvoiceBaseAmount: ").Append(InvoiceBaseAmount).Append("\n");
+            sb.Append("  ExchangeRate: ").Append(ExchangeRate).Append("\n");
             sb.Append("  TaxTotals: ").Append(TaxTotals).Append("\n");
             sb.Append("  AdditionalDetails: ").Append(AdditionalDetails).Append("\n");
             sb.Append("  ChargeDetails: ").Append(ChargeDetails).Append("\n");
+            sb.Append("  AllowanceDetails: ").Append(AllowanceDetails).Append("\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

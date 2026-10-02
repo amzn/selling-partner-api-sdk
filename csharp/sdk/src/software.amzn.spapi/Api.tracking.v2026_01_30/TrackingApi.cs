@@ -37,11 +37,12 @@ namespace software.amzn.spapi.Api.tracking.v2026_01_30
         /// <param name="aftn">The Amazon Fulfillment Tracking Number. (optional)</param>
         /// <param name="containerNumber">The container number provided by the Logistics Service Provider. (optional)</param>
         /// <param name="houseBillOfLadingNumber">The House Bill of Lading (HBL) number. (optional)</param>
+        /// <param name="proNumber">The PRO number assigned by the freight carrier (optional)</param>
         /// <param name="carrierTrackingTrackingNumber">The tracking number assigned by the carrier. (optional)</param>
         /// <param name="carrierTrackingCarrierCode">The carrier code associated with the carrier tracking number. (optional)</param>
         /// <param name="acceptLanguage">The preferred natural language and locale of the client, in POSIX locale format. Currently supports &#x60;en-US&#x60; only. (optional)</param>
         /// <returns>GetShipmentTrackingResponse</returns>
-        GetShipmentTrackingResponse GetShipmentTracking (string? id = null, string? acsin = null, string? aftn = null, string? containerNumber = null, string? houseBillOfLadingNumber = null, string? carrierTrackingTrackingNumber = null, string? carrierTrackingCarrierCode = null, string? acceptLanguage = null);
+        GetShipmentTrackingResponse GetShipmentTracking (string? id = null, string? acsin = null, string? aftn = null, string? containerNumber = null, string? houseBillOfLadingNumber = null, string? proNumber = null, string? carrierTrackingTrackingNumber = null, string? carrierTrackingCarrierCode = null, string? acceptLanguage = null);
 
         /// <summary>
         /// Get tracking information for the shipment.
@@ -55,11 +56,12 @@ namespace software.amzn.spapi.Api.tracking.v2026_01_30
         /// <param name="aftn">The Amazon Fulfillment Tracking Number. (optional)</param>
         /// <param name="containerNumber">The container number provided by the Logistics Service Provider. (optional)</param>
         /// <param name="houseBillOfLadingNumber">The House Bill of Lading (HBL) number. (optional)</param>
+        /// <param name="proNumber">The PRO number assigned by the freight carrier (optional)</param>
         /// <param name="carrierTrackingTrackingNumber">The tracking number assigned by the carrier. (optional)</param>
         /// <param name="carrierTrackingCarrierCode">The carrier code associated with the carrier tracking number. (optional)</param>
         /// <param name="acceptLanguage">The preferred natural language and locale of the client, in POSIX locale format. Currently supports &#x60;en-US&#x60; only. (optional)</param>
         /// <returns>ApiResponse of GetShipmentTrackingResponse</returns>
-        ApiResponse<GetShipmentTrackingResponse> GetShipmentTrackingWithHttpInfo (string? id = null, string? acsin = null, string? aftn = null, string? containerNumber = null, string? houseBillOfLadingNumber = null, string? carrierTrackingTrackingNumber = null, string? carrierTrackingCarrierCode = null, string? acceptLanguage = null);
+        ApiResponse<GetShipmentTrackingResponse> GetShipmentTrackingWithHttpInfo (string? id = null, string? acsin = null, string? aftn = null, string? containerNumber = null, string? houseBillOfLadingNumber = null, string? proNumber = null, string? carrierTrackingTrackingNumber = null, string? carrierTrackingCarrierCode = null, string? acceptLanguage = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -74,11 +76,12 @@ namespace software.amzn.spapi.Api.tracking.v2026_01_30
         /// <param name="aftn">The Amazon Fulfillment Tracking Number. (optional)</param>
         /// <param name="containerNumber">The container number provided by the Logistics Service Provider. (optional)</param>
         /// <param name="houseBillOfLadingNumber">The House Bill of Lading (HBL) number. (optional)</param>
+        /// <param name="proNumber">The PRO number assigned by the freight carrier (optional)</param>
         /// <param name="carrierTrackingTrackingNumber">The tracking number assigned by the carrier. (optional)</param>
         /// <param name="carrierTrackingCarrierCode">The carrier code associated with the carrier tracking number. (optional)</param>
         /// <param name="acceptLanguage">The preferred natural language and locale of the client, in POSIX locale format. Currently supports &#x60;en-US&#x60; only. (optional)</param>
         /// <returns>Task of GetShipmentTrackingResponse</returns>
-        System.Threading.Tasks.Task<GetShipmentTrackingResponse> GetShipmentTrackingAsync (string? id = null, string? acsin = null, string? aftn = null, string? containerNumber = null, string? houseBillOfLadingNumber = null, string? carrierTrackingTrackingNumber = null, string? carrierTrackingCarrierCode = null, string? acceptLanguage = null);
+        System.Threading.Tasks.Task<GetShipmentTrackingResponse> GetShipmentTrackingAsync (string? id = null, string? acsin = null, string? aftn = null, string? containerNumber = null, string? houseBillOfLadingNumber = null, string? proNumber = null, string? carrierTrackingTrackingNumber = null, string? carrierTrackingCarrierCode = null, string? acceptLanguage = null);
 
         /// <summary>
         /// Get tracking information for the shipment.
@@ -92,11 +95,12 @@ namespace software.amzn.spapi.Api.tracking.v2026_01_30
         /// <param name="aftn">The Amazon Fulfillment Tracking Number. (optional)</param>
         /// <param name="containerNumber">The container number provided by the Logistics Service Provider. (optional)</param>
         /// <param name="houseBillOfLadingNumber">The House Bill of Lading (HBL) number. (optional)</param>
+        /// <param name="proNumber">The PRO number assigned by the freight carrier (optional)</param>
         /// <param name="carrierTrackingTrackingNumber">The tracking number assigned by the carrier. (optional)</param>
         /// <param name="carrierTrackingCarrierCode">The carrier code associated with the carrier tracking number. (optional)</param>
         /// <param name="acceptLanguage">The preferred natural language and locale of the client, in POSIX locale format. Currently supports &#x60;en-US&#x60; only. (optional)</param>
         /// <returns>Task of ApiResponse (GetShipmentTrackingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetShipmentTrackingResponse>> GetShipmentTrackingAsyncWithHttpInfo (string? id = null, string? acsin = null, string? aftn = null, string? containerNumber = null, string? houseBillOfLadingNumber = null, string? carrierTrackingTrackingNumber = null, string? carrierTrackingCarrierCode = null, string? acceptLanguage = null);
+        System.Threading.Tasks.Task<ApiResponse<GetShipmentTrackingResponse>> GetShipmentTrackingAsyncWithHttpInfo (string? id = null, string? acsin = null, string? aftn = null, string? containerNumber = null, string? houseBillOfLadingNumber = null, string? proNumber = null, string? carrierTrackingTrackingNumber = null, string? carrierTrackingCarrierCode = null, string? acceptLanguage = null);
         #endregion Asynchronous Operations
     }
 
@@ -197,13 +201,14 @@ namespace software.amzn.spapi.Api.tracking.v2026_01_30
         /// <param name="aftn">The Amazon Fulfillment Tracking Number. (optional)</param>
         /// <param name="containerNumber">The container number provided by the Logistics Service Provider. (optional)</param>
         /// <param name="houseBillOfLadingNumber">The House Bill of Lading (HBL) number. (optional)</param>
+        /// <param name="proNumber">The PRO number assigned by the freight carrier (optional)</param>
         /// <param name="carrierTrackingTrackingNumber">The tracking number assigned by the carrier. (optional)</param>
         /// <param name="carrierTrackingCarrierCode">The carrier code associated with the carrier tracking number. (optional)</param>
         /// <param name="acceptLanguage">The preferred natural language and locale of the client, in POSIX locale format. Currently supports &#x60;en-US&#x60; only. (optional)</param>
         /// <returns>GetShipmentTrackingResponse</returns>
-        public GetShipmentTrackingResponse GetShipmentTracking (string? id = null, string? acsin = null, string? aftn = null, string? containerNumber = null, string? houseBillOfLadingNumber = null, string? carrierTrackingTrackingNumber = null, string? carrierTrackingCarrierCode = null, string? acceptLanguage = null)
+        public GetShipmentTrackingResponse GetShipmentTracking (string? id = null, string? acsin = null, string? aftn = null, string? containerNumber = null, string? houseBillOfLadingNumber = null, string? proNumber = null, string? carrierTrackingTrackingNumber = null, string? carrierTrackingCarrierCode = null, string? acceptLanguage = null)
         {
-             ApiResponse<GetShipmentTrackingResponse> localVarResponse = GetShipmentTrackingWithHttpInfo(id, acsin, aftn, containerNumber, houseBillOfLadingNumber, carrierTrackingTrackingNumber, carrierTrackingCarrierCode, acceptLanguage);
+             ApiResponse<GetShipmentTrackingResponse> localVarResponse = GetShipmentTrackingWithHttpInfo(id, acsin, aftn, containerNumber, houseBillOfLadingNumber, proNumber, carrierTrackingTrackingNumber, carrierTrackingCarrierCode, acceptLanguage);
              return localVarResponse.Data;
         }
 
@@ -216,11 +221,12 @@ namespace software.amzn.spapi.Api.tracking.v2026_01_30
         /// <param name="aftn">The Amazon Fulfillment Tracking Number. (optional)</param>
         /// <param name="containerNumber">The container number provided by the Logistics Service Provider. (optional)</param>
         /// <param name="houseBillOfLadingNumber">The House Bill of Lading (HBL) number. (optional)</param>
+        /// <param name="proNumber">The PRO number assigned by the freight carrier (optional)</param>
         /// <param name="carrierTrackingTrackingNumber">The tracking number assigned by the carrier. (optional)</param>
         /// <param name="carrierTrackingCarrierCode">The carrier code associated with the carrier tracking number. (optional)</param>
         /// <param name="acceptLanguage">The preferred natural language and locale of the client, in POSIX locale format. Currently supports &#x60;en-US&#x60; only. (optional)</param>
         /// <returns>ApiResponse of GetShipmentTrackingResponse</returns>
-        public ApiResponse< GetShipmentTrackingResponse > GetShipmentTrackingWithHttpInfo (string? id = null, string? acsin = null, string? aftn = null, string? containerNumber = null, string? houseBillOfLadingNumber = null, string? carrierTrackingTrackingNumber = null, string? carrierTrackingCarrierCode = null, string? acceptLanguage = null)
+        public ApiResponse< GetShipmentTrackingResponse > GetShipmentTrackingWithHttpInfo (string? id = null, string? acsin = null, string? aftn = null, string? containerNumber = null, string? houseBillOfLadingNumber = null, string? proNumber = null, string? carrierTrackingTrackingNumber = null, string? carrierTrackingCarrierCode = null, string? acceptLanguage = null)
         {
 
             var localVarPath = "/tracking/2026-01-30/shipments/track";
@@ -249,6 +255,7 @@ namespace software.amzn.spapi.Api.tracking.v2026_01_30
             if (aftn != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "aftn", aftn)); // query parameter
             if (containerNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "containerNumber", containerNumber)); // query parameter
             if (houseBillOfLadingNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "houseBillOfLadingNumber", houseBillOfLadingNumber)); // query parameter
+            if (proNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "proNumber", proNumber)); // query parameter
             if (carrierTrackingTrackingNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "carrierTracking.trackingNumber", carrierTrackingTrackingNumber)); // query parameter
             if (carrierTrackingCarrierCode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "carrierTracking.carrierCode", carrierTrackingCarrierCode)); // query parameter
             if (acceptLanguage != null) localVarHeaderParams.Add("Accept-Language", this.Configuration.ApiClient.ParameterToString(acceptLanguage)); // header parameter
@@ -279,13 +286,14 @@ namespace software.amzn.spapi.Api.tracking.v2026_01_30
         /// <param name="aftn">The Amazon Fulfillment Tracking Number. (optional)</param>
         /// <param name="containerNumber">The container number provided by the Logistics Service Provider. (optional)</param>
         /// <param name="houseBillOfLadingNumber">The House Bill of Lading (HBL) number. (optional)</param>
+        /// <param name="proNumber">The PRO number assigned by the freight carrier (optional)</param>
         /// <param name="carrierTrackingTrackingNumber">The tracking number assigned by the carrier. (optional)</param>
         /// <param name="carrierTrackingCarrierCode">The carrier code associated with the carrier tracking number. (optional)</param>
         /// <param name="acceptLanguage">The preferred natural language and locale of the client, in POSIX locale format. Currently supports &#x60;en-US&#x60; only. (optional)</param>
         /// <returns>Task of GetShipmentTrackingResponse</returns>
-        public async System.Threading.Tasks.Task<GetShipmentTrackingResponse> GetShipmentTrackingAsync (string? id = null, string? acsin = null, string? aftn = null, string? containerNumber = null, string? houseBillOfLadingNumber = null, string? carrierTrackingTrackingNumber = null, string? carrierTrackingCarrierCode = null, string? acceptLanguage = null)
+        public async System.Threading.Tasks.Task<GetShipmentTrackingResponse> GetShipmentTrackingAsync (string? id = null, string? acsin = null, string? aftn = null, string? containerNumber = null, string? houseBillOfLadingNumber = null, string? proNumber = null, string? carrierTrackingTrackingNumber = null, string? carrierTrackingCarrierCode = null, string? acceptLanguage = null)
         {
-             ApiResponse<GetShipmentTrackingResponse> localVarResponse = await GetShipmentTrackingAsyncWithHttpInfo(id, acsin, aftn, containerNumber, houseBillOfLadingNumber, carrierTrackingTrackingNumber, carrierTrackingCarrierCode, acceptLanguage);
+             ApiResponse<GetShipmentTrackingResponse> localVarResponse = await GetShipmentTrackingAsyncWithHttpInfo(id, acsin, aftn, containerNumber, houseBillOfLadingNumber, proNumber, carrierTrackingTrackingNumber, carrierTrackingCarrierCode, acceptLanguage);
              return localVarResponse.Data;
 
         }
@@ -299,11 +307,12 @@ namespace software.amzn.spapi.Api.tracking.v2026_01_30
         /// <param name="aftn">The Amazon Fulfillment Tracking Number. (optional)</param>
         /// <param name="containerNumber">The container number provided by the Logistics Service Provider. (optional)</param>
         /// <param name="houseBillOfLadingNumber">The House Bill of Lading (HBL) number. (optional)</param>
+        /// <param name="proNumber">The PRO number assigned by the freight carrier (optional)</param>
         /// <param name="carrierTrackingTrackingNumber">The tracking number assigned by the carrier. (optional)</param>
         /// <param name="carrierTrackingCarrierCode">The carrier code associated with the carrier tracking number. (optional)</param>
         /// <param name="acceptLanguage">The preferred natural language and locale of the client, in POSIX locale format. Currently supports &#x60;en-US&#x60; only. (optional)</param>
         /// <returns>Task of ApiResponse (GetShipmentTrackingResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetShipmentTrackingResponse>> GetShipmentTrackingAsyncWithHttpInfo (string? id = null, string? acsin = null, string? aftn = null, string? containerNumber = null, string? houseBillOfLadingNumber = null, string? carrierTrackingTrackingNumber = null, string? carrierTrackingCarrierCode = null, string? acceptLanguage = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetShipmentTrackingResponse>> GetShipmentTrackingAsyncWithHttpInfo (string? id = null, string? acsin = null, string? aftn = null, string? containerNumber = null, string? houseBillOfLadingNumber = null, string? proNumber = null, string? carrierTrackingTrackingNumber = null, string? carrierTrackingCarrierCode = null, string? acceptLanguage = null)
         {
 
             var localVarPath = "/tracking/2026-01-30/shipments/track";
@@ -332,6 +341,7 @@ namespace software.amzn.spapi.Api.tracking.v2026_01_30
             if (aftn != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "aftn", aftn)); // query parameter
             if (containerNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "containerNumber", containerNumber)); // query parameter
             if (houseBillOfLadingNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "houseBillOfLadingNumber", houseBillOfLadingNumber)); // query parameter
+            if (proNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "proNumber", proNumber)); // query parameter
             if (carrierTrackingTrackingNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "carrierTracking.trackingNumber", carrierTrackingTrackingNumber)); // query parameter
             if (carrierTrackingCarrierCode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "carrierTracking.carrierCode", carrierTrackingCarrierCode)); // query parameter
             if (acceptLanguage != null) localVarHeaderParams.Add("Accept-Language", this.Configuration.ApiClient.ParameterToString(acceptLanguage)); // header parameter
