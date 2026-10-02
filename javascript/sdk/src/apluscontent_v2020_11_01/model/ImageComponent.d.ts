@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for A+ Content Management
- * Use the A+ Content API to build applications that help selling partners add rich marketing content to their Amazon product detail pages. Selling partners can use A+ content to share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners use content modules to add images and text.
+ * With the A+ Content API, you can build applications that help selling partners add rich marketing content to their Amazon product detail pages. A+ Content helps selling partners share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners assemble content by choosing from content modules and adding images and text.
  *
  * The version of the OpenAPI document: 2020-11-01
  *
@@ -25,7 +25,7 @@ export declare class ImageComponent {
      * A reference to an image, hosted in the A+ Content media library.
      * @alias module:apluscontent_v2020_11_01/model/ImageComponent
      * @class
-     * @param uploadDestinationId {String} This identifier is provided by the [Uploads API](https://developer-docs.amazon.com/sp-api/reference/welcome-to-api-references).
+     * @param uploadDestinationId {String} This identifier is provided by the Selling Partner API for Uploads.
      * @param imageCropSpecification {ImageCropSpecification}
      * @param altText {String} The alternative text for the image.
      */

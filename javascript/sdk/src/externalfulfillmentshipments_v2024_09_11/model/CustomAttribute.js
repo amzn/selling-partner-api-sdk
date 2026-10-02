@@ -59,7 +59,7 @@ export class CustomAttribute {
 }
 
 /**
- * The key of the custom attribute. Must be unique.
+ * The attribute key.
  * @member {String} key
  * @type {String}
  */
@@ -72,7 +72,7 @@ CustomAttribute.prototype.key = undefined
 CustomAttribute.prototype.type = undefined
 
 /**
- * The value of the custom attribute.
+ * The attribute value.
  * @member {String} value
  * @type {String}
  */

@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for A+ Content Management
- * Use the A+ Content API to build applications that help selling partners add rich marketing content to their Amazon product detail pages. Selling partners can use A+ content to share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners use content modules to add images and text.
+ * With the A+ Content API, you can build applications that help selling partners add rich marketing content to their Amazon product detail pages. A+ Content helps selling partners share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners assemble content by choosing from content modules and adding images and text.
  *
  * The version of the OpenAPI document: 2020-11-01
  *
@@ -12,7 +12,31 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
+import { BrandStoryAboutModule } from './BrandStoryAboutModule.js'
+import { BrandStoryFourAsinModule } from './BrandStoryFourAsinModule.js'
+import { BrandStoryImageWithLogoModule } from './BrandStoryImageWithLogoModule.js'
+import { BrandStoryMediaAssetModule } from './BrandStoryMediaAssetModule.js'
+import { BrandStoryQuestionsModule } from './BrandStoryQuestionsModule.js'
 import { ContentModuleType } from './ContentModuleType.js'
+import { PremiumComparisonCarouselModule } from './PremiumComparisonCarouselModule.js'
+import { PremiumComparisonScrollerModule } from './PremiumComparisonScrollerModule.js'
+import { PremiumDualImageTextModule } from './PremiumDualImageTextModule.js'
+import { PremiumFaqModule } from './PremiumFaqModule.js'
+import { PremiumFourColumnImagesModule } from './PremiumFourColumnImagesModule.js'
+import { PremiumFullBackgroundImageModule } from './PremiumFullBackgroundImageModule.js'
+import { PremiumFullBackgroundTextModule } from './PremiumFullBackgroundTextModule.js'
+import { PremiumHeroVideoModule } from './PremiumHeroVideoModule.js'
+import { PremiumHotspotImageModule } from './PremiumHotspotImageModule.js'
+import { PremiumHotspotImageTextModule } from './PremiumHotspotImageTextModule.js'
+import { PremiumImageCarouselModule } from './PremiumImageCarouselModule.js'
+import { PremiumImageTextModule } from './PremiumImageTextModule.js'
+import { PremiumNavigationCarouselModule } from './PremiumNavigationCarouselModule.js'
+import { PremiumRegimenCarouselModule } from './PremiumRegimenCarouselModule.js'
+import { PremiumTechSpecsModule } from './PremiumTechSpecsModule.js'
+import { PremiumTextModule } from './PremiumTextModule.js'
+import { PremiumThreeColumnComparisonModule } from './PremiumThreeColumnComparisonModule.js'
+import { PremiumVideoImageCarouselModule } from './PremiumVideoImageCarouselModule.js'
+import { PremiumVideoTextModule } from './PremiumVideoTextModule.js'
 import { StandardCompanyLogoModule } from './StandardCompanyLogoModule.js'
 import { StandardComparisonTableModule } from './StandardComparisonTableModule.js'
 import { StandardFourImageTextModule } from './StandardFourImageTextModule.js'
@@ -37,7 +61,7 @@ import { StandardThreeImageTextModule } from './StandardThreeImageTextModule.js'
 export class ContentModule {
   /**
    * Constructs a new <code>ContentModule</code>.
-   * An A+ Content module. An A+ Content document is composed of content modules. The &#x60;contentModuleType&#x60; property selects which content module types to use.
+   * An A+ Content module. An A+ Content document is composed of content modules. The contentModuleType property selects which content module types to use.
    * @alias module:apluscontent_v2020_11_01/model/ContentModule
    * @class
    * @param contentModuleType {ContentModuleType}
@@ -83,6 +107,30 @@ export class ContentModule {
       if (data.hasOwnProperty('standardTechSpecs')) { obj.standardTechSpecs = StandardTechSpecsModule.constructFromObject(data.standardTechSpecs) }
       if (data.hasOwnProperty('standardText')) { obj.standardText = StandardTextModule.constructFromObject(data.standardText) }
       if (data.hasOwnProperty('standardThreeImageText')) { obj.standardThreeImageText = StandardThreeImageTextModule.constructFromObject(data.standardThreeImageText) }
+      if (data.hasOwnProperty('premiumImageText')) { obj.premiumImageText = PremiumImageTextModule.constructFromObject(data.premiumImageText) }
+      if (data.hasOwnProperty('premiumText')) { obj.premiumText = PremiumTextModule.constructFromObject(data.premiumText) }
+      if (data.hasOwnProperty('premiumFullBackgroundText')) { obj.premiumFullBackgroundText = PremiumFullBackgroundTextModule.constructFromObject(data.premiumFullBackgroundText) }
+      if (data.hasOwnProperty('premiumFullBackgroundImage')) { obj.premiumFullBackgroundImage = PremiumFullBackgroundImageModule.constructFromObject(data.premiumFullBackgroundImage) }
+      if (data.hasOwnProperty('premiumFourColumnImages')) { obj.premiumFourColumnImages = PremiumFourColumnImagesModule.constructFromObject(data.premiumFourColumnImages) }
+      if (data.hasOwnProperty('premiumDualImageText')) { obj.premiumDualImageText = PremiumDualImageTextModule.constructFromObject(data.premiumDualImageText) }
+      if (data.hasOwnProperty('premiumImageCarousel')) { obj.premiumImageCarousel = PremiumImageCarouselModule.constructFromObject(data.premiumImageCarousel) }
+      if (data.hasOwnProperty('premiumNavigationCarousel')) { obj.premiumNavigationCarousel = PremiumNavigationCarouselModule.constructFromObject(data.premiumNavigationCarousel) }
+      if (data.hasOwnProperty('premiumRegimenCarousel')) { obj.premiumRegimenCarousel = PremiumRegimenCarouselModule.constructFromObject(data.premiumRegimenCarousel) }
+      if (data.hasOwnProperty('premiumThreeColumnComparison')) { obj.premiumThreeColumnComparison = PremiumThreeColumnComparisonModule.constructFromObject(data.premiumThreeColumnComparison) }
+      if (data.hasOwnProperty('premiumComparisonCarousel')) { obj.premiumComparisonCarousel = PremiumComparisonCarouselModule.constructFromObject(data.premiumComparisonCarousel) }
+      if (data.hasOwnProperty('premiumComparisonScroller')) { obj.premiumComparisonScroller = PremiumComparisonScrollerModule.constructFromObject(data.premiumComparisonScroller) }
+      if (data.hasOwnProperty('premiumHotspotImage')) { obj.premiumHotspotImage = PremiumHotspotImageModule.constructFromObject(data.premiumHotspotImage) }
+      if (data.hasOwnProperty('premiumHotspotImageText')) { obj.premiumHotspotImageText = PremiumHotspotImageTextModule.constructFromObject(data.premiumHotspotImageText) }
+      if (data.hasOwnProperty('premiumFaq')) { obj.premiumFaq = PremiumFaqModule.constructFromObject(data.premiumFaq) }
+      if (data.hasOwnProperty('premiumTechSpecs')) { obj.premiumTechSpecs = PremiumTechSpecsModule.constructFromObject(data.premiumTechSpecs) }
+      if (data.hasOwnProperty('premiumVideoText')) { obj.premiumVideoText = PremiumVideoTextModule.constructFromObject(data.premiumVideoText) }
+      if (data.hasOwnProperty('premiumHeroVideo')) { obj.premiumHeroVideo = PremiumHeroVideoModule.constructFromObject(data.premiumHeroVideo) }
+      if (data.hasOwnProperty('premiumVideoImageCarousel')) { obj.premiumVideoImageCarousel = PremiumVideoImageCarouselModule.constructFromObject(data.premiumVideoImageCarousel) }
+      if (data.hasOwnProperty('brandStoryImageWithLogo')) { obj.brandStoryImageWithLogo = BrandStoryImageWithLogoModule.constructFromObject(data.brandStoryImageWithLogo) }
+      if (data.hasOwnProperty('brandStoryFourAsin')) { obj.brandStoryFourAsin = BrandStoryFourAsinModule.constructFromObject(data.brandStoryFourAsin) }
+      if (data.hasOwnProperty('brandStoryMediaAsset')) { obj.brandStoryMediaAsset = BrandStoryMediaAssetModule.constructFromObject(data.brandStoryMediaAsset) }
+      if (data.hasOwnProperty('brandStoryAbout')) { obj.brandStoryAbout = BrandStoryAboutModule.constructFromObject(data.brandStoryAbout) }
+      if (data.hasOwnProperty('brandStoryQuestions')) { obj.brandStoryQuestions = BrandStoryQuestionsModule.constructFromObject(data.brandStoryQuestions) }
     }
     return obj
   }
@@ -183,3 +231,147 @@ ContentModule.prototype.standardText = undefined
  * @type {StandardThreeImageTextModule}
  */
 ContentModule.prototype.standardThreeImageText = undefined
+
+/**
+ * @member {PremiumImageTextModule} premiumImageText
+ * @type {PremiumImageTextModule}
+ */
+ContentModule.prototype.premiumImageText = undefined
+
+/**
+ * @member {PremiumTextModule} premiumText
+ * @type {PremiumTextModule}
+ */
+ContentModule.prototype.premiumText = undefined
+
+/**
+ * @member {PremiumFullBackgroundTextModule} premiumFullBackgroundText
+ * @type {PremiumFullBackgroundTextModule}
+ */
+ContentModule.prototype.premiumFullBackgroundText = undefined
+
+/**
+ * @member {PremiumFullBackgroundImageModule} premiumFullBackgroundImage
+ * @type {PremiumFullBackgroundImageModule}
+ */
+ContentModule.prototype.premiumFullBackgroundImage = undefined
+
+/**
+ * @member {PremiumFourColumnImagesModule} premiumFourColumnImages
+ * @type {PremiumFourColumnImagesModule}
+ */
+ContentModule.prototype.premiumFourColumnImages = undefined
+
+/**
+ * @member {PremiumDualImageTextModule} premiumDualImageText
+ * @type {PremiumDualImageTextModule}
+ */
+ContentModule.prototype.premiumDualImageText = undefined
+
+/**
+ * @member {PremiumImageCarouselModule} premiumImageCarousel
+ * @type {PremiumImageCarouselModule}
+ */
+ContentModule.prototype.premiumImageCarousel = undefined
+
+/**
+ * @member {PremiumNavigationCarouselModule} premiumNavigationCarousel
+ * @type {PremiumNavigationCarouselModule}
+ */
+ContentModule.prototype.premiumNavigationCarousel = undefined
+
+/**
+ * @member {PremiumRegimenCarouselModule} premiumRegimenCarousel
+ * @type {PremiumRegimenCarouselModule}
+ */
+ContentModule.prototype.premiumRegimenCarousel = undefined
+
+/**
+ * @member {PremiumThreeColumnComparisonModule} premiumThreeColumnComparison
+ * @type {PremiumThreeColumnComparisonModule}
+ */
+ContentModule.prototype.premiumThreeColumnComparison = undefined
+
+/**
+ * @member {PremiumComparisonCarouselModule} premiumComparisonCarousel
+ * @type {PremiumComparisonCarouselModule}
+ */
+ContentModule.prototype.premiumComparisonCarousel = undefined
+
+/**
+ * @member {PremiumComparisonScrollerModule} premiumComparisonScroller
+ * @type {PremiumComparisonScrollerModule}
+ */
+ContentModule.prototype.premiumComparisonScroller = undefined
+
+/**
+ * @member {PremiumHotspotImageModule} premiumHotspotImage
+ * @type {PremiumHotspotImageModule}
+ */
+ContentModule.prototype.premiumHotspotImage = undefined
+
+/**
+ * @member {PremiumHotspotImageTextModule} premiumHotspotImageText
+ * @type {PremiumHotspotImageTextModule}
+ */
+ContentModule.prototype.premiumHotspotImageText = undefined
+
+/**
+ * @member {PremiumFaqModule} premiumFaq
+ * @type {PremiumFaqModule}
+ */
+ContentModule.prototype.premiumFaq = undefined
+
+/**
+ * @member {PremiumTechSpecsModule} premiumTechSpecs
+ * @type {PremiumTechSpecsModule}
+ */
+ContentModule.prototype.premiumTechSpecs = undefined
+
+/**
+ * @member {PremiumVideoTextModule} premiumVideoText
+ * @type {PremiumVideoTextModule}
+ */
+ContentModule.prototype.premiumVideoText = undefined
+
+/**
+ * @member {PremiumHeroVideoModule} premiumHeroVideo
+ * @type {PremiumHeroVideoModule}
+ */
+ContentModule.prototype.premiumHeroVideo = undefined
+
+/**
+ * @member {PremiumVideoImageCarouselModule} premiumVideoImageCarousel
+ * @type {PremiumVideoImageCarouselModule}
+ */
+ContentModule.prototype.premiumVideoImageCarousel = undefined
+
+/**
+ * @member {BrandStoryImageWithLogoModule} brandStoryImageWithLogo
+ * @type {BrandStoryImageWithLogoModule}
+ */
+ContentModule.prototype.brandStoryImageWithLogo = undefined
+
+/**
+ * @member {BrandStoryFourAsinModule} brandStoryFourAsin
+ * @type {BrandStoryFourAsinModule}
+ */
+ContentModule.prototype.brandStoryFourAsin = undefined
+
+/**
+ * @member {BrandStoryMediaAssetModule} brandStoryMediaAsset
+ * @type {BrandStoryMediaAssetModule}
+ */
+ContentModule.prototype.brandStoryMediaAsset = undefined
+
+/**
+ * @member {BrandStoryAboutModule} brandStoryAbout
+ * @type {BrandStoryAboutModule}
+ */
+ContentModule.prototype.brandStoryAbout = undefined
+
+/**
+ * @member {BrandStoryQuestionsModule} brandStoryQuestions
+ * @type {BrandStoryQuestionsModule}
+ */
+ContentModule.prototype.brandStoryQuestions = undefined

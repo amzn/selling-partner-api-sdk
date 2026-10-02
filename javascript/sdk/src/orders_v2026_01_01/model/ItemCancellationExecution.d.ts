@@ -18,7 +18,7 @@
 export declare class ItemCancellationExecution {
     /**
      * Constructs a new <code>ItemCancellationExecution</code>.
-     * Details of how the cancellation was executed for a specific order item, including who performed the cancellation and the reason.
+     * Detailed information about how the cancellation was processed for a specific order item.
      * @alias module:orders_v2026_01_01/model/ItemCancellationExecution
      * @class
      */

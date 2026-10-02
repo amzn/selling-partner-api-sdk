@@ -12,6 +12,7 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
+import { AdditionalPartyIdentification } from './AdditionalPartyIdentification.js'
 import { Address } from './Address.js'
 import { TaxRegistrationDetail } from './TaxRegistrationDetail.js'
 
@@ -56,6 +57,7 @@ export class PartyIdentification {
       if (data.hasOwnProperty('partyId')) { obj.partyId = ApiClient.convertToType(data.partyId, 'String') }
       if (data.hasOwnProperty('address')) { obj.address = Address.constructFromObject(data.address) }
       if (data.hasOwnProperty('taxRegistrationDetails')) { obj.taxRegistrationDetails = ApiClient.convertToType(data.taxRegistrationDetails, [TaxRegistrationDetail]) }
+      if (data.hasOwnProperty('additionalPartyIdentifications')) { obj.additionalPartyIdentifications = ApiClient.convertToType(data.additionalPartyIdentifications, [AdditionalPartyIdentification]) }
     }
     return obj
   }
@@ -80,3 +82,10 @@ PartyIdentification.prototype.address = undefined
  * @type {TaxRegistrationDetail[]}
  */
 PartyIdentification.prototype.taxRegistrationDetails = undefined
+
+/**
+ * Additional corporate or fiscal registration identifiers for the party that are not VAT/GST registrations (e.g. FR SIREN, or DE W-IdNr.).
+ * @member {AdditionalPartyIdentification[]} additionalPartyIdentifications
+ * @type {AdditionalPartyIdentification[]}
+ */
+PartyIdentification.prototype.additionalPartyIdentifications = undefined

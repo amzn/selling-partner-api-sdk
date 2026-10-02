@@ -71,6 +71,7 @@ export class TrackingApi {
      * @param {String} [opts.aftn] The Amazon Fulfillment Tracking Number.
      * @param {String} [opts.containerNumber] The container number provided by the Logistics Service Provider.
      * @param {String} [opts.houseBillOfLadingNumber] The House Bill of Lading (HBL) number.
+     * @param {String} [opts.proNumber] The PRO number assigned by the freight carrier
      * @param {String} [opts.carrierTrackingTrackingNumber] The tracking number assigned by the carrier.
      * @param {String} [opts.carrierTrackingCarrierCode] The carrier code associated with the carrier tracking number.
      * @param {String} [opts.acceptLanguage] The preferred natural language and locale of the client, in POSIX locale format. Currently supports &#x60;en-US&#x60; only.
@@ -88,6 +89,7 @@ export class TrackingApi {
       aftn: opts.aftn,
       containerNumber: opts.containerNumber,
       houseBillOfLadingNumber: opts.houseBillOfLadingNumber,
+      proNumber: opts.proNumber,
       'carrierTracking.trackingNumber': opts.carrierTrackingTrackingNumber,
       'carrierTracking.carrierCode': opts.carrierTrackingCarrierCode
     }
@@ -117,6 +119,7 @@ export class TrackingApi {
      * @param {String} [opts.aftn] The Amazon Fulfillment Tracking Number.
      * @param {String} [opts.containerNumber] The container number provided by the Logistics Service Provider.
      * @param {String} [opts.houseBillOfLadingNumber] The House Bill of Lading (HBL) number.
+     * @param {String} [opts.proNumber] The PRO number assigned by the freight carrier
      * @param {String} [opts.carrierTrackingTrackingNumber] The tracking number assigned by the carrier.
      * @param {String} [opts.carrierTrackingCarrierCode] The carrier code associated with the carrier tracking number.
      * @param {String} [opts.acceptLanguage] The preferred natural language and locale of the client, in POSIX locale format. Currently supports &#x60;en-US&#x60; only.

@@ -330,9 +330,12 @@ export class InvoicesApi {
      * Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.
      * @param {String} marketplaceId The marketplace from which you want the invoice.
      * @param {String} invoiceId The invoice identifier.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.warehouseCode] The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
      * @return {Promise<GetInvoiceResponse>}
      */
-  getInvoiceWithHttpInfo (marketplaceId, invoiceId) {
+  getInvoiceWithHttpInfo (marketplaceId, invoiceId, opts) {
+    opts = opts || {}
     const postBody = null
 
     // verify the required parameter 'marketplaceId' is set
@@ -349,7 +352,8 @@ export class InvoicesApi {
       invoiceId
     }
     const queryParams = {
-      marketplaceId
+      marketplaceId,
+      warehouseCode: opts.warehouseCode
     }
     const headerParams = {
     }
@@ -371,10 +375,12 @@ export class InvoicesApi {
      * Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.
      * @param {String} marketplaceId The marketplace from which you want the invoice.
      * @param {String} invoiceId The invoice identifier.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.warehouseCode] The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
      * @return {Promise<GetInvoiceResponse>}
      */
-  getInvoice (marketplaceId, invoiceId) {
-    return this.getInvoiceWithHttpInfo(marketplaceId, invoiceId)
+  getInvoice (marketplaceId, invoiceId, opts) {
+    return this.getInvoiceWithHttpInfo(marketplaceId, invoiceId, opts)
       .then(function (response_and_data) {
         return response_and_data.data
       })
@@ -397,6 +403,7 @@ export class InvoicesApi {
      * @param {String[]} [opts.statuses] A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1
      * @param {String} [opts.externalInvoiceId] Return invoices that match this external ID. This is typically the Government Invoice ID.
      * @param {String} [opts.sortBy] The attribute by which you want to sort the invoices in the response.
+     * @param {String} [opts.warehouseCode] The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
      * @return {Promise<GetInvoicesResponse>}
      */
   getInvoicesWithHttpInfo (marketplaceId, opts) {
@@ -424,7 +431,8 @@ export class InvoicesApi {
       invoiceType: opts.invoiceType,
       statuses: this.apiClient.buildCollectionParam(opts.statuses, 'csv'),
       externalInvoiceId: opts.externalInvoiceId,
-      sortBy: opts.sortBy
+      sortBy: opts.sortBy,
+      warehouseCode: opts.warehouseCode
     }
     const headerParams = {
     }
@@ -459,6 +467,7 @@ export class InvoicesApi {
      * @param {String[]} [opts.statuses] A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1
      * @param {String} [opts.externalInvoiceId] Return invoices that match this external ID. This is typically the Government Invoice ID.
      * @param {String} [opts.sortBy] The attribute by which you want to sort the invoices in the response.
+     * @param {String} [opts.warehouseCode] The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
      * @return {Promise<GetInvoicesResponse>}
      */
   getInvoices (marketplaceId, opts) {
@@ -471,9 +480,12 @@ export class InvoicesApi {
   /**
      * Returns marketplace-dependent schemas and their respective set of possible values.
      * @param {String} marketplaceId The marketplace identifier.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.warehouseCode] The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
      * @return {Promise<GetInvoicesAttributesResponse>}
      */
-  getInvoicesAttributesWithHttpInfo (marketplaceId) {
+  getInvoicesAttributesWithHttpInfo (marketplaceId, opts) {
+    opts = opts || {}
     const postBody = null
 
     // verify the required parameter 'marketplaceId' is set
@@ -484,7 +496,8 @@ export class InvoicesApi {
     const pathParams = {
     }
     const queryParams = {
-      marketplaceId
+      marketplaceId,
+      warehouseCode: opts.warehouseCode
     }
     const headerParams = {
     }
@@ -505,10 +518,12 @@ export class InvoicesApi {
   /**
      * Returns marketplace-dependent schemas and their respective set of possible values.
      * @param {String} marketplaceId The marketplace identifier.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.warehouseCode] The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
      * @return {Promise<GetInvoicesAttributesResponse>}
      */
-  getInvoicesAttributes (marketplaceId) {
-    return this.getInvoicesAttributesWithHttpInfo(marketplaceId)
+  getInvoicesAttributes (marketplaceId, opts) {
+    return this.getInvoicesAttributesWithHttpInfo(marketplaceId, opts)
       .then(function (response_and_data) {
         return response_and_data.data
       })
@@ -517,9 +532,12 @@ export class InvoicesApi {
   /**
      * Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.
      * @param {String} invoicesDocumentId The export document identifier.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.warehouseCode] The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
      * @return {Promise<GetInvoicesDocumentResponse>}
      */
-  getInvoicesDocumentWithHttpInfo (invoicesDocumentId) {
+  getInvoicesDocumentWithHttpInfo (invoicesDocumentId, opts) {
+    opts = opts || {}
     const postBody = null
 
     // verify the required parameter 'invoicesDocumentId' is set
@@ -531,6 +549,7 @@ export class InvoicesApi {
       invoicesDocumentId
     }
     const queryParams = {
+      warehouseCode: opts.warehouseCode
     }
     const headerParams = {
     }
@@ -551,10 +570,12 @@ export class InvoicesApi {
   /**
      * Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.
      * @param {String} invoicesDocumentId The export document identifier.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.warehouseCode] The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
      * @return {Promise<GetInvoicesDocumentResponse>}
      */
-  getInvoicesDocument (invoicesDocumentId) {
-    return this.getInvoicesDocumentWithHttpInfo(invoicesDocumentId)
+  getInvoicesDocument (invoicesDocumentId, opts) {
+    return this.getInvoicesDocumentWithHttpInfo(invoicesDocumentId, opts)
       .then(function (response_and_data) {
         return response_and_data.data
       })
@@ -563,9 +584,12 @@ export class InvoicesApi {
   /**
      * Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.
      * @param {String} exportId The unique identifier for the export.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.warehouseCode] The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
      * @return {Promise<GetInvoicesExportResponse>}
      */
-  getInvoicesExportWithHttpInfo (exportId) {
+  getInvoicesExportWithHttpInfo (exportId, opts) {
+    opts = opts || {}
     const postBody = null
 
     // verify the required parameter 'exportId' is set
@@ -577,6 +601,7 @@ export class InvoicesApi {
       exportId
     }
     const queryParams = {
+      warehouseCode: opts.warehouseCode
     }
     const headerParams = {
     }
@@ -597,10 +622,12 @@ export class InvoicesApi {
   /**
      * Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.
      * @param {String} exportId The unique identifier for the export.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.warehouseCode] The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
      * @return {Promise<GetInvoicesExportResponse>}
      */
-  getInvoicesExport (exportId) {
-    return this.getInvoicesExportWithHttpInfo(exportId)
+  getInvoicesExport (exportId, opts) {
+    return this.getInvoicesExportWithHttpInfo(exportId, opts)
       .then(function (response_and_data) {
         return response_and_data.data
       })
@@ -615,6 +642,7 @@ export class InvoicesApi {
      * @param {Number} [opts.pageSize] The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100
      * @param {Date} [opts.dateEnd] The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request.
      * @param {String} [opts.status] Return exports matching the status specified.
+     * @param {String} [opts.warehouseCode] The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
      * @return {Promise<GetInvoicesExportsResponse>}
      */
   getInvoicesExportsWithHttpInfo (marketplaceId, opts) {
@@ -634,7 +662,8 @@ export class InvoicesApi {
       nextToken: opts.nextToken,
       pageSize: opts.pageSize,
       dateEnd: opts.dateEnd,
-      status: opts.status
+      status: opts.status,
+      warehouseCode: opts.warehouseCode
     }
     const headerParams = {
     }
@@ -661,6 +690,7 @@ export class InvoicesApi {
      * @param {Number} [opts.pageSize] The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100
      * @param {Date} [opts.dateEnd] The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request.
      * @param {String} [opts.status] Return exports matching the status specified.
+     * @param {String} [opts.warehouseCode] The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
      * @return {Promise<GetInvoicesExportsResponse>}
      */
   getInvoicesExports (marketplaceId, opts) {

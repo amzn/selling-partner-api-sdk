@@ -20,6 +20,9 @@ export const defaultRateLimitMap = {
   "AplusContentApi-searchContentPublishRecords": [5, 5],
   "AplusContentApi-postContentDocumentApprovalSubmission": [5, 5],
   "AplusContentApi-postContentDocumentSuspendSubmission": [5, 5],
+  "AplusContentApi-createMedia": [10, 10],
+  "AplusContentApi-getMedia": [10, 10],
+  "AplusContentApi-updateMedia": [10, 10],
   "AppIntegrationsApi-createNotification": [1, 5],
   "AppIntegrationsApi-deleteNotifications": [1, 5],
   "AppIntegrationsApi-recordActionFeedback": [1, 5],
@@ -346,6 +349,11 @@ export const defaultRateLimitMap = {
   "TrackingApi-getShipmentTracking": [2, 30],
   "PromotionsApi-searchPromotions": [1, 4, 10],
   "PromotionsApi-getSelection": [1, 2, 10],
-  "PromotionsApi-getPromotion": [1, 2, 10]
+  "PromotionsApi-getPromotion": [1, 2, 10],
+  "DefaultApi-getRemittanceHeaders": [1, 2, 4],
+  "DefaultApi-getRemittance": [1, 2, 2],
+  "SupportApi-getCase": [1, 1],
+  "SupportApi-listCase": [1, 1],
+  "SupportApi-listContacts": [1, 1]
 }
 

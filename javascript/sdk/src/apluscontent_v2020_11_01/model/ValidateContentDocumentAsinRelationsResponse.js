@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for A+ Content Management
- * Use the A+ Content API to build applications that help selling partners add rich marketing content to their Amazon product detail pages. Selling partners can use A+ content to share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners use content modules to add images and text.
+ * With the A+ Content API, you can build applications that help selling partners add rich marketing content to their Amazon product detail pages. A+ Content helps selling partners share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners assemble content by choosing from content modules and adding images and text.
  *
  * The version of the OpenAPI document: 2020-11-01
  *
@@ -28,7 +28,7 @@ export class ValidateContentDocumentAsinRelationsResponse {
    * @class
    * @implements module:apluscontent_v2020_11_01/model/AplusResponse
    * @implements module:apluscontent_v2020_11_01/model/ErrorList
-   * @param errors {Error[]} A list of error responses that are returned when a request is unsuccessful.
+   * @param errors {Error[]} A list of error responses returned when a request is unsuccessful.
    */
   constructor (errors) {
     this.errors = errors
@@ -72,7 +72,7 @@ export class ValidateContentDocumentAsinRelationsResponse {
 ValidateContentDocumentAsinRelationsResponse.prototype.warnings = undefined
 
 /**
- * A list of error responses that are returned when a request is unsuccessful.
+ * A list of error responses returned when a request is unsuccessful.
  * @member {Error[]} errors
  * @type {Error[]}
  */
@@ -88,7 +88,7 @@ AplusResponse.prototype.warnings = undefined
 
 // Implement ErrorList interface:
 /**
- * A list of error responses that are returned when a request is unsuccessful.
+ * A list of error responses returned when a request is unsuccessful.
  * @member {Error[]} errors
  * @type {Error[]}
  */

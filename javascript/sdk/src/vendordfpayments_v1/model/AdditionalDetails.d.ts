@@ -48,6 +48,21 @@ export declare namespace AdditionalDetails {
            * @const
            */
         OCR: string;
+        /**
+           * value: "TaxExemptReason"
+           * @const
+           */
+        TaxExemptReason: string;
+        /**
+           * value: "LegalTerms"
+           * @const
+           */
+        LegalTerms: string;
+        /**
+           * value: "RegulatoryNote"
+           * @const
+           */
+        RegulatoryNote: string;
     };
 }
 //# sourceMappingURL=AdditionalDetails.d.ts.map

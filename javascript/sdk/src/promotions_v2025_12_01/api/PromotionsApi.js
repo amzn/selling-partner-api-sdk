@@ -67,7 +67,7 @@ export class PromotionsApi {
   }
 
   /**
-     * Retrieve details of a specified promotion.
+     * Retrieve details of a specified promotion.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
      * @param {String} promotionId The ID of the promotion.
      * @param {Object} [opts] Optional parameters
      * @param {String[]} [opts.includedData] A comma-delimited list of datasets to include in the response.
@@ -107,7 +107,7 @@ export class PromotionsApi {
   }
 
   /**
-     * Retrieve details of a specified promotion.
+     * Retrieve details of a specified promotion.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
      * @param {String} promotionId The ID of the promotion.
      * @param {Object} [opts] Optional parameters
      * @param {String[]} [opts.includedData] A comma-delimited list of datasets to include in the response.
@@ -122,7 +122,7 @@ export class PromotionsApi {
   }
 
   /**
-     * Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.
+     * Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
      * @param {String} promotionId The ID of the promotion.
      * @param {String} selectionId The ID of the selection.
      * @param {Number} revisionId The revision identifier for the selection. Use the &#x60;revisionId&#x60; from the &#x60;getPromotion&#x60; response. A promotion may have multiple selection revisions when an update is in progress. Passing the correct &#x60;revisionId&#x60; ensures you retrieve the expected data.
@@ -180,7 +180,7 @@ export class PromotionsApi {
   }
 
   /**
-     * Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.
+     * Retrieve up to 100 product items that are associated with a specified promotion. This operation only supports items found in &#x60;SelectionType.ITEMS&#x60;. Items found in &#x60;SelectionType.CATALOG&#x60; are not supported. Selection objects always include &#x60;selectionDetails&#x60; with item information.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
      * @param {String} promotionId The ID of the promotion.
      * @param {String} selectionId The ID of the selection.
      * @param {Number} revisionId The revision identifier for the selection. Use the &#x60;revisionId&#x60; from the &#x60;getPromotion&#x60; response. A promotion may have multiple selection revisions when an update is in progress. Passing the correct &#x60;revisionId&#x60; ensures you retrieve the expected data.
@@ -199,7 +199,7 @@ export class PromotionsApi {
   }
 
   /**
-     * Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.
+     * Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 4 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
      * @param {String[]} marketplaceIds The Amazon stores from which to retrieve promotions. Refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers) for a list of Amazon store values.
      * @param {Object} [opts] Optional parameters
      * @param {String} [opts.locale] The locale from which to retrieve promotions. Formatted as an ISO 639 language code, followed by an underscore, followed by an ISO 3166-1 alpha-2 country code. (default to &#39;en_US&#39;)
@@ -265,7 +265,7 @@ export class PromotionsApi {
   }
 
   /**
-     * Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.
+     * Search and filter promotions based on various criteria. Returns a paginated list of promotion summaries.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 4 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
      * @param {String[]} marketplaceIds The Amazon stores from which to retrieve promotions. Refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers) for a list of Amazon store values.
      * @param {Object} [opts] Optional parameters
      * @param {String} [opts.locale] The locale from which to retrieve promotions. Formatted as an ISO 639 language code, followed by an underscore, followed by an ISO 3166-1 alpha-2 country code. (default to &#39;en_US&#39;)
