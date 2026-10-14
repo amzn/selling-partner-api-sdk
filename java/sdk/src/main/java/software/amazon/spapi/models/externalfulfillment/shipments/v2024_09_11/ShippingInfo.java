@@ -35,10 +35,10 @@ public class ShippingInfo {
     /** The type of shipping that the seller uses to deliver a customer order. */
     @JsonAdapter(ShippingTypeEnum.Adapter.class)
     public enum ShippingTypeEnum {
-        @SerializedName("MARKETPLACE")
-        MARKETPLACE("MARKETPLACE"),
-        @SerializedName("SELF")
-        SELF("SELF");
+        @SerializedName("Marketplace")
+        MARKETPLACE("Marketplace"),
+        @SerializedName("Self")
+        SELF("Self");
 
         private String value;
 
