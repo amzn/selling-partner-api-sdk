@@ -40,16 +40,16 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         public enum ShippingTypeEnum
         {
             /// <summary>
-            /// Enum MARKETPLACE for value: MARKETPLACE
+            /// Enum Marketplace for value: Marketplace
             /// </summary>
-            [EnumMember(Value = "MARKETPLACE")]
-            MARKETPLACE = 1,
+            [EnumMember(Value = "Marketplace")]
+            Marketplace = 1,
 
             /// <summary>
-            /// Enum SELF for value: SELF
+            /// Enum Self for value: Self
             /// </summary>
-            [EnumMember(Value = "SELF")]
-            SELF = 2
+            [EnumMember(Value = "Self")]
+            Self = 2
         }
 
 
