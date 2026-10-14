@@ -91,16 +91,16 @@ ShippingInfo.prototype.shipToAddress = undefined
 ShippingInfo.ShippingTypeEnum = {
 
   /**
-     * value: "MARKETPLACE"
+     * value: "Marketplace"
      * @const
      */
-  MARKETPLACE: 'MARKETPLACE',
+  Marketplace: 'Marketplace',
 
   /**
-     * value: "SELF"
+     * value: "Self"
      * @const
      */
-  SELF: 'SELF'
+  Self: 'Self'
 }
 /**
  * The type of shipping that the seller uses to deliver a customer order.
