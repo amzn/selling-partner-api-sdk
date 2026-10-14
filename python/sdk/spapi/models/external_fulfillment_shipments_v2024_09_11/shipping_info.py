@@ -161,7 +161,7 @@ class ShippingInfo(object):
         :param shipping_type: The shipping_type of this ShippingInfo.  # noqa: E501
         :type: str
         """
-        allowed_values = ["MARKETPLACE", "SELF"]  # noqa: E501
+        allowed_values = ["Marketplace", "Self"]  # noqa: E501
         if (self._configuration.client_side_validation and
                 shipping_type not in allowed_values):
             raise ValueError(
