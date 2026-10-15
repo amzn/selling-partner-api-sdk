@@ -37,15 +37,15 @@ export declare class ShippingInfo {
 export declare namespace ShippingInfo {
     var ShippingTypeEnum: {
         /**
-           * value: "MARKETPLACE"
+           * value: "Marketplace"
            * @const
            */
-        MARKETPLACE: string;
+        Marketplace: string;
         /**
-           * value: "SELF"
+           * value: "Self"
            * @const
            */
-        SELF: string;
+        Self: string;
     };
 }
 //# sourceMappingURL=ShippingInfo.d.ts.map

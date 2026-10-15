@@ -55,15 +55,15 @@ export declare namespace CreateSandboxShipmentRequest {
     };
     var ShippingTypeEnum: {
         /**
-           * value: "SELF"
+           * value: "Self"
            * @const
            */
-        SELF: string;
+        Self: string;
         /**
-           * value: "MARKETPLACE"
+           * value: "Marketplace"
            * @const
            */
-        MARKETPLACE: string;
+        Marketplace: string;
         /**
            * value: "THIRD_PARTY_CARRIER"
            * @const

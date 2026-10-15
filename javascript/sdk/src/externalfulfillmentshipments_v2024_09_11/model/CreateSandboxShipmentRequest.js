@@ -117,16 +117,16 @@ CreateSandboxShipmentRequest.prototype.marketplaceChannel = undefined
 CreateSandboxShipmentRequest.ShippingTypeEnum = {
 
   /**
-     * value: "SELF"
+     * value: "Self"
      * @const
      */
-  SELF: 'SELF',
+  Self: 'Self',
 
   /**
-     * value: "MARKETPLACE"
+     * value: "Marketplace"
      * @const
      */
-  MARKETPLACE: 'MARKETPLACE',
+  Marketplace: 'Marketplace',
 
   /**
      * value: "THIRD_PARTY_CARRIER"
