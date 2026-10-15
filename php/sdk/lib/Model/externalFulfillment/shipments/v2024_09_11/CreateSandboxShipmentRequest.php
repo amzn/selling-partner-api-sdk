@@ -53,8 +53,8 @@ class CreateSandboxShipmentRequest implements ModelInterface, \ArrayAccess, \Jso
 
     public const MARKETPLACE_CHANNEL_FBA = 'FBA';
     public const MARKETPLACE_CHANNEL_MFN = 'MFN';
-    public const SHIPPING_TYPE_SELF = 'SELF';
-    public const SHIPPING_TYPE_MARKETPLACE = 'MARKETPLACE';
+    public const SHIPPING_TYPE_SELF = 'Self';
+    public const SHIPPING_TYPE_MARKETPLACE = 'Marketplace';
     public const SHIPPING_TYPE_THIRD_PARTY_CARRIER = 'THIRD_PARTY_CARRIER';
     public const ORDER_TYPE_HAZMAT = 'HAZMAT';
     public const ORDER_TYPE_GIFT_WRAP = 'GIFT_WRAP';

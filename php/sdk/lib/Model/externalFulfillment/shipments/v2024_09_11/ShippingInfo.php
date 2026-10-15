@@ -51,8 +51,8 @@ class ShippingInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
-    public const SHIPPING_TYPE_MARKETPLACE = 'MARKETPLACE';
-    public const SHIPPING_TYPE_SELF = 'SELF';
+    public const SHIPPING_TYPE_MARKETPLACE = 'Marketplace';
+    public const SHIPPING_TYPE_SELF = 'Self';
 
     /**
      * The original name of the model.
