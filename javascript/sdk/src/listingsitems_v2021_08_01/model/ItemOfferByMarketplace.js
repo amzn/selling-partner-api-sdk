@@ -15,6 +15,8 @@ import { ApiClient } from '../ApiClient.js'
 import { Audience } from './Audience.js'
 import { Money } from './Money.js'
 import { Points } from './Points.js'
+import { QuantityDiscountPlan } from './QuantityDiscountPlan.js'
+import { ReplenishmentDiscount } from './ReplenishmentDiscount.js'
 
 /**
  * The ItemOfferByMarketplace model module.
@@ -63,6 +65,8 @@ export class ItemOfferByMarketplace {
       if (data.hasOwnProperty('price')) { obj.price = Money.constructFromObject(data.price) }
       if (data.hasOwnProperty('points')) { obj.points = Points.constructFromObject(data.points) }
       if (data.hasOwnProperty('audience')) { obj.audience = Audience.constructFromObject(data.audience) }
+      if (data.hasOwnProperty('replenishmentDiscount')) { obj.replenishmentDiscount = ReplenishmentDiscount.constructFromObject(data.replenishmentDiscount) }
+      if (data.hasOwnProperty('quantityDiscountPlan')) { obj.quantityDiscountPlan = QuantityDiscountPlan.constructFromObject(data.quantityDiscountPlan) }
     }
     return obj
   }
@@ -118,3 +122,15 @@ ItemOfferByMarketplace.prototype.points = undefined
  * @type {Audience}
  */
 ItemOfferByMarketplace.prototype.audience = undefined
+
+/**
+ * @member {ReplenishmentDiscount} replenishmentDiscount
+ * @type {ReplenishmentDiscount}
+ */
+ItemOfferByMarketplace.prototype.replenishmentDiscount = undefined
+
+/**
+ * @member {QuantityDiscountPlan} quantityDiscountPlan
+ * @type {QuantityDiscountPlan}
+ */
+ItemOfferByMarketplace.prototype.quantityDiscountPlan = undefined

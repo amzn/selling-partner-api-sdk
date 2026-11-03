@@ -25,7 +25,7 @@ export declare class ShippingServiceOptions {
      * @alias module:merchantfulfillment_v0/model/ShippingServiceOptions
      * @class
      * @param deliveryExperience {DeliveryExperienceType}
-     * @param carrierWillPickUp {Boolean} When true, the carrier will pick up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK).
+     * @param carrierWillPickUp {Boolean} When `true`, the carrier picks up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK).
      */
     constructor(deliveryExperience: DeliveryExperienceType, carrierWillPickUp: boolean);
     /**

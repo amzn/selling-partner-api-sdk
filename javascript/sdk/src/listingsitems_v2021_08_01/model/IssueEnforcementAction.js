@@ -21,10 +21,10 @@ import { ApiClient } from '../ApiClient.js'
 export class IssueEnforcementAction {
   /**
    * Constructs a new <code>IssueEnforcementAction</code>.
-   * The enforcement action taken by Amazon that affect the publishing or status of a listing
+   * An enforcement action that Amazon takes that affects the publishing or status of a listing.
    * @alias module:listingsitems_v2021_08_01/model/IssueEnforcementAction
    * @class
-   * @param action {String} The enforcement action name.   Possible values:   * `LISTING_SUPPRESSED` - This enforcement takes down the current listing item's buyability.   * `ATTRIBUTE_SUPPRESSED` - An attribute's value on the listing item is invalid, which causes it to be rejected by Amazon.   * `CATALOG_ITEM_REMOVED` - This catalog item is inactive on Amazon, and all offers against it in the applicable Amazon store are non-buyable.   * `SEARCH_SUPPRESSED` - This value indicates that the catalog item is hidden from search results.
+   * @param action {String} The enforcement action name.  Possible values:  * `LISTING_SUPPRESSED` - This enforcement takes down the current listing item's buyability.  * `ATTRIBUTE_SUPPRESSED` - An attribute's value on the listing item is invalid, which causes it to be rejected by Amazon.  * `CATALOG_ITEM_REMOVED` - This catalog item is inactive on Amazon, and all offers against it in the applicable Amazon store are non-buyable.  * `SEARCH_SUPPRESSED` - This value indicates that the catalog item is hidden from search results.
    */
   constructor (action) {
     this.action = action
@@ -58,7 +58,7 @@ export class IssueEnforcementAction {
 }
 
 /**
- * The enforcement action name.   Possible values:   * `LISTING_SUPPRESSED` - This enforcement takes down the current listing item's buyability.   * `ATTRIBUTE_SUPPRESSED` - An attribute's value on the listing item is invalid, which causes it to be rejected by Amazon.   * `CATALOG_ITEM_REMOVED` - This catalog item is inactive on Amazon, and all offers against it in the applicable Amazon store are non-buyable.   * `SEARCH_SUPPRESSED` - This value indicates that the catalog item is hidden from search results.
+ * The enforcement action name.  Possible values:  * `LISTING_SUPPRESSED` - This enforcement takes down the current listing item's buyability.  * `ATTRIBUTE_SUPPRESSED` - An attribute's value on the listing item is invalid, which causes it to be rejected by Amazon.  * `CATALOG_ITEM_REMOVED` - This catalog item is inactive on Amazon, and all offers against it in the applicable Amazon store are non-buyable.  * `SEARCH_SUPPRESSED` - This value indicates that the catalog item is hidden from search results.
  * @member {String} action
  * @type {String}
  */

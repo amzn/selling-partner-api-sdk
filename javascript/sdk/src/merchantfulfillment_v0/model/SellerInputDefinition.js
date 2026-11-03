@@ -27,7 +27,7 @@ export class SellerInputDefinition {
    * Specifies characteristics that apply to a seller input.
    * @alias module:merchantfulfillment_v0/model/SellerInputDefinition
    * @class
-   * @param isRequired {Boolean} When true, the additional input field is required.
+   * @param isRequired {Boolean} When `true`, the additional input field is required.
    * @param dataType {String} The data type of the additional input field.
    * @param constraints {Constraint[]} List of constraints.
    * @param inputDisplayText {String} The display text for the additional input field.
@@ -75,7 +75,7 @@ export class SellerInputDefinition {
 }
 
 /**
- * When true, the additional input field is required.
+ * When `true`, the additional input field is required.
  * @member {Boolean} isRequired
  * @type {Boolean}
  */

@@ -18,7 +18,7 @@
 export declare class ExcludedBenefit {
     /**
      * Constructs a new <code>ExcludedBenefit</code>.
-     * An object representing an excluded benefit that is excluded for a shipping offer or rate.
+     * A benefit excluded from a shipping offer or rate.
      * @alias module:merchantfulfillment_v0/model/ExcludedBenefit
      * @class
      */

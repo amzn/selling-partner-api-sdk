@@ -23,7 +23,7 @@ import { TaxRegistrationInfo } from './TaxRegistrationInfo.js'
 export class PartyIdentificationInfo {
   /**
    * Constructs a new <code>PartyIdentificationInfo</code>.
-   * Party identification details for the shipment, applicable to direct fulfillment shipments.
+   * Party identification details for the shipment, applicable only to direct fulfillment shipments.
    * @alias module:externalfulfillmentshipments_v2024_09_11/model/PartyIdentificationInfo
    * @class
    * @param partyId {String} Assigned identification for the party. For example, a warehouse code or vendor code.

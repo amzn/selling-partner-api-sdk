@@ -29,12 +29,10 @@ export class RecommendedPackage {
    * @class
    * @param dimensions {PackageDimensions}
    * @param weight {Weight}
-   * @param lineItems {RecommendedPackageLineItem[]} A list of line items to be contained in a recommended package. This attribute is only for orders that come with specific recommendations for line-item distribution.
    */
-  constructor (dimensions, weight, lineItems) {
+  constructor (dimensions, weight) {
     this.dimensions = dimensions
     this.weight = weight
-    this.lineItems = lineItems
   }
 
   /**

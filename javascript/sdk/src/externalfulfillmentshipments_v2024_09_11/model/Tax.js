@@ -53,7 +53,7 @@ export class Tax {
       }
       obj = obj || new Tax()
       if (data.hasOwnProperty('type')) { obj.type = ApiClient.convertToType(data.type, 'String') }
-      if (data.hasOwnProperty('rate')) { obj.rate = ApiClient.convertToType(data.rate, 'String') }
+      if (data.hasOwnProperty('rate')) { obj.rate = ApiClient.convertToType(data.rate, 'Number') }
       if (data.hasOwnProperty('charge')) { obj.charge = ChargeBreakup.constructFromObject(data.charge) }
     }
     return obj
@@ -129,9 +129,9 @@ Tax.TypeEnum = {
 Tax.prototype.type = undefined
 
 /**
- * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
- * @member {String} rate
- * @type {String}
+ * A decimal number.
+ * @member {Number} rate
+ * @type {Number}
  */
 Tax.prototype.rate = undefined
 

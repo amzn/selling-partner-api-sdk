@@ -16,17 +16,17 @@
  * @version 2024-09-11
  */
 export declare class Distance {
-    value: string;
+    value: number;
     distanceUnit: string;
     /**
      * Constructs a new <code>Distance</code>.
      * A distance measurement.
      * @alias module:externalfulfillmentshipments_v2024_09_11/model/Distance
      * @class
-     * @param value {String} A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+     * @param value {Number} A decimal number.
      * @param distanceUnit {String} The unit of measurement of the distance.
      */
-    constructor(value: string, distanceUnit: string);
+    constructor(value: number, distanceUnit: string);
     /**
      * Constructs a <code>Distance</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.

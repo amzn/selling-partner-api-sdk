@@ -14,6 +14,7 @@
 import { ApiClient } from '../ApiClient.js'
 import { PackageDimensions } from './PackageDimensions.js'
 import { PackageLineItem } from './PackageLineItem.js'
+import { TrackingDetails } from './TrackingDetails.js'
 import { Weight } from './Weight.js'
 
 /**
@@ -27,7 +28,7 @@ export class Package {
    * A package that is created to ship one or more of a shipment&#39;s line items.
    * @alias module:externalfulfillmentshipments_v2024_09_11/model/Package
    * @class
-   * @param id {String} An ID that uniquely identifies a package within a shipment.
+   * @param id {String} The ID of the package whose information you want to update.
    * @param dimensions {PackageDimensions}
    * @param weight {Weight}
    * @param packageLineItems {PackageLineItem[]} The list of line items in a package.
@@ -67,13 +68,14 @@ export class Package {
       if (data.hasOwnProperty('packageLineItems')) { obj.packageLineItems = ApiClient.convertToType(data.packageLineItems, [PackageLineItem]) }
       if (data.hasOwnProperty('status')) { obj.status = ApiClient.convertToType(data.status, 'String') }
       if (data.hasOwnProperty('packageHandlingRequirements')) { obj.packageHandlingRequirements = ApiClient.convertToType(data.packageHandlingRequirements, 'String') }
+      if (data.hasOwnProperty('trackingDetails')) { obj.trackingDetails = TrackingDetails.constructFromObject(data.trackingDetails) }
     }
     return obj
   }
 }
 
 /**
- * An ID that uniquely identifies a package within a shipment.
+ * The ID of the package whose information you want to update.
  * @member {String} id
  * @type {String}
  */
@@ -186,3 +188,9 @@ Package.PackageHandlingRequirementsEnum = {
  * @type {String}
  */
 Package.prototype.packageHandlingRequirements = undefined
+
+/**
+ * @member {TrackingDetails} trackingDetails
+ * @type {TrackingDetails}
+ */
+Package.prototype.trackingDetails = undefined

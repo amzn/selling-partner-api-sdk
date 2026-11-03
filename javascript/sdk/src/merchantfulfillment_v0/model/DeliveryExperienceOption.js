@@ -14,7 +14,7 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
- * @typedef {'DeliveryConfirmationWithAdultSignature'|'DeliveryConfirmationWithSignature'|'DeliveryConfirmationWithoutSignature'|'NoTracking'|'NoPreference'} DeliveryExperienceOption
+ * @typedef {'DeliveryConfirmationWithAdultSignature'|'DeliveryConfirmationWithSignature'|'DeliveryConfirmationWithoutSignature'|'NoTracking'|'NoPreference'|'DeliveryConfirmationWithIdentityCheck'|'DeliveryConfirmationWithNameVerification'} DeliveryExperienceOption
  */
 export const DeliveryExperienceOption = Object.assign(
   function () {},
@@ -24,6 +24,8 @@ export const DeliveryExperienceOption = Object.assign(
     DeliveryConfirmationWithoutSignature: 'DeliveryConfirmationWithoutSignature',
     NoTracking: 'NoTracking',
     NoPreference: 'NoPreference',
+    DeliveryConfirmationWithIdentityCheck: 'DeliveryConfirmationWithIdentityCheck',
+    DeliveryConfirmationWithNameVerification: 'DeliveryConfirmationWithNameVerification',
     constructFromObject: function (object) {
       return object
     }

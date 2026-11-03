@@ -51,7 +51,7 @@ export class SandboxShipmentUpdates {
       obj = obj || new SandboxShipmentUpdates()
       if (data.hasOwnProperty('status')) { obj.status = ApiClient.convertToType(data.status, 'String') }
       if (data.hasOwnProperty('subStatus')) { obj.subStatus = ApiClient.convertToType(data.subStatus, 'String') }
-      if (data.hasOwnProperty('timestamp')) { obj.timestamp = ApiClient.convertToType(data.timestamp, 'String') }
+      if (data.hasOwnProperty('timestamp')) { obj.timestamp = ApiClient.convertToType(data.timestamp, 'Date') }
     }
     return obj
   }
@@ -111,7 +111,7 @@ SandboxShipmentUpdates.prototype.subStatus = undefined
 
 /**
  * The Expected Pickup Date (EPD) for the shipment. Used with `TRANSPORT_CAPACITY_CHANGE` update type. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
- * @member {String} timestamp
- * @type {String}
+ * @member {Date} timestamp
+ * @type {Date}
  */
 SandboxShipmentUpdates.prototype.timestamp = undefined

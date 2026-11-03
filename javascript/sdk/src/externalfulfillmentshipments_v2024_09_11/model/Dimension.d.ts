@@ -16,17 +16,17 @@
  * @version 2024-09-11
  */
 export declare class Dimension {
-    value: string;
+    value: number;
     dimensionUnit: string;
     /**
      * Constructs a new <code>Dimension</code>.
      * A dimension of a package.
      * @alias module:externalfulfillmentshipments_v2024_09_11/model/Dimension
      * @class
-     * @param value {String} A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+     * @param value {Number} A decimal number.
      * @param dimensionUnit {String} The unit of measurement of the dimension.
      */
-    constructor(value: string, dimensionUnit: string);
+    constructor(value: number, dimensionUnit: string);
     /**
      * Constructs a <code>Dimension</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.

@@ -25,7 +25,7 @@ export class Cancellation {
    * @alias module:externalfulfillmentshipments_v2024_09_11/model/Cancellation
    * @class
    * @param cancelledQuantity {Number} The number of items of this particular item which have been cancelled.
-   * @param cancelledTimestamp {String} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+   * @param cancelledTimestamp {Date} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
    * @param cancellationType {String} The type of cancellation of the item in the shipment.
    */
   constructor (cancelledQuantity, cancelledTimestamp, cancellationType) {
@@ -56,7 +56,7 @@ export class Cancellation {
       }
       obj = obj || new Cancellation()
       if (data.hasOwnProperty('cancelledQuantity')) { obj.cancelledQuantity = ApiClient.convertToType(data.cancelledQuantity, 'Number') }
-      if (data.hasOwnProperty('cancelledTimestamp')) { obj.cancelledTimestamp = ApiClient.convertToType(data.cancelledTimestamp, 'String') }
+      if (data.hasOwnProperty('cancelledTimestamp')) { obj.cancelledTimestamp = ApiClient.convertToType(data.cancelledTimestamp, 'Date') }
       if (data.hasOwnProperty('cancellationType')) { obj.cancellationType = ApiClient.convertToType(data.cancellationType, 'String') }
       if (data.hasOwnProperty('cancellationReason')) { obj.cancellationReason = ApiClient.convertToType(data.cancellationReason, 'String') }
     }
@@ -73,8 +73,8 @@ Cancellation.prototype.cancelledQuantity = undefined
 
 /**
  * A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
- * @member {String} cancelledTimestamp
- * @type {String}
+ * @member {Date} cancelledTimestamp
+ * @type {Date}
  */
 Cancellation.prototype.cancelledTimestamp = undefined
 

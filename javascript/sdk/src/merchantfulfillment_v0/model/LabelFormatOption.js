@@ -58,7 +58,7 @@ export class LabelFormatOption {
 }
 
 /**
- * When true, include a packing slip with the label.
+ * When `true`, include a packing slip with the label.
  * @member {Boolean} includePackingSlipWithLabel
  * @type {Boolean}
  */

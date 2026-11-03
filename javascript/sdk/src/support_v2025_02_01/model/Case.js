@@ -73,7 +73,6 @@ export class Case {
       if (data.hasOwnProperty('createdDate')) { obj.createdDate = ApiClient.convertToType(data.createdDate, 'Date') }
       if (data.hasOwnProperty('lastUpdatedDate')) { obj.lastUpdatedDate = ApiClient.convertToType(data.lastUpdatedDate, 'Date') }
       if (data.hasOwnProperty('resolvedDate')) { obj.resolvedDate = ApiClient.convertToType(data.resolvedDate, 'Date') }
-      if (data.hasOwnProperty('lastOutboundDate')) { obj.lastOutboundDate = ApiClient.convertToType(data.lastOutboundDate, 'Date') }
     }
     return obj
   }
@@ -172,10 +171,3 @@ Case.prototype.lastUpdatedDate = undefined
  * @type {Date}
  */
 Case.prototype.resolvedDate = undefined
-
-/**
- * The timestamp of the last outbound contact on the case. The date must be in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> format.
- * @member {Date} lastOutboundDate
- * @type {Date}
- */
-Case.prototype.lastOutboundDate = undefined

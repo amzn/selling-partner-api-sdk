@@ -26,7 +26,7 @@ export class ShippingInfo {
    * Shipping information for the packages in a shipment.
    * @alias module:externalfulfillmentshipments_v2024_09_11/model/ShippingInfo
    * @class
-   * @param expectedShippingDateTimeInUTC {String} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+   * @param expectedShippingDateTimeInUTC {Date} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
    */
   constructor (expectedShippingDateTimeInUTC) {
     this.expectedShippingDateTimeInUTC = expectedShippingDateTimeInUTC
@@ -54,7 +54,8 @@ export class ShippingInfo {
       }
       obj = obj || new ShippingInfo()
       if (data.hasOwnProperty('recommendedShipMethod')) { obj.recommendedShipMethod = ApiClient.convertToType(data.recommendedShipMethod, 'String') }
-      if (data.hasOwnProperty('expectedShippingDateTimeInUTC')) { obj.expectedShippingDateTimeInUTC = ApiClient.convertToType(data.expectedShippingDateTimeInUTC, 'String') }
+      if (data.hasOwnProperty('expectedShippingDateTime')) { obj.expectedShippingDateTime = ApiClient.convertToType(data.expectedShippingDateTime, 'Date') }
+      if (data.hasOwnProperty('expectedShippingDateTimeInUTC')) { obj.expectedShippingDateTimeInUTC = ApiClient.convertToType(data.expectedShippingDateTimeInUTC, 'Date') }
       if (data.hasOwnProperty('shipToAddress')) { obj.shipToAddress = Address.constructFromObject(data.shipToAddress) }
       if (data.hasOwnProperty('shippingType')) { obj.shippingType = ApiClient.convertToType(data.shippingType, 'String') }
       if (data.hasOwnProperty('recommendedPackages')) { obj.recommendedPackages = ApiClient.convertToType(data.recommendedPackages, [RecommendedPackage]) }
@@ -72,8 +73,15 @@ ShippingInfo.prototype.recommendedShipMethod = undefined
 
 /**
  * A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
- * @member {String} expectedShippingDateTimeInUTC
- * @type {String}
+ * @member {Date} expectedShippingDateTime
+ * @type {Date}
+ */
+ShippingInfo.prototype.expectedShippingDateTime = undefined
+
+/**
+ * A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+ * @member {Date} expectedShippingDateTimeInUTC
+ * @type {Date}
  */
 ShippingInfo.prototype.expectedShippingDateTimeInUTC = undefined
 

@@ -19,8 +19,6 @@ import { RequirementLevel } from './RequirementLevel.js';
 export declare class ComplianceAttributes {
     hazmatLabelsRequirement: RequirementLevel;
     serialNumberRequirement: RequirementLevel;
-    countryOfOriginRequirement: RequirementLevel;
-    itemValueRequirement: RequirementLevel;
     /**
      * Constructs a new <code>ComplianceAttributes</code>.
      * All necessary compliance attributes specific to the line item.
@@ -28,10 +26,8 @@ export declare class ComplianceAttributes {
      * @class
      * @param hazmatLabelsRequirement {RequirementLevel}
      * @param serialNumberRequirement {RequirementLevel}
-     * @param countryOfOriginRequirement {RequirementLevel}
-     * @param itemValueRequirement {RequirementLevel}
      */
-    constructor(hazmatLabelsRequirement: RequirementLevel, serialNumberRequirement: RequirementLevel, countryOfOriginRequirement: RequirementLevel, itemValueRequirement: RequirementLevel);
+    constructor(hazmatLabelsRequirement: RequirementLevel, serialNumberRequirement: RequirementLevel);
     /**
      * Constructs a <code>ComplianceAttributes</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.

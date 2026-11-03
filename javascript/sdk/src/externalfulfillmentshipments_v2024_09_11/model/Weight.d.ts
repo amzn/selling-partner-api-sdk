@@ -16,17 +16,17 @@
  * @version 2024-09-11
  */
 export declare class Weight {
-    value: string;
+    value: number;
     weightUnit: string;
     /**
      * Constructs a new <code>Weight</code>.
      * The weight of a package.
      * @alias module:externalfulfillmentshipments_v2024_09_11/model/Weight
      * @class
-     * @param value {String} A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+     * @param value {Number} A decimal number.
      * @param weightUnit {String} The unit of measurement of the weight.
      */
-    constructor(value: string, weightUnit: string);
+    constructor(value: number, weightUnit: string);
     /**
      * Constructs a <code>Weight</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.

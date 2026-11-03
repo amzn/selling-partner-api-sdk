@@ -16,11 +16,9 @@ import { Appointment } from './model/Appointment.js'
 import { Attachment } from './model/Attachment.js'
 import { CallbackTiming } from './model/CallbackTiming.js'
 import { Case } from './model/Case.js'
-import { CaseFilters } from './model/CaseFilters.js'
 import { ChatContent } from './model/ChatContent.js'
 import { ChatEvent } from './model/ChatEvent.js'
 import { Contact } from './model/Contact.js'
-import { DateFilter } from './model/DateFilter.js'
 import { EmailContent } from './model/EmailContent.js'
 import { Error } from './model/Error.js'
 import { ErrorList } from './model/ErrorList.js'
@@ -70,12 +68,6 @@ export {
   Case,
 
   /**
-     * The CaseFilters model constructor.
-     * @property {module:support_v2025_02_01/model/CaseFilters}
-     */
-  CaseFilters,
-
-  /**
      * The ChatContent model constructor.
      * @property {module:support_v2025_02_01/model/ChatContent}
      */
@@ -92,12 +84,6 @@ export {
      * @property {module:support_v2025_02_01/model/Contact}
      */
   Contact,
-
-  /**
-     * The DateFilter model constructor.
-     * @property {module:support_v2025_02_01/model/DateFilter}
-     */
-  DateFilter,
 
   /**
      * The EmailContent model constructor.

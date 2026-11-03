@@ -73,6 +73,7 @@ import { Status } from './model/Status.js';
 import { Tax } from './model/Tax.js';
 import { TaxRegistrationInfo } from './model/TaxRegistrationInfo.js';
 import { TimeWindow } from './model/TimeWindow.js';
+import { TrackingDetails } from './model/TrackingDetails.js';
 import { UpdateSandboxShipmentRequest } from './model/UpdateSandboxShipmentRequest.js';
 import { Weight } from './model/Weight.js';
 import { SandboxShipmentsApi } from './api/SandboxShipmentsApi.js';
@@ -400,6 +401,11 @@ TaxRegistrationInfo,
    * @property {module:externalfulfillmentshipments_v2024_09_11/model/TimeWindow}
    */
 TimeWindow, 
+/**
+   * The TrackingDetails model constructor.
+   * @property {module:externalfulfillmentshipments_v2024_09_11/model/TrackingDetails}
+   */
+TrackingDetails, 
 /**
    * The UpdateSandboxShipmentRequest model constructor.
    * @property {module:externalfulfillmentshipments_v2024_09_11/model/UpdateSandboxShipmentRequest}

@@ -32,7 +32,7 @@ export declare class ShippingService {
      * A shipping service offer made by a carrier.
      * @alias module:merchantfulfillment_v0/model/ShippingService
      * @class
-     * @param shippingServiceName {String} A plain text representation of a carrier's shipping service. For example, \"UPS Ground\" or \"FedEx Standard Overnight\".
+     * @param shippingServiceName {String} The carrier's shipping service name, such as \"UPS Ground\" or \"FedEx Standard Overnight\".
      * @param carrierName {String} The name of the carrier.
      * @param shippingServiceId {String} An Amazon-defined shipping service identifier.
      * @param shippingServiceOfferId {String} An Amazon-defined shipping service offer identifier.
@@ -40,7 +40,7 @@ export declare class ShippingService {
      * @param rate {CurrencyAmount}
      * @param rateWithAdjustments {CurrencyAmount}
      * @param shippingServiceOptions {ShippingServiceOptions}
-     * @param requiresAdditionalSellerInputs {Boolean} When true, additional seller inputs are required.
+     * @param requiresAdditionalSellerInputs {Boolean} When `true`, additional seller inputs are required.
      */
     constructor(shippingServiceName: string, carrierName: string, shippingServiceId: string, shippingServiceOfferId: string, shipDate: Date, rate: CurrencyAmount, rateWithAdjustments: CurrencyAmount, shippingServiceOptions: ShippingServiceOptions, requiresAdditionalSellerInputs: boolean);
     /**

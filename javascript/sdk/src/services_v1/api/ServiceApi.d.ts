@@ -291,6 +291,7 @@ export declare class ServiceApi {
        * @param {String[]} [opts.asins] List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20.
        * @param {String[]} [opts.requiredSkills] A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20.
        * @param {String[]} [opts.storeIds] List of Amazon-defined identifiers for the region scope. Max values supported is 50.
+       * @param {String[]} [opts.providerServiceJobReferenceIds] A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs.
        * @return {Promise<GetServiceJobsResponse>}
        */
     getServiceJobsWithHttpInfo(marketplaceIds: string[], opts?: {
@@ -311,6 +312,7 @@ export declare class ServiceApi {
         asins?: string[];
         requiredSkills?: string[];
         storeIds?: string[];
+        providerServiceJobReferenceIds?: string[];
     }): Promise<GetServiceJobsResponse>;
     /**
        * Gets service job details for the specified filter query.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 40 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -333,6 +335,7 @@ export declare class ServiceApi {
        * @param {String[]} [opts.asins] List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20.
        * @param {String[]} [opts.requiredSkills] A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20.
        * @param {String[]} [opts.storeIds] List of Amazon-defined identifiers for the region scope. Max values supported is 50.
+       * @param {String[]} [opts.providerServiceJobReferenceIds] A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs.
        * @return {Promise<GetServiceJobsResponse>}
        */
     getServiceJobs(marketplaceIds: string[], opts?: {
@@ -353,6 +356,7 @@ export declare class ServiceApi {
         asins?: string[];
         requiredSkills?: string[];
         storeIds?: string[];
+        providerServiceJobReferenceIds?: string[];
     }): Promise<GetServiceJobsResponse>;
     /**
        * Reschedules an appointment for the service job indicated by the service job identifier specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).

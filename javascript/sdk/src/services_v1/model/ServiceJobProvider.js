@@ -50,6 +50,7 @@ export class ServiceJobProvider {
       }
       obj = obj || new ServiceJobProvider()
       if (data.hasOwnProperty('serviceJobProviderId')) { obj.serviceJobProviderId = ApiClient.convertToType(data.serviceJobProviderId, 'String') }
+      if (data.hasOwnProperty('providerServiceJobReferenceId')) { obj.providerServiceJobReferenceId = ApiClient.convertToType(data.providerServiceJobReferenceId, 'String') }
     }
     return obj
   }
@@ -61,3 +62,10 @@ export class ServiceJobProvider {
  * @type {String}
  */
 ServiceJobProvider.prototype.serviceJobProviderId = undefined
+
+/**
+ * The reference ID for the service job assigned to the provider.
+ * @member {String} providerServiceJobReferenceId
+ * @type {String}
+ */
+ServiceJobProvider.prototype.providerServiceJobReferenceId = undefined

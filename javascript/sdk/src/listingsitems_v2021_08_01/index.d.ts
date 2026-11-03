@@ -37,6 +37,9 @@ import { Money } from './model/Money.js';
 import { Pagination } from './model/Pagination.js';
 import { PatchOperation } from './model/PatchOperation.js';
 import { Points } from './model/Points.js';
+import { QuantityDiscountLevel } from './model/QuantityDiscountLevel.js';
+import { QuantityDiscountPlan } from './model/QuantityDiscountPlan.js';
+import { ReplenishmentDiscount } from './model/ReplenishmentDiscount.js';
 import { ListingsApi } from './api/ListingsApi.js';
 /**
 * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide)..<br>
@@ -180,6 +183,21 @@ PatchOperation,
    * @property {module:listingsitems_v2021_08_01/model/Points}
    */
 Points, 
+/**
+   * The QuantityDiscountLevel model constructor.
+   * @property {module:listingsitems_v2021_08_01/model/QuantityDiscountLevel}
+   */
+QuantityDiscountLevel, 
+/**
+   * The QuantityDiscountPlan model constructor.
+   * @property {module:listingsitems_v2021_08_01/model/QuantityDiscountPlan}
+   */
+QuantityDiscountPlan, 
+/**
+   * The ReplenishmentDiscount model constructor.
+   * @property {module:listingsitems_v2021_08_01/model/ReplenishmentDiscount}
+   */
+ReplenishmentDiscount, 
 /**
   * The ListingsApi service constructor.
   * @property {module:listingsitems_v2021_08_01/api/ListingsApi}

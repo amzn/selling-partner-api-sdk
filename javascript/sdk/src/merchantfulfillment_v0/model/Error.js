@@ -24,7 +24,7 @@ export class Error {
    * Error response returned when the request is unsuccessful.
    * @alias module:merchantfulfillment_v0/model/Error
    * @class
-   * @param code {String} An error code that identifies the type of error that occurred.
+   * @param code {String} An error code that identifies the type of error.
    * @param message {String} A message that describes the error condition in a human-readable form.
    */
   constructor (code, message) {
@@ -62,7 +62,7 @@ export class Error {
 }
 
 /**
- * An error code that identifies the type of error that occurred.
+ * An error code that identifies the type of error.
  * @member {String} code
  * @type {String}
  */

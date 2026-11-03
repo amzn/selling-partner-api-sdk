@@ -72,7 +72,7 @@ export class GetEligibleShipmentServicesResult {
 GetEligibleShipmentServicesResult.prototype.shippingServiceList = undefined
 
 /**
- * List of services that are for some reason unavailable for this request
+ * List of services that are for some reason unavailable for this request.
  * @member {RejectedShippingService[]} rejectedShippingServiceList
  * @type {RejectedShippingService[]}
  */

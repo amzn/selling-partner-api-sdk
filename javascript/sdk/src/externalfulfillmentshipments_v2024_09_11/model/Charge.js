@@ -90,34 +90,34 @@ Charge.prototype.taxBreakup = undefined
 Charge.ChargeTypeEnum = {
 
   /**
-     * value: "PRODUCT"
+     * value: "product"
      * @const
      */
-  PRODUCT: 'PRODUCT',
+  product: 'product',
 
   /**
-     * value: "SHIPPING"
+     * value: "shipping"
      * @const
      */
-  SHIPPING: 'SHIPPING',
+  shipping: 'shipping',
 
   /**
-     * value: "GIFT_WRAP"
+     * value: "gift_wrap"
      * @const
      */
-  GIFT_WRAP: 'GIFT_WRAP',
+  gift_wrap: 'gift_wrap',
 
   /**
-     * value: "TOTAL"
+     * value: "total"
      * @const
      */
-  TOTAL: 'TOTAL',
+  total: 'total',
 
   /**
-     * value: "OTHER"
+     * value: "other"
      * @const
      */
-  OTHER: 'OTHER'
+  other: 'other'
 }
 /**
  * The type of charge.
