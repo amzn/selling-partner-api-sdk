@@ -24,7 +24,7 @@ export class Weight {
    * The weight of a package.
    * @alias module:externalfulfillmentshipments_v2024_09_11/model/Weight
    * @class
-   * @param value {String} A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+   * @param value {Number} A decimal number.
    * @param weightUnit {String} The unit of measurement of the weight.
    */
   constructor (value, weightUnit) {
@@ -53,7 +53,7 @@ export class Weight {
           break
       }
       obj = obj || new Weight()
-      if (data.hasOwnProperty('value')) { obj.value = ApiClient.convertToType(data.value, 'String') }
+      if (data.hasOwnProperty('value')) { obj.value = ApiClient.convertToType(data.value, 'Number') }
       if (data.hasOwnProperty('weightUnit')) { obj.weightUnit = ApiClient.convertToType(data.weightUnit, 'String') }
     }
     return obj
@@ -61,9 +61,9 @@ export class Weight {
 }
 
 /**
- * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
- * @member {String} value
- * @type {String}
+ * A decimal number.
+ * @member {Number} value
+ * @type {Number}
  */
 Weight.prototype.value = undefined
 

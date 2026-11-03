@@ -14,7 +14,7 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
- * @typedef {'BuyerRequestedChange'|'DeliveryTipChange'|'OrderStatusChange'} OrderChangeTypeEnum
+ * @typedef {'BuyerRequestedChange'|'DeliveryTipChange'|'OrderStatusChange'|'PreFulfillmentStatusChange'} OrderChangeTypeEnum
  */
 export const OrderChangeTypeEnum = Object.assign(
   function () {},
@@ -22,6 +22,7 @@ export const OrderChangeTypeEnum = Object.assign(
     BuyerRequestedChange: 'BuyerRequestedChange',
     DeliveryTipChange: 'DeliveryTipChange',
     OrderStatusChange: 'OrderStatusChange',
+    PreFulfillmentStatusChange: 'PreFulfillmentStatusChange',
     constructFromObject: function (object) {
       return object
     }

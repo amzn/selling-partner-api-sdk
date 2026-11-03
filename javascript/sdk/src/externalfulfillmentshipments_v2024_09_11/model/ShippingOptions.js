@@ -112,7 +112,7 @@ ShippingOptions.ShipByEnum = {
 ShippingOptions.prototype.shipBy = undefined
 
 /**
- * The carrier name for the offering.
+ * The carrier name for the offering. Applicable only for Self Ship program
  * @member {String} carrierName
  * @type {String}
  */

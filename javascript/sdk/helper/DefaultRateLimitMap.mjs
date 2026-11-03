@@ -352,8 +352,18 @@ export const defaultRateLimitMap = {
   "PromotionsApi-getPromotion": [1, 2, 10],
   "DefaultApi-getRemittanceHeaders": [1, 2, 4],
   "DefaultApi-getRemittance": [1, 2, 2],
-  "SupportApi-getCase": [1, 1],
-  "SupportApi-listCase": [1, 1],
-  "SupportApi-listContacts": [1, 1]
+  "SupportApi-getCase": [1, 10, 10],
+  "SupportApi-listCase": [1, 10, 10],
+  "SupportApi-listContacts": [1, 10, 10],
+  "AutomationConfigurationsApi-createAutomationConfiguration": [1, 15],
+  "AutomationConfigurationsApi-listAutomationConfigurations": [1, 15],
+  "AutomationConfigurationsApi-getAutomationConfiguration": [1, 15],
+  "AutomationConfigurationsApi-updateAutomationConfiguration": [1, 15],
+  "ItemsApi-listActionItems": [1, 1],
+  "ItemsApi-getActionItem": [1, 1],
+  "ItemsApi-dismissActionItem": [1, 1],
+  "ActionPlansApi-getActionPlan": [1, 1],
+  "ActionPlansApi-createActionPlan": [1, 1],
+  "ActionPlansApi-listActionPlans": [1, 1]
 }
 

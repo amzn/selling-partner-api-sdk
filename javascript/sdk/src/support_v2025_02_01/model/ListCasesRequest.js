@@ -12,7 +12,6 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
-import { CaseFilters } from './CaseFilters.js'
 
 /**
  * The ListCasesRequest model module.
@@ -50,9 +49,6 @@ export class ListCasesRequest {
           break
       }
       obj = obj || new ListCasesRequest()
-      if (data.hasOwnProperty('marketplaceId')) { obj.marketplaceId = ApiClient.convertToType(data.marketplaceId, 'String') }
-      if (data.hasOwnProperty('caseFilters')) { obj.caseFilters = CaseFilters.constructFromObject(data.caseFilters) }
-      if (data.hasOwnProperty('sortField')) { obj.sortField = ApiClient.convertToType(data.sortField, 'String') }
       if (data.hasOwnProperty('sortOrder')) { obj.sortOrder = ApiClient.convertToType(data.sortOrder, 'String') }
       if (data.hasOwnProperty('maxResults')) { obj.maxResults = ApiClient.convertToType(data.maxResults, 'Number') }
       if (data.hasOwnProperty('nextToken')) { obj.nextToken = ApiClient.convertToType(data.nextToken, 'String') }
@@ -60,76 +56,6 @@ export class ListCasesRequest {
     return obj
   }
 }
-
-/**
- * The marketplace identifier used for authorization only. This field does not impact the returned collection. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
- * @member {String} marketplaceId
- * @type {String}
- */
-ListCasesRequest.prototype.marketplaceId = undefined
-
-/**
- * @member {CaseFilters} caseFilters
- * @type {CaseFilters}
- */
-ListCasesRequest.prototype.caseFilters = undefined
-
-/**
- * Allowed values for the <code>sortField</code> property.
- * @enum {String}
- * @readonly
- */
-ListCasesRequest.SortFieldEnum = {
-
-  /**
-     * value: "CASE_ID"
-     * @const
-     */
-  CASE_ID: 'CASE_ID',
-
-  /**
-     * value: "STATUS"
-     * @const
-     */
-  STATUS: 'STATUS',
-
-  /**
-     * value: "SUBJECT"
-     * @const
-     */
-  SUBJECT: 'SUBJECT',
-
-  /**
-     * value: "PRIMARY_EMAIL"
-     * @const
-     */
-  PRIMARY_EMAIL: 'PRIMARY_EMAIL',
-
-  /**
-     * value: "CREATION_DATE"
-     * @const
-     */
-  CREATION_DATE: 'CREATION_DATE',
-
-  /**
-     * value: "LAST_OUTBOUND_DATE"
-     * @const
-     */
-  LAST_OUTBOUND_DATE: 'LAST_OUTBOUND_DATE',
-
-  /**
-     * value: "RESOLUTION_DATE"
-     * @const
-     */
-  RESOLUTION_DATE: 'RESOLUTION_DATE'
-}
-/**
- * The field to sort cases by. Defaults to CREATION_DATE when absent.
- * @member {String} sortField
- * @default 'CREATION_DATE'
- * @type {String}
- */
-ListCasesRequest.prototype.sortField = 'CREATION_DATE'
 
 /**
  * Allowed values for the <code>sortOrder</code> property.

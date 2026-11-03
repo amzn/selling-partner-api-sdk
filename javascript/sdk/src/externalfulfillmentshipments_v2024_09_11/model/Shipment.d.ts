@@ -31,8 +31,8 @@ export declare class Shipment {
     status: string;
     lineItems: ShipmentLineItem[];
     shippingInfo: ShippingInfo;
-    creationDateTime: string;
-    lastUpdatedDateTime: string;
+    creationDateTime: Date;
+    lastUpdatedDateTime: Date;
     /**
      * Constructs a new <code>Shipment</code>.
      * Information about a shipment.
@@ -47,10 +47,10 @@ export declare class Shipment {
      * @param status {String} The current status of the shipment.
      * @param lineItems {ShipmentLineItem[]} The line items in the shipment.
      * @param shippingInfo {ShippingInfo}
-     * @param creationDateTime {String} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
-     * @param lastUpdatedDateTime {String} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     * @param creationDateTime {Date} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     * @param lastUpdatedDateTime {Date} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      */
-    constructor(id: string, locationId: string, marketplaceAttributes: MarketplaceAttributes, shipmentInfo: ShipmentInfo, shipmentRequirements: ShipmentRequirements, charges: Charge[], status: string, lineItems: ShipmentLineItem[], shippingInfo: ShippingInfo, creationDateTime: string, lastUpdatedDateTime: string);
+    constructor(id: string, locationId: string, marketplaceAttributes: MarketplaceAttributes, shipmentInfo: ShipmentInfo, shipmentRequirements: ShipmentRequirements, charges: Charge[], status: string, lineItems: ShipmentLineItem[], shippingInfo: ShippingInfo, creationDateTime: Date, lastUpdatedDateTime: Date);
     /**
      * Constructs a <code>Shipment</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.

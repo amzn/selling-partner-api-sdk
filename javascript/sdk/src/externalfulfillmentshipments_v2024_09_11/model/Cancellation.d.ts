@@ -17,7 +17,7 @@
  */
 export declare class Cancellation {
     cancelledQuantity: number;
-    cancelledTimestamp: string;
+    cancelledTimestamp: Date;
     cancellationType: string;
     /**
      * Constructs a new <code>Cancellation</code>.
@@ -25,10 +25,10 @@ export declare class Cancellation {
      * @alias module:externalfulfillmentshipments_v2024_09_11/model/Cancellation
      * @class
      * @param cancelledQuantity {Number} The number of items of this particular item which have been cancelled.
-     * @param cancelledTimestamp {String} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     * @param cancelledTimestamp {Date} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      * @param cancellationType {String} The type of cancellation of the item in the shipment.
      */
-    constructor(cancelledQuantity: number, cancelledTimestamp: string, cancellationType: string);
+    constructor(cancelledQuantity: number, cancelledTimestamp: Date, cancellationType: string);
     /**
      * Constructs a <code>Cancellation</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.

@@ -68,7 +68,7 @@ export class SupportApi {
   }
 
   /**
-     * Retrieve a specific support case.
+     * Retrieve a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
      * @param {String} caseId The case identifier.
      * @return {Promise<Case>}
      */
@@ -102,7 +102,7 @@ export class SupportApi {
   }
 
   /**
-     * Retrieve a specific support case.
+     * Retrieve a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
      * @param {String} caseId The case identifier.
      * @return {Promise<Case>}
      */
@@ -114,7 +114,7 @@ export class SupportApi {
   }
 
   /**
-     * Retrieve support cases for a selling partner.
+     * Retrieve support cases for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
      * @param {ListCasesRequest} body The request body for the listCases operation.
      * @return {Promise<ListCasesResult>}
      */
@@ -147,7 +147,7 @@ export class SupportApi {
   }
 
   /**
-     * Retrieve support cases for a selling partner.
+     * Retrieve support cases for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
      * @param {ListCasesRequest} body The request body for the listCases operation.
      * @return {Promise<ListCasesResult>}
      */
@@ -159,7 +159,7 @@ export class SupportApi {
   }
 
   /**
-     * Retrieve contacts for a specific support case.
+     * Retrieve contacts for a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
      * @param {String} caseId The case identifier.
      * @param {Object} [opts] Optional parameters
      * @param {Number} [opts.maxResults] The maximum number of results to include in the response. (default to 10)
@@ -201,7 +201,7 @@ export class SupportApi {
   }
 
   /**
-     * Retrieve contacts for a specific support case.
+     * Retrieve contacts for a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
      * @param {String} caseId The case identifier.
      * @param {Object} [opts] Optional parameters
      * @param {Number} [opts.maxResults] The maximum number of results to include in the response. (default to 10)

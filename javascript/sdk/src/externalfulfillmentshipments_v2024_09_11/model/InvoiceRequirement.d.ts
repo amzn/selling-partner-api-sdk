@@ -18,7 +18,7 @@
 export declare class InvoiceRequirement {
     /**
      * Constructs a new <code>InvoiceRequirement</code>.
-     * Whether the invoice document is required to be attached to the shipment and its corresponding status.
+     * Whether the invoice document is required to be attached to the shipment and its corresponding status. Applicable only for Brazil marketplace.
      * @alias module:externalfulfillmentshipments_v2024_09_11/model/InvoiceRequirement
      * @class
      */

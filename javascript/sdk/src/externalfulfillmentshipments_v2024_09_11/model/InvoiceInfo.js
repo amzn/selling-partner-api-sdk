@@ -24,12 +24,8 @@ export class InvoiceInfo {
    * Information about the shipment&#39;s invoice.
    * @alias module:externalfulfillmentshipments_v2024_09_11/model/InvoiceInfo
    * @class
-   * @param invoiceId {String} The unique ID of the invoice that corresponds to the shipment.
-   * @param creationDateTime {String} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
    */
-  constructor (invoiceId, creationDateTime) {
-    this.invoiceId = invoiceId
-    this.creationDateTime = creationDateTime
+  constructor () {
   }
 
   /**
@@ -54,7 +50,7 @@ export class InvoiceInfo {
       }
       obj = obj || new InvoiceInfo()
       if (data.hasOwnProperty('invoiceId')) { obj.invoiceId = ApiClient.convertToType(data.invoiceId, 'String') }
-      if (data.hasOwnProperty('creationDateTime')) { obj.creationDateTime = ApiClient.convertToType(data.creationDateTime, 'String') }
+      if (data.hasOwnProperty('creationDateTime')) { obj.creationDateTime = ApiClient.convertToType(data.creationDateTime, 'Date') }
     }
     return obj
   }
@@ -69,7 +65,7 @@ InvoiceInfo.prototype.invoiceId = undefined
 
 /**
  * A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
- * @member {String} creationDateTime
- * @type {String}
+ * @member {Date} creationDateTime
+ * @type {Date}
  */
 InvoiceInfo.prototype.creationDateTime = undefined

@@ -45,30 +45,30 @@ export declare class Charge {
 export declare namespace Charge {
     var ChargeTypeEnum: {
         /**
-           * value: "PRODUCT"
+           * value: "product"
            * @const
            */
-        PRODUCT: string;
+        product: string;
         /**
-           * value: "SHIPPING"
+           * value: "shipping"
            * @const
            */
-        SHIPPING: string;
+        shipping: string;
         /**
-           * value: "GIFT_WRAP"
+           * value: "gift_wrap"
            * @const
            */
-        GIFT_WRAP: string;
+        gift_wrap: string;
         /**
-           * value: "TOTAL"
+           * value: "total"
            * @const
            */
-        TOTAL: string;
+        total: string;
         /**
-           * value: "OTHER"
+           * value: "other"
            * @const
            */
-        OTHER: string;
+        other: string;
     };
 }
 //# sourceMappingURL=Charge.d.ts.map

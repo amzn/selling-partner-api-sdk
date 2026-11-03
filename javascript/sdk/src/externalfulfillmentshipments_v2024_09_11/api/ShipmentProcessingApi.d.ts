@@ -73,7 +73,7 @@ export declare class ShipmentProcessingApi {
     /**
        * Generate and retrieve all shipping labels for one or more packages in the shipment you specify.
        * @param {String} shipmentId The ID of the shipment whose shipping labels you want to generate and retrieve.
-       * @param {String} operation Specify whether you want to generate or regenerate a label.
+       * @param {String} operation Specify whether you want to generate or regenerate a label. For retrieving existing labels, set this value to &#x60;GENERATE&#x60;
        * @param {Object} [opts] Optional parameters
        * @param {String} [opts.shippingOptionId] The ID of the shipping option whose shipping labels you want.
        * @param {ShipLabelsInput} [opts.body] Shipping details for when shipping is not done by the marketplace channel.
@@ -86,7 +86,7 @@ export declare class ShipmentProcessingApi {
     /**
        * Generate and retrieve all shipping labels for one or more packages in the shipment you specify.
        * @param {String} shipmentId The ID of the shipment whose shipping labels you want to generate and retrieve.
-       * @param {String} operation Specify whether you want to generate or regenerate a label.
+       * @param {String} operation Specify whether you want to generate or regenerate a label. For retrieving existing labels, set this value to &#x60;GENERATE&#x60;
        * @param {Object} [opts] Optional parameters
        * @param {String} [opts.shippingOptionId] The ID of the shipping option whose shipping labels you want.
        * @param {ShipLabelsInput} [opts.body] Shipping details for when shipping is not done by the marketplace channel.

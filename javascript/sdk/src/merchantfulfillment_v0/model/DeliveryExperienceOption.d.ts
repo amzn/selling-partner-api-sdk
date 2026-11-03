@@ -10,9 +10,9 @@
  * Do not edit the class manually.
  *
  */
-export type DeliveryExperienceOption = 'DeliveryConfirmationWithAdultSignature' | 'DeliveryConfirmationWithSignature' | 'DeliveryConfirmationWithoutSignature' | 'NoTracking' | 'NoPreference';
+export type DeliveryExperienceOption = 'DeliveryConfirmationWithAdultSignature' | 'DeliveryConfirmationWithSignature' | 'DeliveryConfirmationWithoutSignature' | 'NoTracking' | 'NoPreference' | 'DeliveryConfirmationWithIdentityCheck' | 'DeliveryConfirmationWithNameVerification';
 /**
- * @typedef {'DeliveryConfirmationWithAdultSignature'|'DeliveryConfirmationWithSignature'|'DeliveryConfirmationWithoutSignature'|'NoTracking'|'NoPreference'} DeliveryExperienceOption
+ * @typedef {'DeliveryConfirmationWithAdultSignature'|'DeliveryConfirmationWithSignature'|'DeliveryConfirmationWithoutSignature'|'NoTracking'|'NoPreference'|'DeliveryConfirmationWithIdentityCheck'|'DeliveryConfirmationWithNameVerification'} DeliveryExperienceOption
  */
 export declare const DeliveryExperienceOption: (() => void) & {
     DeliveryConfirmationWithAdultSignature: string;
@@ -20,6 +20,8 @@ export declare const DeliveryExperienceOption: (() => void) & {
     DeliveryConfirmationWithoutSignature: string;
     NoTracking: string;
     NoPreference: string;
+    DeliveryConfirmationWithIdentityCheck: string;
+    DeliveryConfirmationWithNameVerification: string;
     constructFromObject: (object: any) => any;
 };
 //# sourceMappingURL=DeliveryExperienceOption.d.ts.map

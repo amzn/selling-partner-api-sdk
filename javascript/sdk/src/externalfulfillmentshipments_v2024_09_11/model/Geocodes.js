@@ -24,8 +24,8 @@ export class Geocodes {
    * Geographic coordinates.
    * @alias module:externalfulfillmentshipments_v2024_09_11/model/Geocodes
    * @class
-   * @param latitude {String} A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
-   * @param longitude {String} A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+   * @param latitude {Number} A decimal number.
+   * @param longitude {Number} A decimal number.
    */
   constructor (latitude, longitude) {
     this.latitude = latitude
@@ -53,31 +53,31 @@ export class Geocodes {
           break
       }
       obj = obj || new Geocodes()
-      if (data.hasOwnProperty('latitude')) { obj.latitude = ApiClient.convertToType(data.latitude, 'String') }
-      if (data.hasOwnProperty('longitude')) { obj.longitude = ApiClient.convertToType(data.longitude, 'String') }
-      if (data.hasOwnProperty('elevation')) { obj.elevation = ApiClient.convertToType(data.elevation, 'String') }
+      if (data.hasOwnProperty('latitude')) { obj.latitude = ApiClient.convertToType(data.latitude, 'Number') }
+      if (data.hasOwnProperty('longitude')) { obj.longitude = ApiClient.convertToType(data.longitude, 'Number') }
+      if (data.hasOwnProperty('elevation')) { obj.elevation = ApiClient.convertToType(data.elevation, 'Number') }
     }
     return obj
   }
 }
 
 /**
- * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
- * @member {String} latitude
- * @type {String}
+ * A decimal number.
+ * @member {Number} latitude
+ * @type {Number}
  */
 Geocodes.prototype.latitude = undefined
 
 /**
- * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
- * @member {String} longitude
- * @type {String}
+ * A decimal number.
+ * @member {Number} longitude
+ * @type {Number}
  */
 Geocodes.prototype.longitude = undefined
 
 /**
- * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
- * @member {String} elevation
- * @type {String}
+ * A decimal number.
+ * @member {Number} elevation
+ * @type {Number}
  */
 Geocodes.prototype.elevation = undefined

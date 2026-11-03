@@ -31,7 +31,7 @@ export class ShippingService {
    * A shipping service offer made by a carrier.
    * @alias module:merchantfulfillment_v0/model/ShippingService
    * @class
-   * @param shippingServiceName {String} A plain text representation of a carrier's shipping service. For example, \"UPS Ground\" or \"FedEx Standard Overnight\".
+   * @param shippingServiceName {String} The carrier's shipping service name, such as \"UPS Ground\" or \"FedEx Standard Overnight\".
    * @param carrierName {String} The name of the carrier.
    * @param shippingServiceId {String} An Amazon-defined shipping service identifier.
    * @param shippingServiceOfferId {String} An Amazon-defined shipping service offer identifier.
@@ -39,7 +39,7 @@ export class ShippingService {
    * @param rate {CurrencyAmount}
    * @param rateWithAdjustments {CurrencyAmount}
    * @param shippingServiceOptions {ShippingServiceOptions}
-   * @param requiresAdditionalSellerInputs {Boolean} When true, additional seller inputs are required.
+   * @param requiresAdditionalSellerInputs {Boolean} When `true`, additional seller inputs are required.
    */
   constructor (shippingServiceName, carrierName, shippingServiceId, shippingServiceOfferId, shipDate, rate, rateWithAdjustments, shippingServiceOptions, requiresAdditionalSellerInputs) {
     this.shippingServiceName = shippingServiceName
@@ -96,7 +96,7 @@ export class ShippingService {
 }
 
 /**
- * A plain text representation of a carrier's shipping service. For example, \"UPS Ground\" or \"FedEx Standard Overnight\".
+ * The carrier's shipping service name, such as \"UPS Ground\" or \"FedEx Standard Overnight\".
  * @member {String} shippingServiceName
  * @type {String}
  */
@@ -190,7 +190,7 @@ ShippingService.prototype.availableLabelFormats = undefined
 ShippingService.prototype.availableFormatOptionsForLabel = undefined
 
 /**
- * When true, additional seller inputs are required.
+ * When `true`, additional seller inputs are required.
  * @member {Boolean} requiresAdditionalSellerInputs
  * @type {Boolean}
  */

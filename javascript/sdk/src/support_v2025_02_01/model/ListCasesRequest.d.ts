@@ -33,43 +33,6 @@ export declare class ListCasesRequest {
     static constructFromObject(data: Object, obj: ListCasesRequest): ListCasesRequest;
 }
 export declare namespace ListCasesRequest {
-    var SortFieldEnum: {
-        /**
-           * value: "CASE_ID"
-           * @const
-           */
-        CASE_ID: string;
-        /**
-           * value: "STATUS"
-           * @const
-           */
-        STATUS: string;
-        /**
-           * value: "SUBJECT"
-           * @const
-           */
-        SUBJECT: string;
-        /**
-           * value: "PRIMARY_EMAIL"
-           * @const
-           */
-        PRIMARY_EMAIL: string;
-        /**
-           * value: "CREATION_DATE"
-           * @const
-           */
-        CREATION_DATE: string;
-        /**
-           * value: "LAST_OUTBOUND_DATE"
-           * @const
-           */
-        LAST_OUTBOUND_DATE: string;
-        /**
-           * value: "RESOLUTION_DATE"
-           * @const
-           */
-        RESOLUTION_DATE: string;
-    };
     var SortOrderEnum: {
         /**
            * value: "ASC"

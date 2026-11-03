@@ -28,7 +28,7 @@ export declare class Package {
      * A package that is created to ship one or more of a shipment&#39;s line items.
      * @alias module:externalfulfillmentshipments_v2024_09_11/model/Package
      * @class
-     * @param id {String} An ID that uniquely identifies a package within a shipment.
+     * @param id {String} The ID of the package whose information you want to update.
      * @param dimensions {PackageDimensions}
      * @param weight {Weight}
      * @param packageLineItems {PackageLineItem[]} The list of line items in a package.

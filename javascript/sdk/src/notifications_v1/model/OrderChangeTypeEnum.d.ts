@@ -10,14 +10,15 @@
  * Do not edit the class manually.
  *
  */
-export type OrderChangeTypeEnum = 'BuyerRequestedChange' | 'DeliveryTipChange' | 'OrderStatusChange';
+export type OrderChangeTypeEnum = 'BuyerRequestedChange' | 'DeliveryTipChange' | 'OrderStatusChange' | 'PreFulfillmentStatusChange';
 /**
- * @typedef {'BuyerRequestedChange'|'DeliveryTipChange'|'OrderStatusChange'} OrderChangeTypeEnum
+ * @typedef {'BuyerRequestedChange'|'DeliveryTipChange'|'OrderStatusChange'|'PreFulfillmentStatusChange'} OrderChangeTypeEnum
  */
 export declare const OrderChangeTypeEnum: (() => void) & {
     BuyerRequestedChange: string;
     DeliveryTipChange: string;
     OrderStatusChange: string;
+    PreFulfillmentStatusChange: string;
     constructFromObject: (object: any) => any;
 };
 //# sourceMappingURL=OrderChangeTypeEnum.d.ts.map

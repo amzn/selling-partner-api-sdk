@@ -61,14 +61,14 @@ export class ShippingOfferingFilter {
 }
 
 /**
- * When true, include a packing slip with the label.
+ * When `true`, include a packing slip with the label.
  * @member {Boolean} includePackingSlipWithLabel
  * @type {Boolean}
  */
 ShippingOfferingFilter.prototype.includePackingSlipWithLabel = undefined
 
 /**
- * When true, include complex shipping options.
+ * When `true`, include complex shipping options.
  * @member {Boolean} includeComplexShippingOptions
  * @type {Boolean}
  */

@@ -18,7 +18,7 @@
 export declare class TaxRegistrationInfo {
     /**
      * Constructs a new <code>TaxRegistrationInfo</code>.
-     * Tax registration details of the entity. Applicable to direct fulfillment shipments.
+     * Tax registration details of the entity. Applicable only to direct fulfillment shipments.
      * @alias module:externalfulfillmentshipments_v2024_09_11/model/TaxRegistrationInfo
      * @class
      */

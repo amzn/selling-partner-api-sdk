@@ -21,7 +21,7 @@ import { ApiClient } from '../ApiClient.js'
 export class ExcludedBenefit {
   /**
    * Constructs a new <code>ExcludedBenefit</code>.
-   * An object representing an excluded benefit that is excluded for a shipping offer or rate.
+   * A benefit excluded from a shipping offer or rate.
    * @alias module:merchantfulfillment_v0/model/ExcludedBenefit
    * @class
    */
@@ -57,7 +57,7 @@ export class ExcludedBenefit {
 }
 
 /**
- * A benefit that is being excluded from a shipment.
+ * The benefit excluded from a shipment.
  * @member {String} benefit
  * @type {String}
  */

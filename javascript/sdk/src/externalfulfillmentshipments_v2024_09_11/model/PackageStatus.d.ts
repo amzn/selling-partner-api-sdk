@@ -10,15 +10,11 @@
  * Do not edit the class manually.
  *
  */
-export type PackageStatus = 'CREATED' | 'PICKUP_SLOT_RETRIEVED' | 'INVOICE_GENERATED' | 'SHIPLABEL_GENERATED' | 'SHIPPED' | 'DELIVERED';
+export type PackageStatus = 'SHIPPED' | 'DELIVERED';
 /**
- * @typedef {'CREATED'|'PICKUP_SLOT_RETRIEVED'|'INVOICE_GENERATED'|'SHIPLABEL_GENERATED'|'SHIPPED'|'DELIVERED'} PackageStatus
+ * @typedef {'SHIPPED'|'DELIVERED'} PackageStatus
  */
 export declare const PackageStatus: (() => void) & {
-    CREATED: string;
-    PICKUP_SLOT_RETRIEVED: string;
-    INVOICE_GENERATED: string;
-    SHIPLABEL_GENERATED: string;
     SHIPPED: string;
     DELIVERED: string;
     constructFromObject: (object: any) => any;

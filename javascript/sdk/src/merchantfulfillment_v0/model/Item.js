@@ -119,7 +119,7 @@ Item.prototype.itemLevelSellerInputsList = undefined
 Item.prototype.liquidVolume = undefined
 
 /**
- * When true, the item qualifies as hazardous materials (hazmat). Defaults to false.
+ * When `true`, the item qualifies as hazardous materials (hazmat). Defaults to `false`.
  * @member {Boolean} isHazmat
  * @type {Boolean}
  */

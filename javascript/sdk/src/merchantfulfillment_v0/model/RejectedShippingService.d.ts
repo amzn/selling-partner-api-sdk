@@ -22,13 +22,13 @@ export declare class RejectedShippingService {
     rejectionReasonCode: string;
     /**
      * Constructs a new <code>RejectedShippingService</code>.
-     * Information about a rejected shipping service
+     * Information about a rejected shipping service.
      * @alias module:merchantfulfillment_v0/model/RejectedShippingService
      * @class
      * @param carrierName {String} The rejected shipping carrier name. For example, USPS.
      * @param shippingServiceName {String} The rejected shipping service localized name. For example, FedEx Standard Overnight.
      * @param shippingServiceId {String} An Amazon-defined shipping service identifier.
-     * @param rejectionReasonCode {String} A reason code meant to be consumed programatically. For example, `CARRIER_CANNOT_SHIP_TO_POBOX`.
+     * @param rejectionReasonCode {String} A reason code meant to be consumed programmatically. For example, `CARRIER_CANNOT_SHIP_TO_POBOX`.
      */
     constructor(carrierName: string, shippingServiceName: string, shippingServiceId: string, rejectionReasonCode: string);
     /**

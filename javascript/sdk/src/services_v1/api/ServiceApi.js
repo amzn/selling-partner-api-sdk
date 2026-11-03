@@ -804,6 +804,7 @@ export class ServiceApi {
      * @param {String[]} [opts.asins] List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20.
      * @param {String[]} [opts.requiredSkills] A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20.
      * @param {String[]} [opts.storeIds] List of Amazon-defined identifiers for the region scope. Max values supported is 50.
+     * @param {String[]} [opts.providerServiceJobReferenceIds] A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs.
      * @return {Promise<GetServiceJobsResponse>}
      */
   getServiceJobsWithHttpInfo (marketplaceIds, opts) {
@@ -835,7 +836,8 @@ export class ServiceApi {
       marketplaceIds: this.apiClient.buildCollectionParam(marketplaceIds, 'csv'),
       asins: this.apiClient.buildCollectionParam(opts.asins, 'csv'),
       requiredSkills: this.apiClient.buildCollectionParam(opts.requiredSkills, 'csv'),
-      storeIds: this.apiClient.buildCollectionParam(opts.storeIds, 'csv')
+      storeIds: this.apiClient.buildCollectionParam(opts.storeIds, 'csv'),
+      providerServiceJobReferenceIds: this.apiClient.buildCollectionParam(opts.providerServiceJobReferenceIds, 'csv')
     }
     const headerParams = {
     }
@@ -874,6 +876,7 @@ export class ServiceApi {
      * @param {String[]} [opts.asins] List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20.
      * @param {String[]} [opts.requiredSkills] A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20.
      * @param {String[]} [opts.storeIds] List of Amazon-defined identifiers for the region scope. Max values supported is 50.
+     * @param {String[]} [opts.providerServiceJobReferenceIds] A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs.
      * @return {Promise<GetServiceJobsResponse>}
      */
   getServiceJobs (marketplaceIds, opts) {

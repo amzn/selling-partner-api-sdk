@@ -16,17 +16,17 @@
  * @version 2024-09-11
  */
 export declare class Geocodes {
-    latitude: string;
-    longitude: string;
+    latitude: number;
+    longitude: number;
     /**
      * Constructs a new <code>Geocodes</code>.
      * Geographic coordinates.
      * @alias module:externalfulfillmentshipments_v2024_09_11/model/Geocodes
      * @class
-     * @param latitude {String} A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
-     * @param longitude {String} A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+     * @param latitude {Number} A decimal number.
+     * @param longitude {Number} A decimal number.
      */
-    constructor(latitude: string, longitude: string);
+    constructor(latitude: number, longitude: number);
     /**
      * Constructs a <code>Geocodes</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.

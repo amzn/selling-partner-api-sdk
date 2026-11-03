@@ -16,17 +16,17 @@
  * @version 2024-09-11
  */
 export declare class Amount {
-    value: string;
+    value: number;
     currencyCode: string;
     /**
      * Constructs a new <code>Amount</code>.
      * An amount of money, including units in the form of currency.
      * @alias module:externalfulfillmentshipments_v2024_09_11/model/Amount
      * @class
-     * @param value {String} A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+     * @param value {Number} A decimal number.
      * @param currencyCode {String} Three digit currency code in ISO 4217 format.
      */
-    constructor(value: string, currencyCode: string);
+    constructor(value: number, currencyCode: string);
     /**
      * Constructs a <code>Amount</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.

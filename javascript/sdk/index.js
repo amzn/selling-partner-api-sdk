@@ -1,3 +1,5 @@
+export * as ActionitemsSpApi from './src/actionitems_v2026_06_01/index.js';
+export * as ActionplansSpApi from './src/actionplans_v2026_06_01/index.js';
 export * as ApluscontentSpApi from './src/apluscontent_v2020_11_01/index.js';
 export * as AppintegrationsSpApi from './src/appintegrations_v2024_04_01/index.js';
 export * as ApplicationsSpApi from './src/applications_v2023_11_30/index.js';
@@ -27,6 +29,7 @@ export * as ListingsitemsSpApi from './src/listingsitems_v2021_08_01/index.js';
 export * as ListingsrestrictionsSpApi from './src/listingsrestrictions_v2021_08_01/index.js';
 export * as MerchantfulfillmentSpApi from './src/merchantfulfillment_v0/index.js';
 export * as MessagingSpApi from './src/messaging_v1/index.js';
+export * as Messaging_v2026SpApi from './src/messaging_v2026_04_20/index.js';
 export * as NotificationsSpApi from './src/notifications_v1/index.js';
 export * as OrdersSpApi from './src/orders_v0/index.js';
 export * as Orders_v2026SpApi from './src/orders_v2026_01_01/index.js';

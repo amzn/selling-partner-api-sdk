@@ -16,15 +16,15 @@
  * @version 2024-09-11
  */
 export declare class ShippingInfo {
-    expectedShippingDateTimeInUTC: string;
+    expectedShippingDateTimeInUTC: Date;
     /**
      * Constructs a new <code>ShippingInfo</code>.
      * Shipping information for the packages in a shipment.
      * @alias module:externalfulfillmentshipments_v2024_09_11/model/ShippingInfo
      * @class
-     * @param expectedShippingDateTimeInUTC {String} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     * @param expectedShippingDateTimeInUTC {Date} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      */
-    constructor(expectedShippingDateTimeInUTC: string);
+    constructor(expectedShippingDateTimeInUTC: Date);
     /**
      * Constructs a <code>ShippingInfo</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.

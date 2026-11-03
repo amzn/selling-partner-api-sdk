@@ -24,7 +24,7 @@ export class Amount {
    * An amount of money, including units in the form of currency.
    * @alias module:externalfulfillmentshipments_v2024_09_11/model/Amount
    * @class
-   * @param value {String} A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+   * @param value {Number} A decimal number.
    * @param currencyCode {String} Three digit currency code in ISO 4217 format.
    */
   constructor (value, currencyCode) {
@@ -53,7 +53,7 @@ export class Amount {
           break
       }
       obj = obj || new Amount()
-      if (data.hasOwnProperty('value')) { obj.value = ApiClient.convertToType(data.value, 'String') }
+      if (data.hasOwnProperty('value')) { obj.value = ApiClient.convertToType(data.value, 'Number') }
       if (data.hasOwnProperty('currencyCode')) { obj.currencyCode = ApiClient.convertToType(data.currencyCode, 'String') }
     }
     return obj
@@ -61,9 +61,9 @@ export class Amount {
 }
 
 /**
- * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
- * @member {String} value
- * @type {String}
+ * A decimal number.
+ * @member {Number} value
+ * @type {Number}
  */
 Amount.prototype.value = undefined
 

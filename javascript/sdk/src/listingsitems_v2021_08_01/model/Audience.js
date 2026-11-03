@@ -57,7 +57,7 @@ export class Audience {
 }
 
 /**
- * Name of the audience an offer is applicable to.   Common values:   * 'ALL' - Standard offer audience for buyers on Amazon retail websites.   * 'B2B' - Offer audience for Amazon Business website buyers.
+ * Name of the audience an offer is applicable to.  Common values:  * 'ALL' - Standard offer audience for buyers on Amazon retail websites.  * 'B2B' - Offer audience for Amazon Business website buyers.
  * @member {String} value
  * @type {String}
  */

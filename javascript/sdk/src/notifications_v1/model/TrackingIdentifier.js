@@ -55,6 +55,7 @@ export class TrackingIdentifier {
       if (data.hasOwnProperty('aftn')) { obj.aftn = ApiClient.convertToType(data.aftn, 'String') }
       if (data.hasOwnProperty('containerNumber')) { obj.containerNumber = ApiClient.convertToType(data.containerNumber, 'String') }
       if (data.hasOwnProperty('houseBillOfLadingNumber')) { obj.houseBillOfLadingNumber = ApiClient.convertToType(data.houseBillOfLadingNumber, 'String') }
+      if (data.hasOwnProperty('proNumber')) { obj.proNumber = ApiClient.convertToType(data.proNumber, 'String') }
       if (data.hasOwnProperty('carrierTracking')) { obj.carrierTracking = TrackingIdentifierCarrierTracking.constructFromObject(data.carrierTracking) }
     }
     return obj
@@ -95,6 +96,13 @@ TrackingIdentifier.prototype.containerNumber = undefined
  * @type {String}
  */
 TrackingIdentifier.prototype.houseBillOfLadingNumber = undefined
+
+/**
+ * The PRO number assigned by the freight carrier
+ * @member {String} proNumber
+ * @type {String}
+ */
+TrackingIdentifier.prototype.proNumber = undefined
 
 /**
  * @member {TrackingIdentifierCarrierTracking} carrierTracking

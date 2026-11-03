@@ -22,7 +22,7 @@ import { ExcludedBenefit } from './ExcludedBenefit.js'
 export class Benefits {
   /**
    * Constructs a new <code>Benefits</code>.
-   * Benefits that are included and excluded for each shipping offer. Benefits represents services provided by Amazon (for example, &#x60;CLAIMS_PROTECTED&#x60;) when sellers purchase shipping through Amazon. Benefit details are made available for any shipment placed on or after January 1st 2024 00:00 UTC.
+   * Benefits that are included and excluded for each shipping offer. Benefits represent services provided by Amazon (for example, &#x60;CLAIMS_PROTECTED&#x60;) when sellers purchase shipping through Amazon. Benefit details are available for any shipment placed on or after January 1, 2024, 00:00 UTC.
    * @alias module:merchantfulfillment_v0/model/Benefits
    * @class
    */

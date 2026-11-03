@@ -27,14 +27,10 @@ export class ComplianceAttributes {
    * @class
    * @param hazmatLabelsRequirement {RequirementLevel}
    * @param serialNumberRequirement {RequirementLevel}
-   * @param countryOfOriginRequirement {RequirementLevel}
-   * @param itemValueRequirement {RequirementLevel}
    */
-  constructor (hazmatLabelsRequirement, serialNumberRequirement, countryOfOriginRequirement, itemValueRequirement) {
+  constructor (hazmatLabelsRequirement, serialNumberRequirement) {
     this.hazmatLabelsRequirement = hazmatLabelsRequirement
     this.serialNumberRequirement = serialNumberRequirement
-    this.countryOfOriginRequirement = countryOfOriginRequirement
-    this.itemValueRequirement = itemValueRequirement
   }
 
   /**
@@ -59,6 +55,7 @@ export class ComplianceAttributes {
       }
       obj = obj || new ComplianceAttributes()
       if (data.hasOwnProperty('hazmatLabelsRequirement')) { obj.hazmatLabelsRequirement = RequirementLevel.constructFromObject(data.hazmatLabelsRequirement) }
+      if (data.hasOwnProperty('hazmatLabelRequirement')) { obj.hazmatLabelRequirement = RequirementLevel.constructFromObject(data.hazmatLabelRequirement) }
       if (data.hasOwnProperty('serialNumberRequirement')) { obj.serialNumberRequirement = RequirementLevel.constructFromObject(data.serialNumberRequirement) }
       if (data.hasOwnProperty('countryOfOriginRequirement')) { obj.countryOfOriginRequirement = RequirementLevel.constructFromObject(data.countryOfOriginRequirement) }
       if (data.hasOwnProperty('itemValueRequirement')) { obj.itemValueRequirement = RequirementLevel.constructFromObject(data.itemValueRequirement) }
@@ -72,6 +69,12 @@ export class ComplianceAttributes {
  * @type {RequirementLevel}
  */
 ComplianceAttributes.prototype.hazmatLabelsRequirement = undefined
+
+/**
+ * @member {RequirementLevel} hazmatLabelRequirement
+ * @type {RequirementLevel}
+ */
+ComplianceAttributes.prototype.hazmatLabelRequirement = undefined
 
 /**
  * @member {RequirementLevel} serialNumberRequirement

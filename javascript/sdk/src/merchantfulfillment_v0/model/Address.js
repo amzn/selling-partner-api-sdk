@@ -129,7 +129,7 @@ Address.prototype.email = undefined
 Address.prototype.city = undefined
 
 /**
- * The state or province code. This is a required field in Canada, US, and UK marketplaces, and for shipments that originate in China.
+ * The state or province code. This is a required field in Amazon Canada, US, and UK stores, and for shipments that originate in China.
  * @member {String} stateOrProvinceCode
  * @type {String}
  */

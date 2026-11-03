@@ -38,6 +38,9 @@ import { Money } from './model/Money.js'
 import { Pagination } from './model/Pagination.js'
 import { PatchOperation } from './model/PatchOperation.js'
 import { Points } from './model/Points.js'
+import { QuantityDiscountLevel } from './model/QuantityDiscountLevel.js'
+import { QuantityDiscountPlan } from './model/QuantityDiscountPlan.js'
+import { ReplenishmentDiscount } from './model/ReplenishmentDiscount.js'
 import { ListingsApi } from './api/ListingsApi.js'
 
 /**
@@ -208,6 +211,24 @@ export {
      * @property {module:listingsitems_v2021_08_01/model/Points}
      */
   Points,
+
+  /**
+     * The QuantityDiscountLevel model constructor.
+     * @property {module:listingsitems_v2021_08_01/model/QuantityDiscountLevel}
+     */
+  QuantityDiscountLevel,
+
+  /**
+     * The QuantityDiscountPlan model constructor.
+     * @property {module:listingsitems_v2021_08_01/model/QuantityDiscountPlan}
+     */
+  QuantityDiscountPlan,
+
+  /**
+     * The ReplenishmentDiscount model constructor.
+     * @property {module:listingsitems_v2021_08_01/model/ReplenishmentDiscount}
+     */
+  ReplenishmentDiscount,
 
   /**
     * The ListingsApi service constructor.

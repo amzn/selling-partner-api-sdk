@@ -26,7 +26,7 @@ export declare class ItemSummaryByMarketplace {
      * Summary details for a listings item for an Amazon store.
      * @alias module:listingsitems_v2021_08_01/model/ItemSummaryByMarketplace
      * @class
-     * @param marketplaceId {String} A marketplace identifier. Identifies the listings item's Amazon store.
+     * @param marketplaceId {String} An Amazon store identifier. Identifies the listings item's Amazon store.
      * @param productType {String} The listings item's Amazon product type.
      * @param status {String[]} Statuses that apply to the listings item.
      * @param createdDate {Date} Date the listings item was created, in ISO 8601 format.

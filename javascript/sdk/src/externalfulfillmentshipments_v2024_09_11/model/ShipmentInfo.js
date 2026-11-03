@@ -65,7 +65,7 @@ export class ShipmentInfo {
       if (data.hasOwnProperty('priority')) { obj.priority = Priority.constructFromObject(data.priority) }
       if (data.hasOwnProperty('buyerOrderId')) { obj.buyerOrderId = ApiClient.convertToType(data.buyerOrderId, 'String') }
       if (data.hasOwnProperty('orderStatesEligibleForRejection')) { obj.orderStatesEligibleForRejection = ApiClient.convertToType(data.orderStatesEligibleForRejection, ['String']) }
-      if (data.hasOwnProperty('orderPlacedTimestamp')) { obj.orderPlacedTimestamp = ApiClient.convertToType(data.orderPlacedTimestamp, 'String') }
+      if (data.hasOwnProperty('orderPlacedTimestamp')) { obj.orderPlacedTimestamp = ApiClient.convertToType(data.orderPlacedTimestamp, 'Number') }
       if (data.hasOwnProperty('processingSource')) { obj.processingSource = ApiClient.convertToType(data.processingSource, 'String') }
       if (data.hasOwnProperty('paymentMethod')) { obj.paymentMethod = ApiClient.convertToType(data.paymentMethod, 'String') }
     }
@@ -139,9 +139,9 @@ ShipmentInfo.prototype.buyerOrderId = undefined
 ShipmentInfo.prototype.orderStatesEligibleForRejection = undefined
 
 /**
- * The timestamp of when the order was placed, in UTC
- * @member {String} orderPlacedTimestamp
- * @type {String}
+ * The epoch timestamp (in milliseconds) of when the order was placed, in UTC.
+ * @member {Number} orderPlacedTimestamp
+ * @type {Number}
  */
 ShipmentInfo.prototype.orderPlacedTimestamp = undefined
 

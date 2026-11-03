@@ -42,8 +42,8 @@ export class Shipment {
    * @param status {String} The current status of the shipment.
    * @param lineItems {ShipmentLineItem[]} The line items in the shipment.
    * @param shippingInfo {ShippingInfo}
-   * @param creationDateTime {String} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
-   * @param lastUpdatedDateTime {String} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+   * @param creationDateTime {Date} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+   * @param lastUpdatedDateTime {Date} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
    */
   constructor (id, locationId, marketplaceAttributes, shipmentInfo, shipmentRequirements, charges, status, lineItems, shippingInfo, creationDateTime, lastUpdatedDateTime) {
     this.id = id
@@ -94,9 +94,9 @@ export class Shipment {
       if (data.hasOwnProperty('lineItems')) { obj.lineItems = ApiClient.convertToType(data.lineItems, [ShipmentLineItem]) }
       if (data.hasOwnProperty('shippingInfo')) { obj.shippingInfo = ShippingInfo.constructFromObject(data.shippingInfo) }
       if (data.hasOwnProperty('packages')) { obj.packages = ApiClient.convertToType(data.packages, [Package]) }
-      if (data.hasOwnProperty('creationDateTime')) { obj.creationDateTime = ApiClient.convertToType(data.creationDateTime, 'String') }
-      if (data.hasOwnProperty('lastUpdatedDateTime')) { obj.lastUpdatedDateTime = ApiClient.convertToType(data.lastUpdatedDateTime, 'String') }
-      if (data.hasOwnProperty('earliestPackDateTime')) { obj.earliestPackDateTime = ApiClient.convertToType(data.earliestPackDateTime, 'String') }
+      if (data.hasOwnProperty('creationDateTime')) { obj.creationDateTime = ApiClient.convertToType(data.creationDateTime, 'Date') }
+      if (data.hasOwnProperty('lastUpdatedDateTime')) { obj.lastUpdatedDateTime = ApiClient.convertToType(data.lastUpdatedDateTime, 'Date') }
+      if (data.hasOwnProperty('earliestPackDateTime')) { obj.earliestPackDateTime = ApiClient.convertToType(data.earliestPackDateTime, 'Date') }
     }
     return obj
   }
@@ -135,7 +135,7 @@ Shipment.prototype.shipmentInfo = undefined
 Shipment.prototype.invoiceInfo = undefined
 
 /**
- * All involved party identification and metadata for the vendor, buyer, and seller. Applicable for direct-fulfillment sellers.
+ * All involved party identification and metadata for vendor, buyer, seller. Applicable only for direct-fulfillment sellers.
  * @member {PartyIdentificationInfo[]} partyInfoList
  * @type {PartyIdentificationInfo[]}
  */
@@ -355,21 +355,21 @@ Shipment.prototype.packages = undefined
 
 /**
  * A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
- * @member {String} creationDateTime
- * @type {String}
+ * @member {Date} creationDateTime
+ * @type {Date}
  */
 Shipment.prototype.creationDateTime = undefined
 
 /**
  * A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
- * @member {String} lastUpdatedDateTime
- * @type {String}
+ * @member {Date} lastUpdatedDateTime
+ * @type {Date}
  */
 Shipment.prototype.lastUpdatedDateTime = undefined
 
 /**
  * A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
- * @member {String} earliestPackDateTime
- * @type {String}
+ * @member {Date} earliestPackDateTime
+ * @type {Date}
  */
 Shipment.prototype.earliestPackDateTime = undefined
