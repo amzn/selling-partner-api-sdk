@@ -103,9 +103,6 @@ public class ModelCase {
     @SerializedName("resolvedDate")
     private OffsetDateTime resolvedDate = null;
 
-    @SerializedName("lastOutboundDate")
-    private OffsetDateTime lastOutboundDate = null;
-
     public ModelCase caseId(String caseId) {
         this.caseId = caseId;
         return this;
@@ -308,28 +305,6 @@ public class ModelCase {
         this.resolvedDate = resolvedDate;
     }
 
-    public ModelCase lastOutboundDate(OffsetDateTime lastOutboundDate) {
-        this.lastOutboundDate = lastOutboundDate;
-        return this;
-    }
-
-    /**
-     * The timestamp of the last outbound contact on the case. The date must be in &lt;a
-     * href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
-     *
-     * @return lastOutboundDate
-     */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The timestamp of the last outbound contact on the case. The date must be in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> format.")
-    public OffsetDateTime getLastOutboundDate() {
-        return lastOutboundDate;
-    }
-
-    public void setLastOutboundDate(OffsetDateTime lastOutboundDate) {
-        this.lastOutboundDate = lastOutboundDate;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -347,8 +322,7 @@ public class ModelCase {
                 && Objects.equals(this.appointments, _case.appointments)
                 && Objects.equals(this.createdDate, _case.createdDate)
                 && Objects.equals(this.lastUpdatedDate, _case.lastUpdatedDate)
-                && Objects.equals(this.resolvedDate, _case.resolvedDate)
-                && Objects.equals(this.lastOutboundDate, _case.lastOutboundDate);
+                && Objects.equals(this.resolvedDate, _case.resolvedDate);
     }
 
     @Override
@@ -362,8 +336,7 @@ public class ModelCase {
                 appointments,
                 createdDate,
                 lastUpdatedDate,
-                resolvedDate,
-                lastOutboundDate);
+                resolvedDate);
     }
 
     @Override
@@ -381,9 +354,6 @@ public class ModelCase {
                 .append(toIndentedString(lastUpdatedDate))
                 .append("\n");
         sb.append("    resolvedDate: ").append(toIndentedString(resolvedDate)).append("\n");
-        sb.append("    lastOutboundDate: ")
-                .append(toIndentedString(lastOutboundDate))
-                .append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -73,15 +73,15 @@ public class ShippingService {
     }
 
     /**
-     * A plain text representation of a carrier&#39;s shipping service. For example, \&quot;UPS Ground\&quot; or
-     * \&quot;FedEx Standard Overnight\&quot;.
+     * The carrier&#39;s shipping service name, such as \&quot;UPS Ground\&quot; or \&quot;FedEx Standard
+     * Overnight\&quot;.
      *
      * @return shippingServiceName
      */
     @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
-                    "A plain text representation of a carrier's shipping service. For example, \"UPS Ground\" or \"FedEx Standard Overnight\". ")
+                    "The carrier's shipping service name, such as \"UPS Ground\" or \"FedEx Standard Overnight\".")
     public String getShippingServiceName() {
         return shippingServiceName;
     }
@@ -349,13 +349,13 @@ public class ShippingService {
     }
 
     /**
-     * When true, additional seller inputs are required.
+     * When &#x60;true&#x60;, additional seller inputs are required.
      *
      * @return requiresAdditionalSellerInputs
      */
     @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
-            description = "When true, additional seller inputs are required.")
+            description = "When `true`, additional seller inputs are required.")
     public Boolean getRequiresAdditionalSellerInputs() {
         return requiresAdditionalSellerInputs;
     }

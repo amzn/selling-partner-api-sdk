@@ -18,6 +18,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -92,7 +93,7 @@ public class ShipmentInfo {
     private List<String> orderStatesEligibleForRejection = null;
 
     @SerializedName("orderPlacedTimestamp")
-    private String orderPlacedTimestamp = null;
+    private BigDecimal orderPlacedTimestamp = null;
 
     /** The source of the order operation. */
     @JsonAdapter(ProcessingSourceEnum.Adapter.class)
@@ -317,22 +318,23 @@ public class ShipmentInfo {
         this.orderStatesEligibleForRejection = orderStatesEligibleForRejection;
     }
 
-    public ShipmentInfo orderPlacedTimestamp(String orderPlacedTimestamp) {
+    public ShipmentInfo orderPlacedTimestamp(BigDecimal orderPlacedTimestamp) {
         this.orderPlacedTimestamp = orderPlacedTimestamp;
         return this;
     }
 
     /**
-     * The timestamp of when the order was placed, in UTC
+     * The epoch timestamp (in milliseconds) of when the order was placed, in UTC.
      *
      * @return orderPlacedTimestamp
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The timestamp of when the order was placed, in UTC")
-    public String getOrderPlacedTimestamp() {
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The epoch timestamp (in milliseconds) of when the order was placed, in UTC.")
+    public BigDecimal getOrderPlacedTimestamp() {
         return orderPlacedTimestamp;
     }
 
-    public void setOrderPlacedTimestamp(String orderPlacedTimestamp) {
+    public void setOrderPlacedTimestamp(BigDecimal orderPlacedTimestamp) {
         this.orderPlacedTimestamp = orderPlacedTimestamp;
     }
 

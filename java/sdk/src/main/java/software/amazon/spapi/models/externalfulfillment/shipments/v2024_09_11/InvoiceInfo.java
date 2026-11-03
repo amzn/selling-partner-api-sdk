@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Information about the shipment&#39;s invoice. */
@@ -22,7 +23,7 @@ public class InvoiceInfo {
     private String invoiceId = null;
 
     @SerializedName("creationDateTime")
-    private String creationDateTime = null;
+    private OffsetDateTime creationDateTime = null;
 
     public InvoiceInfo invoiceId(String invoiceId) {
         this.invoiceId = invoiceId;
@@ -35,7 +36,6 @@ public class InvoiceInfo {
      * @return invoiceId
      */
     @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
             description = "The unique ID of the invoice that corresponds to the shipment.")
     public String getInvoiceId() {
         return invoiceId;
@@ -45,7 +45,7 @@ public class InvoiceInfo {
         this.invoiceId = invoiceId;
     }
 
-    public InvoiceInfo creationDateTime(String creationDateTime) {
+    public InvoiceInfo creationDateTime(OffsetDateTime creationDateTime) {
         this.creationDateTime = creationDateTime;
         return this;
     }
@@ -56,14 +56,13 @@ public class InvoiceInfo {
      * @return creationDateTime
      */
     @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
             description =
                     "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
-    public String getCreationDateTime() {
+    public OffsetDateTime getCreationDateTime() {
         return creationDateTime;
     }
 
-    public void setCreationDateTime(String creationDateTime) {
+    public void setCreationDateTime(OffsetDateTime creationDateTime) {
         this.creationDateTime = creationDateTime;
     }
 

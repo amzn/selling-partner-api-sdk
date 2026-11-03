@@ -77,15 +77,15 @@ public class ShippingServiceOptions {
     }
 
     /**
-     * When true, the carrier will pick up the package. Note: Scheduled carrier pickup is available only using Dynamex
-     * (US), DPD (UK), and Royal Mail (UK).
+     * When &#x60;true&#x60;, the carrier picks up the package. Note: Scheduled carrier pickup is available only using
+     * Dynamex (US), DPD (UK), and Royal Mail (UK).
      *
      * @return carrierWillPickUp
      */
     @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
-                    "When true, the carrier will pick up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK).")
+                    "When `true`, the carrier picks up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK).")
     public Boolean getCarrierWillPickUp() {
         return carrierWillPickUp;
     }

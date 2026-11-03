@@ -448,7 +448,8 @@ public class ShipmentProcessingApi {
      * Build call for generateShipLabels
      *
      * @param shipmentId The ID of the shipment whose shipping labels you want to generate and retrieve. (required)
-     * @param operation Specify whether you want to generate or regenerate a label. (required)
+     * @param operation Specify whether you want to generate or regenerate a label. For retrieving existing labels, set
+     *     this value to &#x60;GENERATE&#x60; (required)
      * @param shippingOptionId The ID of the shipping option whose shipping labels you want. (optional)
      * @param body Shipping details for when shipping is not done by the marketplace channel. (optional)
      * @param progressRequestListener Progress request listener
@@ -531,7 +532,8 @@ public class ShipmentProcessingApi {
      * Generate and retrieve all shipping labels for one or more packages in the shipment you specify.
      *
      * @param shipmentId The ID of the shipment whose shipping labels you want to generate and retrieve. (required)
-     * @param operation Specify whether you want to generate or regenerate a label. (required)
+     * @param operation Specify whether you want to generate or regenerate a label. For retrieving existing labels, set
+     *     this value to &#x60;GENERATE&#x60; (required)
      * @param shippingOptionId The ID of the shipping option whose shipping labels you want. (optional)
      * @param body Shipping details for when shipping is not done by the marketplace channel. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -555,7 +557,8 @@ public class ShipmentProcessingApi {
      * Generate and retrieve all shipping labels for one or more packages in the shipment you specify.
      *
      * @param shipmentId The ID of the shipment whose shipping labels you want to generate and retrieve. (required)
-     * @param operation Specify whether you want to generate or regenerate a label. (required)
+     * @param operation Specify whether you want to generate or regenerate a label. For retrieving existing labels, set
+     *     this value to &#x60;GENERATE&#x60; (required)
      * @param shippingOptionId The ID of the shipping option whose shipping labels you want. (optional)
      * @param body Shipping details for when shipping is not done by the marketplace channel. (optional)
      * @return ShipLabelsResponse
@@ -574,7 +577,8 @@ public class ShipmentProcessingApi {
      * Generate and retrieve all shipping labels for one or more packages in the shipment you specify.
      *
      * @param shipmentId The ID of the shipment whose shipping labels you want to generate and retrieve. (required)
-     * @param operation Specify whether you want to generate or regenerate a label. (required)
+     * @param operation Specify whether you want to generate or regenerate a label. For retrieving existing labels, set
+     *     this value to &#x60;GENERATE&#x60; (required)
      * @param shippingOptionId The ID of the shipping option whose shipping labels you want. (optional)
      * @param body Shipping details for when shipping is not done by the marketplace channel. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -608,7 +612,8 @@ public class ShipmentProcessingApi {
      * Generate and retrieve all shipping labels for one or more packages in the shipment you specify.
      *
      * @param shipmentId The ID of the shipment whose shipping labels you want to generate and retrieve. (required)
-     * @param operation Specify whether you want to generate or regenerate a label. (required)
+     * @param operation Specify whether you want to generate or regenerate a label. For retrieving existing labels, set
+     *     this value to &#x60;GENERATE&#x60; (required)
      * @param shippingOptionId The ID of the shipping option whose shipping labels you want. (optional)
      * @param body Shipping details for when shipping is not done by the marketplace channel. (optional)
      * @return ApiResponse&lt;ShipLabelsResponse&gt;
@@ -625,7 +630,8 @@ public class ShipmentProcessingApi {
      * (asynchronously) Generate and retrieve all shipping labels for one or more packages in the shipment you specify.
      *
      * @param shipmentId The ID of the shipment whose shipping labels you want to generate and retrieve. (required)
-     * @param operation Specify whether you want to generate or regenerate a label. (required)
+     * @param operation Specify whether you want to generate or regenerate a label. For retrieving existing labels, set
+     *     this value to &#x60;GENERATE&#x60; (required)
      * @param shippingOptionId The ID of the shipping option whose shipping labels you want. (optional)
      * @param body Shipping details for when shipping is not done by the marketplace channel. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -646,7 +652,8 @@ public class ShipmentProcessingApi {
      * (asynchronously) Generate and retrieve all shipping labels for one or more packages in the shipment you specify.
      *
      * @param shipmentId The ID of the shipment whose shipping labels you want to generate and retrieve. (required)
-     * @param operation Specify whether you want to generate or regenerate a label. (required)
+     * @param operation Specify whether you want to generate or regenerate a label. For retrieving existing labels, set
+     *     this value to &#x60;GENERATE&#x60; (required)
      * @param shippingOptionId The ID of the shipping option whose shipping labels you want. (optional)
      * @param body Shipping details for when shipping is not done by the marketplace channel. (optional)
      * @param callback The callback to be executed when the API call finishes

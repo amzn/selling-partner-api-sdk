@@ -18,13 +18,14 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** The weight of a package. */
 @io.swagger.v3.oas.annotations.media.Schema(description = "The weight of a package.")
 public class Weight {
     @SerializedName("value")
-    private String value = null;
+    private BigDecimal value = null;
 
     /** The unit of measurement of the weight. */
     @JsonAdapter(WeightUnitEnum.Adapter.class)
@@ -79,25 +80,22 @@ public class Weight {
     @SerializedName("weightUnit")
     private WeightUnitEnum weightUnit = null;
 
-    public Weight value(String value) {
+    public Weight value(BigDecimal value) {
         this.value = value;
         return this;
     }
 
     /**
-     * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+     * A decimal number.
      *
      * @return value
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.")
-    public String getValue() {
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A decimal number.")
+    public BigDecimal getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(BigDecimal value) {
         this.value = value;
     }
 

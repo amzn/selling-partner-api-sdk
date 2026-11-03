@@ -13,82 +13,75 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** Geographic coordinates. */
 @io.swagger.v3.oas.annotations.media.Schema(description = "Geographic coordinates.")
 public class Geocodes {
     @SerializedName("latitude")
-    private String latitude = null;
+    private BigDecimal latitude = null;
 
     @SerializedName("longitude")
-    private String longitude = null;
+    private BigDecimal longitude = null;
 
     @SerializedName("elevation")
-    private String elevation = null;
+    private BigDecimal elevation = null;
 
-    public Geocodes latitude(String latitude) {
+    public Geocodes latitude(BigDecimal latitude) {
         this.latitude = latitude;
         return this;
     }
 
     /**
-     * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+     * A decimal number.
      *
      * @return latitude
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.")
-    public String getLatitude() {
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A decimal number.")
+    public BigDecimal getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(BigDecimal latitude) {
         this.latitude = latitude;
     }
 
-    public Geocodes longitude(String longitude) {
+    public Geocodes longitude(BigDecimal longitude) {
         this.longitude = longitude;
         return this;
     }
 
     /**
-     * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+     * A decimal number.
      *
      * @return longitude
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.")
-    public String getLongitude() {
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A decimal number.")
+    public BigDecimal getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(BigDecimal longitude) {
         this.longitude = longitude;
     }
 
-    public Geocodes elevation(String elevation) {
+    public Geocodes elevation(BigDecimal elevation) {
         this.elevation = elevation;
         return this;
     }
 
     /**
-     * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+     * A decimal number.
      *
      * @return elevation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.")
-    public String getElevation() {
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A decimal number.")
+    public BigDecimal getElevation() {
         return elevation;
     }
 
-    public void setElevation(String elevation) {
+    public void setElevation(BigDecimal elevation) {
         this.elevation = elevation;
     }
 

@@ -20,9 +20,9 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Objects;
 
-/** Tax registration details of the entity. Applicable to direct fulfillment shipments. */
+/** Tax registration details of the entity. Applicable only to direct fulfillment shipments. */
 @io.swagger.v3.oas.annotations.media.Schema(
-        description = "Tax registration details of the entity. Applicable to direct fulfillment shipments.")
+        description = "Tax registration details of the entity. Applicable only to direct fulfillment shipments.")
 public class TaxRegistrationInfo {
     /** Tax registration type for the entity */
     @JsonAdapter(TypeEnum.Adapter.class)

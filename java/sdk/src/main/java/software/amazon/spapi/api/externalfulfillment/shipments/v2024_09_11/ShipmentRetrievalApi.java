@@ -21,6 +21,7 @@ import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -256,8 +257,8 @@ public class ShipmentRetrievalApi {
             String locationId,
             String marketplaceId,
             String channelName,
-            String lastUpdatedAfter,
-            String lastUpdatedBefore,
+            OffsetDateTime lastUpdatedAfter,
+            OffsetDateTime lastUpdatedBefore,
             Integer maxResults,
             String paginationToken,
             final ApiCallback progressRequestListener)
@@ -316,8 +317,8 @@ public class ShipmentRetrievalApi {
             String locationId,
             String marketplaceId,
             String channelName,
-            String lastUpdatedAfter,
-            String lastUpdatedBefore,
+            OffsetDateTime lastUpdatedAfter,
+            OffsetDateTime lastUpdatedBefore,
             Integer maxResults,
             String paginationToken,
             final ApiCallback progressRequestListener)
@@ -370,8 +371,8 @@ public class ShipmentRetrievalApi {
             String locationId,
             String marketplaceId,
             String channelName,
-            String lastUpdatedAfter,
-            String lastUpdatedBefore,
+            OffsetDateTime lastUpdatedAfter,
+            OffsetDateTime lastUpdatedBefore,
             Integer maxResults,
             String paginationToken,
             String restrictedDataToken)
@@ -418,8 +419,8 @@ public class ShipmentRetrievalApi {
             String locationId,
             String marketplaceId,
             String channelName,
-            String lastUpdatedAfter,
-            String lastUpdatedBefore,
+            OffsetDateTime lastUpdatedAfter,
+            OffsetDateTime lastUpdatedBefore,
             Integer maxResults,
             String paginationToken)
             throws ApiException, LWAException {
@@ -466,8 +467,8 @@ public class ShipmentRetrievalApi {
             String locationId,
             String marketplaceId,
             String channelName,
-            String lastUpdatedAfter,
-            String lastUpdatedBefore,
+            OffsetDateTime lastUpdatedAfter,
+            OffsetDateTime lastUpdatedBefore,
             Integer maxResults,
             String paginationToken,
             String restrictedDataToken)
@@ -524,8 +525,8 @@ public class ShipmentRetrievalApi {
             String locationId,
             String marketplaceId,
             String channelName,
-            String lastUpdatedAfter,
-            String lastUpdatedBefore,
+            OffsetDateTime lastUpdatedAfter,
+            OffsetDateTime lastUpdatedBefore,
             Integer maxResults,
             String paginationToken)
             throws ApiException, LWAException {
@@ -571,8 +572,8 @@ public class ShipmentRetrievalApi {
             String locationId,
             String marketplaceId,
             String channelName,
-            String lastUpdatedAfter,
-            String lastUpdatedBefore,
+            OffsetDateTime lastUpdatedAfter,
+            OffsetDateTime lastUpdatedBefore,
             Integer maxResults,
             String paginationToken,
             final ApiCallback<ShipmentsResponse> callback)
@@ -620,8 +621,8 @@ public class ShipmentRetrievalApi {
             String locationId,
             String marketplaceId,
             String channelName,
-            String lastUpdatedAfter,
-            String lastUpdatedBefore,
+            OffsetDateTime lastUpdatedAfter,
+            OffsetDateTime lastUpdatedBefore,
             Integer maxResults,
             String paginationToken,
             final ApiCallback<ShipmentsResponse> callback,

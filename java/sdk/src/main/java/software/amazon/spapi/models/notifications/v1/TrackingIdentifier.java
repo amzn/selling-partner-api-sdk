@@ -38,6 +38,9 @@ public class TrackingIdentifier {
     @SerializedName("houseBillOfLadingNumber")
     private String houseBillOfLadingNumber = null;
 
+    @SerializedName("proNumber")
+    private String proNumber = null;
+
     @SerializedName("carrierTracking")
     private TrackingIdentifierCarrierTracking carrierTracking = null;
 
@@ -137,6 +140,25 @@ public class TrackingIdentifier {
         this.houseBillOfLadingNumber = houseBillOfLadingNumber;
     }
 
+    public TrackingIdentifier proNumber(String proNumber) {
+        this.proNumber = proNumber;
+        return this;
+    }
+
+    /**
+     * The PRO number assigned by the freight carrier
+     *
+     * @return proNumber
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The PRO number assigned by the freight carrier")
+    public String getProNumber() {
+        return proNumber;
+    }
+
+    public void setProNumber(String proNumber) {
+        this.proNumber = proNumber;
+    }
+
     public TrackingIdentifier carrierTracking(TrackingIdentifierCarrierTracking carrierTracking) {
         this.carrierTracking = carrierTracking;
         return this;
@@ -170,12 +192,13 @@ public class TrackingIdentifier {
                 && Objects.equals(this.aftn, trackingIdentifier.aftn)
                 && Objects.equals(this.containerNumber, trackingIdentifier.containerNumber)
                 && Objects.equals(this.houseBillOfLadingNumber, trackingIdentifier.houseBillOfLadingNumber)
+                && Objects.equals(this.proNumber, trackingIdentifier.proNumber)
                 && Objects.equals(this.carrierTracking, trackingIdentifier.carrierTracking);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, acsin, aftn, containerNumber, houseBillOfLadingNumber, carrierTracking);
+        return Objects.hash(id, acsin, aftn, containerNumber, houseBillOfLadingNumber, proNumber, carrierTracking);
     }
 
     @Override
@@ -191,6 +214,7 @@ public class TrackingIdentifier {
         sb.append("    houseBillOfLadingNumber: ")
                 .append(toIndentedString(houseBillOfLadingNumber))
                 .append("\n");
+        sb.append("    proNumber: ").append(toIndentedString(proNumber)).append("\n");
         sb.append("    carrierTracking: ")
                 .append(toIndentedString(carrierTracking))
                 .append("\n");

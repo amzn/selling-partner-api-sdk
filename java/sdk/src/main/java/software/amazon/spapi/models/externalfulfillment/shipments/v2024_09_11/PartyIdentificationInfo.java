@@ -20,9 +20,9 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Objects;
 
-/** Party identification details for the shipment, applicable to direct fulfillment shipments. */
+/** Party identification details for the shipment, applicable only to direct fulfillment shipments. */
 @io.swagger.v3.oas.annotations.media.Schema(
-        description = "Party identification details for the shipment, applicable to direct fulfillment shipments.")
+        description = "Party identification details for the shipment, applicable only to direct fulfillment shipments.")
 public class PartyIdentificationInfo {
     @SerializedName("partyId")
     private String partyId = null;

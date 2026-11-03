@@ -60,14 +60,13 @@ public class ShipmentAcknowledgementRequest {
     }
 
     /**
-     * Details about the line items from the shipment that are being confirmed or rejected by the seller.
+     * Details about the line items from the shipment that are being rejected by the seller.
      *
      * @return lineItems
      */
     @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
-            description =
-                    "Details about the line items from the shipment that are being confirmed or rejected by the seller.")
+            description = "Details about the line items from the shipment that are being rejected by the seller.")
     public List<LineItemWithReason> getLineItems() {
         return lineItems;
     }

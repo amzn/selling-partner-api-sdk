@@ -16,12 +16,12 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- * All involved party identification and metadata for the vendor, buyer, and seller. Applicable for direct-fulfillment
+ * All involved party identification and metadata for vendor, buyer, seller. Applicable only for direct-fulfillment
  * sellers.
  */
 @io.swagger.v3.oas.annotations.media.Schema(
         description =
-                "All involved party identification and metadata for the vendor, buyer, and seller. Applicable for direct-fulfillment sellers.")
+                "All involved party identification and metadata for vendor, buyer, seller. Applicable only for direct-fulfillment sellers.")
 public class PartyIdentificationInfoList extends ArrayList<PartyIdentificationInfo> {
 
     @Override

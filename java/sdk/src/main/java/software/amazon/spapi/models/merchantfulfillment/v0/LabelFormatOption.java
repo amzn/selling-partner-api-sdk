@@ -31,11 +31,11 @@ public class LabelFormatOption {
     }
 
     /**
-     * When true, include a packing slip with the label.
+     * When &#x60;true&#x60;, include a packing slip with the label.
      *
      * @return includePackingSlipWithLabel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, include a packing slip with the label.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "When `true`, include a packing slip with the label.")
     public Boolean getIncludePackingSlipWithLabel() {
         return includePackingSlipWithLabel;
     }

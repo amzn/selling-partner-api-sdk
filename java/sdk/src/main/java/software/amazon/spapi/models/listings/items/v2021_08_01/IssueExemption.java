@@ -22,12 +22,11 @@ import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
- * Conveying the status of the listed enforcement actions and, if applicable, provides information about the
- * exemption&#39;s expiry date.
+ * The status of the listed enforcement actions. If applicable, includes information about the exemption expiry date.
  */
 @io.swagger.v3.oas.annotations.media.Schema(
         description =
-                "Conveying the status of the listed enforcement actions and, if applicable, provides information about the exemption's expiry date.")
+                "The status of the listed enforcement actions. If applicable, includes information about the exemption expiry date.")
 public class IssueExemption {
     /**
      * Indicates the current exemption status for the listed enforcement actions. It can take values such as
@@ -119,14 +118,14 @@ public class IssueExemption {
     }
 
     /**
-     * Represents the timestamp, in ISO 8601 format, that specifies the date when the temporary exemptions expires, and
-     * Amazon begins enforcing the listed actions.
+     * The timestamp, in ISO 8601 format, when the temporary exemption expires and Amazon begins enforcing the listed
+     * actions.
      *
      * @return expiryDate
      */
     @io.swagger.v3.oas.annotations.media.Schema(
             description =
-                    "Represents the timestamp, in ISO 8601 format, that specifies the date when the temporary exemptions expires, and Amazon begins enforcing the listed actions.")
+                    "The timestamp, in ISO 8601 format, when the temporary exemption expires and Amazon begins enforcing the listed actions.")
     public OffsetDateTime getExpiryDate() {
         return expiryDate;
     }

@@ -163,7 +163,7 @@ public class ListingsApi {
     }
 
     /**
-     * Delete a listings item for a selling partner. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * Deletes a listings item for a selling partner. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
      * ---- | | 5 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
      * were applied to the requested operation, when available. The preceding table indicates the default rate and burst
      * values for this operation. Selling partners whose business demands require higher throughput can receive higher
@@ -191,7 +191,7 @@ public class ListingsApi {
     }
 
     /**
-     * Delete a listings item for a selling partner. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * Deletes a listings item for a selling partner. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
      * ---- | | 5 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
      * were applied to the requested operation, when available. The preceding table indicates the default rate and burst
      * values for this operation. Selling partners whose business demands require higher throughput can receive higher
@@ -218,7 +218,7 @@ public class ListingsApi {
     }
 
     /**
-     * Delete a listings item for a selling partner. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * Deletes a listings item for a selling partner. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
      * ---- | | 5 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
      * were applied to the requested operation, when available. The preceding table indicates the default rate and burst
      * values for this operation. Selling partners whose business demands require higher throughput can receive higher
@@ -255,7 +255,7 @@ public class ListingsApi {
     }
 
     /**
-     * Delete a listings item for a selling partner. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * Deletes a listings item for a selling partner. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
      * ---- | | 5 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
      * were applied to the requested operation, when available. The preceding table indicates the default rate and burst
      * values for this operation. Selling partners whose business demands require higher throughput can receive higher
@@ -280,7 +280,7 @@ public class ListingsApi {
     }
 
     /**
-     * (asynchronously) Delete a listings item for a selling partner. **Usage Plan:** | Rate (requests per second) |
+     * (asynchronously) Deletes a listings item for a selling partner. **Usage Plan:** | Rate (requests per second) |
      * Burst | | ---- | ---- | | 5 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
      * rate limits that were applied to the requested operation, when available. The preceding table indicates the
      * default rate and burst values for this operation. Selling partners whose business demands require higher
@@ -309,7 +309,7 @@ public class ListingsApi {
         return deleteListingsItemAsync(sellerId, sku, marketplaceIds, issueLocale, callback, null);
     }
     /**
-     * (asynchronously) Delete a listings item for a selling partner. **Usage Plan:** | Rate (requests per second) |
+     * (asynchronously) Deletes a listings item for a selling partner. **Usage Plan:** | Rate (requests per second) |
      * Burst | | ---- | ---- | | 5 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
      * rate limits that were applied to the requested operation, when available. The preceding table indicates the
      * default rate and burst values for this operation. Selling partners whose business demands require higher
@@ -1166,7 +1166,7 @@ public class ListingsApi {
     }
 
     /**
-     * Creates a new or fully-updates an existing listings item for a selling partner. **Usage Plan:** | Rate (requests
+     * Creates a new or fully updates an existing listings item for a selling partner. **Usage Plan:** | Rate (requests
      * per second) | Burst | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
      * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
      * indicates the default rate and burst values for this operation. Selling partners whose business demands require
@@ -1206,7 +1206,7 @@ public class ListingsApi {
     }
 
     /**
-     * Creates a new or fully-updates an existing listings item for a selling partner. **Usage Plan:** | Rate (requests
+     * Creates a new or fully updates an existing listings item for a selling partner. **Usage Plan:** | Rate (requests
      * per second) | Burst | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
      * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
      * indicates the default rate and burst values for this operation. Selling partners whose business demands require
@@ -1244,7 +1244,7 @@ public class ListingsApi {
     }
 
     /**
-     * Creates a new or fully-updates an existing listings item for a selling partner. **Usage Plan:** | Rate (requests
+     * Creates a new or fully updates an existing listings item for a selling partner. **Usage Plan:** | Rate (requests
      * per second) | Burst | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
      * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
      * indicates the default rate and burst values for this operation. Selling partners whose business demands require
@@ -1294,7 +1294,7 @@ public class ListingsApi {
     }
 
     /**
-     * Creates a new or fully-updates an existing listings item for a selling partner. **Usage Plan:** | Rate (requests
+     * Creates a new or fully updates an existing listings item for a selling partner. **Usage Plan:** | Rate (requests
      * per second) | Burst | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
      * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
      * indicates the default rate and burst values for this operation. Selling partners whose business demands require
@@ -1330,7 +1330,7 @@ public class ListingsApi {
     }
 
     /**
-     * (asynchronously) Creates a new or fully-updates an existing listings item for a selling partner. **Usage Plan:**
+     * (asynchronously) Creates a new or fully updates an existing listings item for a selling partner. **Usage Plan:**
      * | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
      * header returns the usage plan rate limits that were applied to the requested operation, when available. The
      * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
@@ -1368,7 +1368,7 @@ public class ListingsApi {
                 sellerId, sku, marketplaceIds, body, includedData, mode, issueLocale, callback, null);
     }
     /**
-     * (asynchronously) Creates a new or fully-updates an existing listings item for a selling partner. **Usage Plan:**
+     * (asynchronously) Creates a new or fully updates an existing listings item for a selling partner. **Usage Plan:**
      * | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
      * header returns the usage plan rate limits that were applied to the requested operation, when available. The
      * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
@@ -1431,11 +1431,11 @@ public class ListingsApi {
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
      * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
-     * @param issueLocale A locale that is used to localize issues. When not provided, the default language code of the
-     *     first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
+     * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
+     *     Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
      *     localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;.
      *     (optional)
-     * @param includedData A comma-delimited list of data sets that you want to include in the response. Default:
+     * @param includedData A comma-delimited list of data sets to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional, default to [\"summaries\"])
      * @param identifiers A comma-delimited list of product identifiers that you can use to search for listings items.
      *     **Note**: 1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use
@@ -1636,11 +1636,11 @@ public class ListingsApi {
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
      * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
-     * @param issueLocale A locale that is used to localize issues. When not provided, the default language code of the
-     *     first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
+     * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
+     *     Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
      *     localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;.
      *     (optional)
-     * @param includedData A comma-delimited list of data sets that you want to include in the response. Default:
+     * @param includedData A comma-delimited list of data sets to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional, default to [\"summaries\"])
      * @param identifiers A comma-delimited list of product identifiers that you can use to search for listings items.
      *     **Note**: 1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use
@@ -1738,11 +1738,11 @@ public class ListingsApi {
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
      * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
-     * @param issueLocale A locale that is used to localize issues. When not provided, the default language code of the
-     *     first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
+     * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
+     *     Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
      *     localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;.
      *     (optional)
-     * @param includedData A comma-delimited list of data sets that you want to include in the response. Default:
+     * @param includedData A comma-delimited list of data sets to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional, default to [\"summaries\"])
      * @param identifiers A comma-delimited list of product identifiers that you can use to search for listings items.
      *     **Note**: 1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use
@@ -1838,11 +1838,11 @@ public class ListingsApi {
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
      * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
-     * @param issueLocale A locale that is used to localize issues. When not provided, the default language code of the
-     *     first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
+     * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
+     *     Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
      *     localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;.
      *     (optional)
-     * @param includedData A comma-delimited list of data sets that you want to include in the response. Default:
+     * @param includedData A comma-delimited list of data sets to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional, default to [\"summaries\"])
      * @param identifiers A comma-delimited list of product identifiers that you can use to search for listings items.
      *     **Note**: 1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use
@@ -1950,11 +1950,11 @@ public class ListingsApi {
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
      * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
-     * @param issueLocale A locale that is used to localize issues. When not provided, the default language code of the
-     *     first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
+     * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
+     *     Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
      *     localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;.
      *     (optional)
-     * @param includedData A comma-delimited list of data sets that you want to include in the response. Default:
+     * @param includedData A comma-delimited list of data sets to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional, default to [\"summaries\"])
      * @param identifiers A comma-delimited list of product identifiers that you can use to search for listings items.
      *     **Note**: 1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use
@@ -2049,11 +2049,11 @@ public class ListingsApi {
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
      * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
-     * @param issueLocale A locale that is used to localize issues. When not provided, the default language code of the
-     *     first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
+     * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
+     *     Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
      *     localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;.
      *     (optional)
-     * @param includedData A comma-delimited list of data sets that you want to include in the response. Default:
+     * @param includedData A comma-delimited list of data sets to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional, default to [\"summaries\"])
      * @param identifiers A comma-delimited list of product identifiers that you can use to search for listings items.
      *     **Note**: 1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use
@@ -2150,11 +2150,11 @@ public class ListingsApi {
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
      * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
-     * @param issueLocale A locale that is used to localize issues. When not provided, the default language code of the
-     *     first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
+     * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
+     *     Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
      *     localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;.
      *     (optional)
-     * @param includedData A comma-delimited list of data sets that you want to include in the response. Default:
+     * @param includedData A comma-delimited list of data sets to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional, default to [\"summaries\"])
      * @param identifiers A comma-delimited list of product identifiers that you can use to search for listings items.
      *     **Note**: 1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use

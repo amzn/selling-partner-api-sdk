@@ -21,6 +21,9 @@ public class ServiceJobProvider {
     @SerializedName("serviceJobProviderId")
     private String serviceJobProviderId = null;
 
+    @SerializedName("providerServiceJobReferenceId")
+    private String providerServiceJobReferenceId = null;
+
     public ServiceJobProvider serviceJobProviderId(String serviceJobProviderId) {
         this.serviceJobProviderId = serviceJobProviderId;
         return this;
@@ -40,6 +43,26 @@ public class ServiceJobProvider {
         this.serviceJobProviderId = serviceJobProviderId;
     }
 
+    public ServiceJobProvider providerServiceJobReferenceId(String providerServiceJobReferenceId) {
+        this.providerServiceJobReferenceId = providerServiceJobReferenceId;
+        return this;
+    }
+
+    /**
+     * The reference ID for the service job assigned to the provider.
+     *
+     * @return providerServiceJobReferenceId
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The reference ID for the service job assigned to the provider.")
+    public String getProviderServiceJobReferenceId() {
+        return providerServiceJobReferenceId;
+    }
+
+    public void setProviderServiceJobReferenceId(String providerServiceJobReferenceId) {
+        this.providerServiceJobReferenceId = providerServiceJobReferenceId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,12 +72,13 @@ public class ServiceJobProvider {
             return false;
         }
         ServiceJobProvider serviceJobProvider = (ServiceJobProvider) o;
-        return Objects.equals(this.serviceJobProviderId, serviceJobProvider.serviceJobProviderId);
+        return Objects.equals(this.serviceJobProviderId, serviceJobProvider.serviceJobProviderId)
+                && Objects.equals(this.providerServiceJobReferenceId, serviceJobProvider.providerServiceJobReferenceId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(serviceJobProviderId);
+        return Objects.hash(serviceJobProviderId, providerServiceJobReferenceId);
     }
 
     @Override
@@ -63,6 +87,9 @@ public class ServiceJobProvider {
         sb.append("class ServiceJobProvider {\n");
         sb.append("    serviceJobProviderId: ")
                 .append(toIndentedString(serviceJobProviderId))
+                .append("\n");
+        sb.append("    providerServiceJobReferenceId: ")
+                .append(toIndentedString(providerServiceJobReferenceId))
                 .append("\n");
         sb.append("}");
         return sb.toString();

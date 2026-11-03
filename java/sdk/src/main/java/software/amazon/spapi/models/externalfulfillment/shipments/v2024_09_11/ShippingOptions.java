@@ -135,11 +135,12 @@ public class ShippingOptions {
     }
 
     /**
-     * The carrier name for the offering.
+     * The carrier name for the offering. Applicable only for Self Ship program
      *
      * @return carrierName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The carrier name for the offering.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The carrier name for the offering. Applicable only for Self Ship program")
     public String getCarrierName() {
         return carrierName;
     }

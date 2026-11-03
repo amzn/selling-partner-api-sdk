@@ -20,10 +20,13 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Objects;
 
-/** Whether the invoice document is required to be attached to the shipment and its corresponding status. */
+/**
+ * Whether the invoice document is required to be attached to the shipment and its corresponding status. Applicable only
+ * for Brazil marketplace.
+ */
 @io.swagger.v3.oas.annotations.media.Schema(
         description =
-                "Whether the invoice document is required to be attached to the shipment and its corresponding status.")
+                "Whether the invoice document is required to be attached to the shipment and its corresponding status. Applicable only for Brazil marketplace.")
 public class InvoiceRequirement {
     /** Whether the invoice document is required to be attached to the shipment. */
     @JsonAdapter(RequirementEnum.Adapter.class)

@@ -18,6 +18,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** Information about taxes. */
@@ -87,7 +88,7 @@ public class Tax {
     private TypeEnum type = null;
 
     @SerializedName("rate")
-    private String rate = null;
+    private BigDecimal rate = null;
 
     @SerializedName("charge")
     private ChargeBreakup charge = null;
@@ -111,24 +112,22 @@ public class Tax {
         this.type = type;
     }
 
-    public Tax rate(String rate) {
+    public Tax rate(BigDecimal rate) {
         this.rate = rate;
         return this;
     }
 
     /**
-     * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+     * A decimal number.
      *
      * @return rate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.")
-    public String getRate() {
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A decimal number.")
+    public BigDecimal getRate() {
         return rate;
     }
 
-    public void setRate(String rate) {
+    public void setRate(BigDecimal rate) {
         this.rate = rate;
     }
 

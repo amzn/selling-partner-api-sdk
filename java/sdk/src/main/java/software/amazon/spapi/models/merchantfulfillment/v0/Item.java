@@ -186,12 +186,12 @@ public class Item {
     }
 
     /**
-     * When true, the item qualifies as hazardous materials (hazmat). Defaults to false.
+     * When &#x60;true&#x60;, the item qualifies as hazardous materials (hazmat). Defaults to &#x60;false&#x60;.
      *
      * @return isHazmat
      */
     @io.swagger.v3.oas.annotations.media.Schema(
-            description = "When true, the item qualifies as hazardous materials (hazmat). Defaults to false.")
+            description = "When `true`, the item qualifies as hazardous materials (hazmat). Defaults to `false`.")
     public Boolean getIsHazmat() {
         return isHazmat;
     }

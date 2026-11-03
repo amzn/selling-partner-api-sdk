@@ -22,18 +22,6 @@ import java.io.IOException;
 /** The status of a package. */
 @JsonAdapter(PackageStatus.Adapter.class)
 public enum PackageStatus {
-    @SerializedName("CREATED")
-    CREATED("CREATED"),
-
-    @SerializedName("PICKUP_SLOT_RETRIEVED")
-    PICKUP_SLOT_RETRIEVED("PICKUP_SLOT_RETRIEVED"),
-
-    @SerializedName("INVOICE_GENERATED")
-    INVOICE_GENERATED("INVOICE_GENERATED"),
-
-    @SerializedName("SHIPLABEL_GENERATED")
-    SHIPLABEL_GENERATED("SHIPLABEL_GENERATED"),
-
     @SerializedName("SHIPPED")
     SHIPPED("SHIPPED"),
 

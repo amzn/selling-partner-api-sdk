@@ -176,13 +176,13 @@ public class ItemSummaryByMarketplace {
     }
 
     /**
-     * A marketplace identifier. Identifies the listings item&#39;s Amazon store.
+     * An Amazon store identifier. Identifies the listings item&#39;s Amazon store.
      *
      * @return marketplaceId
      */
     @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
-            description = "A marketplace identifier. Identifies the listings item's Amazon store.")
+            description = "An Amazon store identifier. Identifies the listings item's Amazon store.")
     public String getMarketplaceId() {
         return marketplaceId;
     }

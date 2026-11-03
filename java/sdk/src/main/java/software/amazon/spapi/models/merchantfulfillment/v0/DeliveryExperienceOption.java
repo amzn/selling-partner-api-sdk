@@ -35,7 +35,13 @@ public enum DeliveryExperienceOption {
     NO_TRACKING("NoTracking"),
 
     @SerializedName("NoPreference")
-    NO_PREFERENCE("NoPreference");
+    NO_PREFERENCE("NoPreference"),
+
+    @SerializedName("DeliveryConfirmationWithIdentityCheck")
+    DELIVERY_CONFIRMATION_WITH_IDENTITY_CHECK("DeliveryConfirmationWithIdentityCheck"),
+
+    @SerializedName("DeliveryConfirmationWithNameVerification")
+    DELIVERY_CONFIRMATION_WITH_NAME_VERIFICATION("DeliveryConfirmationWithNameVerification");
 
     private String value;
 

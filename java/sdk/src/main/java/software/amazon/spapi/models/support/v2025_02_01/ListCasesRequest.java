@@ -23,71 +23,6 @@ import java.util.Objects;
 /** The request body for the listCases operation. */
 @io.swagger.v3.oas.annotations.media.Schema(description = "The request body for the listCases operation.")
 public class ListCasesRequest {
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
-
-    @SerializedName("caseFilters")
-    private CaseFilters caseFilters = null;
-
-    /** The field to sort cases by. Defaults to CREATION_DATE when absent. */
-    @JsonAdapter(SortFieldEnum.Adapter.class)
-    public enum SortFieldEnum {
-        @SerializedName("CASE_ID")
-        CASE_ID("CASE_ID"),
-        @SerializedName("STATUS")
-        STATUS("STATUS"),
-        @SerializedName("SUBJECT")
-        SUBJECT("SUBJECT"),
-        @SerializedName("PRIMARY_EMAIL")
-        PRIMARY_EMAIL("PRIMARY_EMAIL"),
-        @SerializedName("CREATION_DATE")
-        CREATION_DATE("CREATION_DATE"),
-        @SerializedName("LAST_OUTBOUND_DATE")
-        LAST_OUTBOUND_DATE("LAST_OUTBOUND_DATE"),
-        @SerializedName("RESOLUTION_DATE")
-        RESOLUTION_DATE("RESOLUTION_DATE");
-
-        private String value;
-
-        SortFieldEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static SortFieldEnum fromValue(String input) {
-            for (SortFieldEnum b : SortFieldEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<SortFieldEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final SortFieldEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public SortFieldEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return SortFieldEnum.fromValue((String) (value));
-            }
-        }
-    }
-
-    @SerializedName("sortField")
-    private SortFieldEnum sortField = null;
-
     /** The sort direction. Defaults to DESC when absent. */
     @JsonAdapter(SortOrderEnum.Adapter.class)
     public enum SortOrderEnum {
@@ -142,68 +77,6 @@ public class ListCasesRequest {
 
     @SerializedName("nextToken")
     private String nextToken = null;
-
-    public ListCasesRequest marketplaceId(String marketplaceId) {
-        this.marketplaceId = marketplaceId;
-        return this;
-    }
-
-    /**
-     * The marketplace identifier used for authorization only. This field does not impact the returned collection. For a
-     * list of possible values, refer to [Marketplace
-     * IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     *
-     * @return marketplaceId
-     */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The marketplace identifier used for authorization only. This field does not impact the returned collection. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
-    public String getMarketplaceId() {
-        return marketplaceId;
-    }
-
-    public void setMarketplaceId(String marketplaceId) {
-        this.marketplaceId = marketplaceId;
-    }
-
-    public ListCasesRequest caseFilters(CaseFilters caseFilters) {
-        this.caseFilters = caseFilters;
-        return this;
-    }
-
-    /**
-     * Get caseFilters
-     *
-     * @return caseFilters
-     */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CaseFilters getCaseFilters() {
-        return caseFilters;
-    }
-
-    public void setCaseFilters(CaseFilters caseFilters) {
-        this.caseFilters = caseFilters;
-    }
-
-    public ListCasesRequest sortField(SortFieldEnum sortField) {
-        this.sortField = sortField;
-        return this;
-    }
-
-    /**
-     * The field to sort cases by. Defaults to CREATION_DATE when absent.
-     *
-     * @return sortField
-     */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The field to sort cases by. Defaults to CREATION_DATE when absent.")
-    public SortFieldEnum getSortField() {
-        return sortField;
-    }
-
-    public void setSortField(SortFieldEnum sortField) {
-        this.sortField = sortField;
-    }
 
     public ListCasesRequest sortOrder(SortOrderEnum sortOrder) {
         this.sortOrder = sortOrder;
@@ -276,26 +149,20 @@ public class ListCasesRequest {
             return false;
         }
         ListCasesRequest listCasesRequest = (ListCasesRequest) o;
-        return Objects.equals(this.marketplaceId, listCasesRequest.marketplaceId)
-                && Objects.equals(this.caseFilters, listCasesRequest.caseFilters)
-                && Objects.equals(this.sortField, listCasesRequest.sortField)
-                && Objects.equals(this.sortOrder, listCasesRequest.sortOrder)
+        return Objects.equals(this.sortOrder, listCasesRequest.sortOrder)
                 && Objects.equals(this.maxResults, listCasesRequest.maxResults)
                 && Objects.equals(this.nextToken, listCasesRequest.nextToken);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(marketplaceId, caseFilters, sortField, sortOrder, maxResults, nextToken);
+        return Objects.hash(sortOrder, maxResults, nextToken);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class ListCasesRequest {\n");
-        sb.append("    marketplaceId: ").append(toIndentedString(marketplaceId)).append("\n");
-        sb.append("    caseFilters: ").append(toIndentedString(caseFilters)).append("\n");
-        sb.append("    sortField: ").append(toIndentedString(sortField)).append("\n");
         sb.append("    sortOrder: ").append(toIndentedString(sortOrder)).append("\n");
         sb.append("    maxResults: ").append(toIndentedString(maxResults)).append("\n");
         sb.append("    nextToken: ").append(toIndentedString(nextToken)).append("\n");

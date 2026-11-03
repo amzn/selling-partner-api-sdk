@@ -18,6 +18,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** A shipment item&#39;s cancellation details. */
@@ -27,7 +28,7 @@ public class Cancellation {
     private Integer cancelledQuantity = null;
 
     @SerializedName("cancelledTimestamp")
-    private String cancelledTimestamp = null;
+    private OffsetDateTime cancelledTimestamp = null;
 
     /** The type of cancellation of the item in the shipment. */
     @JsonAdapter(CancellationTypeEnum.Adapter.class)
@@ -104,7 +105,7 @@ public class Cancellation {
         this.cancelledQuantity = cancelledQuantity;
     }
 
-    public Cancellation cancelledTimestamp(String cancelledTimestamp) {
+    public Cancellation cancelledTimestamp(OffsetDateTime cancelledTimestamp) {
         this.cancelledTimestamp = cancelledTimestamp;
         return this;
     }
@@ -118,11 +119,11 @@ public class Cancellation {
             required = true,
             description =
                     "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
-    public String getCancelledTimestamp() {
+    public OffsetDateTime getCancelledTimestamp() {
         return cancelledTimestamp;
     }
 
-    public void setCancelledTimestamp(String cancelledTimestamp) {
+    public void setCancelledTimestamp(OffsetDateTime cancelledTimestamp) {
         this.cancelledTimestamp = cancelledTimestamp;
     }
 

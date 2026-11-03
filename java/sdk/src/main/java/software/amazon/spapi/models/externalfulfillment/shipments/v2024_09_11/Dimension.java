@@ -18,13 +18,14 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** A dimension of a package. */
 @io.swagger.v3.oas.annotations.media.Schema(description = "A dimension of a package.")
 public class Dimension {
     @SerializedName("value")
-    private String value = null;
+    private BigDecimal value = null;
 
     /** The unit of measurement of the dimension. */
     @JsonAdapter(DimensionUnitEnum.Adapter.class)
@@ -77,25 +78,22 @@ public class Dimension {
     @SerializedName("dimensionUnit")
     private DimensionUnitEnum dimensionUnit = null;
 
-    public Dimension value(String value) {
+    public Dimension value(BigDecimal value) {
         this.value = value;
         return this;
     }
 
     /**
-     * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+     * A decimal number.
      *
      * @return value
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.")
-    public String getValue() {
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A decimal number.")
+    public BigDecimal getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(BigDecimal value) {
         this.value = value;
     }
 

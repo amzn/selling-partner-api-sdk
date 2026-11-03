@@ -32,7 +32,13 @@ public enum DeliveryExperienceType {
     DELIVERY_CONFIRMATION_WITHOUT_SIGNATURE("DeliveryConfirmationWithoutSignature"),
 
     @SerializedName("NoTracking")
-    NO_TRACKING("NoTracking");
+    NO_TRACKING("NoTracking"),
+
+    @SerializedName("DeliveryConfirmationWithIdentityCheck")
+    DELIVERY_CONFIRMATION_WITH_IDENTITY_CHECK("DeliveryConfirmationWithIdentityCheck"),
+
+    @SerializedName("DeliveryConfirmationWithNameVerification")
+    DELIVERY_CONFIRMATION_WITH_NAME_VERIFICATION("DeliveryConfirmationWithNameVerification");
 
     private String value;
 

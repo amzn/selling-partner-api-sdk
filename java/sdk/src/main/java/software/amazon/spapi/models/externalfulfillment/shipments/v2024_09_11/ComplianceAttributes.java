@@ -22,6 +22,9 @@ public class ComplianceAttributes {
     @SerializedName("hazmatLabelsRequirement")
     private RequirementLevel hazmatLabelsRequirement = null;
 
+    @SerializedName("hazmatLabelRequirement")
+    private RequirementLevel hazmatLabelRequirement = null;
+
     @SerializedName("serialNumberRequirement")
     private RequirementLevel serialNumberRequirement = null;
 
@@ -48,6 +51,25 @@ public class ComplianceAttributes {
 
     public void setHazmatLabelsRequirement(RequirementLevel hazmatLabelsRequirement) {
         this.hazmatLabelsRequirement = hazmatLabelsRequirement;
+    }
+
+    public ComplianceAttributes hazmatLabelRequirement(RequirementLevel hazmatLabelRequirement) {
+        this.hazmatLabelRequirement = hazmatLabelRequirement;
+        return this;
+    }
+
+    /**
+     * Get hazmatLabelRequirement
+     *
+     * @return hazmatLabelRequirement
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public RequirementLevel getHazmatLabelRequirement() {
+        return hazmatLabelRequirement;
+    }
+
+    public void setHazmatLabelRequirement(RequirementLevel hazmatLabelRequirement) {
+        this.hazmatLabelRequirement = hazmatLabelRequirement;
     }
 
     public ComplianceAttributes serialNumberRequirement(RequirementLevel serialNumberRequirement) {
@@ -79,7 +101,7 @@ public class ComplianceAttributes {
      *
      * @return countryOfOriginRequirement
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RequirementLevel getCountryOfOriginRequirement() {
         return countryOfOriginRequirement;
     }
@@ -98,7 +120,7 @@ public class ComplianceAttributes {
      *
      * @return itemValueRequirement
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RequirementLevel getItemValueRequirement() {
         return itemValueRequirement;
     }
@@ -117,6 +139,7 @@ public class ComplianceAttributes {
         }
         ComplianceAttributes complianceAttributes = (ComplianceAttributes) o;
         return Objects.equals(this.hazmatLabelsRequirement, complianceAttributes.hazmatLabelsRequirement)
+                && Objects.equals(this.hazmatLabelRequirement, complianceAttributes.hazmatLabelRequirement)
                 && Objects.equals(this.serialNumberRequirement, complianceAttributes.serialNumberRequirement)
                 && Objects.equals(this.countryOfOriginRequirement, complianceAttributes.countryOfOriginRequirement)
                 && Objects.equals(this.itemValueRequirement, complianceAttributes.itemValueRequirement);
@@ -125,7 +148,11 @@ public class ComplianceAttributes {
     @Override
     public int hashCode() {
         return Objects.hash(
-                hazmatLabelsRequirement, serialNumberRequirement, countryOfOriginRequirement, itemValueRequirement);
+                hazmatLabelsRequirement,
+                hazmatLabelRequirement,
+                serialNumberRequirement,
+                countryOfOriginRequirement,
+                itemValueRequirement);
     }
 
     @Override
@@ -134,6 +161,9 @@ public class ComplianceAttributes {
         sb.append("class ComplianceAttributes {\n");
         sb.append("    hazmatLabelsRequirement: ")
                 .append(toIndentedString(hazmatLabelsRequirement))
+                .append("\n");
+        sb.append("    hazmatLabelRequirement: ")
+                .append(toIndentedString(hazmatLabelRequirement))
                 .append("\n");
         sb.append("    serialNumberRequirement: ")
                 .append(toIndentedString(serialNumberRequirement))
