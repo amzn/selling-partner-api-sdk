@@ -109,7 +109,7 @@ class PackageDeliveryStatus(object):
     def reason(self):
         """Gets the reason of this PackageDeliveryStatus.  # noqa: E501
 
-        The reason for the sub-status.  # noqa: E501
+        The reason for the sub-status. Refer [table](https://developer-docs.amazon/sp-api/docs/process-shipment#step-6-update-the-package-status) for possible values.  # noqa: E501
 
         :return: The reason of this PackageDeliveryStatus.  # noqa: E501
         :rtype: str
@@ -120,7 +120,7 @@ class PackageDeliveryStatus(object):
     def reason(self, reason):
         """Sets the reason of this PackageDeliveryStatus.
 
-        The reason for the sub-status.  # noqa: E501
+        The reason for the sub-status. Refer [table](https://developer-docs.amazon/sp-api/docs/process-shipment#step-6-update-the-package-status) for possible values.  # noqa: E501
 
         :param reason: The reason of this PackageDeliveryStatus.  # noqa: E501
         :type: str

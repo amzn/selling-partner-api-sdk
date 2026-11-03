@@ -144,7 +144,7 @@ class InboundPlan(object):
                 inbound_plan_id is not None and len(inbound_plan_id) < 38):
             raise ValueError("Invalid value for `inbound_plan_id`, length must be greater than or equal to `38`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                inbound_plan_id is not None and not re.search(r'^[a-zA-Z0-9-]*$', inbound_plan_id)):  # noqa: E501
+                inbound_plan_id is not None and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), inbound_plan_id)):  # noqa: E501
             raise ValueError(r"Invalid value for `inbound_plan_id`, must be a follow pattern or equal to `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
 
         self._inbound_plan_id = inbound_plan_id

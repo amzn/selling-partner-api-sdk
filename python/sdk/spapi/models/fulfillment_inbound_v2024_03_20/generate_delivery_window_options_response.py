@@ -80,7 +80,7 @@ class GenerateDeliveryWindowOptionsResponse(object):
                 operation_id is not None and len(operation_id) < 36):
             raise ValueError("Invalid value for `operation_id`, length must be greater than or equal to `36`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                operation_id is not None and not re.search(r'^[a-zA-Z0-9-]*$', operation_id)):  # noqa: E501
+                operation_id is not None and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), operation_id)):  # noqa: E501
             raise ValueError(r"Invalid value for `operation_id`, must be a follow pattern or equal to `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
 
         self._operation_id = operation_id

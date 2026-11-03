@@ -39,3 +39,6 @@ from spapi.models.listings_items_v2021_08_01.money import Money
 from spapi.models.listings_items_v2021_08_01.pagination import Pagination
 from spapi.models.listings_items_v2021_08_01.patch_operation import PatchOperation
 from spapi.models.listings_items_v2021_08_01.points import Points
+from spapi.models.listings_items_v2021_08_01.quantity_discount_level import QuantityDiscountLevel
+from spapi.models.listings_items_v2021_08_01.quantity_discount_plan import QuantityDiscountPlan
+from spapi.models.listings_items_v2021_08_01.replenishment_discount import ReplenishmentDiscount

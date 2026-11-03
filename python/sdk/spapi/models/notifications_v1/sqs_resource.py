@@ -77,7 +77,7 @@ class SqsResource(object):
                 arn is not None and len(arn) > 1000):
             raise ValueError("Invalid value for `arn`, length must be less than or equal to `1000`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                arn is not None and not re.search(r'^arn:aws:sqs:\S+:\S+:\S+', arn)):  # noqa: E501
+                arn is not None and not re.search(r'^arn:aws:sqs:\S+:\S+:\S+'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), arn)):  # noqa: E501
             raise ValueError(r"Invalid value for `arn`, must be a follow pattern or equal to `/^arn:aws:sqs:\S+:\S+:\S+/`")  # noqa: E501
 
         self._arn = arn

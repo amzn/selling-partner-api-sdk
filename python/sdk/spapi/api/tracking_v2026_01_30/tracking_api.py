@@ -105,7 +105,7 @@ class TrackingApi(object):
             params[key] = val
         del params['kwargs']
 
-        if self.api_client.client_side_validation and ('aftn' in params and not re.search(r'^AFTN\d+$', params['aftn'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('aftn' in params and not re.search(r'^AFTN\d+$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['aftn'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `aftn` when calling `get_shipment_tracking`, must conform to the pattern `/^AFTN\d+$/`")  # noqa: E501
         collection_formats = {}
 

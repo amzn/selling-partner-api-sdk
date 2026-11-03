@@ -35,6 +35,7 @@ class ComplianceAttributes(object):
     """
     swagger_types = {
         'hazmat_labels_requirement': 'RequirementLevel',
+        'hazmat_label_requirement': 'RequirementLevel',
         'serial_number_requirement': 'RequirementLevel',
         'country_of_origin_requirement': 'RequirementLevel',
         'item_value_requirement': 'RequirementLevel',
@@ -42,27 +43,33 @@ class ComplianceAttributes(object):
 
     attribute_map = {
         'hazmat_labels_requirement': 'hazmatLabelsRequirement',
+        'hazmat_label_requirement': 'hazmatLabelRequirement',
         'serial_number_requirement': 'serialNumberRequirement',
         'country_of_origin_requirement': 'countryOfOriginRequirement',
         'item_value_requirement': 'itemValueRequirement',
     }
 
-    def __init__(self, hazmat_labels_requirement=None, serial_number_requirement=None, country_of_origin_requirement=None, item_value_requirement=None, _configuration=None):  # noqa: E501
+    def __init__(self, hazmat_labels_requirement=None, hazmat_label_requirement=None, serial_number_requirement=None, country_of_origin_requirement=None, item_value_requirement=None, _configuration=None):  # noqa: E501
         """ComplianceAttributes - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
         self._hazmat_labels_requirement = None
+        self._hazmat_label_requirement = None
         self._serial_number_requirement = None
         self._country_of_origin_requirement = None
         self._item_value_requirement = None
         self.discriminator = None
 
         self.hazmat_labels_requirement = hazmat_labels_requirement
+        if hazmat_label_requirement is not None:
+            self.hazmat_label_requirement = hazmat_label_requirement
         self.serial_number_requirement = serial_number_requirement
-        self.country_of_origin_requirement = country_of_origin_requirement
-        self.item_value_requirement = item_value_requirement
+        if country_of_origin_requirement is not None:
+            self.country_of_origin_requirement = country_of_origin_requirement
+        if item_value_requirement is not None:
+            self.item_value_requirement = item_value_requirement
 
     @property
     def hazmat_labels_requirement(self):
@@ -86,6 +93,27 @@ class ComplianceAttributes(object):
             raise ValueError("Invalid value for `hazmat_labels_requirement`, must not be `None`")  # noqa: E501
 
         self._hazmat_labels_requirement = hazmat_labels_requirement
+
+    @property
+    def hazmat_label_requirement(self):
+        """Gets the hazmat_label_requirement of this ComplianceAttributes.  # noqa: E501
+
+
+        :return: The hazmat_label_requirement of this ComplianceAttributes.  # noqa: E501
+        :rtype: RequirementLevel
+        """
+        return self._hazmat_label_requirement
+
+    @hazmat_label_requirement.setter
+    def hazmat_label_requirement(self, hazmat_label_requirement):
+        """Sets the hazmat_label_requirement of this ComplianceAttributes.
+
+
+        :param hazmat_label_requirement: The hazmat_label_requirement of this ComplianceAttributes.  # noqa: E501
+        :type: RequirementLevel
+        """
+
+        self._hazmat_label_requirement = hazmat_label_requirement
 
     @property
     def serial_number_requirement(self):
@@ -128,8 +156,6 @@ class ComplianceAttributes(object):
         :param country_of_origin_requirement: The country_of_origin_requirement of this ComplianceAttributes.  # noqa: E501
         :type: RequirementLevel
         """
-        if self._configuration.client_side_validation and country_of_origin_requirement is None:
-            raise ValueError("Invalid value for `country_of_origin_requirement`, must not be `None`")  # noqa: E501
 
         self._country_of_origin_requirement = country_of_origin_requirement
 
@@ -151,8 +177,6 @@ class ComplianceAttributes(object):
         :param item_value_requirement: The item_value_requirement of this ComplianceAttributes.  # noqa: E501
         :type: RequirementLevel
         """
-        if self._configuration.client_side_validation and item_value_requirement is None:
-            raise ValueError("Invalid value for `item_value_requirement`, must not be `None`")  # noqa: E501
 
         self._item_value_requirement = item_value_requirement
 

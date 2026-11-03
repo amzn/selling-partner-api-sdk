@@ -55,7 +55,7 @@ class IssueEnforcementAction(object):
     def action(self):
         """Gets the action of this IssueEnforcementAction.  # noqa: E501
 
-        The enforcement action name.   Possible values:   * `LISTING_SUPPRESSED` - This enforcement takes down the current listing item's buyability.   * `ATTRIBUTE_SUPPRESSED` - An attribute's value on the listing item is invalid, which causes it to be rejected by Amazon.   * `CATALOG_ITEM_REMOVED` - This catalog item is inactive on Amazon, and all offers against it in the applicable Amazon store are non-buyable.   * `SEARCH_SUPPRESSED` - This value indicates that the catalog item is hidden from search results.  # noqa: E501
+        The enforcement action name.  Possible values:  * `LISTING_SUPPRESSED` - This enforcement takes down the current listing item's buyability.  * `ATTRIBUTE_SUPPRESSED` - An attribute's value on the listing item is invalid, which causes it to be rejected by Amazon.  * `CATALOG_ITEM_REMOVED` - This catalog item is inactive on Amazon, and all offers against it in the applicable Amazon store are non-buyable.  * `SEARCH_SUPPRESSED` - This value indicates that the catalog item is hidden from search results.  # noqa: E501
 
         :return: The action of this IssueEnforcementAction.  # noqa: E501
         :rtype: str
@@ -66,7 +66,7 @@ class IssueEnforcementAction(object):
     def action(self, action):
         """Sets the action of this IssueEnforcementAction.
 
-        The enforcement action name.   Possible values:   * `LISTING_SUPPRESSED` - This enforcement takes down the current listing item's buyability.   * `ATTRIBUTE_SUPPRESSED` - An attribute's value on the listing item is invalid, which causes it to be rejected by Amazon.   * `CATALOG_ITEM_REMOVED` - This catalog item is inactive on Amazon, and all offers against it in the applicable Amazon store are non-buyable.   * `SEARCH_SUPPRESSED` - This value indicates that the catalog item is hidden from search results.  # noqa: E501
+        The enforcement action name.  Possible values:  * `LISTING_SUPPRESSED` - This enforcement takes down the current listing item's buyability.  * `ATTRIBUTE_SUPPRESSED` - An attribute's value on the listing item is invalid, which causes it to be rejected by Amazon.  * `CATALOG_ITEM_REMOVED` - This catalog item is inactive on Amazon, and all offers against it in the applicable Amazon store are non-buyable.  * `SEARCH_SUPPRESSED` - This value indicates that the catalog item is hidden from search results.  # noqa: E501
 
         :param action: The action of this IssueEnforcementAction.  # noqa: E501
         :type: str

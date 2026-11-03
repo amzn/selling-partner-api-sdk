@@ -114,7 +114,7 @@ class TrackingDetail(object):
         :type: str
         """
         if (self._configuration.client_side_validation and
-                tracking_url is not None and not re.search(r'^https?:\/\/.+', tracking_url)):  # noqa: E501
+                tracking_url is not None and not re.search(r'^https?:\/\/.+'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), tracking_url)):  # noqa: E501
             raise ValueError(r"Invalid value for `tracking_url`, must be a follow pattern or equal to `/^https?:\/\/.+/`")  # noqa: E501
 
         self._tracking_url = tracking_url

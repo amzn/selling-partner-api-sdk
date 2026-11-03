@@ -464,7 +464,7 @@ class ServiceApi(object):
         if self.api_client.client_side_validation and ('cancellation_reason_code' in params and
                                                        len(params['cancellation_reason_code']) < 1):
             raise ValueError("Invalid value for parameter `cancellation_reason_code` when calling `cancel_service_job_by_service_job_id`, length must be greater than or equal to `1`")  # noqa: E501
-        if self.api_client.client_side_validation and ('cancellation_reason_code' in params and not re.search(r'^[A-Z0-9_]*$', params['cancellation_reason_code'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('cancellation_reason_code' in params and not re.search(r'^[A-Z0-9_]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['cancellation_reason_code'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `cancellation_reason_code` when calling `cancel_service_job_by_service_job_id`, must conform to the pattern `/^[A-Z0-9_]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -1453,6 +1453,7 @@ class ServiceApi(object):
         :param List[str] asins: List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20.
         :param List[str] required_skills: A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20.
         :param List[str] store_ids: List of Amazon-defined identifiers for the region scope. Max values supported is 50.
+        :param List[str] provider_service_job_reference_ids: A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs.
         :return: GetServiceJobsResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1492,12 +1493,13 @@ class ServiceApi(object):
         :param List[str] asins: List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20.
         :param List[str] required_skills: A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20.
         :param List[str] store_ids: List of Amazon-defined identifiers for the region scope. Max values supported is 50.
+        :param List[str] provider_service_job_reference_ids: A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs.
         :return: GetServiceJobsResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['marketplace_ids', 'service_order_ids', 'product_order_ids', 'tracking_ids', 'service_job_status', 'page_token', 'page_size', 'sort_field', 'sort_order', 'created_after', 'created_before', 'last_updated_after', 'last_updated_before', 'schedule_start_date', 'schedule_end_date', 'asins', 'required_skills', 'store_ids']  # noqa: E501
+        all_params = ['marketplace_ids', 'service_order_ids', 'product_order_ids', 'tracking_ids', 'service_job_status', 'page_token', 'page_size', 'sort_field', 'sort_order', 'created_after', 'created_before', 'last_updated_after', 'last_updated_before', 'schedule_start_date', 'schedule_end_date', 'asins', 'required_skills', 'store_ids', 'provider_service_job_reference_ids']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1560,6 +1562,12 @@ class ServiceApi(object):
         if self.api_client.client_side_validation and ('store_ids' in params and
                                             len(params['store_ids']) < 1):
             raise ValueError("Invalid value for parameter `store_ids` when calling `get_service_jobs`, number of items must be greater than or equal to `1`")  # noqa: E501
+        if self.api_client.client_side_validation and ('provider_service_job_reference_ids' in params and
+                                            len(params['provider_service_job_reference_ids']) > 20):
+            raise ValueError("Invalid value for parameter `provider_service_job_reference_ids` when calling `get_service_jobs`, number of items must be less than or equal to `20`")  # noqa: E501
+        if self.api_client.client_side_validation and ('provider_service_job_reference_ids' in params and
+                                            len(params['provider_service_job_reference_ids']) < 1):
+            raise ValueError("Invalid value for parameter `provider_service_job_reference_ids` when calling `get_service_jobs`, number of items must be greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -1609,6 +1617,9 @@ class ServiceApi(object):
         if 'store_ids' in params:
             query_params.append(('storeIds', params['store_ids']))  # noqa: E501
             collection_formats['storeIds'] = 'csv'  # noqa: E501
+        if 'provider_service_job_reference_ids' in params:
+            query_params.append(('providerServiceJobReferenceIds', params['provider_service_job_reference_ids']))  # noqa: E501
+            collection_formats['providerServiceJobReferenceIds'] = 'csv'  # noqa: E501
 
         header_params = {}
 

@@ -81,7 +81,7 @@ class SellerInputDefinition(object):
     def is_required(self):
         """Gets the is_required of this SellerInputDefinition.  # noqa: E501
 
-        When true, the additional input field is required.  # noqa: E501
+        When `true`, the additional input field is required.  # noqa: E501
 
         :return: The is_required of this SellerInputDefinition.  # noqa: E501
         :rtype: bool
@@ -92,7 +92,7 @@ class SellerInputDefinition(object):
     def is_required(self, is_required):
         """Sets the is_required of this SellerInputDefinition.
 
-        When true, the additional input field is required.  # noqa: E501
+        When `true`, the additional input field is required.  # noqa: E501
 
         :param is_required: The is_required of this SellerInputDefinition.  # noqa: E501
         :type: bool

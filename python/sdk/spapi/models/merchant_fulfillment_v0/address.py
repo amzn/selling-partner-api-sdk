@@ -283,7 +283,7 @@ class Address(object):
     def state_or_province_code(self):
         """Gets the state_or_province_code of this Address.  # noqa: E501
 
-        The state or province code. This is a required field in Canada, US, and UK marketplaces, and for shipments that originate in China.  # noqa: E501
+        The state or province code. This is a required field in Amazon Canada, US, and UK stores, and for shipments that originate in China.  # noqa: E501
 
         :return: The state_or_province_code of this Address.  # noqa: E501
         :rtype: str
@@ -294,7 +294,7 @@ class Address(object):
     def state_or_province_code(self, state_or_province_code):
         """Sets the state_or_province_code of this Address.
 
-        The state or province code. This is a required field in Canada, US, and UK marketplaces, and for shipments that originate in China.  # noqa: E501
+        The state or province code. This is a required field in Amazon Canada, US, and UK stores, and for shipments that originate in China.  # noqa: E501
 
         :param state_or_province_code: The state_or_province_code of this Address.  # noqa: E501
         :type: str

@@ -140,7 +140,7 @@ class Charge(object):
         """
         if self._configuration.client_side_validation and charge_type is None:
             raise ValueError("Invalid value for `charge_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["PRODUCT", "SHIPPING", "GIFT_WRAP", "TOTAL", "OTHER"]  # noqa: E501
+        allowed_values = ["product", "shipping", "gift_wrap", "total", "other"]  # noqa: E501
         if (self._configuration.client_side_validation and
                 charge_type not in allowed_values):
             raise ValueError(

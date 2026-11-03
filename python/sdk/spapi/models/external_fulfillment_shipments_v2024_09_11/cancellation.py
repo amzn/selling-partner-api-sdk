@@ -35,7 +35,7 @@ class Cancellation(object):
     """
     swagger_types = {
         'cancelled_quantity': 'int',
-        'cancelled_timestamp': 'str',
+        'cancelled_timestamp': 'datetime',
         'cancellation_type': 'str',
         'cancellation_reason': 'str',
     }
@@ -100,7 +100,7 @@ class Cancellation(object):
         A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  # noqa: E501
 
         :return: The cancelled_timestamp of this Cancellation.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._cancelled_timestamp
 
@@ -111,7 +111,7 @@ class Cancellation(object):
         A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  # noqa: E501
 
         :param cancelled_timestamp: The cancelled_timestamp of this Cancellation.  # noqa: E501
-        :type: str
+        :type: datetime
         """
         if self._configuration.client_side_validation and cancelled_timestamp is None:
             raise ValueError("Invalid value for `cancelled_timestamp`, must not be `None`")  # noqa: E501

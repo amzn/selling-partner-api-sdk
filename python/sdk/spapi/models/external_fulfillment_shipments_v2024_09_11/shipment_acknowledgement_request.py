@@ -84,7 +84,7 @@ class ShipmentAcknowledgementRequest(object):
     def line_items(self):
         """Gets the line_items of this ShipmentAcknowledgementRequest.  # noqa: E501
 
-        Details about the line items from the shipment that are being confirmed or rejected by the seller.  # noqa: E501
+        Details about the line items from the shipment that are being rejected by the seller.  # noqa: E501
 
         :return: The line_items of this ShipmentAcknowledgementRequest.  # noqa: E501
         :rtype: List[LineItemWithReason]
@@ -95,7 +95,7 @@ class ShipmentAcknowledgementRequest(object):
     def line_items(self, line_items):
         """Sets the line_items of this ShipmentAcknowledgementRequest.
 
-        Details about the line items from the shipment that are being confirmed or rejected by the seller.  # noqa: E501
+        Details about the line items from the shipment that are being rejected by the seller.  # noqa: E501
 
         :param line_items: The line_items of this ShipmentAcknowledgementRequest.  # noqa: E501
         :type: List[LineItemWithReason]

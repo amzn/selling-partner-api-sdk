@@ -96,7 +96,7 @@ class ItemSummaryByMarketplace(object):
     def marketplace_id(self):
         """Gets the marketplace_id of this ItemSummaryByMarketplace.  # noqa: E501
 
-        A marketplace identifier. Identifies the listings item's Amazon store.  # noqa: E501
+        An Amazon store identifier. Identifies the listings item's Amazon store.  # noqa: E501
 
         :return: The marketplace_id of this ItemSummaryByMarketplace.  # noqa: E501
         :rtype: str
@@ -107,7 +107,7 @@ class ItemSummaryByMarketplace(object):
     def marketplace_id(self, marketplace_id):
         """Sets the marketplace_id of this ItemSummaryByMarketplace.
 
-        A marketplace identifier. Identifies the listings item's Amazon store.  # noqa: E501
+        An Amazon store identifier. Identifies the listings item's Amazon store.  # noqa: E501
 
         :param marketplace_id: The marketplace_id of this ItemSummaryByMarketplace.  # noqa: E501
         :type: str

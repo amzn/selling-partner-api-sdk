@@ -71,7 +71,7 @@ class ShippingOfferingFilter(object):
     def include_packing_slip_with_label(self):
         """Gets the include_packing_slip_with_label of this ShippingOfferingFilter.  # noqa: E501
 
-        When true, include a packing slip with the label.  # noqa: E501
+        When `true`, include a packing slip with the label.  # noqa: E501
 
         :return: The include_packing_slip_with_label of this ShippingOfferingFilter.  # noqa: E501
         :rtype: bool
@@ -82,7 +82,7 @@ class ShippingOfferingFilter(object):
     def include_packing_slip_with_label(self, include_packing_slip_with_label):
         """Sets the include_packing_slip_with_label of this ShippingOfferingFilter.
 
-        When true, include a packing slip with the label.  # noqa: E501
+        When `true`, include a packing slip with the label.  # noqa: E501
 
         :param include_packing_slip_with_label: The include_packing_slip_with_label of this ShippingOfferingFilter.  # noqa: E501
         :type: bool
@@ -94,7 +94,7 @@ class ShippingOfferingFilter(object):
     def include_complex_shipping_options(self):
         """Gets the include_complex_shipping_options of this ShippingOfferingFilter.  # noqa: E501
 
-        When true, include complex shipping options.  # noqa: E501
+        When `true`, include complex shipping options.  # noqa: E501
 
         :return: The include_complex_shipping_options of this ShippingOfferingFilter.  # noqa: E501
         :rtype: bool
@@ -105,7 +105,7 @@ class ShippingOfferingFilter(object):
     def include_complex_shipping_options(self, include_complex_shipping_options):
         """Sets the include_complex_shipping_options of this ShippingOfferingFilter.
 
-        When true, include complex shipping options.  # noqa: E501
+        When `true`, include complex shipping options.  # noqa: E501
 
         :param include_complex_shipping_options: The include_complex_shipping_options of this ShippingOfferingFilter.  # noqa: E501
         :type: bool

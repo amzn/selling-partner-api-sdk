@@ -115,7 +115,7 @@ class ClaimCode(object):
                 value is not None and len(value) < 6):
             raise ValueError("Invalid value for `value`, length must be greater than or equal to `6`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                value is not None and not re.search(r'^[0-9A-Z]+$', value)):  # noqa: E501
+                value is not None and not re.search(r'^[0-9A-Z]+$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), value)):  # noqa: E501
             raise ValueError(r"Invalid value for `value`, must be a follow pattern or equal to `/^[0-9A-Z]+$/`")  # noqa: E501
 
         self._value = value

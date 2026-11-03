@@ -34,9 +34,9 @@ class Geocodes(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'latitude': 'str',
-        'longitude': 'str',
-        'elevation': 'str',
+        'latitude': 'float',
+        'longitude': 'float',
+        'elevation': 'float',
     }
 
     attribute_map = {
@@ -65,10 +65,10 @@ class Geocodes(object):
     def latitude(self):
         """Gets the latitude of this Geocodes.  # noqa: E501
 
-        A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.  # noqa: E501
+        A decimal number.  # noqa: E501
 
         :return: The latitude of this Geocodes.  # noqa: E501
-        :rtype: str
+        :rtype: float
         """
         return self._latitude
 
@@ -76,10 +76,10 @@ class Geocodes(object):
     def latitude(self, latitude):
         """Sets the latitude of this Geocodes.
 
-        A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.  # noqa: E501
+        A decimal number.  # noqa: E501
 
         :param latitude: The latitude of this Geocodes.  # noqa: E501
-        :type: str
+        :type: float
         """
         if self._configuration.client_side_validation and latitude is None:
             raise ValueError("Invalid value for `latitude`, must not be `None`")  # noqa: E501
@@ -90,10 +90,10 @@ class Geocodes(object):
     def longitude(self):
         """Gets the longitude of this Geocodes.  # noqa: E501
 
-        A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.  # noqa: E501
+        A decimal number.  # noqa: E501
 
         :return: The longitude of this Geocodes.  # noqa: E501
-        :rtype: str
+        :rtype: float
         """
         return self._longitude
 
@@ -101,10 +101,10 @@ class Geocodes(object):
     def longitude(self, longitude):
         """Sets the longitude of this Geocodes.
 
-        A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.  # noqa: E501
+        A decimal number.  # noqa: E501
 
         :param longitude: The longitude of this Geocodes.  # noqa: E501
-        :type: str
+        :type: float
         """
         if self._configuration.client_side_validation and longitude is None:
             raise ValueError("Invalid value for `longitude`, must not be `None`")  # noqa: E501
@@ -115,10 +115,10 @@ class Geocodes(object):
     def elevation(self):
         """Gets the elevation of this Geocodes.  # noqa: E501
 
-        A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.  # noqa: E501
+        A decimal number.  # noqa: E501
 
         :return: The elevation of this Geocodes.  # noqa: E501
-        :rtype: str
+        :rtype: float
         """
         return self._elevation
 
@@ -126,10 +126,10 @@ class Geocodes(object):
     def elevation(self, elevation):
         """Sets the elevation of this Geocodes.
 
-        A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.  # noqa: E501
+        A decimal number.  # noqa: E501
 
         :param elevation: The elevation of this Geocodes.  # noqa: E501
-        :type: str
+        :type: float
         """
 
         self._elevation = elevation

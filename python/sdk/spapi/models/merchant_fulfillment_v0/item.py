@@ -255,7 +255,7 @@ class Item(object):
     def is_hazmat(self):
         """Gets the is_hazmat of this Item.  # noqa: E501
 
-        When true, the item qualifies as hazardous materials (hazmat). Defaults to false.  # noqa: E501
+        When `true`, the item qualifies as hazardous materials (hazmat). Defaults to `false`.  # noqa: E501
 
         :return: The is_hazmat of this Item.  # noqa: E501
         :rtype: bool
@@ -266,7 +266,7 @@ class Item(object):
     def is_hazmat(self, is_hazmat):
         """Sets the is_hazmat of this Item.
 
-        When true, the item qualifies as hazardous materials (hazmat). Defaults to false.  # noqa: E501
+        When `true`, the item qualifies as hazardous materials (hazmat). Defaults to `false`.  # noqa: E501
 
         :param is_hazmat: The is_hazmat of this Item.  # noqa: E501
         :type: bool

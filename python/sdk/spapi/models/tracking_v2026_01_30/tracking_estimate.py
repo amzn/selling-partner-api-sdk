@@ -130,7 +130,7 @@ class TrackingEstimate(object):
         if self._configuration.client_side_validation and last_updated_time is None:
             raise ValueError("Invalid value for `last_updated_time`, must not be `None`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                last_updated_time is not None and not re.search(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,9})?Z$', last_updated_time)):  # noqa: E501
+                last_updated_time is not None and not re.search(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,9})?Z$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), last_updated_time)):  # noqa: E501
             raise ValueError(r"Invalid value for `last_updated_time`, must be a follow pattern or equal to `/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,9})?Z$/`")  # noqa: E501
 
         self._last_updated_time = last_updated_time

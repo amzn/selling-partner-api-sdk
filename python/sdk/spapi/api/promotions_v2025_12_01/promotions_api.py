@@ -97,7 +97,7 @@ class PromotionsApi(object):
                                                        params['promotion_id'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `promotion_id` when calling `get_promotion`")  # noqa: E501
 
-        if self.api_client.client_side_validation and ('locale' in params and not re.search(r'^[a-z]{2}_[A-Z]{2}$', params['locale'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('locale' in params and not re.search(r'^[a-z]{2}_[A-Z]{2}$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['locale'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `locale` when calling `get_promotion`, must conform to the pattern `/^[a-z]{2}_[A-Z]{2}$/`")  # noqa: E501
         collection_formats = {}
 
@@ -221,7 +221,7 @@ class PromotionsApi(object):
 
         if self.api_client.client_side_validation and ('revision_id' in params and params['revision_id'] < 1):  # noqa: E501
             raise ValueError("Invalid value for parameter `revision_id` when calling `get_selection`, must be a value greater than or equal to `1`")  # noqa: E501
-        if self.api_client.client_side_validation and ('locale' in params and not re.search(r'^[a-z]{2}_[A-Z]{2}$', params['locale'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('locale' in params and not re.search(r'^[a-z]{2}_[A-Z]{2}$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['locale'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `locale` when calling `get_selection`, must conform to the pattern `/^[a-z]{2}_[A-Z]{2}$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('limit' in params and params['limit'] > 100):  # noqa: E501
             raise ValueError("Invalid value for parameter `limit` when calling `get_selection`, must be a value less than or equal to `100`")  # noqa: E501
@@ -368,7 +368,7 @@ class PromotionsApi(object):
         if self.api_client.client_side_validation and ('marketplace_ids' in params and
                                             len(params['marketplace_ids']) > 1):
             raise ValueError("Invalid value for parameter `marketplace_ids` when calling `search_promotions`, number of items must be less than or equal to `1`")  # noqa: E501
-        if self.api_client.client_side_validation and ('locale' in params and not re.search(r'^[a-z]{2}_[A-Z]{2}$', params['locale'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('locale' in params and not re.search(r'^[a-z]{2}_[A-Z]{2}$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['locale'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `locale` when calling `search_promotions`, must conform to the pattern `/^[a-z]{2}_[A-Z]{2}$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('asins' in params and
                                             len(params['asins']) > 10):

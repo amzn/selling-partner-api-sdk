@@ -78,7 +78,7 @@ class ContactDetailsPrimary(object):
         :type: str
         """
         if (self._configuration.client_side_validation and
-                email is not None and not re.search(r'^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$', email)):  # noqa: E501
+                email is not None and not re.search(r'^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), email)):  # noqa: E501
             raise ValueError(r"Invalid value for `email`, must be a follow pattern or equal to `/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/`")  # noqa: E501
 
         self._email = email

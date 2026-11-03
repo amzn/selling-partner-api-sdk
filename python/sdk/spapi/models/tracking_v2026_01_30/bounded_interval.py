@@ -78,7 +78,7 @@ class BoundedInterval(object):
         if self._configuration.client_side_validation and start_time is None:
             raise ValueError("Invalid value for `start_time`, must not be `None`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                start_time is not None and not re.search(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,9})?Z$', start_time)):  # noqa: E501
+                start_time is not None and not re.search(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,9})?Z$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), start_time)):  # noqa: E501
             raise ValueError(r"Invalid value for `start_time`, must be a follow pattern or equal to `/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,9})?Z$/`")  # noqa: E501
 
         self._start_time = start_time
@@ -106,7 +106,7 @@ class BoundedInterval(object):
         if self._configuration.client_side_validation and end_time is None:
             raise ValueError("Invalid value for `end_time`, must not be `None`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                end_time is not None and not re.search(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,9})?Z$', end_time)):  # noqa: E501
+                end_time is not None and not re.search(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,9})?Z$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), end_time)):  # noqa: E501
             raise ValueError(r"Invalid value for `end_time`, must be a follow pattern or equal to `/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,9})?Z$/`")  # noqa: E501
 
         self._end_time = end_time
