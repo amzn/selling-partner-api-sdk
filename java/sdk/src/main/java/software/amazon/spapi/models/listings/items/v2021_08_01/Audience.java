@@ -37,7 +37,7 @@ public class Audience {
      */
     @io.swagger.v3.oas.annotations.media.Schema(
             description =
-                    "Name of the audience an offer is applicable to.   Common values:   * 'ALL' - Standard offer audience for buyers on Amazon retail websites.   * 'B2B' - Offer audience for Amazon Business website buyers.")
+                    "Name of the audience an offer is applicable to.  Common values:  * 'ALL' - Standard offer audience for buyers on Amazon retail websites.  * 'B2B' - Offer audience for Amazon Business website buyers.")
     public String getValue() {
         return value;
     }

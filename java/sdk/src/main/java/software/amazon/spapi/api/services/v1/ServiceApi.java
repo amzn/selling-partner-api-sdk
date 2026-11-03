@@ -3214,6 +3214,8 @@ public class ServiceApi {
      *     processes common to service delivery for a set of products and/or service scenarios. Max values supported is
      *     20. (optional)
      * @param storeIds List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param providerServiceJobReferenceIds A list of up to 20 reference IDs for the service jobs assigned to the
+     *     provider. You can use these IDs to query service jobs. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3238,6 +3240,7 @@ public class ServiceApi {
             List<String> asins,
             List<String> requiredSkills,
             List<String> storeIds,
+            List<String> providerServiceJobReferenceIds,
             final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -3283,6 +3286,9 @@ public class ServiceApi {
             localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "requiredSkills", requiredSkills));
         if (storeIds != null)
             localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "storeIds", storeIds));
+        if (providerServiceJobReferenceIds != null)
+            localVarCollectionQueryParams.addAll(apiClient.parameterToPairs(
+                    "csv", "providerServiceJobReferenceIds", providerServiceJobReferenceIds));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -3327,6 +3333,7 @@ public class ServiceApi {
             List<String> asins,
             List<String> requiredSkills,
             List<String> storeIds,
+            List<String> providerServiceJobReferenceIds,
             final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
@@ -3355,6 +3362,7 @@ public class ServiceApi {
                 asins,
                 requiredSkills,
                 storeIds,
+                providerServiceJobReferenceIds,
                 progressRequestListener);
     }
 
@@ -3399,6 +3407,8 @@ public class ServiceApi {
      *     processes common to service delivery for a set of products and/or service scenarios. Max values supported is
      *     20. (optional)
      * @param storeIds List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param providerServiceJobReferenceIds A list of up to 20 reference IDs for the service jobs assigned to the
+     *     provider. You can use these IDs to query service jobs. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return GetServiceJobsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3423,6 +3433,7 @@ public class ServiceApi {
             List<String> asins,
             List<String> requiredSkills,
             List<String> storeIds,
+            List<String> providerServiceJobReferenceIds,
             String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<GetServiceJobsResponse> resp = getServiceJobsWithHttpInfo(
@@ -3444,6 +3455,7 @@ public class ServiceApi {
                 asins,
                 requiredSkills,
                 storeIds,
+                providerServiceJobReferenceIds,
                 restrictedDataToken);
         return resp.getData();
     }
@@ -3489,6 +3501,8 @@ public class ServiceApi {
      *     processes common to service delivery for a set of products and/or service scenarios. Max values supported is
      *     20. (optional)
      * @param storeIds List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param providerServiceJobReferenceIds A list of up to 20 reference IDs for the service jobs assigned to the
+     *     provider. You can use these IDs to query service jobs. (optional)
      * @return GetServiceJobsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3511,7 +3525,8 @@ public class ServiceApi {
             String scheduleEndDate,
             List<String> asins,
             List<String> requiredSkills,
-            List<String> storeIds)
+            List<String> storeIds,
+            List<String> providerServiceJobReferenceIds)
             throws ApiException, LWAException {
         ApiResponse<GetServiceJobsResponse> resp = getServiceJobsWithHttpInfo(
                 marketplaceIds,
@@ -3532,6 +3547,7 @@ public class ServiceApi {
                 asins,
                 requiredSkills,
                 storeIds,
+                providerServiceJobReferenceIds,
                 null);
         return resp.getData();
     }
@@ -3577,6 +3593,8 @@ public class ServiceApi {
      *     processes common to service delivery for a set of products and/or service scenarios. Max values supported is
      *     20. (optional)
      * @param storeIds List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param providerServiceJobReferenceIds A list of up to 20 reference IDs for the service jobs assigned to the
+     *     provider. You can use these IDs to query service jobs. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;GetServiceJobsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3601,6 +3619,7 @@ public class ServiceApi {
             List<String> asins,
             List<String> requiredSkills,
             List<String> storeIds,
+            List<String> providerServiceJobReferenceIds,
             String restrictedDataToken)
             throws ApiException, LWAException {
         okhttp3.Call call = getServiceJobsValidateBeforeCall(
@@ -3622,6 +3641,7 @@ public class ServiceApi {
                 asins,
                 requiredSkills,
                 storeIds,
+                providerServiceJobReferenceIds,
                 null);
 
         if (restrictedDataToken != null) {
@@ -3677,6 +3697,8 @@ public class ServiceApi {
      *     processes common to service delivery for a set of products and/or service scenarios. Max values supported is
      *     20. (optional)
      * @param storeIds List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param providerServiceJobReferenceIds A list of up to 20 reference IDs for the service jobs assigned to the
+     *     provider. You can use these IDs to query service jobs. (optional)
      * @return ApiResponse&lt;GetServiceJobsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3699,7 +3721,8 @@ public class ServiceApi {
             String scheduleEndDate,
             List<String> asins,
             List<String> requiredSkills,
-            List<String> storeIds)
+            List<String> storeIds,
+            List<String> providerServiceJobReferenceIds)
             throws ApiException, LWAException {
         return getServiceJobsWithHttpInfo(
                 marketplaceIds,
@@ -3720,6 +3743,7 @@ public class ServiceApi {
                 asins,
                 requiredSkills,
                 storeIds,
+                providerServiceJobReferenceIds,
                 null);
     }
 
@@ -3764,6 +3788,8 @@ public class ServiceApi {
      *     processes common to service delivery for a set of products and/or service scenarios. Max values supported is
      *     20. (optional)
      * @param storeIds List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param providerServiceJobReferenceIds A list of up to 20 reference IDs for the service jobs assigned to the
+     *     provider. You can use these IDs to query service jobs. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3788,6 +3814,7 @@ public class ServiceApi {
             List<String> asins,
             List<String> requiredSkills,
             List<String> storeIds,
+            List<String> providerServiceJobReferenceIds,
             final ApiCallback<GetServiceJobsResponse> callback)
             throws ApiException, LWAException {
         return getServiceJobsAsync(
@@ -3809,6 +3836,7 @@ public class ServiceApi {
                 asins,
                 requiredSkills,
                 storeIds,
+                providerServiceJobReferenceIds,
                 callback,
                 null);
     }
@@ -3853,6 +3881,8 @@ public class ServiceApi {
      *     processes common to service delivery for a set of products and/or service scenarios. Max values supported is
      *     20. (optional)
      * @param storeIds List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param providerServiceJobReferenceIds A list of up to 20 reference IDs for the service jobs assigned to the
+     *     provider. You can use these IDs to query service jobs. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -3878,6 +3908,7 @@ public class ServiceApi {
             List<String> asins,
             List<String> requiredSkills,
             List<String> storeIds,
+            List<String> providerServiceJobReferenceIds,
             final ApiCallback<GetServiceJobsResponse> callback,
             String restrictedDataToken)
             throws ApiException, LWAException {
@@ -3907,6 +3938,7 @@ public class ServiceApi {
                 asins,
                 requiredSkills,
                 storeIds,
+                providerServiceJobReferenceIds,
                 progressRequestListener);
 
         if (restrictedDataToken != null) {

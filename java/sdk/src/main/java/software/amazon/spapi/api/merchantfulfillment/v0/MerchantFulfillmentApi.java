@@ -139,7 +139,7 @@ public class MerchantFulfillmentApi {
      * rate limits that are applied to the requested operation when available. The preceding table indicates the default
      * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
      * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
-     * Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment to cancel. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -159,7 +159,7 @@ public class MerchantFulfillmentApi {
      * rate limits that are applied to the requested operation when available. The preceding table indicates the default
      * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
      * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
-     * Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment to cancel. (required)
      * @return CancelShipmentResponse
@@ -177,7 +177,7 @@ public class MerchantFulfillmentApi {
      * rate limits that are applied to the requested operation when available. The preceding table indicates the default
      * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
      * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
-     * Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment to cancel. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -208,7 +208,7 @@ public class MerchantFulfillmentApi {
      * rate limits that are applied to the requested operation when available. The preceding table indicates the default
      * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
      * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
-     * Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment to cancel. (required)
      * @return ApiResponse&lt;CancelShipmentResponse&gt;
@@ -226,8 +226,8 @@ public class MerchantFulfillmentApi {
      * returns the usage plan rate limits that are applied to the requested operation when available. The preceding
      * table indicates the default rate and burst values for this operation. Selling partners whose business demands
      * require higher throughput may have higher rate and burst values than those shown here. For more information,
-     * refer to [Usage Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment to cancel. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -245,8 +245,8 @@ public class MerchantFulfillmentApi {
      * returns the usage plan rate limits that are applied to the requested operation when available. The preceding
      * table indicates the default rate and burst values for this operation. Selling partners whose business demands
      * require higher throughput may have higher rate and burst values than those shown here. For more information,
-     * refer to [Usage Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment to cancel. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -343,8 +343,8 @@ public class MerchantFulfillmentApi {
      * ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
      * are applied to the requested operation when available. The preceding table indicates the default rate and burst
      * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
-     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;CreateShipment&#x60; operation. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -363,8 +363,8 @@ public class MerchantFulfillmentApi {
      * ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
      * are applied to the requested operation when available. The preceding table indicates the default rate and burst
      * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
-     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;CreateShipment&#x60; operation. (required)
      * @return CreateShipmentResponse
@@ -381,8 +381,8 @@ public class MerchantFulfillmentApi {
      * ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
      * are applied to the requested operation when available. The preceding table indicates the default rate and burst
      * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
-     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;CreateShipment&#x60; operation. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -412,8 +412,8 @@ public class MerchantFulfillmentApi {
      * ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
      * are applied to the requested operation when available. The preceding table indicates the default rate and burst
      * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
-     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;CreateShipment&#x60; operation. (required)
      * @return ApiResponse&lt;CreateShipmentResponse&gt;
@@ -431,7 +431,7 @@ public class MerchantFulfillmentApi {
      * rate limits that are applied to the requested operation when available. The preceding table indicates the default
      * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
      * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
-     * Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;CreateShipment&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -450,7 +450,7 @@ public class MerchantFulfillmentApi {
      * rate limits that are applied to the requested operation when available. The preceding table indicates the default
      * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
      * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
-     * Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;CreateShipment&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -551,8 +551,8 @@ public class MerchantFulfillmentApi {
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the
      * requested operation when available. The preceding table indicates the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -573,8 +573,8 @@ public class MerchantFulfillmentApi {
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the
      * requested operation when available. The preceding table indicates the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. (required)
      * @return GetAdditionalSellerInputsResponse
@@ -593,8 +593,8 @@ public class MerchantFulfillmentApi {
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the
      * requested operation when available. The preceding table indicates the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -625,8 +625,8 @@ public class MerchantFulfillmentApi {
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the
      * requested operation when available. The preceding table indicates the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. (required)
      * @return ApiResponse&lt;GetAdditionalSellerInputsResponse&gt;
@@ -644,8 +644,8 @@ public class MerchantFulfillmentApi {
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the
      * requested operation when available. The preceding table indicates the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -664,8 +664,8 @@ public class MerchantFulfillmentApi {
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the
      * requested operation when available. The preceding table indicates the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -768,8 +768,8 @@ public class MerchantFulfillmentApi {
      * header returns the usage plan rate limits that are applied to the requested operation when available. The
      * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may have higher rate and burst values than those shown here. For more
-     * information, refer to [Usage Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -790,8 +790,8 @@ public class MerchantFulfillmentApi {
      * header returns the usage plan rate limits that are applied to the requested operation when available. The
      * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may have higher rate and burst values than those shown here. For more
-     * information, refer to [Usage Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. (required)
      * @return GetEligibleShipmentServicesResponse
@@ -810,8 +810,8 @@ public class MerchantFulfillmentApi {
      * header returns the usage plan rate limits that are applied to the requested operation when available. The
      * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may have higher rate and burst values than those shown here. For more
-     * information, refer to [Usage Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -842,8 +842,8 @@ public class MerchantFulfillmentApi {
      * header returns the usage plan rate limits that are applied to the requested operation when available. The
      * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may have higher rate and burst values than those shown here. For more
-     * information, refer to [Usage Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. (required)
      * @return ApiResponse&lt;GetEligibleShipmentServicesResponse&gt;
@@ -861,8 +861,8 @@ public class MerchantFulfillmentApi {
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the
      * requested operation when available. The preceding table indicates the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -881,8 +881,8 @@ public class MerchantFulfillmentApi {
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the
      * requested operation when available. The preceding table indicates the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -984,8 +984,8 @@ public class MerchantFulfillmentApi {
      * | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
      * limits that are applied to the requested operation when available. The preceding table indicates the default rate
      * and burst values for this operation. Selling partners whose business demands require higher throughput may have
-     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits
-     * in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -1004,8 +1004,8 @@ public class MerchantFulfillmentApi {
      * | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
      * limits that are applied to the requested operation when available. The preceding table indicates the default rate
      * and burst values for this operation. Selling partners whose business demands require higher throughput may have
-     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits
-     * in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment. (required)
      * @return GetShipmentResponse
@@ -1022,8 +1022,8 @@ public class MerchantFulfillmentApi {
      * | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
      * limits that are applied to the requested operation when available. The preceding table indicates the default rate
      * and burst values for this operation. Selling partners whose business demands require higher throughput may have
-     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits
-     * in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -1053,8 +1053,8 @@ public class MerchantFulfillmentApi {
      * | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
      * limits that are applied to the requested operation when available. The preceding table indicates the default rate
      * and burst values for this operation. Selling partners whose business demands require higher throughput may have
-     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits
-     * in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment. (required)
      * @return ApiResponse&lt;GetShipmentResponse&gt;
@@ -1072,8 +1072,7 @@ public class MerchantFulfillmentApi {
      * usage plan rate limits that are applied to the requested operation when available. The preceding table indicates
      * the default rate and burst values for this operation. Selling partners whose business demands require higher
      * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -1091,8 +1090,7 @@ public class MerchantFulfillmentApi {
      * usage plan rate limits that are applied to the requested operation when available. The preceding table indicates
      * the default rate and burst values for this operation. Selling partners whose business demands require higher
      * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits in the
-     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment. (required)
      * @param callback The callback to be executed when the API call finishes

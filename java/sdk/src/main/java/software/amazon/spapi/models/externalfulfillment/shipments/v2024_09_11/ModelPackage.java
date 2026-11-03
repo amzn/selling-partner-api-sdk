@@ -150,19 +150,22 @@ public class ModelPackage {
     @SerializedName("packageHandlingRequirements")
     private PackageHandlingRequirementsEnum packageHandlingRequirements = null;
 
+    @SerializedName("trackingDetails")
+    private TrackingDetails trackingDetails = null;
+
     public ModelPackage id(String id) {
         this.id = id;
         return this;
     }
 
     /**
-     * An ID that uniquely identifies a package within a shipment.
+     * The ID of the package whose information you want to update.
      *
      * @return id
      */
     @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
-            description = "An ID that uniquely identifies a package within a shipment.")
+            description = "The ID of the package whose information you want to update.")
     public String getId() {
         return id;
     }
@@ -295,6 +298,25 @@ public class ModelPackage {
         this.packageHandlingRequirements = packageHandlingRequirements;
     }
 
+    public ModelPackage trackingDetails(TrackingDetails trackingDetails) {
+        this.trackingDetails = trackingDetails;
+        return this;
+    }
+
+    /**
+     * Get trackingDetails
+     *
+     * @return trackingDetails
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public TrackingDetails getTrackingDetails() {
+        return trackingDetails;
+    }
+
+    public void setTrackingDetails(TrackingDetails trackingDetails) {
+        this.trackingDetails = trackingDetails;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -310,13 +332,21 @@ public class ModelPackage {
                 && Objects.equals(this.hazmatLabels, _package.hazmatLabels)
                 && Objects.equals(this.packageLineItems, _package.packageLineItems)
                 && Objects.equals(this.status, _package.status)
-                && Objects.equals(this.packageHandlingRequirements, _package.packageHandlingRequirements);
+                && Objects.equals(this.packageHandlingRequirements, _package.packageHandlingRequirements)
+                && Objects.equals(this.trackingDetails, _package.trackingDetails);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-                id, dimensions, weight, hazmatLabels, packageLineItems, status, packageHandlingRequirements);
+                id,
+                dimensions,
+                weight,
+                hazmatLabels,
+                packageLineItems,
+                status,
+                packageHandlingRequirements,
+                trackingDetails);
     }
 
     @Override
@@ -333,6 +363,9 @@ public class ModelPackage {
         sb.append("    status: ").append(toIndentedString(status)).append("\n");
         sb.append("    packageHandlingRequirements: ")
                 .append(toIndentedString(packageHandlingRequirements))
+                .append("\n");
+        sb.append("    trackingDetails: ")
+                .append(toIndentedString(trackingDetails))
                 .append("\n");
         sb.append("}");
         return sb.toString();

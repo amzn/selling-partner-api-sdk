@@ -75,7 +75,7 @@ public class RecommendedPackage {
      *
      * @return lineItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RecommendedPackageLineItems getLineItems() {
         return lineItems;
     }

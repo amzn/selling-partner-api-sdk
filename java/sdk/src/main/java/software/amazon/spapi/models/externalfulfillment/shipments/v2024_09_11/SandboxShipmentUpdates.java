@@ -18,6 +18,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
@@ -134,7 +135,7 @@ public class SandboxShipmentUpdates {
     private SubStatusEnum subStatus = null;
 
     @SerializedName("timestamp")
-    private String timestamp = null;
+    private OffsetDateTime timestamp = null;
 
     public SandboxShipmentUpdates status(StatusEnum status) {
         this.status = status;
@@ -180,7 +181,7 @@ public class SandboxShipmentUpdates {
         this.subStatus = subStatus;
     }
 
-    public SandboxShipmentUpdates timestamp(String timestamp) {
+    public SandboxShipmentUpdates timestamp(OffsetDateTime timestamp) {
         this.timestamp = timestamp;
         return this;
     }
@@ -194,11 +195,11 @@ public class SandboxShipmentUpdates {
     @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The Expected Pickup Date (EPD) for the shipment. Used with `TRANSPORT_CAPACITY_CHANGE` update type. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public String getTimestamp() {
+    public OffsetDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp(OffsetDateTime timestamp) {
         this.timestamp = timestamp;
     }
 

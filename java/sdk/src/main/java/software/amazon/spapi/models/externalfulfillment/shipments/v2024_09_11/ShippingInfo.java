@@ -18,6 +18,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Shipping information for the packages in a shipment. */
@@ -26,8 +27,11 @@ public class ShippingInfo {
     @SerializedName("recommendedShipMethod")
     private String recommendedShipMethod = null;
 
+    @SerializedName("expectedShippingDateTime")
+    private OffsetDateTime expectedShippingDateTime = null;
+
     @SerializedName("expectedShippingDateTimeInUTC")
-    private String expectedShippingDateTimeInUTC = null;
+    private OffsetDateTime expectedShippingDateTimeInUTC = null;
 
     @SerializedName("shipToAddress")
     private Address shipToAddress = null;
@@ -105,7 +109,28 @@ public class ShippingInfo {
         this.recommendedShipMethod = recommendedShipMethod;
     }
 
-    public ShippingInfo expectedShippingDateTimeInUTC(String expectedShippingDateTimeInUTC) {
+    public ShippingInfo expectedShippingDateTime(OffsetDateTime expectedShippingDateTime) {
+        this.expectedShippingDateTime = expectedShippingDateTime;
+        return this;
+    }
+
+    /**
+     * A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     *
+     * @return expectedShippingDateTime
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description =
+                    "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
+    public OffsetDateTime getExpectedShippingDateTime() {
+        return expectedShippingDateTime;
+    }
+
+    public void setExpectedShippingDateTime(OffsetDateTime expectedShippingDateTime) {
+        this.expectedShippingDateTime = expectedShippingDateTime;
+    }
+
+    public ShippingInfo expectedShippingDateTimeInUTC(OffsetDateTime expectedShippingDateTimeInUTC) {
         this.expectedShippingDateTimeInUTC = expectedShippingDateTimeInUTC;
         return this;
     }
@@ -119,11 +144,11 @@ public class ShippingInfo {
             required = true,
             description =
                     "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
-    public String getExpectedShippingDateTimeInUTC() {
+    public OffsetDateTime getExpectedShippingDateTimeInUTC() {
         return expectedShippingDateTimeInUTC;
     }
 
-    public void setExpectedShippingDateTimeInUTC(String expectedShippingDateTimeInUTC) {
+    public void setExpectedShippingDateTimeInUTC(OffsetDateTime expectedShippingDateTimeInUTC) {
         this.expectedShippingDateTimeInUTC = expectedShippingDateTimeInUTC;
     }
 
@@ -195,6 +220,7 @@ public class ShippingInfo {
         }
         ShippingInfo shippingInfo = (ShippingInfo) o;
         return Objects.equals(this.recommendedShipMethod, shippingInfo.recommendedShipMethod)
+                && Objects.equals(this.expectedShippingDateTime, shippingInfo.expectedShippingDateTime)
                 && Objects.equals(this.expectedShippingDateTimeInUTC, shippingInfo.expectedShippingDateTimeInUTC)
                 && Objects.equals(this.shipToAddress, shippingInfo.shipToAddress)
                 && Objects.equals(this.shippingType, shippingInfo.shippingType)
@@ -204,7 +230,12 @@ public class ShippingInfo {
     @Override
     public int hashCode() {
         return Objects.hash(
-                recommendedShipMethod, expectedShippingDateTimeInUTC, shipToAddress, shippingType, recommendedPackages);
+                recommendedShipMethod,
+                expectedShippingDateTime,
+                expectedShippingDateTimeInUTC,
+                shipToAddress,
+                shippingType,
+                recommendedPackages);
     }
 
     @Override
@@ -213,6 +244,9 @@ public class ShippingInfo {
         sb.append("class ShippingInfo {\n");
         sb.append("    recommendedShipMethod: ")
                 .append(toIndentedString(recommendedShipMethod))
+                .append("\n");
+        sb.append("    expectedShippingDateTime: ")
+                .append(toIndentedString(expectedShippingDateTime))
                 .append("\n");
         sb.append("    expectedShippingDateTimeInUTC: ")
                 .append(toIndentedString(expectedShippingDateTimeInUTC))

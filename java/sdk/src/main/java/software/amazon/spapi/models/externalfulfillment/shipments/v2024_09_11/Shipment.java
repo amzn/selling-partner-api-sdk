@@ -18,6 +18,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -200,13 +201,13 @@ public class Shipment {
     private List<ModelPackage> packages = null;
 
     @SerializedName("creationDateTime")
-    private String creationDateTime = null;
+    private OffsetDateTime creationDateTime = null;
 
     @SerializedName("lastUpdatedDateTime")
-    private String lastUpdatedDateTime = null;
+    private OffsetDateTime lastUpdatedDateTime = null;
 
     @SerializedName("earliestPackDateTime")
-    private String earliestPackDateTime = null;
+    private OffsetDateTime earliestPackDateTime = null;
 
     public Shipment id(String id) {
         this.id = id;
@@ -494,7 +495,7 @@ public class Shipment {
         this.packages = packages;
     }
 
-    public Shipment creationDateTime(String creationDateTime) {
+    public Shipment creationDateTime(OffsetDateTime creationDateTime) {
         this.creationDateTime = creationDateTime;
         return this;
     }
@@ -508,15 +509,15 @@ public class Shipment {
             required = true,
             description =
                     "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
-    public String getCreationDateTime() {
+    public OffsetDateTime getCreationDateTime() {
         return creationDateTime;
     }
 
-    public void setCreationDateTime(String creationDateTime) {
+    public void setCreationDateTime(OffsetDateTime creationDateTime) {
         this.creationDateTime = creationDateTime;
     }
 
-    public Shipment lastUpdatedDateTime(String lastUpdatedDateTime) {
+    public Shipment lastUpdatedDateTime(OffsetDateTime lastUpdatedDateTime) {
         this.lastUpdatedDateTime = lastUpdatedDateTime;
         return this;
     }
@@ -530,15 +531,15 @@ public class Shipment {
             required = true,
             description =
                     "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
-    public String getLastUpdatedDateTime() {
+    public OffsetDateTime getLastUpdatedDateTime() {
         return lastUpdatedDateTime;
     }
 
-    public void setLastUpdatedDateTime(String lastUpdatedDateTime) {
+    public void setLastUpdatedDateTime(OffsetDateTime lastUpdatedDateTime) {
         this.lastUpdatedDateTime = lastUpdatedDateTime;
     }
 
-    public Shipment earliestPackDateTime(String earliestPackDateTime) {
+    public Shipment earliestPackDateTime(OffsetDateTime earliestPackDateTime) {
         this.earliestPackDateTime = earliestPackDateTime;
         return this;
     }
@@ -551,11 +552,11 @@ public class Shipment {
     @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
-    public String getEarliestPackDateTime() {
+    public OffsetDateTime getEarliestPackDateTime() {
         return earliestPackDateTime;
     }
 
-    public void setEarliestPackDateTime(String earliestPackDateTime) {
+    public void setEarliestPackDateTime(OffsetDateTime earliestPackDateTime) {
         this.earliestPackDateTime = earliestPackDateTime;
     }
 

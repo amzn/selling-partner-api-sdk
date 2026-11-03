@@ -33,13 +33,13 @@ public class Error {
     }
 
     /**
-     * An error code that identifies the type of error that occurred.
+     * An error code that identifies the type of error.
      *
      * @return code
      */
     @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
-            description = "An error code that identifies the type of error that occurred.")
+            description = "An error code that identifies the type of error.")
     public String getCode() {
         return code;
     }

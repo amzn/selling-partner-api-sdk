@@ -71,11 +71,15 @@ public class PackageDeliveryStatus {
     }
 
     /**
-     * The reason for the sub-status.
+     * The reason for the sub-status. Refer
+     * [table](https://developer-docs.amazon/sp-api/docs/process-shipment#step-6-update-the-package-status) for possible
+     * values.
      *
      * @return reason
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The reason for the sub-status.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description =
+                    "The reason for the sub-status. Refer [table](https://developer-docs.amazon/sp-api/docs/process-shipment#step-6-update-the-package-status) for possible values.")
     public String getReason() {
         return reason;
     }

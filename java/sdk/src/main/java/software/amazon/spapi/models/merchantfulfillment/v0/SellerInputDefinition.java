@@ -45,13 +45,13 @@ public class SellerInputDefinition {
     }
 
     /**
-     * When true, the additional input field is required.
+     * When &#x60;true&#x60;, the additional input field is required.
      *
      * @return isRequired
      */
     @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
-            description = "When true, the additional input field is required.")
+            description = "When `true`, the additional input field is required.")
     public Boolean getIsRequired() {
         return isRequired;
     }

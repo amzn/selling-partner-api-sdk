@@ -34,16 +34,16 @@ public class Charge {
     /** The type of charge. */
     @JsonAdapter(ChargeTypeEnum.Adapter.class)
     public enum ChargeTypeEnum {
-        @SerializedName("PRODUCT")
-        PRODUCT("PRODUCT"),
-        @SerializedName("SHIPPING")
-        SHIPPING("SHIPPING"),
-        @SerializedName("GIFT_WRAP")
-        GIFT_WRAP("GIFT_WRAP"),
-        @SerializedName("TOTAL")
-        TOTAL("TOTAL"),
-        @SerializedName("OTHER")
-        OTHER("OTHER");
+        @SerializedName("product")
+        PRODUCT("product"),
+        @SerializedName("shipping")
+        SHIPPING("shipping"),
+        @SerializedName("gift_wrap")
+        GIFT_WRAP("gift_wrap"),
+        @SerializedName("total")
+        TOTAL("total"),
+        @SerializedName("other")
+        OTHER("other");
 
         private String value;
 

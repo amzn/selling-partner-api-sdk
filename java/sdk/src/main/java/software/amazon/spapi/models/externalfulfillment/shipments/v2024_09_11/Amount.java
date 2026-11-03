@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** An amount of money, including units in the form of currency. */
@@ -20,30 +21,27 @@ import java.util.Objects;
         description = "An amount of money, including units in the form of currency.")
 public class Amount {
     @SerializedName("value")
-    private String value = null;
+    private BigDecimal value = null;
 
     @SerializedName("currencyCode")
     private String currencyCode = null;
 
-    public Amount value(String value) {
+    public Amount value(BigDecimal value) {
         this.value = value;
         return this;
     }
 
     /**
-     * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+     * A decimal number.
      *
      * @return value
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.")
-    public String getValue() {
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A decimal number.")
+    public BigDecimal getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(BigDecimal value) {
         this.value = value;
     }
 

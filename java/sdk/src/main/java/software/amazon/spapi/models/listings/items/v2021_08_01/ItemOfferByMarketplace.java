@@ -85,6 +85,12 @@ public class ItemOfferByMarketplace {
     @SerializedName("audience")
     private Audience audience = null;
 
+    @SerializedName("replenishmentDiscount")
+    private ReplenishmentDiscount replenishmentDiscount = null;
+
+    @SerializedName("quantityDiscountPlan")
+    private QuantityDiscountPlan quantityDiscountPlan = null;
+
     public ItemOfferByMarketplace marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
         return this;
@@ -180,6 +186,44 @@ public class ItemOfferByMarketplace {
         this.audience = audience;
     }
 
+    public ItemOfferByMarketplace replenishmentDiscount(ReplenishmentDiscount replenishmentDiscount) {
+        this.replenishmentDiscount = replenishmentDiscount;
+        return this;
+    }
+
+    /**
+     * Get replenishmentDiscount
+     *
+     * @return replenishmentDiscount
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public ReplenishmentDiscount getReplenishmentDiscount() {
+        return replenishmentDiscount;
+    }
+
+    public void setReplenishmentDiscount(ReplenishmentDiscount replenishmentDiscount) {
+        this.replenishmentDiscount = replenishmentDiscount;
+    }
+
+    public ItemOfferByMarketplace quantityDiscountPlan(QuantityDiscountPlan quantityDiscountPlan) {
+        this.quantityDiscountPlan = quantityDiscountPlan;
+        return this;
+    }
+
+    /**
+     * Get quantityDiscountPlan
+     *
+     * @return quantityDiscountPlan
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
+    public QuantityDiscountPlan getQuantityDiscountPlan() {
+        return quantityDiscountPlan;
+    }
+
+    public void setQuantityDiscountPlan(QuantityDiscountPlan quantityDiscountPlan) {
+        this.quantityDiscountPlan = quantityDiscountPlan;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -193,12 +237,15 @@ public class ItemOfferByMarketplace {
                 && Objects.equals(this.offerType, itemOfferByMarketplace.offerType)
                 && Objects.equals(this.price, itemOfferByMarketplace.price)
                 && Objects.equals(this.points, itemOfferByMarketplace.points)
-                && Objects.equals(this.audience, itemOfferByMarketplace.audience);
+                && Objects.equals(this.audience, itemOfferByMarketplace.audience)
+                && Objects.equals(this.replenishmentDiscount, itemOfferByMarketplace.replenishmentDiscount)
+                && Objects.equals(this.quantityDiscountPlan, itemOfferByMarketplace.quantityDiscountPlan);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(marketplaceId, offerType, price, points, audience);
+        return Objects.hash(
+                marketplaceId, offerType, price, points, audience, replenishmentDiscount, quantityDiscountPlan);
     }
 
     @Override
@@ -210,6 +257,12 @@ public class ItemOfferByMarketplace {
         sb.append("    price: ").append(toIndentedString(price)).append("\n");
         sb.append("    points: ").append(toIndentedString(points)).append("\n");
         sb.append("    audience: ").append(toIndentedString(audience)).append("\n");
+        sb.append("    replenishmentDiscount: ")
+                .append(toIndentedString(replenishmentDiscount))
+                .append("\n");
+        sb.append("    quantityDiscountPlan: ")
+                .append(toIndentedString(quantityDiscountPlan))
+                .append("\n");
         sb.append("}");
         return sb.toString();
     }

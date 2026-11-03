@@ -15,9 +15,8 @@ package software.amazon.spapi.models.merchantfulfillment.v0;
 import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
 
-/** An object representing an excluded benefit that is excluded for a shipping offer or rate. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "An object representing an excluded benefit that is excluded for a shipping offer or rate.")
+/** A benefit excluded from a shipping offer or rate. */
+@io.swagger.v3.oas.annotations.media.Schema(description = "A benefit excluded from a shipping offer or rate.")
 public class ExcludedBenefit {
     @SerializedName("Benefit")
     private String benefit = null;
@@ -31,11 +30,11 @@ public class ExcludedBenefit {
     }
 
     /**
-     * A benefit that is being excluded from a shipment.
+     * The benefit excluded from a shipment.
      *
      * @return benefit
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A benefit that is being excluded from a shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The benefit excluded from a shipment.")
     public String getBenefit() {
         return benefit;
     }

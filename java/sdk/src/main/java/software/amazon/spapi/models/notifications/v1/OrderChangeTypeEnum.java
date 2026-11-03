@@ -29,7 +29,10 @@ public enum OrderChangeTypeEnum {
     DELIVERY_TIP_CHANGE("DeliveryTipChange"),
 
     @SerializedName("OrderStatusChange")
-    ORDER_STATUS_CHANGE("OrderStatusChange");
+    ORDER_STATUS_CHANGE("OrderStatusChange"),
+
+    @SerializedName("PreFulfillmentStatusChange")
+    PRE_FULFILLMENT_STATUS_CHANGE("PreFulfillmentStatusChange");
 
     private String value;
 

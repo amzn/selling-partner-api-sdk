@@ -192,14 +192,14 @@ public class Address {
     }
 
     /**
-     * The state or province code. This is a required field in Canada, US, and UK marketplaces, and for shipments that
+     * The state or province code. This is a required field in Amazon Canada, US, and UK stores, and for shipments that
      * originate in China.
      *
      * @return stateOrProvinceCode
      */
     @io.swagger.v3.oas.annotations.media.Schema(
             description =
-                    "The state or province code. This is a required field in Canada, US, and UK marketplaces, and for shipments that originate in China.")
+                    "The state or province code. This is a required field in Amazon Canada, US, and UK stores, and for shipments that originate in China.")
     public String getStateOrProvinceCode() {
         return stateOrProvinceCode;
     }

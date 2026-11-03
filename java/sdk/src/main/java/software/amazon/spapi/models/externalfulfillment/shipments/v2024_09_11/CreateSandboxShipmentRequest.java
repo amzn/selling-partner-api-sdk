@@ -84,10 +84,10 @@ public class CreateSandboxShipmentRequest {
     /** The shipping type for the sandbox shipment. */
     @JsonAdapter(ShippingTypeEnum.Adapter.class)
     public enum ShippingTypeEnum {
-        @SerializedName("Self")
-        SELF("Self"),
-        @SerializedName("Marketplace")
-        MARKETPLACE("Marketplace"),
+        @SerializedName("SELF")
+        SELF("SELF"),
+        @SerializedName("MARKETPLACE")
+        MARKETPLACE("MARKETPLACE"),
         @SerializedName("THIRD_PARTY_CARRIER")
         THIRD_PARTY_CARRIER("THIRD_PARTY_CARRIER");
 
