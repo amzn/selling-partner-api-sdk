@@ -80,14 +80,9 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="cancelledTimestamp">A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (required).</param>
         /// <param name="cancellationType">The type of cancellation of the item in the shipment. (required).</param>
         /// <param name="cancellationReason">The reason for the cancellation of the shipment..</param>
-        public Cancellation(int cancelledQuantity = default(int), string cancelledTimestamp = default(string), CancellationTypeEnum cancellationType = default(CancellationTypeEnum), string? cancellationReason = default(string?))
+        public Cancellation(int cancelledQuantity = default(int), DateTime cancelledTimestamp = default(DateTime), CancellationTypeEnum cancellationType = default(CancellationTypeEnum), string? cancellationReason = default(string?))
         {
             this.CancelledQuantity = cancelledQuantity;
-            // to ensure "cancelledTimestamp" is required (not null)
-            if (cancelledTimestamp == null)
-            {
-                throw new ArgumentNullException("cancelledTimestamp is a required property for Cancellation and cannot be null");
-            }
             this.CancelledTimestamp = cancelledTimestamp;
             this.CancellationType = cancellationType;
             this.CancellationReason = cancellationReason;
@@ -105,7 +100,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.</value>
         [DataMember(Name = "cancelledTimestamp", IsRequired = true, EmitDefaultValue = true)]
-        public string CancelledTimestamp { get; set; }
+        public DateTime CancelledTimestamp { get; set; }
 
         /// <summary>
         /// The reason for the cancellation of the shipment.

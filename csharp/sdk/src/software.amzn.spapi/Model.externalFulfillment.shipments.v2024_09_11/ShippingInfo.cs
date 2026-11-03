@@ -68,19 +68,16 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// Initializes a new instance of the <see cref="ShippingInfo" /> class.
         /// </summary>
         /// <param name="recommendedShipMethod">The ship method recommended by the Amazon Fulfillment Network for the packages in this shipment..</param>
+        /// <param name="expectedShippingDateTime">A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format..</param>
         /// <param name="expectedShippingDateTimeInUTC">A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (required).</param>
         /// <param name="shipToAddress">shipToAddress.</param>
         /// <param name="shippingType">The type of shipping that the seller uses to deliver a customer order..</param>
         /// <param name="recommendedPackages">Recommendations for the packages in an order..</param>
-        public ShippingInfo(string? recommendedShipMethod = default(string?), string expectedShippingDateTimeInUTC = default(string), Address? shipToAddress = default(Address?), ShippingTypeEnum? shippingType = default(ShippingTypeEnum?), List<RecommendedPackage>? recommendedPackages = default(List<RecommendedPackage>?))
+        public ShippingInfo(string? recommendedShipMethod = default(string?), DateTime? expectedShippingDateTime = default(DateTime?), DateTime expectedShippingDateTimeInUTC = default(DateTime), Address? shipToAddress = default(Address?), ShippingTypeEnum? shippingType = default(ShippingTypeEnum?), List<RecommendedPackage>? recommendedPackages = default(List<RecommendedPackage>?))
         {
-            // to ensure "expectedShippingDateTimeInUTC" is required (not null)
-            if (expectedShippingDateTimeInUTC == null)
-            {
-                throw new ArgumentNullException("expectedShippingDateTimeInUTC is a required property for ShippingInfo and cannot be null");
-            }
             this.ExpectedShippingDateTimeInUTC = expectedShippingDateTimeInUTC;
             this.RecommendedShipMethod = recommendedShipMethod;
+            this.ExpectedShippingDateTime = expectedShippingDateTime;
             this.ShipToAddress = shipToAddress;
             this.ShippingType = shippingType;
             this.RecommendedPackages = recommendedPackages;
@@ -97,8 +94,15 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
         /// </summary>
         /// <value>A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.</value>
+        [DataMember(Name = "expectedShippingDateTime", EmitDefaultValue = false)]
+        public DateTime? ExpectedShippingDateTime { get; set; }
+
+        /// <summary>
+        /// A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+        /// </summary>
+        /// <value>A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.</value>
         [DataMember(Name = "expectedShippingDateTimeInUTC", IsRequired = true, EmitDefaultValue = true)]
-        public string ExpectedShippingDateTimeInUTC { get; set; }
+        public DateTime ExpectedShippingDateTimeInUTC { get; set; }
 
         /// <summary>
         /// Gets or Sets ShipToAddress
@@ -122,6 +126,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             StringBuilder sb = new StringBuilder();
             sb.Append("class ShippingInfo {\n");
             sb.Append("  RecommendedShipMethod: ").Append(RecommendedShipMethod).Append("\n");
+            sb.Append("  ExpectedShippingDateTime: ").Append(ExpectedShippingDateTime).Append("\n");
             sb.Append("  ExpectedShippingDateTimeInUTC: ").Append(ExpectedShippingDateTimeInUTC).Append("\n");
             sb.Append("  ShipToAddress: ").Append(ShipToAddress).Append("\n");
             sb.Append("  ShippingType: ").Append(ShippingType).Append("\n");

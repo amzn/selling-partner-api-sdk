@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId">The ID of the shipment whose shipping labels you want to generate and retrieve.</param>
-        /// <param name="operation">Specify whether you want to generate or regenerate a label.</param>
+        /// <param name="operation">Specify whether you want to generate or regenerate a label. For retrieving existing labels, set this value to &#x60;GENERATE&#x60;</param>
         /// <param name="shippingOptionId">The ID of the shipping option whose shipping labels you want. (optional)</param>
         /// <param name="body">Shipping details for when shipping is not done by the marketplace channel. (optional)</param>
         /// <returns>ShipLabelsResponse</returns>
@@ -92,7 +92,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId">The ID of the shipment whose shipping labels you want to generate and retrieve.</param>
-        /// <param name="operation">Specify whether you want to generate or regenerate a label.</param>
+        /// <param name="operation">Specify whether you want to generate or regenerate a label. For retrieving existing labels, set this value to &#x60;GENERATE&#x60;</param>
         /// <param name="shippingOptionId">The ID of the shipping option whose shipping labels you want. (optional)</param>
         /// <param name="body">Shipping details for when shipping is not done by the marketplace channel. (optional)</param>
         /// <returns>ApiResponse of ShipLabelsResponse</returns>
@@ -272,7 +272,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId">The ID of the shipment whose shipping labels you want to generate and retrieve.</param>
-        /// <param name="operation">Specify whether you want to generate or regenerate a label.</param>
+        /// <param name="operation">Specify whether you want to generate or regenerate a label. For retrieving existing labels, set this value to &#x60;GENERATE&#x60;</param>
         /// <param name="shippingOptionId">The ID of the shipping option whose shipping labels you want. (optional)</param>
         /// <param name="body">Shipping details for when shipping is not done by the marketplace channel. (optional)</param>
         /// <returns>Task of ShipLabelsResponse</returns>
@@ -286,7 +286,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId">The ID of the shipment whose shipping labels you want to generate and retrieve.</param>
-        /// <param name="operation">Specify whether you want to generate or regenerate a label.</param>
+        /// <param name="operation">Specify whether you want to generate or regenerate a label. For retrieving existing labels, set this value to &#x60;GENERATE&#x60;</param>
         /// <param name="shippingOptionId">The ID of the shipping option whose shipping labels you want. (optional)</param>
         /// <param name="body">Shipping details for when shipping is not done by the marketplace channel. (optional)</param>
         /// <returns>Task of ApiResponse (ShipLabelsResponse)</returns>
@@ -792,7 +792,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId">The ID of the shipment whose shipping labels you want to generate and retrieve.</param>
-        /// <param name="operation">Specify whether you want to generate or regenerate a label.</param>
+        /// <param name="operation">Specify whether you want to generate or regenerate a label. For retrieving existing labels, set this value to &#x60;GENERATE&#x60;</param>
         /// <param name="shippingOptionId">The ID of the shipping option whose shipping labels you want. (optional)</param>
         /// <param name="body">Shipping details for when shipping is not done by the marketplace channel. (optional)</param>
         /// <returns>ShipLabelsResponse</returns>
@@ -807,7 +807,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId">The ID of the shipment whose shipping labels you want to generate and retrieve.</param>
-        /// <param name="operation">Specify whether you want to generate or regenerate a label.</param>
+        /// <param name="operation">Specify whether you want to generate or regenerate a label. For retrieving existing labels, set this value to &#x60;GENERATE&#x60;</param>
         /// <param name="shippingOptionId">The ID of the shipping option whose shipping labels you want. (optional)</param>
         /// <param name="body">Shipping details for when shipping is not done by the marketplace channel. (optional)</param>
         /// <returns>ApiResponse of ShipLabelsResponse</returns>
@@ -876,7 +876,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId">The ID of the shipment whose shipping labels you want to generate and retrieve.</param>
-        /// <param name="operation">Specify whether you want to generate or regenerate a label.</param>
+        /// <param name="operation">Specify whether you want to generate or regenerate a label. For retrieving existing labels, set this value to &#x60;GENERATE&#x60;</param>
         /// <param name="shippingOptionId">The ID of the shipping option whose shipping labels you want. (optional)</param>
         /// <param name="body">Shipping details for when shipping is not done by the marketplace channel. (optional)</param>
         /// <returns>Task of ShipLabelsResponse</returns>
@@ -892,7 +892,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId">The ID of the shipment whose shipping labels you want to generate and retrieve.</param>
-        /// <param name="operation">Specify whether you want to generate or regenerate a label.</param>
+        /// <param name="operation">Specify whether you want to generate or regenerate a label. For retrieving existing labels, set this value to &#x60;GENERATE&#x60;</param>
         /// <param name="shippingOptionId">The ID of the shipping option whose shipping labels you want. (optional)</param>
         /// <param name="body">Shipping details for when shipping is not done by the marketplace channel. (optional)</param>
         /// <returns>Task of ApiResponse (ShipLabelsResponse)</returns>

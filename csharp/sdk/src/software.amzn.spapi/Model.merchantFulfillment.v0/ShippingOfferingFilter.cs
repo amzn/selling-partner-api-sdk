@@ -46,8 +46,8 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <summary>
         /// Initializes a new instance of the <see cref="ShippingOfferingFilter" /> class.
         /// </summary>
-        /// <param name="includePackingSlipWithLabel">When true, include a packing slip with the label..</param>
-        /// <param name="includeComplexShippingOptions">When true, include complex shipping options..</param>
+        /// <param name="includePackingSlipWithLabel">When &#x60;true&#x60;, include a packing slip with the label..</param>
+        /// <param name="includeComplexShippingOptions">When &#x60;true&#x60;, include complex shipping options..</param>
         /// <param name="carrierWillPickUp">carrierWillPickUp.</param>
         /// <param name="deliveryExperience">deliveryExperience.</param>
         public ShippingOfferingFilter(bool? includePackingSlipWithLabel = default(bool?), bool? includeComplexShippingOptions = default(bool?), CarrierWillPickUpOption? carrierWillPickUp = default(CarrierWillPickUpOption?), DeliveryExperienceOption? deliveryExperience = default(DeliveryExperienceOption?))
@@ -59,16 +59,16 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         }
 
         /// <summary>
-        /// When true, include a packing slip with the label.
+        /// When &#x60;true&#x60;, include a packing slip with the label.
         /// </summary>
-        /// <value>When true, include a packing slip with the label.</value>
+        /// <value>When &#x60;true&#x60;, include a packing slip with the label.</value>
         [DataMember(Name = "IncludePackingSlipWithLabel", EmitDefaultValue = true)]
         public bool? IncludePackingSlipWithLabel { get; set; }
 
         /// <summary>
-        /// When true, include complex shipping options.
+        /// When &#x60;true&#x60;, include complex shipping options.
         /// </summary>
-        /// <value>When true, include complex shipping options.</value>
+        /// <value>When &#x60;true&#x60;, include complex shipping options.</value>
         [DataMember(Name = "IncludeComplexShippingOptions", EmitDefaultValue = true)]
         public bool? IncludeComplexShippingOptions { get; set; }
 

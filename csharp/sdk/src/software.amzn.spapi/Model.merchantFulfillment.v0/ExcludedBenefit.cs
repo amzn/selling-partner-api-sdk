@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.merchantFulfillment.v0
 {
     /// <summary>
-    /// An object representing an excluded benefit that is excluded for a shipping offer or rate.
+    /// A benefit excluded from a shipping offer or rate.
     /// </summary>
     [DataContract(Name = "ExcludedBenefit")]
     public partial class ExcludedBenefit : IValidatableObject
@@ -34,7 +34,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <summary>
         /// Initializes a new instance of the <see cref="ExcludedBenefit" /> class.
         /// </summary>
-        /// <param name="benefit">A benefit that is being excluded from a shipment..</param>
+        /// <param name="benefit">The benefit excluded from a shipment..</param>
         /// <param name="reasonCodes">List of reasons why a benefit is excluded for a shipping offer (for example, &#x60;LATE_DELIVERY_RISK&#x60;)..</param>
         public ExcludedBenefit(string? benefit = default(string?), List<string>? reasonCodes = default(List<string>?))
         {
@@ -43,9 +43,9 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         }
 
         /// <summary>
-        /// A benefit that is being excluded from a shipment.
+        /// The benefit excluded from a shipment.
         /// </summary>
-        /// <value>A benefit that is being excluded from a shipment.</value>
+        /// <value>The benefit excluded from a shipment.</value>
         [DataMember(Name = "Benefit", EmitDefaultValue = false)]
         public string? Benefit { get; set; }
 

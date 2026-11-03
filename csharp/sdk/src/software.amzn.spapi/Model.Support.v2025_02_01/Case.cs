@@ -87,8 +87,7 @@ namespace software.amzn.spapi.Model.Support.v2025_02_01
         /// <param name="createdDate">The time when the case was created. In [ISO 8601](https://developer-docs.amazon/sp-api/docs/iso-8601) format. (required).</param>
         /// <param name="lastUpdatedDate">The time when the case was last updated, which includes updates to the case details and new contacts added to the case. In [ISO 8601](https://developer-docs.amazon/sp-api/docs/iso-8601) format. (required).</param>
         /// <param name="resolvedDate">The time when the case was resolved. In [ISO 8601](https://developer-docs.amazon/sp-api/docs/iso-8601) format..</param>
-        /// <param name="lastOutboundDate">The timestamp of the last outbound contact on the case. The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format..</param>
-        public Case(string caseId = default(string), StatusEnum status = default(StatusEnum), string subject = default(string), string primaryEmail = default(string), List<string> ccEmails = default(List<string>), List<Appointment>? appointments = default(List<Appointment>?), DateTime createdDate = default(DateTime), DateTime lastUpdatedDate = default(DateTime), DateTime? resolvedDate = default(DateTime?), DateTime? lastOutboundDate = default(DateTime?))
+        public Case(string caseId = default(string), StatusEnum status = default(StatusEnum), string subject = default(string), string primaryEmail = default(string), List<string> ccEmails = default(List<string>), List<Appointment>? appointments = default(List<Appointment>?), DateTime createdDate = default(DateTime), DateTime lastUpdatedDate = default(DateTime), DateTime? resolvedDate = default(DateTime?))
         {
             // to ensure "caseId" is required (not null)
             if (caseId == null)
@@ -119,7 +118,6 @@ namespace software.amzn.spapi.Model.Support.v2025_02_01
             this.LastUpdatedDate = lastUpdatedDate;
             this.Appointments = appointments;
             this.ResolvedDate = resolvedDate;
-            this.LastOutboundDate = lastOutboundDate;
         }
 
         /// <summary>
@@ -200,16 +198,6 @@ namespace software.amzn.spapi.Model.Support.v2025_02_01
         public DateTime? ResolvedDate { get; set; }
 
         /// <summary>
-        /// The timestamp of the last outbound contact on the case. The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
-        /// </summary>
-        /// <value>The timestamp of the last outbound contact on the case. The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.</value>
-        /*
-        <example>2024-01-12T10:30Z</example>
-        */
-        [DataMember(Name = "lastOutboundDate", EmitDefaultValue = false)]
-        public DateTime? LastOutboundDate { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -226,7 +214,6 @@ namespace software.amzn.spapi.Model.Support.v2025_02_01
             sb.Append("  CreatedDate: ").Append(CreatedDate).Append("\n");
             sb.Append("  LastUpdatedDate: ").Append(LastUpdatedDate).Append("\n");
             sb.Append("  ResolvedDate: ").Append(ResolvedDate).Append("\n");
-            sb.Append("  LastOutboundDate: ").Append(LastOutboundDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

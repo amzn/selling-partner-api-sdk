@@ -34,40 +34,16 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
     public enum PackageStatus
     {
         /// <summary>
-        /// Enum CREATED for value: CREATED
-        /// </summary>
-        [EnumMember(Value = "CREATED")]
-        CREATED = 1,
-
-        /// <summary>
-        /// Enum PICKUPSLOTRETRIEVED for value: PICKUP_SLOT_RETRIEVED
-        /// </summary>
-        [EnumMember(Value = "PICKUP_SLOT_RETRIEVED")]
-        PICKUPSLOTRETRIEVED = 2,
-
-        /// <summary>
-        /// Enum INVOICEGENERATED for value: INVOICE_GENERATED
-        /// </summary>
-        [EnumMember(Value = "INVOICE_GENERATED")]
-        INVOICEGENERATED = 3,
-
-        /// <summary>
-        /// Enum SHIPLABELGENERATED for value: SHIPLABEL_GENERATED
-        /// </summary>
-        [EnumMember(Value = "SHIPLABEL_GENERATED")]
-        SHIPLABELGENERATED = 4,
-
-        /// <summary>
         /// Enum SHIPPED for value: SHIPPED
         /// </summary>
         [EnumMember(Value = "SHIPPED")]
-        SHIPPED = 5,
+        SHIPPED = 1,
 
         /// <summary>
         /// Enum DELIVERED for value: DELIVERED
         /// </summary>
         [EnumMember(Value = "DELIVERED")]
-        DELIVERED = 6
+        DELIVERED = 2
     }
 
 }

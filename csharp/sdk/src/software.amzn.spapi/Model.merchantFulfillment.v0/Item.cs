@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="transparencyCodeList">A list of transparency codes..</param>
         /// <param name="itemLevelSellerInputsList">A list of additional seller input pairs required to purchase shipping..</param>
         /// <param name="liquidVolume">liquidVolume.</param>
-        /// <param name="isHazmat">When true, the item qualifies as hazardous materials (hazmat). Defaults to false..</param>
+        /// <param name="isHazmat">When &#x60;true&#x60;, the item qualifies as hazardous materials (hazmat). Defaults to &#x60;false&#x60;..</param>
         /// <param name="dangerousGoodsDetails">dangerousGoodsDetails.</param>
         public Item(string orderItemId = default(string), int quantity = default(int), Weight? itemWeight = default(Weight?), string? itemDescription = default(string?), List<string>? transparencyCodeList = default(List<string>?), List<AdditionalSellerInputs>? itemLevelSellerInputsList = default(List<AdditionalSellerInputs>?), LiquidVolume? liquidVolume = default(LiquidVolume?), bool? isHazmat = default(bool?), DangerousGoodsDetails? dangerousGoodsDetails = default(DangerousGoodsDetails?))
         {
@@ -114,9 +114,9 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         public LiquidVolume? LiquidVolume { get; set; }
 
         /// <summary>
-        /// When true, the item qualifies as hazardous materials (hazmat). Defaults to false.
+        /// When &#x60;true&#x60;, the item qualifies as hazardous materials (hazmat). Defaults to &#x60;false&#x60;.
         /// </summary>
-        /// <value>When true, the item qualifies as hazardous materials (hazmat). Defaults to false.</value>
+        /// <value>When &#x60;true&#x60;, the item qualifies as hazardous materials (hazmat). Defaults to &#x60;false&#x60;.</value>
         [DataMember(Name = "IsHazmat", EmitDefaultValue = true)]
         public bool? IsHazmat { get; set; }
 

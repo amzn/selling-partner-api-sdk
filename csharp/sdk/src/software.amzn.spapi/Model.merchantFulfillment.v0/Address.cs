@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="districtOrCounty">The district or county..</param>
         /// <param name="email">The email address. (required).</param>
         /// <param name="city">The city. (required).</param>
-        /// <param name="stateOrProvinceCode">The state or province code. This is a required field in Canada, US, and UK marketplaces, and for shipments that originate in China..</param>
+        /// <param name="stateOrProvinceCode">The state or province code. This is a required field in Amazon Canada, US, and UK stores, and for shipments that originate in China..</param>
         /// <param name="postalCode">The zip code or postal code. (required).</param>
         /// <param name="countryCode">The two-letter country code in [ISO 3166-1 alpha-2](https://www.iban.com/country-codes) format. (required).</param>
         /// <param name="phone">The phone number. (required).</param>
@@ -150,9 +150,9 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         public string City { get; set; }
 
         /// <summary>
-        /// The state or province code. This is a required field in Canada, US, and UK marketplaces, and for shipments that originate in China.
+        /// The state or province code. This is a required field in Amazon Canada, US, and UK stores, and for shipments that originate in China.
         /// </summary>
-        /// <value>The state or province code. This is a required field in Canada, US, and UK marketplaces, and for shipments that originate in China.</value>
+        /// <value>The state or province code. This is a required field in Amazon Canada, US, and UK stores, and for shipments that originate in China.</value>
         [DataMember(Name = "StateOrProvinceCode", EmitDefaultValue = false)]
         public string? StateOrProvinceCode { get; set; }
 

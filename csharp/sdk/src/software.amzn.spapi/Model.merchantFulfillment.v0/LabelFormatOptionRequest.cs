@@ -34,16 +34,16 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <summary>
         /// Initializes a new instance of the <see cref="LabelFormatOptionRequest" /> class.
         /// </summary>
-        /// <param name="includePackingSlipWithLabel">When true, include a packing slip with the label..</param>
+        /// <param name="includePackingSlipWithLabel">When &#x60;true&#x60;, include a packing slip with the label..</param>
         public LabelFormatOptionRequest(bool? includePackingSlipWithLabel = default(bool?))
         {
             this.IncludePackingSlipWithLabel = includePackingSlipWithLabel;
         }
 
         /// <summary>
-        /// When true, include a packing slip with the label.
+        /// When &#x60;true&#x60;, include a packing slip with the label.
         /// </summary>
-        /// <value>When true, include a packing slip with the label.</value>
+        /// <value>When &#x60;true&#x60;, include a packing slip with the label.</value>
         [DataMember(Name = "IncludePackingSlipWithLabel", EmitDefaultValue = true)]
         public bool? IncludePackingSlipWithLabel { get; set; }
 

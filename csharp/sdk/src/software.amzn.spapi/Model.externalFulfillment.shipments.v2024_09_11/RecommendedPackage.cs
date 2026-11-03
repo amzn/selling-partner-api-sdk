@@ -42,8 +42,8 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <param name="dimensions">dimensions (required).</param>
         /// <param name="weight">weight (required).</param>
-        /// <param name="lineItems">A list of line items to be contained in a recommended package. This attribute is only for orders that come with specific recommendations for line-item distribution. (required).</param>
-        public RecommendedPackage(PackageDimensions dimensions = default(PackageDimensions), Weight weight = default(Weight), List<RecommendedPackageLineItem> lineItems = default(List<RecommendedPackageLineItem>))
+        /// <param name="lineItems">A list of line items to be contained in a recommended package. This attribute is only for orders that come with specific recommendations for line-item distribution..</param>
+        public RecommendedPackage(PackageDimensions dimensions = default(PackageDimensions), Weight weight = default(Weight), List<RecommendedPackageLineItem>? lineItems = default(List<RecommendedPackageLineItem>?))
         {
             // to ensure "dimensions" is required (not null)
             if (dimensions == null)
@@ -57,11 +57,6 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
                 throw new ArgumentNullException("weight is a required property for RecommendedPackage and cannot be null");
             }
             this.Weight = weight;
-            // to ensure "lineItems" is required (not null)
-            if (lineItems == null)
-            {
-                throw new ArgumentNullException("lineItems is a required property for RecommendedPackage and cannot be null");
-            }
             this.LineItems = lineItems;
         }
 
@@ -81,8 +76,8 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// A list of line items to be contained in a recommended package. This attribute is only for orders that come with specific recommendations for line-item distribution.
         /// </summary>
         /// <value>A list of line items to be contained in a recommended package. This attribute is only for orders that come with specific recommendations for line-item distribution.</value>
-        [DataMember(Name = "lineItems", IsRequired = true, EmitDefaultValue = true)]
-        public List<RecommendedPackageLineItem> LineItems { get; set; }
+        [DataMember(Name = "lineItems", EmitDefaultValue = false)]
+        public List<RecommendedPackageLineItem>? LineItems { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -39,14 +39,16 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// <param name="aftn">Amazon Fulfillment Tracking Number..</param>
         /// <param name="containerNumber">Container number provided by the Logistics Service Provider..</param>
         /// <param name="houseBillOfLadingNumber">House Bill of Lading number..</param>
+        /// <param name="proNumber">The PRO number assigned by the freight carrier.</param>
         /// <param name="carrierTracking">carrierTracking.</param>
-        public TrackingIdentifier(string? id = default(string?), string? acsin = default(string?), string? aftn = default(string?), string? containerNumber = default(string?), string? houseBillOfLadingNumber = default(string?), TrackingIdentifierCarrierTracking? carrierTracking = default(TrackingIdentifierCarrierTracking?))
+        public TrackingIdentifier(string? id = default(string?), string? acsin = default(string?), string? aftn = default(string?), string? containerNumber = default(string?), string? houseBillOfLadingNumber = default(string?), string? proNumber = default(string?), TrackingIdentifierCarrierTracking? carrierTracking = default(TrackingIdentifierCarrierTracking?))
         {
             this.Id = id;
             this.Acsin = acsin;
             this.Aftn = aftn;
             this.ContainerNumber = containerNumber;
             this.HouseBillOfLadingNumber = houseBillOfLadingNumber;
+            this.ProNumber = proNumber;
             this.CarrierTracking = carrierTracking;
         }
 
@@ -86,6 +88,13 @@ namespace software.amzn.spapi.Model.notifications.v1
         public string? HouseBillOfLadingNumber { get; set; }
 
         /// <summary>
+        /// The PRO number assigned by the freight carrier
+        /// </summary>
+        /// <value>The PRO number assigned by the freight carrier</value>
+        [DataMember(Name = "proNumber", EmitDefaultValue = false)]
+        public string? ProNumber { get; set; }
+
+        /// <summary>
         /// Gets or Sets CarrierTracking
         /// </summary>
         [DataMember(Name = "carrierTracking", EmitDefaultValue = false)]
@@ -104,6 +113,7 @@ namespace software.amzn.spapi.Model.notifications.v1
             sb.Append("  Aftn: ").Append(Aftn).Append("\n");
             sb.Append("  ContainerNumber: ").Append(ContainerNumber).Append("\n");
             sb.Append("  HouseBillOfLadingNumber: ").Append(HouseBillOfLadingNumber).Append("\n");
+            sb.Append("  ProNumber: ").Append(ProNumber).Append("\n");
             sb.Append("  CarrierTracking: ").Append(CarrierTracking).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

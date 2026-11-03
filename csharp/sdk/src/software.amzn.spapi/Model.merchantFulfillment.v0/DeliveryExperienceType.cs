@@ -54,7 +54,19 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// Enum NoTracking for value: NoTracking
         /// </summary>
         [EnumMember(Value = "NoTracking")]
-        NoTracking = 4
+        NoTracking = 4,
+
+        /// <summary>
+        /// Enum DeliveryConfirmationWithIdentityCheck for value: DeliveryConfirmationWithIdentityCheck
+        /// </summary>
+        [EnumMember(Value = "DeliveryConfirmationWithIdentityCheck")]
+        DeliveryConfirmationWithIdentityCheck = 5,
+
+        /// <summary>
+        /// Enum DeliveryConfirmationWithNameVerification for value: DeliveryConfirmationWithNameVerification
+        /// </summary>
+        [EnumMember(Value = "DeliveryConfirmationWithNameVerification")]
+        DeliveryConfirmationWithNameVerification = 6
     }
 
 }

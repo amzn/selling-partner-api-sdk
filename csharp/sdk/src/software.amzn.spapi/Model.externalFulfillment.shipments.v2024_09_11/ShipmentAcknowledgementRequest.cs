@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// Initializes a new instance of the <see cref="ShipmentAcknowledgementRequest" /> class.
         /// </summary>
         /// <param name="referenceId">A unique identifier for every shipment rejection..</param>
-        /// <param name="lineItems">Details about the line items from the shipment that are being confirmed or rejected by the seller. (required).</param>
+        /// <param name="lineItems">Details about the line items from the shipment that are being rejected by the seller. (required).</param>
         public ShipmentAcknowledgementRequest(string? referenceId = default(string?), List<LineItemWithReason> lineItems = default(List<LineItemWithReason>))
         {
             // to ensure "lineItems" is required (not null)
@@ -61,9 +61,9 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         public string? ReferenceId { get; set; }
 
         /// <summary>
-        /// Details about the line items from the shipment that are being confirmed or rejected by the seller.
+        /// Details about the line items from the shipment that are being rejected by the seller.
         /// </summary>
-        /// <value>Details about the line items from the shipment that are being confirmed or rejected by the seller.</value>
+        /// <value>Details about the line items from the shipment that are being rejected by the seller.</value>
         [DataMember(Name = "lineItems", IsRequired = true, EmitDefaultValue = true)]
         public List<LineItemWithReason> LineItems { get; set; }
 

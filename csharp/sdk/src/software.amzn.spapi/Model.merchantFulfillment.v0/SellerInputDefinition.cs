@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <summary>
         /// Initializes a new instance of the <see cref="SellerInputDefinition" /> class.
         /// </summary>
-        /// <param name="isRequired">When true, the additional input field is required. (required).</param>
+        /// <param name="isRequired">When &#x60;true&#x60;, the additional input field is required. (required).</param>
         /// <param name="dataType">The data type of the additional input field. (required).</param>
         /// <param name="constraints">List of constraints. (required).</param>
         /// <param name="inputDisplayText">The display text for the additional input field. (required).</param>
@@ -84,9 +84,9 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         }
 
         /// <summary>
-        /// When true, the additional input field is required.
+        /// When &#x60;true&#x60;, the additional input field is required.
         /// </summary>
-        /// <value>When true, the additional input field is required.</value>
+        /// <value>When &#x60;true&#x60;, the additional input field is required.</value>
         [DataMember(Name = "IsRequired", IsRequired = true, EmitDefaultValue = true)]
         public bool IsRequired { get; set; }
 

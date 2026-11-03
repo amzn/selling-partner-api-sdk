@@ -98,7 +98,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="status">The target shipment status. Mutually exclusive with &#x60;subStatus&#x60;. Used with &#x60;SHIPMENT_STATUS_CHANGE&#x60; update type..</param>
         /// <param name="subStatus">The target shipment sub-status. Mutually exclusive with &#x60;status&#x60;. Used with &#x60;SHIPMENT_STATUS_CHANGE&#x60; update type..</param>
         /// <param name="timestamp">The Expected Pickup Date (EPD) for the shipment. Used with &#x60;TRANSPORT_CAPACITY_CHANGE&#x60; update type. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
-        public SandboxShipmentUpdates(StatusEnum? status = default(StatusEnum?), SubStatusEnum? subStatus = default(SubStatusEnum?), string? timestamp = default(string?))
+        public SandboxShipmentUpdates(StatusEnum? status = default(StatusEnum?), SubStatusEnum? subStatus = default(SubStatusEnum?), DateTime? timestamp = default(DateTime?))
         {
             this.Status = status;
             this.SubStatus = subStatus;
@@ -113,7 +113,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         <example>2024-09-15T10:30Z</example>
         */
         [DataMember(Name = "timestamp", EmitDefaultValue = false)]
-        public string? Timestamp { get; set; }
+        public DateTime? Timestamp { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

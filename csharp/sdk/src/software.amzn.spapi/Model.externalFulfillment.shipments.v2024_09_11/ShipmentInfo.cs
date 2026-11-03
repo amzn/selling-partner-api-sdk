@@ -145,10 +145,10 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="priority">priority (required).</param>
         /// <param name="buyerOrderId">The buyer&#39;s order ID. (required).</param>
         /// <param name="orderStatesEligibleForRejection">A list of order statuses for which the marketplace allows order rejection (seller cancellation). If the order has a status that does not belong to this list, then seller cancellation is not possible..</param>
-        /// <param name="orderPlacedTimestamp">The timestamp of when the order was placed, in UTC.</param>
+        /// <param name="orderPlacedTimestamp">The epoch timestamp (in milliseconds) of when the order was placed, in UTC..</param>
         /// <param name="processingSource">The source of the order operation..</param>
         /// <param name="paymentMethod">The payment method for the shipment..</param>
-        public ShipmentInfo(ShipmentTypeEnum shipmentType = default(ShipmentTypeEnum), ReplacedShipmentInfo? originalShipmentInfo = default(ReplacedShipmentInfo?), int numberOfUnits = default(int), Priority priority = default(Priority), string buyerOrderId = default(string), List<string>? orderStatesEligibleForRejection = default(List<string>?), string? orderPlacedTimestamp = default(string?), ProcessingSourceEnum? processingSource = default(ProcessingSourceEnum?), PaymentMethodEnum? paymentMethod = default(PaymentMethodEnum?))
+        public ShipmentInfo(ShipmentTypeEnum shipmentType = default(ShipmentTypeEnum), ReplacedShipmentInfo? originalShipmentInfo = default(ReplacedShipmentInfo?), int numberOfUnits = default(int), Priority priority = default(Priority), string buyerOrderId = default(string), List<string>? orderStatesEligibleForRejection = default(List<string>?), decimal? orderPlacedTimestamp = default(decimal?), ProcessingSourceEnum? processingSource = default(ProcessingSourceEnum?), PaymentMethodEnum? paymentMethod = default(PaymentMethodEnum?))
         {
             this.ShipmentType = shipmentType;
             this.NumberOfUnits = numberOfUnits;
@@ -194,11 +194,11 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         public List<string>? OrderStatesEligibleForRejection { get; set; }
 
         /// <summary>
-        /// The timestamp of when the order was placed, in UTC
+        /// The epoch timestamp (in milliseconds) of when the order was placed, in UTC.
         /// </summary>
-        /// <value>The timestamp of when the order was placed, in UTC</value>
+        /// <value>The epoch timestamp (in milliseconds) of when the order was placed, in UTC.</value>
         [DataMember(Name = "orderPlacedTimestamp", EmitDefaultValue = false)]
-        public string? OrderPlacedTimestamp { get; set; }
+        public decimal? OrderPlacedTimestamp { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

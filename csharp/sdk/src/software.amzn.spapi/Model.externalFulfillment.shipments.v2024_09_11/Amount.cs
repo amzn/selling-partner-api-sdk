@@ -40,15 +40,10 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <summary>
         /// Initializes a new instance of the <see cref="Amount" /> class.
         /// </summary>
-        /// <param name="value">A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. (required).</param>
+        /// <param name="value">A decimal number. (required).</param>
         /// <param name="currencyCode">Three digit currency code in ISO 4217 format. (required).</param>
-        public Amount(string value = default(string), string currencyCode = default(string))
+        public Amount(decimal value = default(decimal), string currencyCode = default(string))
         {
-            // to ensure "value" is required (not null)
-            if (value == null)
-            {
-                throw new ArgumentNullException("value is a required property for Amount and cannot be null");
-            }
             this.Value = value;
             // to ensure "currencyCode" is required (not null)
             if (currencyCode == null)
@@ -59,11 +54,11 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         }
 
         /// <summary>
-        /// A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+        /// A decimal number.
         /// </summary>
-        /// <value>A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.</value>
+        /// <value>A decimal number.</value>
         [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
-        public string Value { get; set; }
+        public decimal Value { get; set; }
 
         /// <summary>
         /// Three digit currency code in ISO 4217 format.

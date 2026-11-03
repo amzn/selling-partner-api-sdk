@@ -59,7 +59,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <param name="deliveryExperience">deliveryExperience (required).</param>
         /// <param name="declaredValue">declaredValue.</param>
-        /// <param name="carrierWillPickUp">When true, the carrier will pick up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK). (required).</param>
+        /// <param name="carrierWillPickUp">When &#x60;true&#x60;, the carrier picks up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK). (required).</param>
         /// <param name="carrierWillPickUpOption">carrierWillPickUpOption.</param>
         /// <param name="labelFormat">labelFormat.</param>
         public ShippingServiceOptions(DeliveryExperienceType deliveryExperience = default(DeliveryExperienceType), CurrencyAmount? declaredValue = default(CurrencyAmount?), bool carrierWillPickUp = default(bool), CarrierWillPickUpOption? carrierWillPickUpOption = default(CarrierWillPickUpOption?), LabelFormat? labelFormat = default(LabelFormat?))
@@ -78,9 +78,9 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         public CurrencyAmount? DeclaredValue { get; set; }
 
         /// <summary>
-        /// When true, the carrier will pick up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK).
+        /// When &#x60;true&#x60;, the carrier picks up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK).
         /// </summary>
-        /// <value>When true, the carrier will pick up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK).</value>
+        /// <value>When &#x60;true&#x60;, the carrier picks up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK).</value>
         [DataMember(Name = "CarrierWillPickUp", IsRequired = true, EmitDefaultValue = true)]
         public bool CarrierWillPickUp { get; set; }
 

@@ -27,7 +27,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
 {
     /// <summary>
-    /// Tax registration details of the entity. Applicable to direct fulfillment shipments.
+    /// Tax registration details of the entity. Applicable only to direct fulfillment shipments.
     /// </summary>
     [DataContract(Name = "TaxRegistrationInfo")]
     public partial class TaxRegistrationInfo : IValidatableObject

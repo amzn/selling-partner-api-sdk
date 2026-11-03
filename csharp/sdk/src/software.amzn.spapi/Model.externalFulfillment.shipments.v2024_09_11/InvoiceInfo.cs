@@ -35,26 +35,11 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <summary>
         /// Initializes a new instance of the <see cref="InvoiceInfo" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected InvoiceInfo() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InvoiceInfo" /> class.
-        /// </summary>
-        /// <param name="invoiceId">The unique ID of the invoice that corresponds to the shipment. (required).</param>
-        /// <param name="creationDateTime">A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (required).</param>
-        public InvoiceInfo(string invoiceId = default(string), string creationDateTime = default(string))
+        /// <param name="invoiceId">The unique ID of the invoice that corresponds to the shipment..</param>
+        /// <param name="creationDateTime">A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format..</param>
+        public InvoiceInfo(string? invoiceId = default(string?), DateTime? creationDateTime = default(DateTime?))
         {
-            // to ensure "invoiceId" is required (not null)
-            if (invoiceId == null)
-            {
-                throw new ArgumentNullException("invoiceId is a required property for InvoiceInfo and cannot be null");
-            }
             this.InvoiceId = invoiceId;
-            // to ensure "creationDateTime" is required (not null)
-            if (creationDateTime == null)
-            {
-                throw new ArgumentNullException("creationDateTime is a required property for InvoiceInfo and cannot be null");
-            }
             this.CreationDateTime = creationDateTime;
         }
 
@@ -62,15 +47,15 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// The unique ID of the invoice that corresponds to the shipment.
         /// </summary>
         /// <value>The unique ID of the invoice that corresponds to the shipment.</value>
-        [DataMember(Name = "invoiceId", IsRequired = true, EmitDefaultValue = true)]
-        public string InvoiceId { get; set; }
+        [DataMember(Name = "invoiceId", EmitDefaultValue = false)]
+        public string? InvoiceId { get; set; }
 
         /// <summary>
         /// A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
         /// </summary>
         /// <value>A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.</value>
-        [DataMember(Name = "creationDateTime", IsRequired = true, EmitDefaultValue = true)]
-        public string CreationDateTime { get; set; }
+        [DataMember(Name = "creationDateTime", EmitDefaultValue = false)]
+        public DateTime? CreationDateTime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
