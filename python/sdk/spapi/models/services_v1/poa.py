@@ -140,7 +140,7 @@ class Poa(object):
         :type: str
         """
         if (self._configuration.client_side_validation and
-                uploading_technician is not None and not re.search(r'^[A-Z0-9]*$', uploading_technician)):  # noqa: E501
+                uploading_technician is not None and not re.search(r'^[A-Z0-9]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), uploading_technician)):  # noqa: E501
             raise ValueError(r"Invalid value for `uploading_technician`, must be a follow pattern or equal to `/^[A-Z0-9]*$/`")  # noqa: E501
 
         self._uploading_technician = uploading_technician

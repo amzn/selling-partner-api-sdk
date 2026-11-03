@@ -35,7 +35,8 @@ class ShippingInfo(object):
     """
     swagger_types = {
         'recommended_ship_method': 'str',
-        'expected_shipping_date_time_in_utc': 'str',
+        'expected_shipping_date_time': 'datetime',
+        'expected_shipping_date_time_in_utc': 'datetime',
         'ship_to_address': 'Address',
         'shipping_type': 'str',
         'recommended_packages': 'List[RecommendedPackage]',
@@ -43,19 +44,21 @@ class ShippingInfo(object):
 
     attribute_map = {
         'recommended_ship_method': 'recommendedShipMethod',
+        'expected_shipping_date_time': 'expectedShippingDateTime',
         'expected_shipping_date_time_in_utc': 'expectedShippingDateTimeInUTC',
         'ship_to_address': 'shipToAddress',
         'shipping_type': 'shippingType',
         'recommended_packages': 'recommendedPackages',
     }
 
-    def __init__(self, recommended_ship_method=None, expected_shipping_date_time_in_utc=None, ship_to_address=None, shipping_type=None, recommended_packages=None, _configuration=None):  # noqa: E501
+    def __init__(self, recommended_ship_method=None, expected_shipping_date_time=None, expected_shipping_date_time_in_utc=None, ship_to_address=None, shipping_type=None, recommended_packages=None, _configuration=None):  # noqa: E501
         """ShippingInfo - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
         self._recommended_ship_method = None
+        self._expected_shipping_date_time = None
         self._expected_shipping_date_time_in_utc = None
         self._ship_to_address = None
         self._shipping_type = None
@@ -64,6 +67,8 @@ class ShippingInfo(object):
 
         if recommended_ship_method is not None:
             self.recommended_ship_method = recommended_ship_method
+        if expected_shipping_date_time is not None:
+            self.expected_shipping_date_time = expected_shipping_date_time
         self.expected_shipping_date_time_in_utc = expected_shipping_date_time_in_utc
         if ship_to_address is not None:
             self.ship_to_address = ship_to_address
@@ -96,13 +101,36 @@ class ShippingInfo(object):
         self._recommended_ship_method = recommended_ship_method
 
     @property
+    def expected_shipping_date_time(self):
+        """Gets the expected_shipping_date_time of this ShippingInfo.  # noqa: E501
+
+        A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  # noqa: E501
+
+        :return: The expected_shipping_date_time of this ShippingInfo.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._expected_shipping_date_time
+
+    @expected_shipping_date_time.setter
+    def expected_shipping_date_time(self, expected_shipping_date_time):
+        """Sets the expected_shipping_date_time of this ShippingInfo.
+
+        A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  # noqa: E501
+
+        :param expected_shipping_date_time: The expected_shipping_date_time of this ShippingInfo.  # noqa: E501
+        :type: datetime
+        """
+
+        self._expected_shipping_date_time = expected_shipping_date_time
+
+    @property
     def expected_shipping_date_time_in_utc(self):
         """Gets the expected_shipping_date_time_in_utc of this ShippingInfo.  # noqa: E501
 
         A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  # noqa: E501
 
         :return: The expected_shipping_date_time_in_utc of this ShippingInfo.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._expected_shipping_date_time_in_utc
 
@@ -113,7 +141,7 @@ class ShippingInfo(object):
         A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  # noqa: E501
 
         :param expected_shipping_date_time_in_utc: The expected_shipping_date_time_in_utc of this ShippingInfo.  # noqa: E501
-        :type: str
+        :type: datetime
         """
         if self._configuration.client_side_validation and expected_shipping_date_time_in_utc is None:
             raise ValueError("Invalid value for `expected_shipping_date_time_in_utc`, must not be `None`")  # noqa: E501

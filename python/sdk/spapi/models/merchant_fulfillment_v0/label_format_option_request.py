@@ -56,7 +56,7 @@ class LabelFormatOptionRequest(object):
     def include_packing_slip_with_label(self):
         """Gets the include_packing_slip_with_label of this LabelFormatOptionRequest.  # noqa: E501
 
-        When true, include a packing slip with the label.  # noqa: E501
+        When `true`, include a packing slip with the label.  # noqa: E501
 
         :return: The include_packing_slip_with_label of this LabelFormatOptionRequest.  # noqa: E501
         :rtype: bool
@@ -67,7 +67,7 @@ class LabelFormatOptionRequest(object):
     def include_packing_slip_with_label(self, include_packing_slip_with_label):
         """Sets the include_packing_slip_with_label of this LabelFormatOptionRequest.
 
-        When true, include a packing slip with the label.  # noqa: E501
+        When `true`, include a packing slip with the label.  # noqa: E501
 
         :param include_packing_slip_with_label: The include_packing_slip_with_label of this LabelFormatOptionRequest.  # noqa: E501
         :type: bool

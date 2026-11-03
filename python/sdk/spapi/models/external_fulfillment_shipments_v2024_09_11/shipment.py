@@ -48,9 +48,9 @@ class Shipment(object):
         'line_items': 'List[ShipmentLineItem]',
         'shipping_info': 'ShippingInfo',
         'packages': 'List[Package]',
-        'creation_date_time': 'str',
-        'last_updated_date_time': 'str',
-        'earliest_pack_date_time': 'str',
+        'creation_date_time': 'datetime',
+        'last_updated_date_time': 'datetime',
+        'earliest_pack_date_time': 'datetime',
     }
 
     attribute_map = {
@@ -243,7 +243,7 @@ class Shipment(object):
     def party_info_list(self):
         """Gets the party_info_list of this Shipment.  # noqa: E501
 
-        All involved party identification and metadata for the vendor, buyer, and seller. Applicable for direct-fulfillment sellers.  # noqa: E501
+        All involved party identification and metadata for vendor, buyer, seller. Applicable only for direct-fulfillment sellers.  # noqa: E501
 
         :return: The party_info_list of this Shipment.  # noqa: E501
         :rtype: List[PartyIdentificationInfo]
@@ -254,7 +254,7 @@ class Shipment(object):
     def party_info_list(self, party_info_list):
         """Sets the party_info_list of this Shipment.
 
-        All involved party identification and metadata for the vendor, buyer, and seller. Applicable for direct-fulfillment sellers.  # noqa: E501
+        All involved party identification and metadata for vendor, buyer, seller. Applicable only for direct-fulfillment sellers.  # noqa: E501
 
         :param party_info_list: The party_info_list of this Shipment.  # noqa: E501
         :type: List[PartyIdentificationInfo]
@@ -482,7 +482,7 @@ class Shipment(object):
         A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  # noqa: E501
 
         :return: The creation_date_time of this Shipment.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._creation_date_time
 
@@ -493,7 +493,7 @@ class Shipment(object):
         A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  # noqa: E501
 
         :param creation_date_time: The creation_date_time of this Shipment.  # noqa: E501
-        :type: str
+        :type: datetime
         """
         if self._configuration.client_side_validation and creation_date_time is None:
             raise ValueError("Invalid value for `creation_date_time`, must not be `None`")  # noqa: E501
@@ -507,7 +507,7 @@ class Shipment(object):
         A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  # noqa: E501
 
         :return: The last_updated_date_time of this Shipment.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._last_updated_date_time
 
@@ -518,7 +518,7 @@ class Shipment(object):
         A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  # noqa: E501
 
         :param last_updated_date_time: The last_updated_date_time of this Shipment.  # noqa: E501
-        :type: str
+        :type: datetime
         """
         if self._configuration.client_side_validation and last_updated_date_time is None:
             raise ValueError("Invalid value for `last_updated_date_time`, must not be `None`")  # noqa: E501
@@ -532,7 +532,7 @@ class Shipment(object):
         A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  # noqa: E501
 
         :return: The earliest_pack_date_time of this Shipment.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._earliest_pack_date_time
 
@@ -543,7 +543,7 @@ class Shipment(object):
         A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  # noqa: E501
 
         :param earliest_pack_date_time: The earliest_pack_date_time of this Shipment.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._earliest_pack_date_time = earliest_pack_date_time

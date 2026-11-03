@@ -89,7 +89,7 @@ class DangerousGoodsDetails(object):
         :type: str
         """
         if (self._configuration.client_side_validation and
-                united_nations_regulatory_id is not None and not re.search(r'^(UN|ID|NA)[0-9]{4}$', united_nations_regulatory_id)):  # noqa: E501
+                united_nations_regulatory_id is not None and not re.search(r'^(UN|ID|NA)[0-9]{4}$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), united_nations_regulatory_id)):  # noqa: E501
             raise ValueError(r"Invalid value for `united_nations_regulatory_id`, must be a follow pattern or equal to `/^(UN|ID|NA)[0-9]{4}$/`")  # noqa: E501
 
         self._united_nations_regulatory_id = united_nations_regulatory_id
@@ -115,7 +115,7 @@ class DangerousGoodsDetails(object):
         :type: str
         """
         if (self._configuration.client_side_validation and
-                transportation_regulatory_class is not None and not re.search(r'^[1-9](\.[1-9])?$', transportation_regulatory_class)):  # noqa: E501
+                transportation_regulatory_class is not None and not re.search(r'^[1-9](\.[1-9])?$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), transportation_regulatory_class)):  # noqa: E501
             raise ValueError(r"Invalid value for `transportation_regulatory_class`, must be a follow pattern or equal to `/^[1-9](\.[1-9])?$/`")  # noqa: E501
 
         self._transportation_regulatory_class = transportation_regulatory_class

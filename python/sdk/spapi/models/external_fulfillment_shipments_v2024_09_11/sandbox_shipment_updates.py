@@ -36,7 +36,7 @@ class SandboxShipmentUpdates(object):
     swagger_types = {
         'status': 'str',
         'sub_status': 'str',
-        'timestamp': 'str',
+        'timestamp': 'datetime',
     }
 
     attribute_map = {
@@ -130,7 +130,7 @@ class SandboxShipmentUpdates(object):
         The Expected Pickup Date (EPD) for the shipment. Used with `TRANSPORT_CAPACITY_CHANGE` update type. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.  # noqa: E501
 
         :return: The timestamp of this SandboxShipmentUpdates.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._timestamp
 
@@ -141,7 +141,7 @@ class SandboxShipmentUpdates(object):
         The Expected Pickup Date (EPD) for the shipment. Used with `TRANSPORT_CAPACITY_CHANGE` update type. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.  # noqa: E501
 
         :param timestamp: The timestamp of this SandboxShipmentUpdates.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._timestamp = timestamp

@@ -99,7 +99,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `cancel_inbound_plan`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `cancel_inbound_plan`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -214,7 +214,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `cancel_self_ship_appointment`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `cancel_self_ship_appointment`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -222,7 +222,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `cancel_self_ship_appointment`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `cancel_self_ship_appointment`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -345,7 +345,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `confirm_delivery_window_options`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `confirm_delivery_window_options`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -353,7 +353,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `confirm_delivery_window_options`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `confirm_delivery_window_options`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('delivery_window_option_id' in params and
                                                        len(params['delivery_window_option_id']) > 38):
@@ -361,7 +361,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('delivery_window_option_id' in params and
                                                        len(params['delivery_window_option_id']) < 36):
             raise ValueError("Invalid value for parameter `delivery_window_option_id` when calling `confirm_delivery_window_options`, length must be greater than or equal to `36`")  # noqa: E501
-        if self.api_client.client_side_validation and ('delivery_window_option_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['delivery_window_option_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('delivery_window_option_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['delivery_window_option_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `delivery_window_option_id` when calling `confirm_delivery_window_options`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -474,7 +474,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `confirm_packing_option`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `confirm_packing_option`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('packing_option_id' in params and
                                                        len(params['packing_option_id']) > 38):
@@ -482,7 +482,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('packing_option_id' in params and
                                                        len(params['packing_option_id']) < 38):
             raise ValueError("Invalid value for parameter `packing_option_id` when calling `confirm_packing_option`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('packing_option_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['packing_option_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('packing_option_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['packing_option_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `packing_option_id` when calling `confirm_packing_option`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -593,7 +593,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `confirm_placement_option`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `confirm_placement_option`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('placement_option_id' in params and
                                                        len(params['placement_option_id']) > 38):
@@ -601,7 +601,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('placement_option_id' in params and
                                                        len(params['placement_option_id']) < 38):
             raise ValueError("Invalid value for parameter `placement_option_id` when calling `confirm_placement_option`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('placement_option_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['placement_option_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('placement_option_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['placement_option_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `placement_option_id` when calling `confirm_placement_option`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -718,7 +718,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `confirm_shipment_content_update_preview`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `confirm_shipment_content_update_preview`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -726,7 +726,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `confirm_shipment_content_update_preview`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `confirm_shipment_content_update_preview`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('content_update_preview_id' in params and
                                                        len(params['content_update_preview_id']) > 38):
@@ -734,7 +734,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('content_update_preview_id' in params and
                                                        len(params['content_update_preview_id']) < 38):
             raise ValueError("Invalid value for parameter `content_update_preview_id` when calling `confirm_shipment_content_update_preview`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('content_update_preview_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['content_update_preview_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('content_update_preview_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['content_update_preview_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `content_update_preview_id` when calling `confirm_shipment_content_update_preview`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -847,7 +847,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `confirm_transportation_options`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `confirm_transportation_options`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -1160,7 +1160,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `generate_delivery_window_options`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `generate_delivery_window_options`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -1168,7 +1168,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `generate_delivery_window_options`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `generate_delivery_window_options`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -1273,7 +1273,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `generate_packing_options`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `generate_packing_options`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -1382,7 +1382,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `generate_placement_options`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `generate_placement_options`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -1503,7 +1503,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `generate_self_ship_appointment_slots`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `generate_self_ship_appointment_slots`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -1511,7 +1511,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `generate_self_ship_appointment_slots`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `generate_self_ship_appointment_slots`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -1634,7 +1634,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `generate_shipment_content_update_previews`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `generate_shipment_content_update_previews`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -1642,7 +1642,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `generate_shipment_content_update_previews`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `generate_shipment_content_update_previews`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -1759,7 +1759,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `generate_transportation_options`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `generate_transportation_options`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -1874,7 +1874,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `get_delivery_challan_document`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `get_delivery_challan_document`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -1882,7 +1882,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `get_delivery_challan_document`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `get_delivery_challan_document`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -1987,7 +1987,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('operation_id' in params and
                                                        len(params['operation_id']) < 36):
             raise ValueError("Invalid value for parameter `operation_id` when calling `get_inbound_operation_status`, length must be greater than or equal to `36`")  # noqa: E501
-        if self.api_client.client_side_validation and ('operation_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['operation_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('operation_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['operation_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `operation_id` when calling `get_inbound_operation_status`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -2090,7 +2090,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `get_inbound_plan`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `get_inbound_plan`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -2203,7 +2203,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `get_self_ship_appointment_slots`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `get_self_ship_appointment_slots`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -2211,7 +2211,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `get_self_ship_appointment_slots`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `get_self_ship_appointment_slots`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('page_size' in params and params['page_size'] > 100):  # noqa: E501
             raise ValueError("Invalid value for parameter `page_size` when calling `get_self_ship_appointment_slots`, must be a value less than or equal to `100`")  # noqa: E501
@@ -2336,7 +2336,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `get_shipment`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `get_shipment`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -2344,7 +2344,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `get_shipment`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `get_shipment`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -2461,7 +2461,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `get_shipment_content_update_preview`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `get_shipment_content_update_preview`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -2469,7 +2469,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `get_shipment_content_update_preview`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `get_shipment_content_update_preview`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('content_update_preview_id' in params and
                                                        len(params['content_update_preview_id']) > 38):
@@ -2477,7 +2477,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('content_update_preview_id' in params and
                                                        len(params['content_update_preview_id']) < 38):
             raise ValueError("Invalid value for parameter `content_update_preview_id` when calling `get_shipment_content_update_preview`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('content_update_preview_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['content_update_preview_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('content_update_preview_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['content_update_preview_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `content_update_preview_id` when calling `get_shipment_content_update_preview`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -2594,7 +2594,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_delivery_window_options`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_delivery_window_options`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -2602,7 +2602,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `list_delivery_window_options`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `list_delivery_window_options`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('page_size' in params and params['page_size'] > 100):  # noqa: E501
             raise ValueError("Invalid value for parameter `page_size` when calling `list_delivery_window_options`, must be a value less than or equal to `100`")  # noqa: E501
@@ -2725,7 +2725,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_inbound_plan_boxes`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_inbound_plan_boxes`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('page_size' in params and params['page_size'] > 1000):  # noqa: E501
             raise ValueError("Invalid value for parameter `page_size` when calling `list_inbound_plan_boxes`, must be a value less than or equal to `1000`")  # noqa: E501
@@ -2846,7 +2846,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_inbound_plan_items`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_inbound_plan_items`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('page_size' in params and params['page_size'] > 1000):  # noqa: E501
             raise ValueError("Invalid value for parameter `page_size` when calling `list_inbound_plan_items`, must be a value less than or equal to `1000`")  # noqa: E501
@@ -2967,7 +2967,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_inbound_plan_pallets`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_inbound_plan_pallets`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('page_size' in params and params['page_size'] > 1000):  # noqa: E501
             raise ValueError("Invalid value for parameter `page_size` when calling `list_inbound_plan_pallets`, must be a value less than or equal to `1000`")  # noqa: E501
@@ -3327,7 +3327,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_packing_group_boxes`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_packing_group_boxes`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('packing_group_id' in params and
                                                        len(params['packing_group_id']) > 38):
@@ -3335,7 +3335,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('packing_group_id' in params and
                                                        len(params['packing_group_id']) < 38):
             raise ValueError("Invalid value for parameter `packing_group_id` when calling `list_packing_group_boxes`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('packing_group_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['packing_group_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('packing_group_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['packing_group_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `packing_group_id` when calling `list_packing_group_boxes`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('page_size' in params and params['page_size'] > 100):  # noqa: E501
             raise ValueError("Invalid value for parameter `page_size` when calling `list_packing_group_boxes`, must be a value less than or equal to `100`")  # noqa: E501
@@ -3464,7 +3464,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_packing_group_items`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_packing_group_items`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('packing_group_id' in params and
                                                        len(params['packing_group_id']) > 38):
@@ -3472,7 +3472,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('packing_group_id' in params and
                                                        len(params['packing_group_id']) < 38):
             raise ValueError("Invalid value for parameter `packing_group_id` when calling `list_packing_group_items`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('packing_group_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['packing_group_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('packing_group_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['packing_group_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `packing_group_id` when calling `list_packing_group_items`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('page_size' in params and params['page_size'] > 100):  # noqa: E501
             raise ValueError("Invalid value for parameter `page_size` when calling `list_packing_group_items`, must be a value less than or equal to `100`")  # noqa: E501
@@ -3595,7 +3595,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_packing_options`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_packing_options`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('page_size' in params and params['page_size'] > 20):  # noqa: E501
             raise ValueError("Invalid value for parameter `page_size` when calling `list_packing_options`, must be a value less than or equal to `20`")  # noqa: E501
@@ -3716,7 +3716,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_placement_options`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_placement_options`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('page_size' in params and params['page_size'] > 20):  # noqa: E501
             raise ValueError("Invalid value for parameter `page_size` when calling `list_placement_options`, must be a value less than or equal to `20`")  # noqa: E501
@@ -3959,7 +3959,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_shipment_boxes`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_shipment_boxes`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -3967,7 +3967,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `list_shipment_boxes`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `list_shipment_boxes`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('page_size' in params and params['page_size'] > 1000):  # noqa: E501
             raise ValueError("Invalid value for parameter `page_size` when calling `list_shipment_boxes`, must be a value less than or equal to `1000`")  # noqa: E501
@@ -4096,7 +4096,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_shipment_content_update_previews`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_shipment_content_update_previews`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -4104,7 +4104,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `list_shipment_content_update_previews`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `list_shipment_content_update_previews`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('page_size' in params and params['page_size'] > 20):  # noqa: E501
             raise ValueError("Invalid value for parameter `page_size` when calling `list_shipment_content_update_previews`, must be a value less than or equal to `20`")  # noqa: E501
@@ -4233,7 +4233,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_shipment_items`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_shipment_items`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -4241,7 +4241,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `list_shipment_items`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `list_shipment_items`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('page_size' in params and params['page_size'] > 1000):  # noqa: E501
             raise ValueError("Invalid value for parameter `page_size` when calling `list_shipment_items`, must be a value less than or equal to `1000`")  # noqa: E501
@@ -4370,7 +4370,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_shipment_pallets`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_shipment_pallets`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -4378,7 +4378,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `list_shipment_pallets`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `list_shipment_pallets`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('page_size' in params and params['page_size'] > 1000):  # noqa: E501
             raise ValueError("Invalid value for parameter `page_size` when calling `list_shipment_pallets`, must be a value less than or equal to `1000`")  # noqa: E501
@@ -4505,7 +4505,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_transportation_options`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `list_transportation_options`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('page_size' in params and params['page_size'] > 20):  # noqa: E501
             raise ValueError("Invalid value for parameter `page_size` when calling `list_transportation_options`, must be a value less than or equal to `20`")  # noqa: E501
@@ -4523,7 +4523,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('placement_option_id' in params and
                                                        len(params['placement_option_id']) < 38):
             raise ValueError("Invalid value for parameter `placement_option_id` when calling `list_transportation_options`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('placement_option_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['placement_option_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('placement_option_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['placement_option_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `placement_option_id` when calling `list_transportation_options`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -4531,7 +4531,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `list_transportation_options`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `list_transportation_options`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -4660,7 +4660,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `schedule_self_ship_appointment`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `schedule_self_ship_appointment`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -4668,7 +4668,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `schedule_self_ship_appointment`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `schedule_self_ship_appointment`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('slot_id' in params and
                                                        len(params['slot_id']) > 38):
@@ -4676,7 +4676,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('slot_id' in params and
                                                        len(params['slot_id']) < 38):
             raise ValueError("Invalid value for parameter `slot_id` when calling `schedule_self_ship_appointment`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('slot_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['slot_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('slot_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['slot_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `slot_id` when calling `schedule_self_ship_appointment`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -4795,7 +4795,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `set_packing_information`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `set_packing_information`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -5009,7 +5009,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `update_inbound_plan_name`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `update_inbound_plan_name`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -5243,7 +5243,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `update_shipment_name`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `update_shipment_name`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -5251,7 +5251,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `update_shipment_name`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `update_shipment_name`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -5374,7 +5374,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `update_shipment_source_address`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `update_shipment_source_address`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -5382,7 +5382,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `update_shipment_source_address`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `update_shipment_source_address`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -5505,7 +5505,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('inbound_plan_id' in params and
                                                        len(params['inbound_plan_id']) < 38):
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `update_shipment_tracking_details`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['inbound_plan_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('inbound_plan_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['inbound_plan_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `inbound_plan_id` when calling `update_shipment_tracking_details`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) > 38):
@@ -5513,7 +5513,7 @@ class FbaInboundApi(object):
         if self.api_client.client_side_validation and ('shipment_id' in params and
                                                        len(params['shipment_id']) < 38):
             raise ValueError("Invalid value for parameter `shipment_id` when calling `update_shipment_tracking_details`, length must be greater than or equal to `38`")  # noqa: E501
-        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$', params['shipment_id'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('shipment_id' in params and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['shipment_id'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `shipment_id` when calling `update_shipment_tracking_details`, must conform to the pattern `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
         collection_formats = {}
 

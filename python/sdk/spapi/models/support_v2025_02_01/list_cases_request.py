@@ -33,123 +33,34 @@ class ListCasesRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'marketplace_id': 'str',
-        'case_filters': 'CaseFilters',
-        'sort_field': 'str',
         'sort_order': 'str',
         'max_results': 'int',
         'next_token': 'str',
     }
 
     attribute_map = {
-        'marketplace_id': 'marketplaceId',
-        'case_filters': 'caseFilters',
-        'sort_field': 'sortField',
         'sort_order': 'sortOrder',
         'max_results': 'maxResults',
         'next_token': 'nextToken',
     }
 
-    def __init__(self, marketplace_id=None, case_filters=None, sort_field=None, sort_order=None, max_results=None, next_token=None, _configuration=None):  # noqa: E501
+    def __init__(self, sort_order=None, max_results=None, next_token=None, _configuration=None):  # noqa: E501
         """ListCasesRequest - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
-        self._marketplace_id = None
-        self._case_filters = None
-        self._sort_field = None
         self._sort_order = None
         self._max_results = None
         self._next_token = None
         self.discriminator = None
 
-        if marketplace_id is not None:
-            self.marketplace_id = marketplace_id
-        if case_filters is not None:
-            self.case_filters = case_filters
-        if sort_field is not None:
-            self.sort_field = sort_field
         if sort_order is not None:
             self.sort_order = sort_order
         if max_results is not None:
             self.max_results = max_results
         if next_token is not None:
             self.next_token = next_token
-
-    @property
-    def marketplace_id(self):
-        """Gets the marketplace_id of this ListCasesRequest.  # noqa: E501
-
-        The marketplace identifier used for authorization only. This field does not impact the returned collection. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).  # noqa: E501
-
-        :return: The marketplace_id of this ListCasesRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._marketplace_id
-
-    @marketplace_id.setter
-    def marketplace_id(self, marketplace_id):
-        """Sets the marketplace_id of this ListCasesRequest.
-
-        The marketplace identifier used for authorization only. This field does not impact the returned collection. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).  # noqa: E501
-
-        :param marketplace_id: The marketplace_id of this ListCasesRequest.  # noqa: E501
-        :type: str
-        """
-
-        self._marketplace_id = marketplace_id
-
-    @property
-    def case_filters(self):
-        """Gets the case_filters of this ListCasesRequest.  # noqa: E501
-
-
-        :return: The case_filters of this ListCasesRequest.  # noqa: E501
-        :rtype: CaseFilters
-        """
-        return self._case_filters
-
-    @case_filters.setter
-    def case_filters(self, case_filters):
-        """Sets the case_filters of this ListCasesRequest.
-
-
-        :param case_filters: The case_filters of this ListCasesRequest.  # noqa: E501
-        :type: CaseFilters
-        """
-
-        self._case_filters = case_filters
-
-    @property
-    def sort_field(self):
-        """Gets the sort_field of this ListCasesRequest.  # noqa: E501
-
-        The field to sort cases by. Defaults to CREATION_DATE when absent.  # noqa: E501
-
-        :return: The sort_field of this ListCasesRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._sort_field
-
-    @sort_field.setter
-    def sort_field(self, sort_field):
-        """Sets the sort_field of this ListCasesRequest.
-
-        The field to sort cases by. Defaults to CREATION_DATE when absent.  # noqa: E501
-
-        :param sort_field: The sort_field of this ListCasesRequest.  # noqa: E501
-        :type: str
-        """
-        allowed_values = ["CASE_ID", "STATUS", "SUBJECT", "PRIMARY_EMAIL", "CREATION_DATE", "LAST_OUTBOUND_DATE", "RESOLUTION_DATE"]  # noqa: E501
-        if (self._configuration.client_side_validation and
-                sort_field not in allowed_values):
-            raise ValueError(
-                "Invalid value for `sort_field` ({0}), must be one of {1}"  # noqa: E501
-                .format(sort_field, allowed_values)
-            )
-
-        self._sort_field = sort_field
 
     @property
     def sort_order(self):

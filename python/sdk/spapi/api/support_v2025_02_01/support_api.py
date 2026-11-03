@@ -38,7 +38,7 @@ class SupportApi(object):
     def get_case(self, case_id, **kwargs):  # noqa: E501
         """get_case  # noqa: E501
 
-        Retrieve a specific support case.  # noqa: E501
+        Retrieve a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 10 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_case(case_id, async_req=True)
@@ -60,7 +60,7 @@ class SupportApi(object):
     def get_case_with_http_info(self, case_id, **kwargs):  # noqa: E501
         """get_case  # noqa: E501
 
-        Retrieve a specific support case.  # noqa: E501
+        Retrieve a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 10 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_case_with_http_info(case_id, async_req=True)
@@ -133,7 +133,7 @@ class SupportApi(object):
     def list_cases(self, body, **kwargs):  # noqa: E501
         """list_cases  # noqa: E501
 
-        Retrieve support cases for a selling partner.  # noqa: E501
+        Retrieve support cases for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 10 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.list_cases(body, async_req=True)
@@ -155,7 +155,7 @@ class SupportApi(object):
     def list_cases_with_http_info(self, body, **kwargs):  # noqa: E501
         """list_cases  # noqa: E501
 
-        Retrieve support cases for a selling partner.  # noqa: E501
+        Retrieve support cases for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 10 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.list_cases_with_http_info(body, async_req=True)
@@ -232,7 +232,7 @@ class SupportApi(object):
     def list_contacts(self, case_id, **kwargs):  # noqa: E501
         """list_contacts  # noqa: E501
 
-        Retrieve contacts for a specific support case.  # noqa: E501
+        Retrieve contacts for a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 10 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.list_contacts(case_id, async_req=True)
@@ -257,7 +257,7 @@ class SupportApi(object):
     def list_contacts_with_http_info(self, case_id, **kwargs):  # noqa: E501
         """list_contacts  # noqa: E501
 
-        Retrieve contacts for a specific support case.  # noqa: E501
+        Retrieve contacts for a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 10 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.list_contacts_with_http_info(case_id, async_req=True)

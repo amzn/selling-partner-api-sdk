@@ -118,7 +118,7 @@ class ShippingServiceOptions(object):
     def carrier_will_pick_up(self):
         """Gets the carrier_will_pick_up of this ShippingServiceOptions.  # noqa: E501
 
-        When true, the carrier will pick up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK).  # noqa: E501
+        When `true`, the carrier picks up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK).  # noqa: E501
 
         :return: The carrier_will_pick_up of this ShippingServiceOptions.  # noqa: E501
         :rtype: bool
@@ -129,7 +129,7 @@ class ShippingServiceOptions(object):
     def carrier_will_pick_up(self, carrier_will_pick_up):
         """Sets the carrier_will_pick_up of this ShippingServiceOptions.
 
-        When true, the carrier will pick up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK).  # noqa: E501
+        When `true`, the carrier picks up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK).  # noqa: E501
 
         :param carrier_will_pick_up: The carrier_will_pick_up of this ShippingServiceOptions.  # noqa: E501
         :type: bool

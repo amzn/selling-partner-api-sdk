@@ -64,7 +64,7 @@ class Error(object):
     def code(self):
         """Gets the code of this Error.  # noqa: E501
 
-        An error code that identifies the type of error that occurred.  # noqa: E501
+        An error code that identifies the type of error.  # noqa: E501
 
         :return: The code of this Error.  # noqa: E501
         :rtype: str
@@ -75,7 +75,7 @@ class Error(object):
     def code(self, code):
         """Sets the code of this Error.
 
-        An error code that identifies the type of error that occurred.  # noqa: E501
+        An error code that identifies the type of error.  # noqa: E501
 
         :param code: The code of this Error.  # noqa: E501
         :type: str

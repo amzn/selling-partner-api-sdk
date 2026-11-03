@@ -42,7 +42,6 @@ class Case(object):
         'created_date': 'datetime',
         'last_updated_date': 'datetime',
         'resolved_date': 'datetime',
-        'last_outbound_date': 'datetime',
     }
 
     attribute_map = {
@@ -55,10 +54,9 @@ class Case(object):
         'created_date': 'createdDate',
         'last_updated_date': 'lastUpdatedDate',
         'resolved_date': 'resolvedDate',
-        'last_outbound_date': 'lastOutboundDate',
     }
 
-    def __init__(self, case_id=None, status=None, subject=None, primary_email=None, cc_emails=None, appointments=None, created_date=None, last_updated_date=None, resolved_date=None, last_outbound_date=None, _configuration=None):  # noqa: E501
+    def __init__(self, case_id=None, status=None, subject=None, primary_email=None, cc_emails=None, appointments=None, created_date=None, last_updated_date=None, resolved_date=None, _configuration=None):  # noqa: E501
         """Case - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -73,7 +71,6 @@ class Case(object):
         self._created_date = None
         self._last_updated_date = None
         self._resolved_date = None
-        self._last_outbound_date = None
         self.discriminator = None
 
         self.case_id = case_id
@@ -87,8 +84,6 @@ class Case(object):
         self.last_updated_date = last_updated_date
         if resolved_date is not None:
             self.resolved_date = resolved_date
-        if last_outbound_date is not None:
-            self.last_outbound_date = last_outbound_date
 
     @property
     def case_id(self):
@@ -317,29 +312,6 @@ class Case(object):
         """
 
         self._resolved_date = resolved_date
-
-    @property
-    def last_outbound_date(self):
-        """Gets the last_outbound_date of this Case.  # noqa: E501
-
-        The timestamp of the last outbound contact on the case. The date must be in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> format.  # noqa: E501
-
-        :return: The last_outbound_date of this Case.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._last_outbound_date
-
-    @last_outbound_date.setter
-    def last_outbound_date(self, last_outbound_date):
-        """Sets the last_outbound_date of this Case.
-
-        The timestamp of the last outbound contact on the case. The date must be in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> format.  # noqa: E501
-
-        :param last_outbound_date: The last_outbound_date of this Case.  # noqa: E501
-        :type: datetime
-        """
-
-        self._last_outbound_date = last_outbound_date
 
     def to_dict(self):
         """Returns the model properties as a dict"""

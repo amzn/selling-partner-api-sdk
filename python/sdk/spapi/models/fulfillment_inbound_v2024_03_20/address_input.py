@@ -245,7 +245,7 @@ class AddressInput(object):
                 country_code is not None and len(country_code) < 2):
             raise ValueError("Invalid value for `country_code`, length must be greater than or equal to `2`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                country_code is not None and not re.search(r'^[A-Z]{2}$', country_code)):  # noqa: E501
+                country_code is not None and not re.search(r'^[A-Z]{2}$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), country_code)):  # noqa: E501
             raise ValueError(r"Invalid value for `country_code`, must be a follow pattern or equal to `/^[A-Z]{2}$/`")  # noqa: E501
 
         self._country_code = country_code

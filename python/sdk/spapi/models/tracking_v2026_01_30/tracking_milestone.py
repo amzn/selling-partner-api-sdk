@@ -127,7 +127,7 @@ class TrackingMilestone(object):
         if self._configuration.client_side_validation and occurred_at is None:
             raise ValueError("Invalid value for `occurred_at`, must not be `None`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                occurred_at is not None and not re.search(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,9})?Z$', occurred_at)):  # noqa: E501
+                occurred_at is not None and not re.search(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,9})?Z$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), occurred_at)):  # noqa: E501
             raise ValueError(r"Invalid value for `occurred_at`, must be a follow pattern or equal to `/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,9})?Z$/`")  # noqa: E501
 
         self._occurred_at = occurred_at

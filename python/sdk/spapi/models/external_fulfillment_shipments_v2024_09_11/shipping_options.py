@@ -137,7 +137,7 @@ class ShippingOptions(object):
     def carrier_name(self):
         """Gets the carrier_name of this ShippingOptions.  # noqa: E501
 
-        The carrier name for the offering.  # noqa: E501
+        The carrier name for the offering. Applicable only for Self Ship program  # noqa: E501
 
         :return: The carrier_name of this ShippingOptions.  # noqa: E501
         :rtype: str
@@ -148,7 +148,7 @@ class ShippingOptions(object):
     def carrier_name(self, carrier_name):
         """Sets the carrier_name of this ShippingOptions.
 
-        The carrier name for the offering.  # noqa: E501
+        The carrier name for the offering. Applicable only for Self Ship program  # noqa: E501
 
         :param carrier_name: The carrier_name of this ShippingOptions.  # noqa: E501
         :type: str

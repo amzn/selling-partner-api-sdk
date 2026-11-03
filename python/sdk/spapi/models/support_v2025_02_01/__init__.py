@@ -17,11 +17,9 @@ from spapi.models.support_v2025_02_01.appointment import Appointment
 from spapi.models.support_v2025_02_01.attachment import Attachment
 from spapi.models.support_v2025_02_01.callback_timing import CallbackTiming
 from spapi.models.support_v2025_02_01.case import Case
-from spapi.models.support_v2025_02_01.case_filters import CaseFilters
 from spapi.models.support_v2025_02_01.chat_content import ChatContent
 from spapi.models.support_v2025_02_01.chat_event import ChatEvent
 from spapi.models.support_v2025_02_01.contact import Contact
-from spapi.models.support_v2025_02_01.date_filter import DateFilter
 from spapi.models.support_v2025_02_01.email_content import EmailContent
 from spapi.models.support_v2025_02_01.error import Error
 from spapi.models.support_v2025_02_01.error_list import ErrorList

@@ -40,7 +40,7 @@ class ShipmentInfo(object):
         'priority': 'Priority',
         'buyer_order_id': 'str',
         'order_states_eligible_for_rejection': 'List[str]',
-        'order_placed_timestamp': 'str',
+        'order_placed_timestamp': 'float',
         'processing_source': 'str',
         'payment_method': 'str',
     }
@@ -248,10 +248,10 @@ class ShipmentInfo(object):
     def order_placed_timestamp(self):
         """Gets the order_placed_timestamp of this ShipmentInfo.  # noqa: E501
 
-        The timestamp of when the order was placed, in UTC  # noqa: E501
+        The epoch timestamp (in milliseconds) of when the order was placed, in UTC.  # noqa: E501
 
         :return: The order_placed_timestamp of this ShipmentInfo.  # noqa: E501
-        :rtype: str
+        :rtype: float
         """
         return self._order_placed_timestamp
 
@@ -259,10 +259,10 @@ class ShipmentInfo(object):
     def order_placed_timestamp(self, order_placed_timestamp):
         """Sets the order_placed_timestamp of this ShipmentInfo.
 
-        The timestamp of when the order was placed, in UTC  # noqa: E501
+        The epoch timestamp (in milliseconds) of when the order was placed, in UTC.  # noqa: E501
 
         :param order_placed_timestamp: The order_placed_timestamp of this ShipmentInfo.  # noqa: E501
-        :type: str
+        :type: float
         """
 
         self._order_placed_timestamp = order_placed_timestamp

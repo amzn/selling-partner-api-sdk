@@ -32,6 +32,8 @@ class DeliveryExperienceType(object):
     DELIVERYCONFIRMATIONWITHSIGNATURE = 'DeliveryConfirmationWithSignature'
     DELIVERYCONFIRMATIONWITHOUTSIGNATURE = 'DeliveryConfirmationWithoutSignature'
     NOTRACKING = 'NoTracking'
+    DELIVERYCONFIRMATIONWITHIDENTITYCHECK = 'DeliveryConfirmationWithIdentityCheck'
+    DELIVERYCONFIRMATIONWITHNAMEVERIFICATION = 'DeliveryConfirmationWithNameVerification'
 
     """
     Attributes:

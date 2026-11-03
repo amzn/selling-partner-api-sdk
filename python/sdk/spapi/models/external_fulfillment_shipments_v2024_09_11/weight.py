@@ -34,7 +34,7 @@ class Weight(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'value': 'str',
+        'value': 'float',
         'weight_unit': 'str',
     }
 
@@ -60,10 +60,10 @@ class Weight(object):
     def value(self):
         """Gets the value of this Weight.  # noqa: E501
 
-        A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.  # noqa: E501
+        A decimal number.  # noqa: E501
 
         :return: The value of this Weight.  # noqa: E501
-        :rtype: str
+        :rtype: float
         """
         return self._value
 
@@ -71,10 +71,10 @@ class Weight(object):
     def value(self, value):
         """Sets the value of this Weight.
 
-        A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.  # noqa: E501
+        A decimal number.  # noqa: E501
 
         :param value: The value of this Weight.  # noqa: E501
-        :type: str
+        :type: float
         """
         if self._configuration.client_side_validation and value is None:
             raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501

@@ -122,7 +122,7 @@ class ShippingService(object):
     def shipping_service_name(self):
         """Gets the shipping_service_name of this ShippingService.  # noqa: E501
 
-        A plain text representation of a carrier's shipping service. For example, \"UPS Ground\" or \"FedEx Standard Overnight\".   # noqa: E501
+        The carrier's shipping service name, such as \"UPS Ground\" or \"FedEx Standard Overnight\".  # noqa: E501
 
         :return: The shipping_service_name of this ShippingService.  # noqa: E501
         :rtype: str
@@ -133,7 +133,7 @@ class ShippingService(object):
     def shipping_service_name(self, shipping_service_name):
         """Sets the shipping_service_name of this ShippingService.
 
-        A plain text representation of a carrier's shipping service. For example, \"UPS Ground\" or \"FedEx Standard Overnight\".   # noqa: E501
+        The carrier's shipping service name, such as \"UPS Ground\" or \"FedEx Standard Overnight\".  # noqa: E501
 
         :param shipping_service_name: The shipping_service_name of this ShippingService.  # noqa: E501
         :type: str
@@ -452,7 +452,7 @@ class ShippingService(object):
     def requires_additional_seller_inputs(self):
         """Gets the requires_additional_seller_inputs of this ShippingService.  # noqa: E501
 
-        When true, additional seller inputs are required.  # noqa: E501
+        When `true`, additional seller inputs are required.  # noqa: E501
 
         :return: The requires_additional_seller_inputs of this ShippingService.  # noqa: E501
         :rtype: bool
@@ -463,7 +463,7 @@ class ShippingService(object):
     def requires_additional_seller_inputs(self, requires_additional_seller_inputs):
         """Sets the requires_additional_seller_inputs of this ShippingService.
 
-        When true, additional seller inputs are required.  # noqa: E501
+        When `true`, additional seller inputs are required.  # noqa: E501
 
         :param requires_additional_seller_inputs: The requires_additional_seller_inputs of this ShippingService.  # noqa: E501
         :type: bool

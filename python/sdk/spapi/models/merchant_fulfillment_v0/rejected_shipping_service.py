@@ -147,7 +147,7 @@ class RejectedShippingService(object):
     def rejection_reason_code(self):
         """Gets the rejection_reason_code of this RejectedShippingService.  # noqa: E501
 
-        A reason code meant to be consumed programatically. For example, `CARRIER_CANNOT_SHIP_TO_POBOX`.  # noqa: E501
+        A reason code meant to be consumed programmatically. For example, `CARRIER_CANNOT_SHIP_TO_POBOX`.  # noqa: E501
 
         :return: The rejection_reason_code of this RejectedShippingService.  # noqa: E501
         :rtype: str
@@ -158,7 +158,7 @@ class RejectedShippingService(object):
     def rejection_reason_code(self, rejection_reason_code):
         """Sets the rejection_reason_code of this RejectedShippingService.
 
-        A reason code meant to be consumed programatically. For example, `CARRIER_CANNOT_SHIP_TO_POBOX`.  # noqa: E501
+        A reason code meant to be consumed programmatically. For example, `CARRIER_CANNOT_SHIP_TO_POBOX`.  # noqa: E501
 
         :param rejection_reason_code: The rejection_reason_code of this RejectedShippingService.  # noqa: E501
         :type: str
@@ -172,7 +172,7 @@ class RejectedShippingService(object):
     def rejection_reason_message(self):
         """Gets the rejection_reason_message of this RejectedShippingService.  # noqa: E501
 
-        A localized human readable description of the rejected reason.  # noqa: E501
+        A localized, human-readable description of the rejected reason.  # noqa: E501
 
         :return: The rejection_reason_message of this RejectedShippingService.  # noqa: E501
         :rtype: str
@@ -183,7 +183,7 @@ class RejectedShippingService(object):
     def rejection_reason_message(self, rejection_reason_message):
         """Sets the rejection_reason_message of this RejectedShippingService.
 
-        A localized human readable description of the rejected reason.  # noqa: E501
+        A localized, human-readable description of the rejected reason.  # noqa: E501
 
         :param rejection_reason_message: The rejection_reason_message of this RejectedShippingService.  # noqa: E501
         :type: str

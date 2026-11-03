@@ -95,7 +95,7 @@ class GetEligibleShipmentServicesResult(object):
     def rejected_shipping_service_list(self):
         """Gets the rejected_shipping_service_list of this GetEligibleShipmentServicesResult.  # noqa: E501
 
-        List of services that are for some reason unavailable for this request  # noqa: E501
+        List of services that are for some reason unavailable for this request.  # noqa: E501
 
         :return: The rejected_shipping_service_list of this GetEligibleShipmentServicesResult.  # noqa: E501
         :rtype: List[RejectedShippingService]
@@ -106,7 +106,7 @@ class GetEligibleShipmentServicesResult(object):
     def rejected_shipping_service_list(self, rejected_shipping_service_list):
         """Sets the rejected_shipping_service_list of this GetEligibleShipmentServicesResult.
 
-        List of services that are for some reason unavailable for this request  # noqa: E501
+        List of services that are for some reason unavailable for this request.  # noqa: E501
 
         :param rejected_shipping_service_list: The rejected_shipping_service_list of this GetEligibleShipmentServicesResult.  # noqa: E501
         :type: List[RejectedShippingService]

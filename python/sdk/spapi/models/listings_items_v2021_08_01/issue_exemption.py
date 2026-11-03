@@ -92,7 +92,7 @@ class IssueExemption(object):
     def expiry_date(self):
         """Gets the expiry_date of this IssueExemption.  # noqa: E501
 
-        Represents the timestamp, in ISO 8601 format, that specifies the date when the temporary exemptions expires, and Amazon begins enforcing the listed actions.  # noqa: E501
+        The timestamp, in ISO 8601 format, when the temporary exemption expires and Amazon begins enforcing the listed actions.  # noqa: E501
 
         :return: The expiry_date of this IssueExemption.  # noqa: E501
         :rtype: datetime
@@ -103,7 +103,7 @@ class IssueExemption(object):
     def expiry_date(self, expiry_date):
         """Sets the expiry_date of this IssueExemption.
 
-        Represents the timestamp, in ISO 8601 format, that specifies the date when the temporary exemptions expires, and Amazon begins enforcing the listed actions.  # noqa: E501
+        The timestamp, in ISO 8601 format, when the temporary exemption expires and Amazon begins enforcing the listed actions.  # noqa: E501
 
         :param expiry_date: The expiry_date of this IssueExemption.  # noqa: E501
         :type: datetime

@@ -35,7 +35,7 @@ class InvoiceInfo(object):
     """
     swagger_types = {
         'invoice_id': 'str',
-        'creation_date_time': 'str',
+        'creation_date_time': 'datetime',
     }
 
     attribute_map = {
@@ -53,8 +53,10 @@ class InvoiceInfo(object):
         self._creation_date_time = None
         self.discriminator = None
 
-        self.invoice_id = invoice_id
-        self.creation_date_time = creation_date_time
+        if invoice_id is not None:
+            self.invoice_id = invoice_id
+        if creation_date_time is not None:
+            self.creation_date_time = creation_date_time
 
     @property
     def invoice_id(self):
@@ -76,8 +78,6 @@ class InvoiceInfo(object):
         :param invoice_id: The invoice_id of this InvoiceInfo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and invoice_id is None:
-            raise ValueError("Invalid value for `invoice_id`, must not be `None`")  # noqa: E501
 
         self._invoice_id = invoice_id
 
@@ -88,7 +88,7 @@ class InvoiceInfo(object):
         A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  # noqa: E501
 
         :return: The creation_date_time of this InvoiceInfo.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._creation_date_time
 
@@ -99,10 +99,8 @@ class InvoiceInfo(object):
         A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  # noqa: E501
 
         :param creation_date_time: The creation_date_time of this InvoiceInfo.  # noqa: E501
-        :type: str
+        :type: datetime
         """
-        if self._configuration.client_side_validation and creation_date_time is None:
-            raise ValueError("Invalid value for `creation_date_time`, must not be `None`")  # noqa: E501
 
         self._creation_date_time = creation_date_time
 

@@ -99,7 +99,7 @@ class VendorShippingLabelsApi(object):
                                                        params['body'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `body` when calling `create_shipping_labels`")  # noqa: E501
 
-        if self.api_client.client_side_validation and ('purchase_order_number' in params and not re.search(r'^[a-zA-Z0-9]+$', params['purchase_order_number'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('purchase_order_number' in params and not re.search(r'^[a-zA-Z0-9]+$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['purchase_order_number'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `purchase_order_number` when calling `create_shipping_labels`, must conform to the pattern `/^[a-zA-Z0-9]+$/`")  # noqa: E501
         collection_formats = {}
 
@@ -202,7 +202,7 @@ class VendorShippingLabelsApi(object):
                                                        params['purchase_order_number'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `purchase_order_number` when calling `get_shipping_label`")  # noqa: E501
 
-        if self.api_client.client_side_validation and ('purchase_order_number' in params and not re.search(r'^[a-zA-Z0-9]+$', params['purchase_order_number'])):  # noqa: E501
+        if self.api_client.client_side_validation and ('purchase_order_number' in params and not re.search(r'^[a-zA-Z0-9]+$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), params['purchase_order_number'])):  # noqa: E501
             raise ValueError("Invalid value for parameter `purchase_order_number` when calling `get_shipping_label`, must conform to the pattern `/^[a-zA-Z0-9]+$/`")  # noqa: E501
         collection_formats = {}
 

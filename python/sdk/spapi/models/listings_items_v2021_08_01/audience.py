@@ -61,7 +61,7 @@ class Audience(object):
     def value(self):
         """Gets the value of this Audience.  # noqa: E501
 
-        Name of the audience an offer is applicable to.   Common values:   * 'ALL' - Standard offer audience for buyers on Amazon retail websites.   * 'B2B' - Offer audience for Amazon Business website buyers.  # noqa: E501
+        Name of the audience an offer is applicable to.  Common values:  * 'ALL' - Standard offer audience for buyers on Amazon retail websites.  * 'B2B' - Offer audience for Amazon Business website buyers.  # noqa: E501
 
         :return: The value of this Audience.  # noqa: E501
         :rtype: str
@@ -72,7 +72,7 @@ class Audience(object):
     def value(self, value):
         """Sets the value of this Audience.
 
-        Name of the audience an offer is applicable to.   Common values:   * 'ALL' - Standard offer audience for buyers on Amazon retail websites.   * 'B2B' - Offer audience for Amazon Business website buyers.  # noqa: E501
+        Name of the audience an offer is applicable to.  Common values:  * 'ALL' - Standard offer audience for buyers on Amazon retail websites.  * 'B2B' - Offer audience for Amazon Business website buyers.  # noqa: E501
 
         :param value: The value of this Audience.  # noqa: E501
         :type: str

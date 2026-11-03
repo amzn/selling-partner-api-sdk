@@ -87,7 +87,7 @@ class ShippingLabelRequest(object):
         if self._configuration.client_side_validation and purchase_order_number is None:
             raise ValueError("Invalid value for `purchase_order_number`, must not be `None`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                purchase_order_number is not None and not re.search(r'^[a-zA-Z0-9]+$', purchase_order_number)):  # noqa: E501
+                purchase_order_number is not None and not re.search(r'^[a-zA-Z0-9]+$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), purchase_order_number)):  # noqa: E501
             raise ValueError(r"Invalid value for `purchase_order_number`, must be a follow pattern or equal to `/^[a-zA-Z0-9]+$/`")  # noqa: E501
 
         self._purchase_order_number = purchase_order_number

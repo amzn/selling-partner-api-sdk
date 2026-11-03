@@ -152,7 +152,7 @@ class CreateMarketplaceItemLabelsRequest(object):
         :type: str
         """
         if (self._configuration.client_side_validation and
-                locale_code is not None and not re.search(r'^[a-z]{2}_[A-Z]{2}$', locale_code)):  # noqa: E501
+                locale_code is not None and not re.search(r'^[a-z]{2}_[A-Z]{2}$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), locale_code)):  # noqa: E501
             raise ValueError(r"Invalid value for `locale_code`, must be a follow pattern or equal to `/^[a-z]{2}_[A-Z]{2}$/`")  # noqa: E501
 
         self._locale_code = locale_code

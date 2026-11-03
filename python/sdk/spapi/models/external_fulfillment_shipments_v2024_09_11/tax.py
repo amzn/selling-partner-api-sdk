@@ -35,7 +35,7 @@ class Tax(object):
     """
     swagger_types = {
         'type': 'str',
-        'rate': 'str',
+        'rate': 'float',
         'charge': 'ChargeBreakup',
     }
 
@@ -96,10 +96,10 @@ class Tax(object):
     def rate(self):
         """Gets the rate of this Tax.  # noqa: E501
 
-        A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.  # noqa: E501
+        A decimal number.  # noqa: E501
 
         :return: The rate of this Tax.  # noqa: E501
-        :rtype: str
+        :rtype: float
         """
         return self._rate
 
@@ -107,10 +107,10 @@ class Tax(object):
     def rate(self, rate):
         """Sets the rate of this Tax.
 
-        A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.  # noqa: E501
+        A decimal number.  # noqa: E501
 
         :param rate: The rate of this Tax.  # noqa: E501
-        :type: str
+        :type: float
         """
 
         self._rate = rate

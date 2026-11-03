@@ -58,7 +58,8 @@ class RecommendedPackage(object):
 
         self.dimensions = dimensions
         self.weight = weight
-        self.line_items = line_items
+        if line_items is not None:
+            self.line_items = line_items
 
     @property
     def dimensions(self):
@@ -126,8 +127,6 @@ class RecommendedPackage(object):
         :param line_items: The line_items of this RecommendedPackage.  # noqa: E501
         :type: List[RecommendedPackageLineItem]
         """
-        if self._configuration.client_side_validation and line_items is None:
-            raise ValueError("Invalid value for `line_items`, must not be `None`")  # noqa: E501
         if (self._configuration.client_side_validation and
                 line_items is not None and len(line_items) > 50):
             raise ValueError("Invalid value for `line_items`, number of items must be less than or equal to `50`")  # noqa: E501

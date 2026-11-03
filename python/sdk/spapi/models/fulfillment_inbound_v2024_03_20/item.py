@@ -133,7 +133,7 @@ class Item(object):
         :type: str
         """
         if (self._configuration.client_side_validation and
-                expiration is not None and not re.search(r'^([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$', expiration)):  # noqa: E501
+                expiration is not None and not re.search(r'^([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), expiration)):  # noqa: E501
             raise ValueError(r"Invalid value for `expiration`, must be a follow pattern or equal to `/^([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/`")  # noqa: E501
 
         self._expiration = expiration

@@ -84,7 +84,7 @@ class ShipmentSummary(object):
                 shipment_id is not None and len(shipment_id) < 38):
             raise ValueError("Invalid value for `shipment_id`, length must be greater than or equal to `38`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                shipment_id is not None and not re.search(r'^[a-zA-Z0-9-]*$', shipment_id)):  # noqa: E501
+                shipment_id is not None and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), shipment_id)):  # noqa: E501
             raise ValueError(r"Invalid value for `shipment_id`, must be a follow pattern or equal to `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
 
         self._shipment_id = shipment_id

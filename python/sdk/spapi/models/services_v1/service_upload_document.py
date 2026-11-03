@@ -144,7 +144,7 @@ class ServiceUploadDocument(object):
         :type: str
         """
         if (self._configuration.client_side_validation and
-                content_md5 is not None and not re.search(r'^[A-Za-z0-9\\+\/]{22}={2}$', content_md5)):  # noqa: E501
+                content_md5 is not None and not re.search(r'^[A-Za-z0-9\\+\/]{22}={2}$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), content_md5)):  # noqa: E501
             raise ValueError(r"Invalid value for `content_md5`, must be a follow pattern or equal to `/^[A-Za-z0-9\\+\/]{22}={2}$/`")  # noqa: E501
 
         self._content_md5 = content_md5

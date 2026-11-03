@@ -212,7 +212,7 @@ class ItemDetails(object):
         :type: str
         """
         if (self._configuration.client_side_validation and
-                country_of_origin is not None and not re.search(r'^[A-Z]{2}$', country_of_origin)):  # noqa: E501
+                country_of_origin is not None and not re.search(r'^[A-Z]{2}$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), country_of_origin)):  # noqa: E501
             raise ValueError(r"Invalid value for `country_of_origin`, must be a follow pattern or equal to `/^[A-Z]{2}$/`")  # noqa: E501
 
         self._country_of_origin = country_of_origin

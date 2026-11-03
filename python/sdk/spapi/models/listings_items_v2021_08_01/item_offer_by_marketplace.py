@@ -38,6 +38,8 @@ class ItemOfferByMarketplace(object):
         'price': 'Money',
         'points': 'Points',
         'audience': 'Audience',
+        'replenishment_discount': 'ReplenishmentDiscount',
+        'quantity_discount_plan': 'QuantityDiscountPlan',
     }
 
     attribute_map = {
@@ -46,9 +48,11 @@ class ItemOfferByMarketplace(object):
         'price': 'price',
         'points': 'points',
         'audience': 'audience',
+        'replenishment_discount': 'replenishmentDiscount',
+        'quantity_discount_plan': 'quantityDiscountPlan',
     }
 
-    def __init__(self, marketplace_id=None, offer_type=None, price=None, points=None, audience=None, _configuration=None):  # noqa: E501
+    def __init__(self, marketplace_id=None, offer_type=None, price=None, points=None, audience=None, replenishment_discount=None, quantity_discount_plan=None, _configuration=None):  # noqa: E501
         """ItemOfferByMarketplace - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -59,6 +63,8 @@ class ItemOfferByMarketplace(object):
         self._price = None
         self._points = None
         self._audience = None
+        self._replenishment_discount = None
+        self._quantity_discount_plan = None
         self.discriminator = None
 
         self.marketplace_id = marketplace_id
@@ -68,6 +74,10 @@ class ItemOfferByMarketplace(object):
             self.points = points
         if audience is not None:
             self.audience = audience
+        if replenishment_discount is not None:
+            self.replenishment_discount = replenishment_discount
+        if quantity_discount_plan is not None:
+            self.quantity_discount_plan = quantity_discount_plan
 
     @property
     def marketplace_id(self):
@@ -190,6 +200,48 @@ class ItemOfferByMarketplace(object):
         """
 
         self._audience = audience
+
+    @property
+    def replenishment_discount(self):
+        """Gets the replenishment_discount of this ItemOfferByMarketplace.  # noqa: E501
+
+
+        :return: The replenishment_discount of this ItemOfferByMarketplace.  # noqa: E501
+        :rtype: ReplenishmentDiscount
+        """
+        return self._replenishment_discount
+
+    @replenishment_discount.setter
+    def replenishment_discount(self, replenishment_discount):
+        """Sets the replenishment_discount of this ItemOfferByMarketplace.
+
+
+        :param replenishment_discount: The replenishment_discount of this ItemOfferByMarketplace.  # noqa: E501
+        :type: ReplenishmentDiscount
+        """
+
+        self._replenishment_discount = replenishment_discount
+
+    @property
+    def quantity_discount_plan(self):
+        """Gets the quantity_discount_plan of this ItemOfferByMarketplace.  # noqa: E501
+
+
+        :return: The quantity_discount_plan of this ItemOfferByMarketplace.  # noqa: E501
+        :rtype: QuantityDiscountPlan
+        """
+        return self._quantity_discount_plan
+
+    @quantity_discount_plan.setter
+    def quantity_discount_plan(self, quantity_discount_plan):
+        """Sets the quantity_discount_plan of this ItemOfferByMarketplace.
+
+
+        :param quantity_discount_plan: The quantity_discount_plan of this ItemOfferByMarketplace.  # noqa: E501
+        :type: QuantityDiscountPlan
+        """
+
+        self._quantity_discount_plan = quantity_discount_plan
 
     def to_dict(self):
         """Returns the model properties as a dict"""

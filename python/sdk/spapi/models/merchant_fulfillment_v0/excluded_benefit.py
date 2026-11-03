@@ -61,7 +61,7 @@ class ExcludedBenefit(object):
     def benefit(self):
         """Gets the benefit of this ExcludedBenefit.  # noqa: E501
 
-        A benefit that is being excluded from a shipment.  # noqa: E501
+        The benefit excluded from a shipment.  # noqa: E501
 
         :return: The benefit of this ExcludedBenefit.  # noqa: E501
         :rtype: str
@@ -72,7 +72,7 @@ class ExcludedBenefit(object):
     def benefit(self, benefit):
         """Sets the benefit of this ExcludedBenefit.
 
-        A benefit that is being excluded from a shipment.  # noqa: E501
+        The benefit excluded from a shipment.  # noqa: E501
 
         :param benefit: The benefit of this ExcludedBenefit.  # noqa: E501
         :type: str

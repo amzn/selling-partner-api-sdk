@@ -38,6 +38,7 @@ class TrackingIdentifier(object):
         'aftn': 'str',
         'container_number': 'str',
         'house_bill_of_lading_number': 'str',
+        'pro_number': 'str',
         'carrier_tracking': 'TrackingIdentifierCarrierTracking',
     }
 
@@ -47,10 +48,11 @@ class TrackingIdentifier(object):
         'aftn': 'aftn',
         'container_number': 'containerNumber',
         'house_bill_of_lading_number': 'houseBillOfLadingNumber',
+        'pro_number': 'proNumber',
         'carrier_tracking': 'carrierTracking',
     }
 
-    def __init__(self, id=None, acsin=None, aftn=None, container_number=None, house_bill_of_lading_number=None, carrier_tracking=None, _configuration=None):  # noqa: E501
+    def __init__(self, id=None, acsin=None, aftn=None, container_number=None, house_bill_of_lading_number=None, pro_number=None, carrier_tracking=None, _configuration=None):  # noqa: E501
         """TrackingIdentifier - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -61,6 +63,7 @@ class TrackingIdentifier(object):
         self._aftn = None
         self._container_number = None
         self._house_bill_of_lading_number = None
+        self._pro_number = None
         self._carrier_tracking = None
         self.discriminator = None
 
@@ -74,6 +77,8 @@ class TrackingIdentifier(object):
             self.container_number = container_number
         if house_bill_of_lading_number is not None:
             self.house_bill_of_lading_number = house_bill_of_lading_number
+        if pro_number is not None:
+            self.pro_number = pro_number
         if carrier_tracking is not None:
             self.carrier_tracking = carrier_tracking
 
@@ -191,6 +196,29 @@ class TrackingIdentifier(object):
         """
 
         self._house_bill_of_lading_number = house_bill_of_lading_number
+
+    @property
+    def pro_number(self):
+        """Gets the pro_number of this TrackingIdentifier.  # noqa: E501
+
+        The PRO number assigned by the freight carrier  # noqa: E501
+
+        :return: The pro_number of this TrackingIdentifier.  # noqa: E501
+        :rtype: str
+        """
+        return self._pro_number
+
+    @pro_number.setter
+    def pro_number(self, pro_number):
+        """Sets the pro_number of this TrackingIdentifier.
+
+        The PRO number assigned by the freight carrier  # noqa: E501
+
+        :param pro_number: The pro_number of this TrackingIdentifier.  # noqa: E501
+        :type: str
+        """
+
+        self._pro_number = pro_number
 
     @property
     def carrier_tracking(self):

@@ -10,6 +10,8 @@ from spapi.auth.credentials import SPAPIConfig
     
 ## import APIs
     
+from spapi.api.action_items_v2026_06_01.items_api import ItemsApi
+from spapi.api.action_plans_v2026_06_01.action_plans_api import ActionPlansApi
 from spapi.api.apluscontent_v2020_11_01.aplus_content_api import AplusContentApi
 from spapi.api.appintegrations_v2024_04_01.app_integrations_api import AppIntegrationsApi
 from spapi.api.applications_v2023_11_30.applications_api import ApplicationsApi
@@ -43,6 +45,7 @@ from spapi.api.listings_items_v2021_08_01.listings_api import ListingsApi
 from spapi.api.listings_restrictions_v2021_08_01.listings_restrictions_api import ListingsRestrictionsApi
 from spapi.api.merchant_fulfillment_v0.merchant_fulfillment_api import MerchantFulfillmentApi
 from spapi.api.messaging_v1.messaging_api import MessagingApi
+from spapi.api.messaging_v2026_04_20.automation_configurations_api import AutomationConfigurationsApi
 from spapi.api.notifications_v1.notifications_api import NotificationsApi
 from spapi.api.orders_v0.orders_v0_api import OrdersV0Api
 from spapi.api.orders_v0.shipment_api import ShipmentApi

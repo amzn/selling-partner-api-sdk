@@ -31,6 +31,7 @@ class OrderChangeTypeEnum(object):
     BUYERREQUESTEDCHANGE = 'BuyerRequestedChange'
     DELIVERYTIPCHANGE = 'DeliveryTipChange'
     ORDERSTATUSCHANGE = 'OrderStatusChange'
+    PREFULFILLMENTSTATUSCHANGE = 'PreFulfillmentStatusChange'
 
     """
     Attributes:

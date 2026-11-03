@@ -34,23 +34,28 @@ class ServiceJobProvider(object):
     """
     swagger_types = {
         'service_job_provider_id': 'str',
+        'provider_service_job_reference_id': 'str',
     }
 
     attribute_map = {
         'service_job_provider_id': 'serviceJobProviderId',
+        'provider_service_job_reference_id': 'providerServiceJobReferenceId',
     }
 
-    def __init__(self, service_job_provider_id=None, _configuration=None):  # noqa: E501
+    def __init__(self, service_job_provider_id=None, provider_service_job_reference_id=None, _configuration=None):  # noqa: E501
         """ServiceJobProvider - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
         self._service_job_provider_id = None
+        self._provider_service_job_reference_id = None
         self.discriminator = None
 
         if service_job_provider_id is not None:
             self.service_job_provider_id = service_job_provider_id
+        if provider_service_job_reference_id is not None:
+            self.provider_service_job_reference_id = provider_service_job_reference_id
 
     @property
     def service_job_provider_id(self):
@@ -73,10 +78,33 @@ class ServiceJobProvider(object):
         :type: str
         """
         if (self._configuration.client_side_validation and
-                service_job_provider_id is not None and not re.search(r'^[A-Z0-9]*$', service_job_provider_id)):  # noqa: E501
+                service_job_provider_id is not None and not re.search(r'^[A-Z0-9]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), service_job_provider_id)):  # noqa: E501
             raise ValueError(r"Invalid value for `service_job_provider_id`, must be a follow pattern or equal to `/^[A-Z0-9]*$/`")  # noqa: E501
 
         self._service_job_provider_id = service_job_provider_id
+
+    @property
+    def provider_service_job_reference_id(self):
+        """Gets the provider_service_job_reference_id of this ServiceJobProvider.  # noqa: E501
+
+        The reference ID for the service job assigned to the provider.  # noqa: E501
+
+        :return: The provider_service_job_reference_id of this ServiceJobProvider.  # noqa: E501
+        :rtype: str
+        """
+        return self._provider_service_job_reference_id
+
+    @provider_service_job_reference_id.setter
+    def provider_service_job_reference_id(self, provider_service_job_reference_id):
+        """Sets the provider_service_job_reference_id of this ServiceJobProvider.
+
+        The reference ID for the service job assigned to the provider.  # noqa: E501
+
+        :param provider_service_job_reference_id: The provider_service_job_reference_id of this ServiceJobProvider.  # noqa: E501
+        :type: str
+        """
+
+        self._provider_service_job_reference_id = provider_service_job_reference_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""

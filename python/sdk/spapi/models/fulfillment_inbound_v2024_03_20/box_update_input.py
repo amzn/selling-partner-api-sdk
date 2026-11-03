@@ -169,7 +169,7 @@ class BoxUpdateInput(object):
                 package_id is not None and len(package_id) < 38):
             raise ValueError("Invalid value for `package_id`, length must be greater than or equal to `38`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                package_id is not None and not re.search(r'^[a-zA-Z0-9-]*$', package_id)):  # noqa: E501
+                package_id is not None and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), package_id)):  # noqa: E501
             raise ValueError(r"Invalid value for `package_id`, must be a follow pattern or equal to `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
 
         self._package_id = package_id

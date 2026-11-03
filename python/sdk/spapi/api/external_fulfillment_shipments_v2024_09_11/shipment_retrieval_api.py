@@ -145,8 +145,8 @@ class ShipmentRetrievalApi(object):
         :param str location_id: The Amazon channel location identifier for the shipments you want to retrieve.
         :param str marketplace_id: The marketplace ID associated with the location. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
         :param str channel_name: The channel name associated with the location.
-        :param str last_updated_after: The response includes shipments whose latest update is after the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
-        :param str last_updated_before: The response includes shipments whose latest update is before the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
+        :param datetime last_updated_after: The response includes shipments whose latest update is after the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
+        :param datetime last_updated_before: The response includes shipments whose latest update is before the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         :param int max_results: The maximum number of shipments to include in the response.
         :param str pagination_token: A token that you use to retrieve the next page of results. The response includes `nextToken` when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.
         :return: ShipmentsResponse
@@ -174,8 +174,8 @@ class ShipmentRetrievalApi(object):
         :param str location_id: The Amazon channel location identifier for the shipments you want to retrieve.
         :param str marketplace_id: The marketplace ID associated with the location. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
         :param str channel_name: The channel name associated with the location.
-        :param str last_updated_after: The response includes shipments whose latest update is after the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
-        :param str last_updated_before: The response includes shipments whose latest update is before the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
+        :param datetime last_updated_after: The response includes shipments whose latest update is after the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
+        :param datetime last_updated_before: The response includes shipments whose latest update is before the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         :param int max_results: The maximum number of shipments to include in the response.
         :param str pagination_token: A token that you use to retrieve the next page of results. The response includes `nextToken` when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.
         :return: ShipmentsResponse

@@ -41,6 +41,7 @@ class Package(object):
         'package_line_items': 'List[PackageLineItem]',
         'status': 'str',
         'package_handling_requirements': 'str',
+        'tracking_details': 'TrackingDetails',
     }
 
     attribute_map = {
@@ -51,9 +52,10 @@ class Package(object):
         'package_line_items': 'packageLineItems',
         'status': 'status',
         'package_handling_requirements': 'packageHandlingRequirements',
+        'tracking_details': 'trackingDetails',
     }
 
-    def __init__(self, id=None, dimensions=None, weight=None, hazmat_labels=None, package_line_items=None, status=None, package_handling_requirements=None, _configuration=None):  # noqa: E501
+    def __init__(self, id=None, dimensions=None, weight=None, hazmat_labels=None, package_line_items=None, status=None, package_handling_requirements=None, tracking_details=None, _configuration=None):  # noqa: E501
         """Package - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -66,6 +68,7 @@ class Package(object):
         self._package_line_items = None
         self._status = None
         self._package_handling_requirements = None
+        self._tracking_details = None
         self.discriminator = None
 
         self.id = id
@@ -78,12 +81,14 @@ class Package(object):
             self.status = status
         if package_handling_requirements is not None:
             self.package_handling_requirements = package_handling_requirements
+        if tracking_details is not None:
+            self.tracking_details = tracking_details
 
     @property
     def id(self):
         """Gets the id of this Package.  # noqa: E501
 
-        An ID that uniquely identifies a package within a shipment.  # noqa: E501
+        The ID of the package whose information you want to update.  # noqa: E501
 
         :return: The id of this Package.  # noqa: E501
         :rtype: str
@@ -94,7 +99,7 @@ class Package(object):
     def id(self, id):
         """Sets the id of this Package.
 
-        An ID that uniquely identifies a package within a shipment.  # noqa: E501
+        The ID of the package whose information you want to update.  # noqa: E501
 
         :param id: The id of this Package.  # noqa: E501
         :type: str
@@ -260,6 +265,27 @@ class Package(object):
             )
 
         self._package_handling_requirements = package_handling_requirements
+
+    @property
+    def tracking_details(self):
+        """Gets the tracking_details of this Package.  # noqa: E501
+
+
+        :return: The tracking_details of this Package.  # noqa: E501
+        :rtype: TrackingDetails
+        """
+        return self._tracking_details
+
+    @tracking_details.setter
+    def tracking_details(self, tracking_details):
+        """Sets the tracking_details of this Package.
+
+
+        :param tracking_details: The tracking_details of this Package.  # noqa: E501
+        :type: TrackingDetails
+        """
+
+        self._tracking_details = tracking_details
 
     def to_dict(self):
         """Returns the model properties as a dict"""

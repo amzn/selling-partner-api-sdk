@@ -88,7 +88,7 @@ class Buyer(object):
         :type: str
         """
         if (self._configuration.client_side_validation and
-                buyer_id is not None and not re.search(r'^[A-Z0-9]*$', buyer_id)):  # noqa: E501
+                buyer_id is not None and not re.search(r'^[A-Z0-9]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), buyer_id)):  # noqa: E501
             raise ValueError(r"Invalid value for `buyer_id`, must be a follow pattern or equal to `/^[A-Z0-9]*$/`")  # noqa: E501
 
         self._buyer_id = buyer_id

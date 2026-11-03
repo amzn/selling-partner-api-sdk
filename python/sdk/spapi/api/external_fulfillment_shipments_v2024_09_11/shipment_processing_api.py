@@ -249,7 +249,7 @@ class ShipmentProcessingApi(object):
 
         :param async_req bool
         :param str shipment_id: The ID of the shipment whose shipping labels you want to generate and retrieve. (required)
-        :param str operation: Specify whether you want to generate or regenerate a label. (required)
+        :param str operation: Specify whether you want to generate or regenerate a label. For retrieving existing labels, set this value to `GENERATE` (required)
         :param str shipping_option_id: The ID of the shipping option whose shipping labels you want.
         :param ShipLabelsInput body: Shipping details for when shipping is not done by the marketplace channel.
         :return: ShipLabelsResponse
@@ -274,7 +274,7 @@ class ShipmentProcessingApi(object):
 
         :param async_req bool
         :param str shipment_id: The ID of the shipment whose shipping labels you want to generate and retrieve. (required)
-        :param str operation: Specify whether you want to generate or regenerate a label. (required)
+        :param str operation: Specify whether you want to generate or regenerate a label. For retrieving existing labels, set this value to `GENERATE` (required)
         :param str shipping_option_id: The ID of the shipping option whose shipping labels you want.
         :param ShipLabelsInput body: Shipping details for when shipping is not done by the marketplace channel.
         :return: ShipLabelsResponse

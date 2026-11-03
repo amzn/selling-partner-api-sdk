@@ -285,7 +285,7 @@ class Shipment(object):
                 placement_option_id is not None and len(placement_option_id) < 38):
             raise ValueError("Invalid value for `placement_option_id`, length must be greater than or equal to `38`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                placement_option_id is not None and not re.search(r'^[a-zA-Z0-9-]*$', placement_option_id)):  # noqa: E501
+                placement_option_id is not None and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), placement_option_id)):  # noqa: E501
             raise ValueError(r"Invalid value for `placement_option_id`, must be a follow pattern or equal to `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
 
         self._placement_option_id = placement_option_id
@@ -338,7 +338,7 @@ class Shipment(object):
                 selected_transportation_option_id is not None and len(selected_transportation_option_id) < 38):
             raise ValueError("Invalid value for `selected_transportation_option_id`, length must be greater than or equal to `38`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                selected_transportation_option_id is not None and not re.search(r'^[a-zA-Z0-9-]*$', selected_transportation_option_id)):  # noqa: E501
+                selected_transportation_option_id is not None and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), selected_transportation_option_id)):  # noqa: E501
             raise ValueError(r"Invalid value for `selected_transportation_option_id`, must be a follow pattern or equal to `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
 
         self._selected_transportation_option_id = selected_transportation_option_id
@@ -424,7 +424,7 @@ class Shipment(object):
                 shipment_id is not None and len(shipment_id) < 38):
             raise ValueError("Invalid value for `shipment_id`, length must be greater than or equal to `38`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                shipment_id is not None and not re.search(r'^[a-zA-Z0-9-]*$', shipment_id)):  # noqa: E501
+                shipment_id is not None and not re.search(r'^[a-zA-Z0-9-]*$'.replace(r'\p{L}', r'\w').replace(r'\p{N}', r'\w'), shipment_id)):  # noqa: E501
             raise ValueError(r"Invalid value for `shipment_id`, must be a follow pattern or equal to `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
 
         self._shipment_id = shipment_id
