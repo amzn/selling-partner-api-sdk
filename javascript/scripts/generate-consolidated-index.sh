@@ -38,6 +38,9 @@ get_export_name() {
     elif [[ "$dir" == "fulfillmentoutbound_v2026_07_04" ]]; then
             echo "Fulfillmentoutbound_v2026SpApi"
             return
+    elif [[ "$dir" == "messaging_v2026_04_20" ]]; then
+            echo "Messaging_v2026SpApi"
+            return
     fi
     
     # Capitalize first letter of each word and remove underscores
