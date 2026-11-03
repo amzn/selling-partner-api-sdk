@@ -76,7 +76,7 @@ class ShipmentInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
         'priority' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\Priority',
         'buyer_order_id' => 'string',
         'order_states_eligible_for_rejection' => 'string[]',
-        'order_placed_timestamp' => 'string',
+        'order_placed_timestamp' => 'float',
         'processing_source' => 'string',
         'payment_method' => 'string'];
 
@@ -96,7 +96,7 @@ class ShipmentInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
         'priority' => null,
         'buyer_order_id' => null,
         'order_states_eligible_for_rejection' => null,
-        'order_placed_timestamp' => null,
+        'order_placed_timestamp' => 'int64',
         'processing_source' => null,
         'payment_method' => null];
 
@@ -565,7 +565,7 @@ class ShipmentInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets order_placed_timestamp.
      */
-    public function getOrderPlacedTimestamp(): ?string
+    public function getOrderPlacedTimestamp(): ?float
     {
         return $this->container['order_placed_timestamp'];
     }
@@ -573,9 +573,9 @@ class ShipmentInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets order_placed_timestamp.
      *
-     * @param null|string $order_placed_timestamp The timestamp of when the order was placed, in UTC
+     * @param null|float $order_placed_timestamp the epoch timestamp (in milliseconds) of when the order was placed, in UTC
      */
-    public function setOrderPlacedTimestamp(?string $order_placed_timestamp): self
+    public function setOrderPlacedTimestamp(?float $order_placed_timestamp): self
     {
         if (is_null($order_placed_timestamp)) {
             array_push($this->openAPINullablesSetToNull, 'order_placed_timestamp');

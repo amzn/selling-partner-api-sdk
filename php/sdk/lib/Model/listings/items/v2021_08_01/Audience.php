@@ -252,7 +252,7 @@ class Audience implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets value.
      *
-     * @param null|string $value Name of the audience an offer is applicable to.   Common values:   * 'ALL' - Standard offer audience for buyers on Amazon retail websites.   * 'B2B' - Offer audience for Amazon Business website buyers.
+     * @param null|string $value Name of the audience an offer is applicable to.  Common values:  * 'ALL' - Standard offer audience for buyers on Amazon retail websites.  * 'B2B' - Offer audience for Amazon Business website buyers.
      */
     public function setValue(?string $value): self
     {

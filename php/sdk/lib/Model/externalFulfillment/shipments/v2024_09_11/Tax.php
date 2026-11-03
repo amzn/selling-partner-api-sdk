@@ -73,7 +73,7 @@ class Tax implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $openAPITypes = [
         'type' => 'string',
-        'rate' => 'string',
+        'rate' => 'float',
         'charge' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\ChargeBreakup'];
 
     /**
@@ -339,7 +339,7 @@ class Tax implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets rate.
      */
-    public function getRate(): ?string
+    public function getRate(): ?float
     {
         return $this->container['rate'];
     }
@@ -347,9 +347,9 @@ class Tax implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets rate.
      *
-     * @param null|string $rate A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+     * @param null|float $rate a decimal number
      */
-    public function setRate(?string $rate): self
+    public function setRate(?float $rate): self
     {
         if (is_null($rate)) {
             array_push($this->openAPINullablesSetToNull, 'rate');

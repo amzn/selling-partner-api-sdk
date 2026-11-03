@@ -63,6 +63,7 @@ class ComplianceAttributes implements ModelInterface, \ArrayAccess, \JsonSeriali
      */
     protected static array $openAPITypes = [
         'hazmat_labels_requirement' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\RequirementLevel',
+        'hazmat_label_requirement' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\RequirementLevel',
         'serial_number_requirement' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\RequirementLevel',
         'country_of_origin_requirement' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\RequirementLevel',
         'item_value_requirement' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\RequirementLevel'];
@@ -78,6 +79,7 @@ class ComplianceAttributes implements ModelInterface, \ArrayAccess, \JsonSeriali
      */
     protected static array $openAPIFormats = [
         'hazmat_labels_requirement' => null,
+        'hazmat_label_requirement' => null,
         'serial_number_requirement' => null,
         'country_of_origin_requirement' => null,
         'item_value_requirement' => null];
@@ -89,9 +91,10 @@ class ComplianceAttributes implements ModelInterface, \ArrayAccess, \JsonSeriali
      */
     protected static array $openAPINullables = [
         'hazmat_labels_requirement' => false,
+        'hazmat_label_requirement' => true,
         'serial_number_requirement' => false,
-        'country_of_origin_requirement' => false,
-        'item_value_requirement' => false,
+        'country_of_origin_requirement' => true,
+        'item_value_requirement' => true,
     ];
 
     /**
@@ -109,6 +112,7 @@ class ComplianceAttributes implements ModelInterface, \ArrayAccess, \JsonSeriali
      */
     protected static array $attributeMap = [
         'hazmat_labels_requirement' => 'hazmatLabelsRequirement',
+        'hazmat_label_requirement' => 'hazmatLabelRequirement',
         'serial_number_requirement' => 'serialNumberRequirement',
         'country_of_origin_requirement' => 'countryOfOriginRequirement',
         'item_value_requirement' => 'itemValueRequirement',
@@ -121,6 +125,7 @@ class ComplianceAttributes implements ModelInterface, \ArrayAccess, \JsonSeriali
      */
     protected static array $setters = [
         'hazmat_labels_requirement' => 'setHazmatLabelsRequirement',
+        'hazmat_label_requirement' => 'setHazmatLabelRequirement',
         'serial_number_requirement' => 'setSerialNumberRequirement',
         'country_of_origin_requirement' => 'setCountryOfOriginRequirement',
         'item_value_requirement' => 'setItemValueRequirement',
@@ -133,6 +138,7 @@ class ComplianceAttributes implements ModelInterface, \ArrayAccess, \JsonSeriali
      */
     protected static array $getters = [
         'hazmat_labels_requirement' => 'getHazmatLabelsRequirement',
+        'hazmat_label_requirement' => 'getHazmatLabelRequirement',
         'serial_number_requirement' => 'getSerialNumberRequirement',
         'country_of_origin_requirement' => 'getCountryOfOriginRequirement',
         'item_value_requirement' => 'getItemValueRequirement',
@@ -152,6 +158,7 @@ class ComplianceAttributes implements ModelInterface, \ArrayAccess, \JsonSeriali
     public function __construct(?array $data = null)
     {
         $this->setIfExists('hazmat_labels_requirement', $data ?? [], null);
+        $this->setIfExists('hazmat_label_requirement', $data ?? [], null);
         $this->setIfExists('serial_number_requirement', $data ?? [], null);
         $this->setIfExists('country_of_origin_requirement', $data ?? [], null);
         $this->setIfExists('item_value_requirement', $data ?? [], null);
@@ -250,12 +257,6 @@ class ComplianceAttributes implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (null === $this->container['serial_number_requirement']) {
             $invalidProperties[] = "'serial_number_requirement' can't be null";
         }
-        if (null === $this->container['country_of_origin_requirement']) {
-            $invalidProperties[] = "'country_of_origin_requirement' can't be null";
-        }
-        if (null === $this->container['item_value_requirement']) {
-            $invalidProperties[] = "'item_value_requirement' can't be null";
-        }
 
         return $invalidProperties;
     }
@@ -295,6 +296,36 @@ class ComplianceAttributes implements ModelInterface, \ArrayAccess, \JsonSeriali
     }
 
     /**
+     * Gets hazmat_label_requirement.
+     */
+    public function getHazmatLabelRequirement(): ?string
+    {
+        return $this->container['hazmat_label_requirement'];
+    }
+
+    /**
+     * Sets hazmat_label_requirement.
+     *
+     * @param null|string $hazmat_label_requirement hazmat_label_requirement
+     */
+    public function setHazmatLabelRequirement(?string $hazmat_label_requirement): self
+    {
+        if (is_null($hazmat_label_requirement)) {
+            array_push($this->openAPINullablesSetToNull, 'hazmat_label_requirement');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('hazmat_label_requirement', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['hazmat_label_requirement'] = $hazmat_label_requirement;
+
+        return $this;
+    }
+
+    /**
      * Gets serial_number_requirement.
      */
     public function getSerialNumberRequirement(): string
@@ -320,7 +351,7 @@ class ComplianceAttributes implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Gets country_of_origin_requirement.
      */
-    public function getCountryOfOriginRequirement(): string
+    public function getCountryOfOriginRequirement(): ?string
     {
         return $this->container['country_of_origin_requirement'];
     }
@@ -328,12 +359,19 @@ class ComplianceAttributes implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets country_of_origin_requirement.
      *
-     * @param string $country_of_origin_requirement country_of_origin_requirement
+     * @param null|string $country_of_origin_requirement country_of_origin_requirement
      */
-    public function setCountryOfOriginRequirement(string $country_of_origin_requirement): self
+    public function setCountryOfOriginRequirement(?string $country_of_origin_requirement): self
     {
         if (is_null($country_of_origin_requirement)) {
-            throw new \InvalidArgumentException('non-nullable country_of_origin_requirement cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'country_of_origin_requirement');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('country_of_origin_requirement', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['country_of_origin_requirement'] = $country_of_origin_requirement;
 
@@ -343,7 +381,7 @@ class ComplianceAttributes implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Gets item_value_requirement.
      */
-    public function getItemValueRequirement(): string
+    public function getItemValueRequirement(): ?string
     {
         return $this->container['item_value_requirement'];
     }
@@ -351,12 +389,19 @@ class ComplianceAttributes implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets item_value_requirement.
      *
-     * @param string $item_value_requirement item_value_requirement
+     * @param null|string $item_value_requirement item_value_requirement
      */
-    public function setItemValueRequirement(string $item_value_requirement): self
+    public function setItemValueRequirement(?string $item_value_requirement): self
     {
         if (is_null($item_value_requirement)) {
-            throw new \InvalidArgumentException('non-nullable item_value_requirement cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_value_requirement');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_value_requirement', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_value_requirement'] = $item_value_requirement;
 

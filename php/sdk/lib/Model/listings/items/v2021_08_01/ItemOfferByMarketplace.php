@@ -68,7 +68,9 @@ class ItemOfferByMarketplace implements ModelInterface, \ArrayAccess, \JsonSeria
         'offer_type' => 'string',
         'price' => '\SpApi\Model\listings\items\v2021_08_01\Money',
         'points' => '\SpApi\Model\listings\items\v2021_08_01\Points',
-        'audience' => '\SpApi\Model\listings\items\v2021_08_01\Audience'];
+        'audience' => '\SpApi\Model\listings\items\v2021_08_01\Audience',
+        'replenishment_discount' => '\SpApi\Model\listings\items\v2021_08_01\ReplenishmentDiscount',
+        'quantity_discount_plan' => '\SpApi\Model\listings\items\v2021_08_01\QuantityDiscountPlan'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -84,7 +86,9 @@ class ItemOfferByMarketplace implements ModelInterface, \ArrayAccess, \JsonSeria
         'offer_type' => null,
         'price' => null,
         'points' => null,
-        'audience' => null];
+        'audience' => null,
+        'replenishment_discount' => null,
+        'quantity_discount_plan' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -97,6 +101,8 @@ class ItemOfferByMarketplace implements ModelInterface, \ArrayAccess, \JsonSeria
         'price' => false,
         'points' => true,
         'audience' => true,
+        'replenishment_discount' => true,
+        'quantity_discount_plan' => true,
     ];
 
     /**
@@ -118,6 +124,8 @@ class ItemOfferByMarketplace implements ModelInterface, \ArrayAccess, \JsonSeria
         'price' => 'price',
         'points' => 'points',
         'audience' => 'audience',
+        'replenishment_discount' => 'replenishmentDiscount',
+        'quantity_discount_plan' => 'quantityDiscountPlan',
     ];
 
     /**
@@ -131,6 +139,8 @@ class ItemOfferByMarketplace implements ModelInterface, \ArrayAccess, \JsonSeria
         'price' => 'setPrice',
         'points' => 'setPoints',
         'audience' => 'setAudience',
+        'replenishment_discount' => 'setReplenishmentDiscount',
+        'quantity_discount_plan' => 'setQuantityDiscountPlan',
     ];
 
     /**
@@ -144,6 +154,8 @@ class ItemOfferByMarketplace implements ModelInterface, \ArrayAccess, \JsonSeria
         'price' => 'getPrice',
         'points' => 'getPoints',
         'audience' => 'getAudience',
+        'replenishment_discount' => 'getReplenishmentDiscount',
+        'quantity_discount_plan' => 'getQuantityDiscountPlan',
     ];
 
     /**
@@ -164,6 +176,8 @@ class ItemOfferByMarketplace implements ModelInterface, \ArrayAccess, \JsonSeria
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('points', $data ?? [], null);
         $this->setIfExists('audience', $data ?? [], null);
+        $this->setIfExists('replenishment_discount', $data ?? [], null);
+        $this->setIfExists('quantity_discount_plan', $data ?? [], null);
     }
 
     /**
@@ -436,6 +450,66 @@ class ItemOfferByMarketplace implements ModelInterface, \ArrayAccess, \JsonSeria
             }
         }
         $this->container['audience'] = $audience;
+
+        return $this;
+    }
+
+    /**
+     * Gets replenishment_discount.
+     */
+    public function getReplenishmentDiscount(): ?ReplenishmentDiscount
+    {
+        return $this->container['replenishment_discount'];
+    }
+
+    /**
+     * Sets replenishment_discount.
+     *
+     * @param null|ReplenishmentDiscount $replenishment_discount replenishment_discount
+     */
+    public function setReplenishmentDiscount(?ReplenishmentDiscount $replenishment_discount): self
+    {
+        if (is_null($replenishment_discount)) {
+            array_push($this->openAPINullablesSetToNull, 'replenishment_discount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('replenishment_discount', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['replenishment_discount'] = $replenishment_discount;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity_discount_plan.
+     */
+    public function getQuantityDiscountPlan(): ?QuantityDiscountPlan
+    {
+        return $this->container['quantity_discount_plan'];
+    }
+
+    /**
+     * Sets quantity_discount_plan.
+     *
+     * @param null|QuantityDiscountPlan $quantity_discount_plan quantity_discount_plan
+     */
+    public function setQuantityDiscountPlan(?QuantityDiscountPlan $quantity_discount_plan): self
+    {
+        if (is_null($quantity_discount_plan)) {
+            array_push($this->openAPINullablesSetToNull, 'quantity_discount_plan');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity_discount_plan', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['quantity_discount_plan'] = $quantity_discount_plan;
 
         return $this;
     }

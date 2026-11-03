@@ -56,6 +56,10 @@ class DeliveryExperienceOption
 
     public const NO_PREFERENCE = 'NoPreference';
 
+    public const DELIVERY_CONFIRMATION_WITH_IDENTITY_CHECK = 'DeliveryConfirmationWithIdentityCheck';
+
+    public const DELIVERY_CONFIRMATION_WITH_NAME_VERIFICATION = 'DeliveryConfirmationWithNameVerification';
+
     /**
      * Gets allowable values of the enum.
      *
@@ -69,6 +73,8 @@ class DeliveryExperienceOption
             self::DELIVERY_CONFIRMATION_WITHOUT_SIGNATURE,
             self::NO_TRACKING,
             self::NO_PREFERENCE,
+            self::DELIVERY_CONFIRMATION_WITH_IDENTITY_CHECK,
+            self::DELIVERY_CONFIRMATION_WITH_NAME_VERIFICATION,
         ];
     }
 }

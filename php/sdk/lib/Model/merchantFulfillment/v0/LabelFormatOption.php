@@ -252,7 +252,7 @@ class LabelFormatOption implements ModelInterface, \ArrayAccess, \JsonSerializab
     /**
      * Sets include_packing_slip_with_label.
      *
-     * @param null|bool $include_packing_slip_with_label when true, include a packing slip with the label
+     * @param null|bool $include_packing_slip_with_label when `true`, include a packing slip with the label
      */
     public function setIncludePackingSlipWithLabel(?bool $include_packing_slip_with_label): self
     {

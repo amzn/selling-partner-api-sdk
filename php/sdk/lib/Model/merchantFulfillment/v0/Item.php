@@ -506,7 +506,7 @@ class Item implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets is_hazmat.
      *
-     * @param null|bool $is_hazmat When true, the item qualifies as hazardous materials (hazmat). Defaults to false.
+     * @param null|bool $is_hazmat When `true`, the item qualifies as hazardous materials (hazmat). Defaults to `false`.
      */
     public function setIsHazmat(?bool $is_hazmat): self
     {

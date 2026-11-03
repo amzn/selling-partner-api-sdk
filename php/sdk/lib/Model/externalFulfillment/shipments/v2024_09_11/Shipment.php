@@ -101,9 +101,9 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
         'line_items' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\ShipmentLineItem[]',
         'shipping_info' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\ShippingInfo',
         'packages' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\Package[]',
-        'creation_date_time' => 'string',
-        'last_updated_date_time' => 'string',
-        'earliest_pack_date_time' => 'string'];
+        'creation_date_time' => '\DateTime',
+        'last_updated_date_time' => '\DateTime',
+        'earliest_pack_date_time' => '\DateTime'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -129,9 +129,9 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
         'line_items' => null,
         'shipping_info' => null,
         'packages' => null,
-        'creation_date_time' => null,
-        'last_updated_date_time' => null,
-        'earliest_pack_date_time' => null];
+        'creation_date_time' => 'date-time',
+        'last_updated_date_time' => 'date-time',
+        'earliest_pack_date_time' => 'date-time'];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -617,7 +617,7 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets party_info_list.
      *
-     * @param null|array $party_info_list All involved party identification and metadata for the vendor, buyer, and seller. Applicable for direct-fulfillment sellers.
+     * @param null|array $party_info_list All involved party identification and metadata for vendor, buyer, seller. Applicable only for direct-fulfillment sellers.
      */
     public function setPartyInfoList(?array $party_info_list): self
     {
@@ -883,7 +883,7 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets creation_date_time.
      */
-    public function getCreationDateTime(): string
+    public function getCreationDateTime(): \DateTime
     {
         return $this->container['creation_date_time'];
     }
@@ -891,9 +891,9 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets creation_date_time.
      *
-     * @param string $creation_date_time A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     * @param \DateTime $creation_date_time A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      */
-    public function setCreationDateTime(string $creation_date_time): self
+    public function setCreationDateTime(\DateTime $creation_date_time): self
     {
         if (is_null($creation_date_time)) {
             throw new \InvalidArgumentException('non-nullable creation_date_time cannot be null');
@@ -906,7 +906,7 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets last_updated_date_time.
      */
-    public function getLastUpdatedDateTime(): string
+    public function getLastUpdatedDateTime(): \DateTime
     {
         return $this->container['last_updated_date_time'];
     }
@@ -914,9 +914,9 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets last_updated_date_time.
      *
-     * @param string $last_updated_date_time A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     * @param \DateTime $last_updated_date_time A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      */
-    public function setLastUpdatedDateTime(string $last_updated_date_time): self
+    public function setLastUpdatedDateTime(\DateTime $last_updated_date_time): self
     {
         if (is_null($last_updated_date_time)) {
             throw new \InvalidArgumentException('non-nullable last_updated_date_time cannot be null');
@@ -929,7 +929,7 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets earliest_pack_date_time.
      */
-    public function getEarliestPackDateTime(): ?string
+    public function getEarliestPackDateTime(): ?\DateTime
     {
         return $this->container['earliest_pack_date_time'];
     }
@@ -937,9 +937,9 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets earliest_pack_date_time.
      *
-     * @param null|string $earliest_pack_date_time A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     * @param null|\DateTime $earliest_pack_date_time A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      */
-    public function setEarliestPackDateTime(?string $earliest_pack_date_time): self
+    public function setEarliestPackDateTime(?\DateTime $earliest_pack_date_time): self
     {
         if (is_null($earliest_pack_date_time)) {
             array_push($this->openAPINullablesSetToNull, 'earliest_pack_date_time');

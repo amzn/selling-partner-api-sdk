@@ -50,13 +50,6 @@ class ListCasesRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
 {
     public const DISCRIMINATOR = null;
 
-    public const SORT_FIELD_CASE_ID = 'CASE_ID';
-    public const SORT_FIELD_STATUS = 'STATUS';
-    public const SORT_FIELD_SUBJECT = 'SUBJECT';
-    public const SORT_FIELD_PRIMARY_EMAIL = 'PRIMARY_EMAIL';
-    public const SORT_FIELD_CREATION_DATE = 'CREATION_DATE';
-    public const SORT_FIELD_LAST_OUTBOUND_DATE = 'LAST_OUTBOUND_DATE';
-    public const SORT_FIELD_RESOLUTION_DATE = 'RESOLUTION_DATE';
     public const SORT_ORDER_ASC = 'ASC';
     public const SORT_ORDER_DESC = 'DESC';
 
@@ -71,9 +64,6 @@ class ListCasesRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'marketplace_id' => 'string',
-        'case_filters' => '\SpApi\Model\Support\v2025_02_01\CaseFilters',
-        'sort_field' => 'string',
         'sort_order' => 'string',
         'max_results' => 'int',
         'next_token' => 'string'];
@@ -88,9 +78,6 @@ class ListCasesRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
      * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
-        'marketplace_id' => null,
-        'case_filters' => null,
-        'sort_field' => null,
         'sort_order' => null,
         'max_results' => 'int32',
         'next_token' => null];
@@ -101,9 +88,6 @@ class ListCasesRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'marketplace_id' => true,
-        'case_filters' => true,
-        'sort_field' => true,
         'sort_order' => true,
         'max_results' => true,
         'next_token' => true,
@@ -123,9 +107,6 @@ class ListCasesRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static array $attributeMap = [
-        'marketplace_id' => 'marketplaceId',
-        'case_filters' => 'caseFilters',
-        'sort_field' => 'sortField',
         'sort_order' => 'sortOrder',
         'max_results' => 'maxResults',
         'next_token' => 'nextToken',
@@ -137,9 +118,6 @@ class ListCasesRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static array $setters = [
-        'marketplace_id' => 'setMarketplaceId',
-        'case_filters' => 'setCaseFilters',
-        'sort_field' => 'setSortField',
         'sort_order' => 'setSortOrder',
         'max_results' => 'setMaxResults',
         'next_token' => 'setNextToken',
@@ -151,9 +129,6 @@ class ListCasesRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static array $getters = [
-        'marketplace_id' => 'getMarketplaceId',
-        'case_filters' => 'getCaseFilters',
-        'sort_field' => 'getSortField',
         'sort_order' => 'getSortOrder',
         'max_results' => 'getMaxResults',
         'next_token' => 'getNextToken',
@@ -172,9 +147,6 @@ class ListCasesRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('marketplace_id', $data ?? [], null);
-        $this->setIfExists('case_filters', $data ?? [], null);
-        $this->setIfExists('sort_field', $data ?? [], 'CREATION_DATE');
         $this->setIfExists('sort_order', $data ?? [], 'DESC');
         $this->setIfExists('max_results', $data ?? [], 10);
         $this->setIfExists('next_token', $data ?? [], null);
@@ -263,24 +235,6 @@ class ListCasesRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
      *
      * @return string[]
      */
-    public function getSortFieldAllowableValues(): array
-    {
-        return [
-            self::SORT_FIELD_CASE_ID,
-            self::SORT_FIELD_STATUS,
-            self::SORT_FIELD_SUBJECT,
-            self::SORT_FIELD_PRIMARY_EMAIL,
-            self::SORT_FIELD_CREATION_DATE,
-            self::SORT_FIELD_LAST_OUTBOUND_DATE,
-            self::SORT_FIELD_RESOLUTION_DATE,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum.
-     *
-     * @return string[]
-     */
     public function getSortOrderAllowableValues(): array
     {
         return [
@@ -297,15 +251,6 @@ class ListCasesRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
     public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getSortFieldAllowableValues();
-        if (!is_null($this->container['sort_field']) && !in_array($this->container['sort_field'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'sort_field', must be one of '%s'",
-                $this->container['sort_field'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         $allowedValues = $this->getSortOrderAllowableValues();
         if (!is_null($this->container['sort_order']) && !in_array($this->container['sort_order'], $allowedValues, true)) {
@@ -336,108 +281,6 @@ class ListCasesRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
     public function valid(): bool
     {
         return 0 === count($this->listInvalidProperties());
-    }
-
-    /**
-     * Gets marketplace_id.
-     */
-    public function getMarketplaceId(): ?string
-    {
-        return $this->container['marketplace_id'];
-    }
-
-    /**
-     * Sets marketplace_id.
-     *
-     * @param null|string $marketplace_id The marketplace identifier used for authorization only. This field does not impact the returned collection. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     */
-    public function setMarketplaceId(?string $marketplace_id): self
-    {
-        if (is_null($marketplace_id)) {
-            array_push($this->openAPINullablesSetToNull, 'marketplace_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('marketplace_id', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['marketplace_id'] = $marketplace_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets case_filters.
-     */
-    public function getCaseFilters(): ?CaseFilters
-    {
-        return $this->container['case_filters'];
-    }
-
-    /**
-     * Sets case_filters.
-     *
-     * @param null|CaseFilters $case_filters case_filters
-     */
-    public function setCaseFilters(?CaseFilters $case_filters): self
-    {
-        if (is_null($case_filters)) {
-            array_push($this->openAPINullablesSetToNull, 'case_filters');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('case_filters', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['case_filters'] = $case_filters;
-
-        return $this;
-    }
-
-    /**
-     * Gets sort_field.
-     */
-    public function getSortField(): ?string
-    {
-        return $this->container['sort_field'];
-    }
-
-    /**
-     * Sets sort_field.
-     *
-     * @param null|string $sort_field The field to sort cases by. Defaults to CREATION_DATE when absent.
-     */
-    public function setSortField(?string $sort_field): self
-    {
-        if (is_null($sort_field)) {
-            array_push($this->openAPINullablesSetToNull, 'sort_field');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('sort_field', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        if (!ObjectSerializer::getSkipModelValidation()) {
-            $allowedValues = $this->getSortFieldAllowableValues();
-            if (!is_null($sort_field) && !in_array($sort_field, $allowedValues, true)) {
-                throw new \InvalidArgumentException(
-                    sprintf(
-                        "Invalid value '%s' for 'sort_field', must be one of '%s'",
-                        $sort_field,
-                        implode("', '", $allowedValues)
-                    )
-                );
-            }
-        }
-        $this->container['sort_field'] = $sort_field;
-
-        return $this;
     }
 
     /**

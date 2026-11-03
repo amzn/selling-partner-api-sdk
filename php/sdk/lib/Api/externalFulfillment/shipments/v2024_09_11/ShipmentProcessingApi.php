@@ -710,7 +710,7 @@ class ShipmentProcessingApi
      * @param string               $shipment_id
      *                                                  The ID of the shipment whose shipping labels you want to generate and retrieve. (required)
      * @param string               $operation
-     *                                                  Specify whether you want to generate or regenerate a label. (required)
+     *                                                  Specify whether you want to generate or regenerate a label. For retrieving existing labels, set this value to &#x60;GENERATE&#x60; (required)
      * @param null|string          $shipping_option_id
      *                                                  The ID of the shipping option whose shipping labels you want. (optional)
      * @param null|ShipLabelsInput $body
@@ -738,7 +738,7 @@ class ShipmentProcessingApi
      * @param string               $shipment_id
      *                                                  The ID of the shipment whose shipping labels you want to generate and retrieve. (required)
      * @param string               $operation
-     *                                                  Specify whether you want to generate or regenerate a label. (required)
+     *                                                  Specify whether you want to generate or regenerate a label. For retrieving existing labels, set this value to &#x60;GENERATE&#x60; (required)
      * @param null|string          $shipping_option_id
      *                                                  The ID of the shipping option whose shipping labels you want. (optional)
      * @param null|ShipLabelsInput $body
@@ -837,7 +837,7 @@ class ShipmentProcessingApi
      * @param string               $shipment_id
      *                                                 The ID of the shipment whose shipping labels you want to generate and retrieve. (required)
      * @param string               $operation
-     *                                                 Specify whether you want to generate or regenerate a label. (required)
+     *                                                 Specify whether you want to generate or regenerate a label. For retrieving existing labels, set this value to &#x60;GENERATE&#x60; (required)
      * @param null|string          $shipping_option_id
      *                                                 The ID of the shipping option whose shipping labels you want. (optional)
      * @param null|ShipLabelsInput $body
@@ -866,7 +866,7 @@ class ShipmentProcessingApi
      * @param string               $shipment_id
      *                                                 The ID of the shipment whose shipping labels you want to generate and retrieve. (required)
      * @param string               $operation
-     *                                                 Specify whether you want to generate or regenerate a label. (required)
+     *                                                 Specify whether you want to generate or regenerate a label. For retrieving existing labels, set this value to &#x60;GENERATE&#x60; (required)
      * @param null|string          $shipping_option_id
      *                                                 The ID of the shipping option whose shipping labels you want. (optional)
      * @param null|ShipLabelsInput $body
@@ -940,7 +940,7 @@ class ShipmentProcessingApi
      * @param string               $shipment_id
      *                                                 The ID of the shipment whose shipping labels you want to generate and retrieve. (required)
      * @param string               $operation
-     *                                                 Specify whether you want to generate or regenerate a label. (required)
+     *                                                 Specify whether you want to generate or regenerate a label. For retrieving existing labels, set this value to &#x60;GENERATE&#x60; (required)
      * @param null|string          $shipping_option_id
      *                                                 The ID of the shipping option whose shipping labels you want. (optional)
      * @param null|ShipLabelsInput $body

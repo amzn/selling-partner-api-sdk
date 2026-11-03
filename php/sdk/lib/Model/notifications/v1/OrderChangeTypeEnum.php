@@ -52,6 +52,8 @@ class OrderChangeTypeEnum
 
     public const ORDER_STATUS_CHANGE = 'OrderStatusChange';
 
+    public const PRE_FULFILLMENT_STATUS_CHANGE = 'PreFulfillmentStatusChange';
+
     /**
      * Gets allowable values of the enum.
      *
@@ -63,6 +65,7 @@ class OrderChangeTypeEnum
             self::BUYER_REQUESTED_CHANGE,
             self::DELIVERY_TIP_CHANGE,
             self::ORDER_STATUS_CHANGE,
+            self::PRE_FULFILLMENT_STATUS_CHANGE,
         ];
     }
 }

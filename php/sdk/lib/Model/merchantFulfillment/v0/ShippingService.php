@@ -380,7 +380,7 @@ class ShippingService implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_service_name.
      *
-     * @param string $shipping_service_name A plain text representation of a carrier's shipping service. For example, \"UPS Ground\" or \"FedEx Standard Overnight\".
+     * @param string $shipping_service_name the carrier's shipping service name, such as \"UPS Ground\" or \"FedEx Standard Overnight\"
      */
     public function setShippingServiceName(string $shipping_service_name): self
     {
@@ -744,7 +744,7 @@ class ShippingService implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets requires_additional_seller_inputs.
      *
-     * @param bool $requires_additional_seller_inputs when true, additional seller inputs are required
+     * @param bool $requires_additional_seller_inputs when `true`, additional seller inputs are required
      */
     public function setRequiresAdditionalSellerInputs(bool $requires_additional_seller_inputs): self
     {

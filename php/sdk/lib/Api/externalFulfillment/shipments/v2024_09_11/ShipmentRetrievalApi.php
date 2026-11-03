@@ -409,23 +409,23 @@ class ShipmentRetrievalApi
     /**
      * Operation getShipments.
      *
-     * @param string      $status
-     *                                         The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;ACCEPTED&#x60;. (required)
-     * @param null|string $location_id
-     *                                         The Amazon channel location identifier for the shipments you want to retrieve. (optional)
-     * @param null|string $marketplace_id
-     *                                         The marketplace ID associated with the location. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
-     * @param null|string $channel_name
-     *                                         The channel name associated with the location. (optional)
-     * @param null|string $last_updated_after
-     *                                         The response includes shipments whose latest update is after the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param null|string $last_updated_before
-     *                                         The response includes shipments whose latest update is before the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param null|int    $max_results
-     *                                         The maximum number of shipments to include in the response. (optional)
-     * @param null|string $pagination_token
-     *                                         A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param string         $status
+     *                                            The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;ACCEPTED&#x60;. (required)
+     * @param null|string    $location_id
+     *                                            The Amazon channel location identifier for the shipments you want to retrieve. (optional)
+     * @param null|string    $marketplace_id
+     *                                            The marketplace ID associated with the location. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string    $channel_name
+     *                                            The channel name associated with the location. (optional)
+     * @param null|\DateTime $last_updated_after
+     *                                            The response includes shipments whose latest update is after the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                            The response includes shipments whose latest update is before the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|int       $max_results
+     *                                            The maximum number of shipments to include in the response. (optional)
+     * @param null|string    $pagination_token
+     *                                            A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -435,8 +435,8 @@ class ShipmentRetrievalApi
         ?string $location_id = null,
         ?string $marketplace_id = null,
         ?string $channel_name = null,
-        ?string $last_updated_after = null,
-        ?string $last_updated_before = null,
+        ?\DateTime $last_updated_after = null,
+        ?\DateTime $last_updated_before = null,
         ?int $max_results = null,
         ?string $pagination_token = null,
         ?string $restrictedDataToken = null
@@ -449,23 +449,23 @@ class ShipmentRetrievalApi
     /**
      * Operation getShipmentsWithHttpInfo.
      *
-     * @param string      $status
-     *                                         The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;ACCEPTED&#x60;. (required)
-     * @param null|string $location_id
-     *                                         The Amazon channel location identifier for the shipments you want to retrieve. (optional)
-     * @param null|string $marketplace_id
-     *                                         The marketplace ID associated with the location. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
-     * @param null|string $channel_name
-     *                                         The channel name associated with the location. (optional)
-     * @param null|string $last_updated_after
-     *                                         The response includes shipments whose latest update is after the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param null|string $last_updated_before
-     *                                         The response includes shipments whose latest update is before the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param null|int    $max_results
-     *                                         The maximum number of shipments to include in the response. (optional)
-     * @param null|string $pagination_token
-     *                                         A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param string         $status
+     *                                            The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;ACCEPTED&#x60;. (required)
+     * @param null|string    $location_id
+     *                                            The Amazon channel location identifier for the shipments you want to retrieve. (optional)
+     * @param null|string    $marketplace_id
+     *                                            The marketplace ID associated with the location. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string    $channel_name
+     *                                            The channel name associated with the location. (optional)
+     * @param null|\DateTime $last_updated_after
+     *                                            The response includes shipments whose latest update is after the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                            The response includes shipments whose latest update is before the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|int       $max_results
+     *                                            The maximum number of shipments to include in the response. (optional)
+     * @param null|string    $pagination_token
+     *                                            A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\externalFulfillment\shipments\v2024_09_11\ShipmentsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -477,8 +477,8 @@ class ShipmentRetrievalApi
         ?string $location_id = null,
         ?string $marketplace_id = null,
         ?string $channel_name = null,
-        ?string $last_updated_after = null,
-        ?string $last_updated_before = null,
+        ?\DateTime $last_updated_after = null,
+        ?\DateTime $last_updated_before = null,
         ?int $max_results = null,
         ?string $pagination_token = null,
         ?string $restrictedDataToken = null
@@ -560,22 +560,22 @@ class ShipmentRetrievalApi
     /**
      * Operation getShipmentsAsync.
      *
-     * @param string      $status
-     *                                         The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;ACCEPTED&#x60;. (required)
-     * @param null|string $location_id
-     *                                         The Amazon channel location identifier for the shipments you want to retrieve. (optional)
-     * @param null|string $marketplace_id
-     *                                         The marketplace ID associated with the location. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
-     * @param null|string $channel_name
-     *                                         The channel name associated with the location. (optional)
-     * @param null|string $last_updated_after
-     *                                         The response includes shipments whose latest update is after the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param null|string $last_updated_before
-     *                                         The response includes shipments whose latest update is before the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param null|int    $max_results
-     *                                         The maximum number of shipments to include in the response. (optional)
-     * @param null|string $pagination_token
-     *                                         A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param string         $status
+     *                                            The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;ACCEPTED&#x60;. (required)
+     * @param null|string    $location_id
+     *                                            The Amazon channel location identifier for the shipments you want to retrieve. (optional)
+     * @param null|string    $marketplace_id
+     *                                            The marketplace ID associated with the location. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string    $channel_name
+     *                                            The channel name associated with the location. (optional)
+     * @param null|\DateTime $last_updated_after
+     *                                            The response includes shipments whose latest update is after the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                            The response includes shipments whose latest update is before the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|int       $max_results
+     *                                            The maximum number of shipments to include in the response. (optional)
+     * @param null|string    $pagination_token
+     *                                            A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -584,8 +584,8 @@ class ShipmentRetrievalApi
         ?string $location_id = null,
         ?string $marketplace_id = null,
         ?string $channel_name = null,
-        ?string $last_updated_after = null,
-        ?string $last_updated_before = null,
+        ?\DateTime $last_updated_after = null,
+        ?\DateTime $last_updated_before = null,
         ?int $max_results = null,
         ?string $pagination_token = null
     ): PromiseInterface {
@@ -601,22 +601,22 @@ class ShipmentRetrievalApi
     /**
      * Operation getShipmentsAsyncWithHttpInfo.
      *
-     * @param string      $status
-     *                                         The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;ACCEPTED&#x60;. (required)
-     * @param null|string $location_id
-     *                                         The Amazon channel location identifier for the shipments you want to retrieve. (optional)
-     * @param null|string $marketplace_id
-     *                                         The marketplace ID associated with the location. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
-     * @param null|string $channel_name
-     *                                         The channel name associated with the location. (optional)
-     * @param null|string $last_updated_after
-     *                                         The response includes shipments whose latest update is after the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param null|string $last_updated_before
-     *                                         The response includes shipments whose latest update is before the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param null|int    $max_results
-     *                                         The maximum number of shipments to include in the response. (optional)
-     * @param null|string $pagination_token
-     *                                         A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param string         $status
+     *                                            The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;ACCEPTED&#x60;. (required)
+     * @param null|string    $location_id
+     *                                            The Amazon channel location identifier for the shipments you want to retrieve. (optional)
+     * @param null|string    $marketplace_id
+     *                                            The marketplace ID associated with the location. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string    $channel_name
+     *                                            The channel name associated with the location. (optional)
+     * @param null|\DateTime $last_updated_after
+     *                                            The response includes shipments whose latest update is after the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                            The response includes shipments whose latest update is before the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|int       $max_results
+     *                                            The maximum number of shipments to include in the response. (optional)
+     * @param null|string    $pagination_token
+     *                                            A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -625,8 +625,8 @@ class ShipmentRetrievalApi
         ?string $location_id = null,
         ?string $marketplace_id = null,
         ?string $channel_name = null,
-        ?string $last_updated_after = null,
-        ?string $last_updated_before = null,
+        ?\DateTime $last_updated_after = null,
+        ?\DateTime $last_updated_before = null,
         ?int $max_results = null,
         ?string $pagination_token = null,
         ?string $restrictedDataToken = null
@@ -687,22 +687,22 @@ class ShipmentRetrievalApi
     /**
      * Create request for operation 'getShipments'.
      *
-     * @param string      $status
-     *                                         The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;ACCEPTED&#x60;. (required)
-     * @param null|string $location_id
-     *                                         The Amazon channel location identifier for the shipments you want to retrieve. (optional)
-     * @param null|string $marketplace_id
-     *                                         The marketplace ID associated with the location. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
-     * @param null|string $channel_name
-     *                                         The channel name associated with the location. (optional)
-     * @param null|string $last_updated_after
-     *                                         The response includes shipments whose latest update is after the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param null|string $last_updated_before
-     *                                         The response includes shipments whose latest update is before the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param null|int    $max_results
-     *                                         The maximum number of shipments to include in the response. (optional)
-     * @param null|string $pagination_token
-     *                                         A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param string         $status
+     *                                            The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;ACCEPTED&#x60;. (required)
+     * @param null|string    $location_id
+     *                                            The Amazon channel location identifier for the shipments you want to retrieve. (optional)
+     * @param null|string    $marketplace_id
+     *                                            The marketplace ID associated with the location. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string    $channel_name
+     *                                            The channel name associated with the location. (optional)
+     * @param null|\DateTime $last_updated_after
+     *                                            The response includes shipments whose latest update is after the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                            The response includes shipments whose latest update is before the specified time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|int       $max_results
+     *                                            The maximum number of shipments to include in the response. (optional)
+     * @param null|string    $pagination_token
+     *                                            A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -711,8 +711,8 @@ class ShipmentRetrievalApi
         ?string $location_id = null,
         ?string $marketplace_id = null,
         ?string $channel_name = null,
-        ?string $last_updated_after = null,
-        ?string $last_updated_before = null,
+        ?\DateTime $last_updated_after = null,
+        ?\DateTime $last_updated_before = null,
         ?int $max_results = null,
         ?string $pagination_token = null
     ): Request {

@@ -305,7 +305,7 @@ class SellerInputDefinition implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets is_required.
      *
-     * @param bool $is_required when true, the additional input field is required
+     * @param bool $is_required when `true`, the additional input field is required
      */
     public function setIsRequired(bool $is_required): self
     {

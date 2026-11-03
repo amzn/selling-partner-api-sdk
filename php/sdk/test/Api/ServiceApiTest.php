@@ -313,7 +313,7 @@ class ServiceApiTest extends TestCase
         $marketplace_ids = $this->generateMockData('string[]', true);
         
 
-        $response = $this->api->getServiceJobsWithHttpInfo($marketplace_ids, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+        $response = $this->api->getServiceJobsWithHttpInfo($marketplace_ids, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);
@@ -476,6 +476,9 @@ class ServiceApiTest extends TestCase
                     $allowableValues = $instance->$allowableMethodName();
                     if (!empty($allowableValues)) {
                         $dummyValue = reset($allowableValues);
+                        if (str_ends_with((string) $propertyType, "[]")) {
+                            $dummyValue = [$dummyValue];
+                        }
                     } else {
                         $dummyValue = $this->generateMockData($propertyType);
                     }

@@ -63,7 +63,7 @@ class InvoiceInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $openAPITypes = [
         'invoice_id' => 'string',
-        'creation_date_time' => 'string'];
+        'creation_date_time' => '\DateTime'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -76,7 +76,7 @@ class InvoiceInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $openAPIFormats = [
         'invoice_id' => null,
-        'creation_date_time' => null];
+        'creation_date_time' => 'date-time'];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -84,8 +84,8 @@ class InvoiceInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'invoice_id' => false,
-        'creation_date_time' => false,
+        'invoice_id' => true,
+        'creation_date_time' => true,
     ];
 
     /**
@@ -228,16 +228,7 @@ class InvoiceInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function listInvalidProperties(): array
     {
-        $invalidProperties = [];
-
-        if (null === $this->container['invoice_id']) {
-            $invalidProperties[] = "'invoice_id' can't be null";
-        }
-        if (null === $this->container['creation_date_time']) {
-            $invalidProperties[] = "'creation_date_time' can't be null";
-        }
-
-        return $invalidProperties;
+        return [];
     }
 
     /**
@@ -254,7 +245,7 @@ class InvoiceInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets invoice_id.
      */
-    public function getInvoiceId(): string
+    public function getInvoiceId(): ?string
     {
         return $this->container['invoice_id'];
     }
@@ -262,12 +253,19 @@ class InvoiceInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets invoice_id.
      *
-     * @param string $invoice_id the unique ID of the invoice that corresponds to the shipment
+     * @param null|string $invoice_id the unique ID of the invoice that corresponds to the shipment
      */
-    public function setInvoiceId(string $invoice_id): self
+    public function setInvoiceId(?string $invoice_id): self
     {
         if (is_null($invoice_id)) {
-            throw new \InvalidArgumentException('non-nullable invoice_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invoice_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoice_id', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invoice_id'] = $invoice_id;
 
@@ -277,7 +275,7 @@ class InvoiceInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets creation_date_time.
      */
-    public function getCreationDateTime(): string
+    public function getCreationDateTime(): ?\DateTime
     {
         return $this->container['creation_date_time'];
     }
@@ -285,12 +283,19 @@ class InvoiceInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets creation_date_time.
      *
-     * @param string $creation_date_time A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     * @param null|\DateTime $creation_date_time A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      */
-    public function setCreationDateTime(string $creation_date_time): self
+    public function setCreationDateTime(?\DateTime $creation_date_time): self
     {
         if (is_null($creation_date_time)) {
-            throw new \InvalidArgumentException('non-nullable creation_date_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'creation_date_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('creation_date_time', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['creation_date_time'] = $creation_date_time;
 

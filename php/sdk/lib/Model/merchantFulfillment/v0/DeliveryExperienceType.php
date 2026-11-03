@@ -54,6 +54,10 @@ class DeliveryExperienceType
 
     public const NO_TRACKING = 'NoTracking';
 
+    public const DELIVERY_CONFIRMATION_WITH_IDENTITY_CHECK = 'DeliveryConfirmationWithIdentityCheck';
+
+    public const DELIVERY_CONFIRMATION_WITH_NAME_VERIFICATION = 'DeliveryConfirmationWithNameVerification';
+
     /**
      * Gets allowable values of the enum.
      *
@@ -66,6 +70,8 @@ class DeliveryExperienceType
             self::DELIVERY_CONFIRMATION_WITH_SIGNATURE,
             self::DELIVERY_CONFIRMATION_WITHOUT_SIGNATURE,
             self::NO_TRACKING,
+            self::DELIVERY_CONFIRMATION_WITH_IDENTITY_CHECK,
+            self::DELIVERY_CONFIRMATION_WITH_NAME_VERIFICATION,
         ];
     }
 }

@@ -78,7 +78,8 @@ class Package implements ModelInterface, \ArrayAccess, \JsonSerializable
         'hazmat_labels' => 'string[]',
         'package_line_items' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\PackageLineItem[]',
         'status' => 'string',
-        'package_handling_requirements' => 'string'];
+        'package_handling_requirements' => 'string',
+        'tracking_details' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\TrackingDetails'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -96,7 +97,8 @@ class Package implements ModelInterface, \ArrayAccess, \JsonSerializable
         'hazmat_labels' => null,
         'package_line_items' => null,
         'status' => null,
-        'package_handling_requirements' => null];
+        'package_handling_requirements' => null,
+        'tracking_details' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -111,6 +113,7 @@ class Package implements ModelInterface, \ArrayAccess, \JsonSerializable
         'package_line_items' => false,
         'status' => true,
         'package_handling_requirements' => true,
+        'tracking_details' => true,
     ];
 
     /**
@@ -134,6 +137,7 @@ class Package implements ModelInterface, \ArrayAccess, \JsonSerializable
         'package_line_items' => 'packageLineItems',
         'status' => 'status',
         'package_handling_requirements' => 'packageHandlingRequirements',
+        'tracking_details' => 'trackingDetails',
     ];
 
     /**
@@ -149,6 +153,7 @@ class Package implements ModelInterface, \ArrayAccess, \JsonSerializable
         'package_line_items' => 'setPackageLineItems',
         'status' => 'setStatus',
         'package_handling_requirements' => 'setPackageHandlingRequirements',
+        'tracking_details' => 'setTrackingDetails',
     ];
 
     /**
@@ -164,6 +169,7 @@ class Package implements ModelInterface, \ArrayAccess, \JsonSerializable
         'package_line_items' => 'getPackageLineItems',
         'status' => 'getStatus',
         'package_handling_requirements' => 'getPackageHandlingRequirements',
+        'tracking_details' => 'getTrackingDetails',
     ];
 
     /**
@@ -186,6 +192,7 @@ class Package implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('package_line_items', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('package_handling_requirements', $data ?? [], null);
+        $this->setIfExists('tracking_details', $data ?? [], null);
     }
 
     /**
@@ -365,7 +372,7 @@ class Package implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets id.
      *
-     * @param string $id an ID that uniquely identifies a package within a shipment
+     * @param string $id the ID of the package whose information you want to update
      */
     public function setId(string $id): self
     {
@@ -561,6 +568,36 @@ class Package implements ModelInterface, \ArrayAccess, \JsonSerializable
             }
         }
         $this->container['package_handling_requirements'] = $package_handling_requirements;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking_details.
+     */
+    public function getTrackingDetails(): ?TrackingDetails
+    {
+        return $this->container['tracking_details'];
+    }
+
+    /**
+     * Sets tracking_details.
+     *
+     * @param null|TrackingDetails $tracking_details tracking_details
+     */
+    public function setTrackingDetails(?TrackingDetails $tracking_details): self
+    {
+        if (is_null($tracking_details)) {
+            array_push($this->openAPINullablesSetToNull, 'tracking_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tracking_details', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tracking_details'] = $tracking_details;
 
         return $this;
     }

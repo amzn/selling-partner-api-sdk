@@ -61,7 +61,8 @@ class ServiceJobProvider implements ModelInterface, \ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'service_job_provider_id' => 'string'];
+        'service_job_provider_id' => 'string',
+        'provider_service_job_reference_id' => 'string'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -73,7 +74,8 @@ class ServiceJobProvider implements ModelInterface, \ArrayAccess, \JsonSerializa
      * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
-        'service_job_provider_id' => null];
+        'service_job_provider_id' => null,
+        'provider_service_job_reference_id' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -82,6 +84,7 @@ class ServiceJobProvider implements ModelInterface, \ArrayAccess, \JsonSerializa
      */
     protected static array $openAPINullables = [
         'service_job_provider_id' => true,
+        'provider_service_job_reference_id' => true,
     ];
 
     /**
@@ -99,6 +102,7 @@ class ServiceJobProvider implements ModelInterface, \ArrayAccess, \JsonSerializa
      */
     protected static array $attributeMap = [
         'service_job_provider_id' => 'serviceJobProviderId',
+        'provider_service_job_reference_id' => 'providerServiceJobReferenceId',
     ];
 
     /**
@@ -108,6 +112,7 @@ class ServiceJobProvider implements ModelInterface, \ArrayAccess, \JsonSerializa
      */
     protected static array $setters = [
         'service_job_provider_id' => 'setServiceJobProviderId',
+        'provider_service_job_reference_id' => 'setProviderServiceJobReferenceId',
     ];
 
     /**
@@ -117,6 +122,7 @@ class ServiceJobProvider implements ModelInterface, \ArrayAccess, \JsonSerializa
      */
     protected static array $getters = [
         'service_job_provider_id' => 'getServiceJobProviderId',
+        'provider_service_job_reference_id' => 'getProviderServiceJobReferenceId',
     ];
 
     /**
@@ -133,6 +139,7 @@ class ServiceJobProvider implements ModelInterface, \ArrayAccess, \JsonSerializa
     public function __construct(?array $data = null)
     {
         $this->setIfExists('service_job_provider_id', $data ?? [], null);
+        $this->setIfExists('provider_service_job_reference_id', $data ?? [], null);
     }
 
     /**
@@ -271,6 +278,36 @@ class ServiceJobProvider implements ModelInterface, \ArrayAccess, \JsonSerializa
             }
         }
         $this->container['service_job_provider_id'] = $service_job_provider_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets provider_service_job_reference_id.
+     */
+    public function getProviderServiceJobReferenceId(): ?string
+    {
+        return $this->container['provider_service_job_reference_id'];
+    }
+
+    /**
+     * Sets provider_service_job_reference_id.
+     *
+     * @param null|string $provider_service_job_reference_id the reference ID for the service job assigned to the provider
+     */
+    public function setProviderServiceJobReferenceId(?string $provider_service_job_reference_id): self
+    {
+        if (is_null($provider_service_job_reference_id)) {
+            array_push($this->openAPINullablesSetToNull, 'provider_service_job_reference_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('provider_service_job_reference_id', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['provider_service_job_reference_id'] = $provider_service_job_reference_id;
 
         return $this;
     }

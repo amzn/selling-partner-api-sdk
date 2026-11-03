@@ -1789,17 +1789,17 @@ class ListingsApi
      * @param string[]       $marketplace_ids
      *                                              A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param null|string    $issue_locale
-     *                                              A locale that is used to localize issues. When not provided, the default language code of the first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
+     *                                              A locale for localization of issues. When not provided, the default language code of the first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
      * @param null|string[]  $included_data
-     *                                              A comma-delimited list of data sets that you want to include in the response. Default: &#x60;summaries&#x60;. (optional)
+     *                                              A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;. (optional)
      * @param null|string[]  $identifiers
-     *                                              A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
+     *                                              A comma-delimited list of product identifiers that you can use to search for listings items.  **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
      * @param null|string    $identifiers_type
-     *                                              A type of product identifiers that you can use to search for listings items.   **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
+     *                                              A type of product identifiers that you can use to search for listings items.  **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
      * @param null|string    $variation_parent_sku
-     *                                              Filters results to include listing items that are variation children of the specified SKU.   **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
+     *                                              Filters results to include listing items that are variation children of the specified SKU.  **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
      * @param null|string    $package_hierarchy_sku
-     *                                              Filter results to include listing items that contain or are contained by the specified SKU.   **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
+     *                                              Filter results to include listing items that contain or are contained by the specified SKU.  **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
      * @param null|\DateTime $created_after
      *                                              A date-time that is used to filter listing items. The response includes listings items that were created at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
      * @param null|\DateTime $created_before
@@ -1862,17 +1862,17 @@ class ListingsApi
      * @param string[]       $marketplace_ids
      *                                              A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param null|string    $issue_locale
-     *                                              A locale that is used to localize issues. When not provided, the default language code of the first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
+     *                                              A locale for localization of issues. When not provided, the default language code of the first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
      * @param null|string[]  $included_data
-     *                                              A comma-delimited list of data sets that you want to include in the response. Default: &#x60;summaries&#x60;. (optional)
+     *                                              A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;. (optional)
      * @param null|string[]  $identifiers
-     *                                              A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
+     *                                              A comma-delimited list of product identifiers that you can use to search for listings items.  **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
      * @param null|string    $identifiers_type
-     *                                              A type of product identifiers that you can use to search for listings items.   **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
+     *                                              A type of product identifiers that you can use to search for listings items.  **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
      * @param null|string    $variation_parent_sku
-     *                                              Filters results to include listing items that are variation children of the specified SKU.   **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
+     *                                              Filters results to include listing items that are variation children of the specified SKU.  **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
      * @param null|string    $package_hierarchy_sku
-     *                                              Filter results to include listing items that contain or are contained by the specified SKU.   **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
+     *                                              Filter results to include listing items that contain or are contained by the specified SKU.  **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
      * @param null|\DateTime $created_after
      *                                              A date-time that is used to filter listing items. The response includes listings items that were created at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
      * @param null|\DateTime $created_before
@@ -2006,17 +2006,17 @@ class ListingsApi
      * @param string[]       $marketplace_ids
      *                                              A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param null|string    $issue_locale
-     *                                              A locale that is used to localize issues. When not provided, the default language code of the first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
+     *                                              A locale for localization of issues. When not provided, the default language code of the first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
      * @param null|string[]  $included_data
-     *                                              A comma-delimited list of data sets that you want to include in the response. Default: &#x60;summaries&#x60;. (optional)
+     *                                              A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;. (optional)
      * @param null|string[]  $identifiers
-     *                                              A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
+     *                                              A comma-delimited list of product identifiers that you can use to search for listings items.  **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
      * @param null|string    $identifiers_type
-     *                                              A type of product identifiers that you can use to search for listings items.   **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
+     *                                              A type of product identifiers that you can use to search for listings items.  **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
      * @param null|string    $variation_parent_sku
-     *                                              Filters results to include listing items that are variation children of the specified SKU.   **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
+     *                                              Filters results to include listing items that are variation children of the specified SKU.  **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
      * @param null|string    $package_hierarchy_sku
-     *                                              Filter results to include listing items that contain or are contained by the specified SKU.   **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
+     *                                              Filter results to include listing items that contain or are contained by the specified SKU.  **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
      * @param null|\DateTime $created_after
      *                                              A date-time that is used to filter listing items. The response includes listings items that were created at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
      * @param null|\DateTime $created_before
@@ -2080,17 +2080,17 @@ class ListingsApi
      * @param string[]       $marketplace_ids
      *                                              A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param null|string    $issue_locale
-     *                                              A locale that is used to localize issues. When not provided, the default language code of the first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
+     *                                              A locale for localization of issues. When not provided, the default language code of the first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
      * @param null|string[]  $included_data
-     *                                              A comma-delimited list of data sets that you want to include in the response. Default: &#x60;summaries&#x60;. (optional)
+     *                                              A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;. (optional)
      * @param null|string[]  $identifiers
-     *                                              A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
+     *                                              A comma-delimited list of product identifiers that you can use to search for listings items.  **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
      * @param null|string    $identifiers_type
-     *                                              A type of product identifiers that you can use to search for listings items.   **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
+     *                                              A type of product identifiers that you can use to search for listings items.  **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
      * @param null|string    $variation_parent_sku
-     *                                              Filters results to include listing items that are variation children of the specified SKU.   **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
+     *                                              Filters results to include listing items that are variation children of the specified SKU.  **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
      * @param null|string    $package_hierarchy_sku
-     *                                              Filter results to include listing items that contain or are contained by the specified SKU.   **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
+     *                                              Filter results to include listing items that contain or are contained by the specified SKU.  **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
      * @param null|\DateTime $created_after
      *                                              A date-time that is used to filter listing items. The response includes listings items that were created at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
      * @param null|\DateTime $created_before
@@ -2199,17 +2199,17 @@ class ListingsApi
      * @param string[]       $marketplace_ids
      *                                              A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param null|string    $issue_locale
-     *                                              A locale that is used to localize issues. When not provided, the default language code of the first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
+     *                                              A locale for localization of issues. When not provided, the default language code of the first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
      * @param null|string[]  $included_data
-     *                                              A comma-delimited list of data sets that you want to include in the response. Default: &#x60;summaries&#x60;. (optional)
+     *                                              A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;. (optional)
      * @param null|string[]  $identifiers
-     *                                              A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
+     *                                              A comma-delimited list of product identifiers that you can use to search for listings items.  **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
      * @param null|string    $identifiers_type
-     *                                              A type of product identifiers that you can use to search for listings items.   **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
+     *                                              A type of product identifiers that you can use to search for listings items.  **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
      * @param null|string    $variation_parent_sku
-     *                                              Filters results to include listing items that are variation children of the specified SKU.   **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
+     *                                              Filters results to include listing items that are variation children of the specified SKU.  **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
      * @param null|string    $package_hierarchy_sku
-     *                                              Filter results to include listing items that contain or are contained by the specified SKU.   **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
+     *                                              Filter results to include listing items that contain or are contained by the specified SKU.  **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
      * @param null|\DateTime $created_after
      *                                              A date-time that is used to filter listing items. The response includes listings items that were created at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
      * @param null|\DateTime $created_before

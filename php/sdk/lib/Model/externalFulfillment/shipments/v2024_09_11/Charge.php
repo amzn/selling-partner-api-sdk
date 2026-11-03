@@ -51,11 +51,11 @@ class Charge implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
-    public const CHARGE_TYPE_PRODUCT = 'PRODUCT';
-    public const CHARGE_TYPE_SHIPPING = 'SHIPPING';
-    public const CHARGE_TYPE_GIFT_WRAP = 'GIFT_WRAP';
-    public const CHARGE_TYPE_TOTAL = 'TOTAL';
-    public const CHARGE_TYPE_OTHER = 'OTHER';
+    public const CHARGE_TYPE_PRODUCT = 'product';
+    public const CHARGE_TYPE_SHIPPING = 'shipping';
+    public const CHARGE_TYPE_GIFT_WRAP = 'gift_wrap';
+    public const CHARGE_TYPE_TOTAL = 'total';
+    public const CHARGE_TYPE_OTHER = 'other';
 
     /**
      * The original name of the model.

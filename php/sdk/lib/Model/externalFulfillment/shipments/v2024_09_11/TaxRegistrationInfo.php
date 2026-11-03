@@ -39,7 +39,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Tax registration details of the entity. Applicable to direct fulfillment shipments.
+ * @description Tax registration details of the entity. Applicable only to direct fulfillment shipments.
  *
  * @author   OpenAPI Generator team
  *
