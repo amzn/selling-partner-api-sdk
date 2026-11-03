@@ -71,7 +71,9 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// <param name="price">price (required).</param>
         /// <param name="points">points.</param>
         /// <param name="audience">audience.</param>
-        public ItemOfferByMarketplace(string marketplaceId = default(string), OfferTypeEnum offerType = default(OfferTypeEnum), Money price = default(Money), Points? points = default(Points?), Audience? audience = default(Audience?))
+        /// <param name="replenishmentDiscount">replenishmentDiscount.</param>
+        /// <param name="quantityDiscountPlan">quantityDiscountPlan.</param>
+        public ItemOfferByMarketplace(string marketplaceId = default(string), OfferTypeEnum offerType = default(OfferTypeEnum), Money price = default(Money), Points? points = default(Points?), Audience? audience = default(Audience?), ReplenishmentDiscount? replenishmentDiscount = default(ReplenishmentDiscount?), QuantityDiscountPlan? quantityDiscountPlan = default(QuantityDiscountPlan?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -88,6 +90,8 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
             this.Price = price;
             this.Points = points;
             this.Audience = audience;
+            this.ReplenishmentDiscount = replenishmentDiscount;
+            this.QuantityDiscountPlan = quantityDiscountPlan;
         }
 
         /// <summary>
@@ -116,6 +120,18 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         public Audience? Audience { get; set; }
 
         /// <summary>
+        /// Gets or Sets ReplenishmentDiscount
+        /// </summary>
+        [DataMember(Name = "replenishmentDiscount", EmitDefaultValue = false)]
+        public ReplenishmentDiscount? ReplenishmentDiscount { get; set; }
+
+        /// <summary>
+        /// Gets or Sets QuantityDiscountPlan
+        /// </summary>
+        [DataMember(Name = "quantityDiscountPlan", EmitDefaultValue = false)]
+        public QuantityDiscountPlan? QuantityDiscountPlan { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -128,6 +144,8 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
             sb.Append("  Price: ").Append(Price).Append("\n");
             sb.Append("  Points: ").Append(Points).Append("\n");
             sb.Append("  Audience: ").Append(Audience).Append("\n");
+            sb.Append("  ReplenishmentDiscount: ").Append(ReplenishmentDiscount).Append("\n");
+            sb.Append("  QuantityDiscountPlan: ").Append(QuantityDiscountPlan).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

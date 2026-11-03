@@ -110,9 +110,9 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// Initializes a new instance of the <see cref="Tax" /> class.
         /// </summary>
         /// <param name="type">The type of tax..</param>
-        /// <param name="rate">A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies..</param>
+        /// <param name="rate">A decimal number..</param>
         /// <param name="charge">charge (required).</param>
-        public Tax(TypeEnum? type = default(TypeEnum?), string? rate = default(string?), ChargeBreakup charge = default(ChargeBreakup))
+        public Tax(TypeEnum? type = default(TypeEnum?), decimal? rate = default(decimal?), ChargeBreakup charge = default(ChargeBreakup))
         {
             // to ensure "charge" is required (not null)
             if (charge == null)
@@ -125,11 +125,11 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         }
 
         /// <summary>
-        /// A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+        /// A decimal number.
         /// </summary>
-        /// <value>A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.</value>
+        /// <value>A decimal number.</value>
         [DataMember(Name = "rate", EmitDefaultValue = false)]
-        public string? Rate { get; set; }
+        public decimal? Rate { get; set; }
 
         /// <summary>
         /// Gets or Sets Charge

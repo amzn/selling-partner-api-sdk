@@ -70,16 +70,16 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         public enum ShippingTypeEnum
         {
             /// <summary>
-            /// Enum Self for value: Self
+            /// Enum SELF for value: SELF
             /// </summary>
-            [EnumMember(Value = "Self")]
-            Self = 1,
+            [EnumMember(Value = "SELF")]
+            SELF = 1,
 
             /// <summary>
-            /// Enum Marketplace for value: Marketplace
+            /// Enum MARKETPLACE for value: MARKETPLACE
             /// </summary>
-            [EnumMember(Value = "Marketplace")]
-            Marketplace = 2,
+            [EnumMember(Value = "MARKETPLACE")]
+            MARKETPLACE = 2,
 
             /// <summary>
             /// Enum THIRDPARTYCARRIER for value: THIRD_PARTY_CARRIER

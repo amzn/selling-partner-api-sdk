@@ -340,8 +340,9 @@ namespace software.amzn.spapi.Api.services.v1
         /// <param name="asins">List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)</param>
         /// <param name="requiredSkills">A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)</param>
         /// <param name="storeIds">List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)</param>
+        /// <param name="providerServiceJobReferenceIds">A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs. (optional)</param>
         /// <returns>GetServiceJobsResponse</returns>
-        GetServiceJobsResponse GetServiceJobs (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null);
+        GetServiceJobsResponse GetServiceJobs (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null, List<string>? providerServiceJobReferenceIds = null);
 
         /// <summary>
         /// 
@@ -368,8 +369,9 @@ namespace software.amzn.spapi.Api.services.v1
         /// <param name="asins">List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)</param>
         /// <param name="requiredSkills">A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)</param>
         /// <param name="storeIds">List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)</param>
+        /// <param name="providerServiceJobReferenceIds">A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs. (optional)</param>
         /// <returns>ApiResponse of GetServiceJobsResponse</returns>
-        ApiResponse<GetServiceJobsResponse> GetServiceJobsWithHttpInfo (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null);
+        ApiResponse<GetServiceJobsResponse> GetServiceJobsWithHttpInfo (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null, List<string>? providerServiceJobReferenceIds = null);
         /// <summary>
         /// 
         /// </summary>
@@ -787,8 +789,9 @@ namespace software.amzn.spapi.Api.services.v1
         /// <param name="asins">List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)</param>
         /// <param name="requiredSkills">A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)</param>
         /// <param name="storeIds">List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)</param>
+        /// <param name="providerServiceJobReferenceIds">A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs. (optional)</param>
         /// <returns>Task of GetServiceJobsResponse</returns>
-        System.Threading.Tasks.Task<GetServiceJobsResponse> GetServiceJobsAsync (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null);
+        System.Threading.Tasks.Task<GetServiceJobsResponse> GetServiceJobsAsync (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null, List<string>? providerServiceJobReferenceIds = null);
 
         /// <summary>
         /// 
@@ -815,8 +818,9 @@ namespace software.amzn.spapi.Api.services.v1
         /// <param name="asins">List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)</param>
         /// <param name="requiredSkills">A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)</param>
         /// <param name="storeIds">List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)</param>
+        /// <param name="providerServiceJobReferenceIds">A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs. (optional)</param>
         /// <returns>Task of ApiResponse (GetServiceJobsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetServiceJobsResponse>> GetServiceJobsAsyncWithHttpInfo (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null);
+        System.Threading.Tasks.Task<ApiResponse<GetServiceJobsResponse>> GetServiceJobsAsyncWithHttpInfo (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null, List<string>? providerServiceJobReferenceIds = null);
         /// <summary>
         /// 
         /// </summary>
@@ -2854,10 +2858,11 @@ namespace software.amzn.spapi.Api.services.v1
         /// <param name="asins">List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)</param>
         /// <param name="requiredSkills">A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)</param>
         /// <param name="storeIds">List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)</param>
+        /// <param name="providerServiceJobReferenceIds">A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs. (optional)</param>
         /// <returns>GetServiceJobsResponse</returns>
-        public GetServiceJobsResponse GetServiceJobs (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null)
+        public GetServiceJobsResponse GetServiceJobs (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null, List<string>? providerServiceJobReferenceIds = null)
         {
-             ApiResponse<GetServiceJobsResponse> localVarResponse = GetServiceJobsWithHttpInfo(marketplaceIds, serviceOrderIds, productOrderIds, trackingIds, serviceJobStatus, pageToken, pageSize, sortField, sortOrder, createdAfter, createdBefore, lastUpdatedAfter, lastUpdatedBefore, scheduleStartDate, scheduleEndDate, asins, requiredSkills, storeIds);
+             ApiResponse<GetServiceJobsResponse> localVarResponse = GetServiceJobsWithHttpInfo(marketplaceIds, serviceOrderIds, productOrderIds, trackingIds, serviceJobStatus, pageToken, pageSize, sortField, sortOrder, createdAfter, createdBefore, lastUpdatedAfter, lastUpdatedBefore, scheduleStartDate, scheduleEndDate, asins, requiredSkills, storeIds, providerServiceJobReferenceIds);
              return localVarResponse.Data;
         }
 
@@ -2883,8 +2888,9 @@ namespace software.amzn.spapi.Api.services.v1
         /// <param name="asins">List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)</param>
         /// <param name="requiredSkills">A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)</param>
         /// <param name="storeIds">List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)</param>
+        /// <param name="providerServiceJobReferenceIds">A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs. (optional)</param>
         /// <returns>ApiResponse of GetServiceJobsResponse</returns>
-        public ApiResponse< GetServiceJobsResponse > GetServiceJobsWithHttpInfo (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null)
+        public ApiResponse< GetServiceJobsResponse > GetServiceJobsWithHttpInfo (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null, List<string>? providerServiceJobReferenceIds = null)
         {
             // verify the required parameter 'marketplaceIds' is set
             if (marketplaceIds == null)
@@ -2929,6 +2935,7 @@ namespace software.amzn.spapi.Api.services.v1
             if (asins != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "asins", asins)); // query parameter
             if (requiredSkills != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "requiredSkills", requiredSkills)); // query parameter
             if (storeIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "storeIds", storeIds)); // query parameter
+            if (providerServiceJobReferenceIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "providerServiceJobReferenceIds", providerServiceJobReferenceIds)); // query parameter
 
 
             // make the HTTP request
@@ -2969,10 +2976,11 @@ namespace software.amzn.spapi.Api.services.v1
         /// <param name="asins">List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)</param>
         /// <param name="requiredSkills">A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)</param>
         /// <param name="storeIds">List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)</param>
+        /// <param name="providerServiceJobReferenceIds">A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs. (optional)</param>
         /// <returns>Task of GetServiceJobsResponse</returns>
-        public async System.Threading.Tasks.Task<GetServiceJobsResponse> GetServiceJobsAsync (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null)
+        public async System.Threading.Tasks.Task<GetServiceJobsResponse> GetServiceJobsAsync (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null, List<string>? providerServiceJobReferenceIds = null)
         {
-             ApiResponse<GetServiceJobsResponse> localVarResponse = await GetServiceJobsAsyncWithHttpInfo(marketplaceIds, serviceOrderIds, productOrderIds, trackingIds, serviceJobStatus, pageToken, pageSize, sortField, sortOrder, createdAfter, createdBefore, lastUpdatedAfter, lastUpdatedBefore, scheduleStartDate, scheduleEndDate, asins, requiredSkills, storeIds);
+             ApiResponse<GetServiceJobsResponse> localVarResponse = await GetServiceJobsAsyncWithHttpInfo(marketplaceIds, serviceOrderIds, productOrderIds, trackingIds, serviceJobStatus, pageToken, pageSize, sortField, sortOrder, createdAfter, createdBefore, lastUpdatedAfter, lastUpdatedBefore, scheduleStartDate, scheduleEndDate, asins, requiredSkills, storeIds, providerServiceJobReferenceIds);
              return localVarResponse.Data;
 
         }
@@ -2999,8 +3007,9 @@ namespace software.amzn.spapi.Api.services.v1
         /// <param name="asins">List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)</param>
         /// <param name="requiredSkills">A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)</param>
         /// <param name="storeIds">List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)</param>
+        /// <param name="providerServiceJobReferenceIds">A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs. (optional)</param>
         /// <returns>Task of ApiResponse (GetServiceJobsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetServiceJobsResponse>> GetServiceJobsAsyncWithHttpInfo (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetServiceJobsResponse>> GetServiceJobsAsyncWithHttpInfo (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null, List<string>? providerServiceJobReferenceIds = null)
         {
             // verify the required parameter 'marketplaceIds' is set
             if (marketplaceIds == null)
@@ -3045,6 +3054,7 @@ namespace software.amzn.spapi.Api.services.v1
             if (asins != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "asins", asins)); // query parameter
             if (requiredSkills != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "requiredSkills", requiredSkills)); // query parameter
             if (storeIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "storeIds", storeIds)); // query parameter
+            if (providerServiceJobReferenceIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "providerServiceJobReferenceIds", providerServiceJobReferenceIds)); // query parameter
 
 
             // make the HTTP request

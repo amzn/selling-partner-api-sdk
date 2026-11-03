@@ -27,7 +27,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
 {
     /// <summary>
-    /// Whether the invoice document is required to be attached to the shipment and its corresponding status.
+    /// Whether the invoice document is required to be attached to the shipment and its corresponding status. Applicable only for Brazil marketplace.
     /// </summary>
     [DataContract(Name = "InvoiceRequirement")]
     public partial class InvoiceRequirement : IValidatableObject

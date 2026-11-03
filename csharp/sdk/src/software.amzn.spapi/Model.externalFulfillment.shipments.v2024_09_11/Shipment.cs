@@ -219,7 +219,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="marketplaceAttributes">marketplaceAttributes (required).</param>
         /// <param name="shipmentInfo">shipmentInfo (required).</param>
         /// <param name="invoiceInfo">invoiceInfo.</param>
-        /// <param name="partyInfoList">All involved party identification and metadata for the vendor, buyer, and seller. Applicable for direct-fulfillment sellers..</param>
+        /// <param name="partyInfoList">All involved party identification and metadata for vendor, buyer, seller. Applicable only for direct-fulfillment sellers..</param>
         /// <param name="shipmentRequirements">shipmentRequirements (required).</param>
         /// <param name="charges">The charges associated with the shipment. (required).</param>
         /// <param name="status">The current status of the shipment. (required).</param>
@@ -231,7 +231,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="creationDateTime">A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (required).</param>
         /// <param name="lastUpdatedDateTime">A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (required).</param>
         /// <param name="earliestPackDateTime">A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format..</param>
-        public Shipment(string id = default(string), string locationId = default(string), MarketplaceAttributes marketplaceAttributes = default(MarketplaceAttributes), ShipmentInfo shipmentInfo = default(ShipmentInfo), InvoiceInfo? invoiceInfo = default(InvoiceInfo?), List<PartyIdentificationInfo>? partyInfoList = default(List<PartyIdentificationInfo>?), ShipmentRequirements shipmentRequirements = default(ShipmentRequirements), List<Charge> charges = default(List<Charge>), StatusEnum status = default(StatusEnum), SubStatusEnum? subStatus = default(SubStatusEnum?), string? reason = default(string?), List<ShipmentLineItem> lineItems = default(List<ShipmentLineItem>), ShippingInfo shippingInfo = default(ShippingInfo), List<Package>? packages = default(List<Package>?), string creationDateTime = default(string), string lastUpdatedDateTime = default(string), string? earliestPackDateTime = default(string?))
+        public Shipment(string id = default(string), string locationId = default(string), MarketplaceAttributes marketplaceAttributes = default(MarketplaceAttributes), ShipmentInfo shipmentInfo = default(ShipmentInfo), InvoiceInfo? invoiceInfo = default(InvoiceInfo?), List<PartyIdentificationInfo>? partyInfoList = default(List<PartyIdentificationInfo>?), ShipmentRequirements shipmentRequirements = default(ShipmentRequirements), List<Charge> charges = default(List<Charge>), StatusEnum status = default(StatusEnum), SubStatusEnum? subStatus = default(SubStatusEnum?), string? reason = default(string?), List<ShipmentLineItem> lineItems = default(List<ShipmentLineItem>), ShippingInfo shippingInfo = default(ShippingInfo), List<Package>? packages = default(List<Package>?), DateTime creationDateTime = default(DateTime), DateTime lastUpdatedDateTime = default(DateTime), DateTime? earliestPackDateTime = default(DateTime?))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -282,17 +282,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
                 throw new ArgumentNullException("shippingInfo is a required property for Shipment and cannot be null");
             }
             this.ShippingInfo = shippingInfo;
-            // to ensure "creationDateTime" is required (not null)
-            if (creationDateTime == null)
-            {
-                throw new ArgumentNullException("creationDateTime is a required property for Shipment and cannot be null");
-            }
             this.CreationDateTime = creationDateTime;
-            // to ensure "lastUpdatedDateTime" is required (not null)
-            if (lastUpdatedDateTime == null)
-            {
-                throw new ArgumentNullException("lastUpdatedDateTime is a required property for Shipment and cannot be null");
-            }
             this.LastUpdatedDateTime = lastUpdatedDateTime;
             this.InvoiceInfo = invoiceInfo;
             this.PartyInfoList = partyInfoList;
@@ -335,9 +325,9 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         public InvoiceInfo? InvoiceInfo { get; set; }
 
         /// <summary>
-        /// All involved party identification and metadata for the vendor, buyer, and seller. Applicable for direct-fulfillment sellers.
+        /// All involved party identification and metadata for vendor, buyer, seller. Applicable only for direct-fulfillment sellers.
         /// </summary>
-        /// <value>All involved party identification and metadata for the vendor, buyer, and seller. Applicable for direct-fulfillment sellers.</value>
+        /// <value>All involved party identification and metadata for vendor, buyer, seller. Applicable only for direct-fulfillment sellers.</value>
         [DataMember(Name = "partyInfoList", EmitDefaultValue = false)]
         public List<PartyIdentificationInfo>? PartyInfoList { get; set; }
 
@@ -386,21 +376,21 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.</value>
         [DataMember(Name = "creationDateTime", IsRequired = true, EmitDefaultValue = true)]
-        public string CreationDateTime { get; set; }
+        public DateTime CreationDateTime { get; set; }
 
         /// <summary>
         /// A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
         /// </summary>
         /// <value>A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.</value>
         [DataMember(Name = "lastUpdatedDateTime", IsRequired = true, EmitDefaultValue = true)]
-        public string LastUpdatedDateTime { get; set; }
+        public DateTime LastUpdatedDateTime { get; set; }
 
         /// <summary>
         /// A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
         /// </summary>
         /// <value>A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.</value>
         [DataMember(Name = "earliestPackDateTime", EmitDefaultValue = false)]
-        public string? EarliestPackDateTime { get; set; }
+        public DateTime? EarliestPackDateTime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

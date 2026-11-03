@@ -73,25 +73,20 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <summary>
         /// Initializes a new instance of the <see cref="Dimension" /> class.
         /// </summary>
-        /// <param name="value">A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. (required).</param>
+        /// <param name="value">A decimal number. (required).</param>
         /// <param name="dimensionUnit">The unit of measurement of the dimension. (required).</param>
-        public Dimension(string value = default(string), DimensionUnitEnum dimensionUnit = default(DimensionUnitEnum))
+        public Dimension(decimal value = default(decimal), DimensionUnitEnum dimensionUnit = default(DimensionUnitEnum))
         {
-            // to ensure "value" is required (not null)
-            if (value == null)
-            {
-                throw new ArgumentNullException("value is a required property for Dimension and cannot be null");
-            }
             this.Value = value;
             this.DimensionUnit = dimensionUnit;
         }
 
         /// <summary>
-        /// A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+        /// A decimal number.
         /// </summary>
-        /// <value>A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.</value>
+        /// <value>A decimal number.</value>
         [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
-        public string Value { get; set; }
+        public decimal Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

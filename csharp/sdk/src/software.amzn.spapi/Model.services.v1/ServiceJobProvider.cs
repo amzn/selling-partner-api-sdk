@@ -35,9 +35,11 @@ namespace software.amzn.spapi.Model.services.v1
         /// Initializes a new instance of the <see cref="ServiceJobProvider" /> class.
         /// </summary>
         /// <param name="serviceJobProviderId">The identifier of the service job provider..</param>
-        public ServiceJobProvider(string? serviceJobProviderId = default(string?))
+        /// <param name="providerServiceJobReferenceId">The reference ID for the service job assigned to the provider..</param>
+        public ServiceJobProvider(string? serviceJobProviderId = default(string?), string? providerServiceJobReferenceId = default(string?))
         {
             this.ServiceJobProviderId = serviceJobProviderId;
+            this.ProviderServiceJobReferenceId = providerServiceJobReferenceId;
         }
 
         /// <summary>
@@ -48,6 +50,13 @@ namespace software.amzn.spapi.Model.services.v1
         public string? ServiceJobProviderId { get; set; }
 
         /// <summary>
+        /// The reference ID for the service job assigned to the provider.
+        /// </summary>
+        /// <value>The reference ID for the service job assigned to the provider.</value>
+        [DataMember(Name = "providerServiceJobReferenceId", EmitDefaultValue = false)]
+        public string? ProviderServiceJobReferenceId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -56,6 +65,7 @@ namespace software.amzn.spapi.Model.services.v1
             StringBuilder sb = new StringBuilder();
             sb.Append("class ServiceJobProvider {\n");
             sb.Append("  ServiceJobProviderId: ").Append(ServiceJobProviderId).Append("\n");
+            sb.Append("  ProviderServiceJobReferenceId: ").Append(ProviderServiceJobReferenceId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

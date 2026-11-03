@@ -40,46 +40,36 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <summary>
         /// Initializes a new instance of the <see cref="Geocodes" /> class.
         /// </summary>
-        /// <param name="latitude">A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. (required).</param>
-        /// <param name="longitude">A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. (required).</param>
-        /// <param name="elevation">A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies..</param>
-        public Geocodes(string latitude = default(string), string longitude = default(string), string? elevation = default(string?))
+        /// <param name="latitude">A decimal number. (required).</param>
+        /// <param name="longitude">A decimal number. (required).</param>
+        /// <param name="elevation">A decimal number..</param>
+        public Geocodes(decimal latitude = default(decimal), decimal longitude = default(decimal), decimal? elevation = default(decimal?))
         {
-            // to ensure "latitude" is required (not null)
-            if (latitude == null)
-            {
-                throw new ArgumentNullException("latitude is a required property for Geocodes and cannot be null");
-            }
             this.Latitude = latitude;
-            // to ensure "longitude" is required (not null)
-            if (longitude == null)
-            {
-                throw new ArgumentNullException("longitude is a required property for Geocodes and cannot be null");
-            }
             this.Longitude = longitude;
             this.Elevation = elevation;
         }
 
         /// <summary>
-        /// A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+        /// A decimal number.
         /// </summary>
-        /// <value>A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.</value>
+        /// <value>A decimal number.</value>
         [DataMember(Name = "latitude", IsRequired = true, EmitDefaultValue = true)]
-        public string Latitude { get; set; }
+        public decimal Latitude { get; set; }
 
         /// <summary>
-        /// A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+        /// A decimal number.
         /// </summary>
-        /// <value>A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.</value>
+        /// <value>A decimal number.</value>
         [DataMember(Name = "longitude", IsRequired = true, EmitDefaultValue = true)]
-        public string Longitude { get; set; }
+        public decimal Longitude { get; set; }
 
         /// <summary>
-        /// A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+        /// A decimal number.
         /// </summary>
-        /// <value>A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.</value>
+        /// <value>A decimal number.</value>
         [DataMember(Name = "elevation", EmitDefaultValue = false)]
-        public string? Elevation { get; set; }
+        public decimal? Elevation { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

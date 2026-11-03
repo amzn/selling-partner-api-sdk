@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.listings.items.v2021_08_01
 {
     /// <summary>
-    /// Conveying the status of the listed enforcement actions and, if applicable, provides information about the exemption&#39;s expiry date.
+    /// The status of the listed enforcement actions. If applicable, includes information about the exemption expiry date.
     /// </summary>
     [DataContract(Name = "IssueExemption")]
     public partial class IssueExemption : IValidatableObject
@@ -73,7 +73,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// Initializes a new instance of the <see cref="IssueExemption" /> class.
         /// </summary>
         /// <param name="status">Indicates the current exemption status for the listed enforcement actions. It can take values such as &#x60;EXEMPT&#x60;, signifying permanent exemption, &#x60;EXEMPT_UNTIL_EXPIRY_DATE&#x60; indicating temporary exemption until a specified date, or &#x60;NOT_EXEMPT&#x60; signifying no exemptions, and enforcement actions were already applied. (required).</param>
-        /// <param name="expiryDate">Represents the timestamp, in ISO 8601 format, that specifies the date when the temporary exemptions expires, and Amazon begins enforcing the listed actions..</param>
+        /// <param name="expiryDate">The timestamp, in ISO 8601 format, when the temporary exemption expires and Amazon begins enforcing the listed actions..</param>
         public IssueExemption(StatusEnum status = default(StatusEnum), DateTime? expiryDate = default(DateTime?))
         {
             this.Status = status;
@@ -81,9 +81,9 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         }
 
         /// <summary>
-        /// Represents the timestamp, in ISO 8601 format, that specifies the date when the temporary exemptions expires, and Amazon begins enforcing the listed actions.
+        /// The timestamp, in ISO 8601 format, when the temporary exemption expires and Amazon begins enforcing the listed actions.
         /// </summary>
-        /// <value>Represents the timestamp, in ISO 8601 format, that specifies the date when the temporary exemptions expires, and Amazon begins enforcing the listed actions.</value>
+        /// <value>The timestamp, in ISO 8601 format, when the temporary exemption expires and Amazon begins enforcing the listed actions.</value>
         /*
         <example>2023-10-28T00:36:48.914Z</example>
         */

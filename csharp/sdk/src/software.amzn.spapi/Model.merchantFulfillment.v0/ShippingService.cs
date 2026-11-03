@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <summary>
         /// Initializes a new instance of the <see cref="ShippingService" /> class.
         /// </summary>
-        /// <param name="shippingServiceName">A plain text representation of a carrier&#39;s shipping service. For example, \&quot;UPS Ground\&quot; or \&quot;FedEx Standard Overnight\&quot;.  (required).</param>
+        /// <param name="shippingServiceName">The carrier&#39;s shipping service name, such as \&quot;UPS Ground\&quot; or \&quot;FedEx Standard Overnight\&quot;. (required).</param>
         /// <param name="carrierName">The name of the carrier. (required).</param>
         /// <param name="shippingServiceId">An Amazon-defined shipping service identifier. (required).</param>
         /// <param name="shippingServiceOfferId">An Amazon-defined shipping service offer identifier. (required).</param>
@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="availableShippingServiceOptions">availableShippingServiceOptions.</param>
         /// <param name="availableLabelFormats">List of label formats..</param>
         /// <param name="availableFormatOptionsForLabel">The available label formats..</param>
-        /// <param name="requiresAdditionalSellerInputs">When true, additional seller inputs are required. (required).</param>
+        /// <param name="requiresAdditionalSellerInputs">When &#x60;true&#x60;, additional seller inputs are required. (required).</param>
         /// <param name="benefits">benefits.</param>
         public ShippingService(string shippingServiceName = default(string), string carrierName = default(string), string shippingServiceId = default(string), string shippingServiceOfferId = default(string), DateTime shipDate = default(DateTime), DateTime? earliestEstimatedDeliveryDate = default(DateTime?), DateTime? latestEstimatedDeliveryDate = default(DateTime?), CurrencyAmount rate = default(CurrencyAmount), CurrencyAmount rateWithAdjustments = default(CurrencyAmount), List<RateItem>? adjustmentItemList = default(List<RateItem>?), ShippingServiceOptions shippingServiceOptions = default(ShippingServiceOptions), AvailableShippingServiceOptions? availableShippingServiceOptions = default(AvailableShippingServiceOptions?), List<LabelFormat>? availableLabelFormats = default(List<LabelFormat>?), List<LabelFormatOption>? availableFormatOptionsForLabel = default(List<LabelFormatOption>?), bool requiresAdditionalSellerInputs = default(bool), Benefits? benefits = default(Benefits?))
         {
@@ -111,9 +111,9 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         }
 
         /// <summary>
-        /// A plain text representation of a carrier&#39;s shipping service. For example, \&quot;UPS Ground\&quot; or \&quot;FedEx Standard Overnight\&quot;. 
+        /// The carrier&#39;s shipping service name, such as \&quot;UPS Ground\&quot; or \&quot;FedEx Standard Overnight\&quot;.
         /// </summary>
-        /// <value>A plain text representation of a carrier&#39;s shipping service. For example, \&quot;UPS Ground\&quot; or \&quot;FedEx Standard Overnight\&quot;. </value>
+        /// <value>The carrier&#39;s shipping service name, such as \&quot;UPS Ground\&quot; or \&quot;FedEx Standard Overnight\&quot;.</value>
         [DataMember(Name = "ShippingServiceName", IsRequired = true, EmitDefaultValue = true)]
         public string ShippingServiceName { get; set; }
 
@@ -205,9 +205,9 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         public List<LabelFormatOption>? AvailableFormatOptionsForLabel { get; set; }
 
         /// <summary>
-        /// When true, additional seller inputs are required.
+        /// When &#x60;true&#x60;, additional seller inputs are required.
         /// </summary>
-        /// <value>When true, additional seller inputs are required.</value>
+        /// <value>When &#x60;true&#x60;, additional seller inputs are required.</value>
         [DataMember(Name = "RequiresAdditionalSellerInputs", IsRequired = true, EmitDefaultValue = true)]
         public bool RequiresAdditionalSellerInputs { get; set; }
 

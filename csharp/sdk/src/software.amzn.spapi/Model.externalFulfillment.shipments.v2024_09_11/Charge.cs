@@ -40,34 +40,34 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         public enum ChargeTypeEnum
         {
             /// <summary>
-            /// Enum PRODUCT for value: PRODUCT
+            /// Enum Product for value: product
             /// </summary>
-            [EnumMember(Value = "PRODUCT")]
-            PRODUCT = 1,
+            [EnumMember(Value = "product")]
+            Product = 1,
 
             /// <summary>
-            /// Enum SHIPPING for value: SHIPPING
+            /// Enum Shipping for value: shipping
             /// </summary>
-            [EnumMember(Value = "SHIPPING")]
-            SHIPPING = 2,
+            [EnumMember(Value = "shipping")]
+            Shipping = 2,
 
             /// <summary>
-            /// Enum GIFTWRAP for value: GIFT_WRAP
+            /// Enum GiftWrap for value: gift_wrap
             /// </summary>
-            [EnumMember(Value = "GIFT_WRAP")]
-            GIFTWRAP = 3,
+            [EnumMember(Value = "gift_wrap")]
+            GiftWrap = 3,
 
             /// <summary>
-            /// Enum TOTAL for value: TOTAL
+            /// Enum Total for value: total
             /// </summary>
-            [EnumMember(Value = "TOTAL")]
-            TOTAL = 4,
+            [EnumMember(Value = "total")]
+            Total = 4,
 
             /// <summary>
-            /// Enum OTHER for value: OTHER
+            /// Enum Other for value: other
             /// </summary>
-            [EnumMember(Value = "OTHER")]
-            OTHER = 5
+            [EnumMember(Value = "other")]
+            Other = 5
         }
 
 

@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <summary>
         /// Initializes a new instance of the <see cref="Error" /> class.
         /// </summary>
-        /// <param name="code">An error code that identifies the type of error that occurred. (required).</param>
+        /// <param name="code">An error code that identifies the type of error. (required).</param>
         /// <param name="message">A message that describes the error condition in a human-readable form. (required).</param>
         /// <param name="details">Additional details that can help the caller understand or fix the issue..</param>
         public Error(string code = default(string), string message = default(string), string? details = default(string?))
@@ -60,9 +60,9 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         }
 
         /// <summary>
-        /// An error code that identifies the type of error that occurred.
+        /// An error code that identifies the type of error.
         /// </summary>
-        /// <value>An error code that identifies the type of error that occurred.</value>
+        /// <value>An error code that identifies the type of error.</value>
         [DataMember(Name = "code", IsRequired = true, EmitDefaultValue = true)]
         public string Code { get; set; }
 

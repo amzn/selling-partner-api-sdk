@@ -81,7 +81,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <param name="shippingOptionId">An identifier for the shipping option. (required).</param>
         /// <param name="shipBy">The shipper type. (required).</param>
-        /// <param name="carrierName">The carrier name for the offering..</param>
+        /// <param name="carrierName">The carrier name for the offering. Applicable only for Self Ship program.</param>
         /// <param name="pickupWindow">pickupWindow.</param>
         /// <param name="timeSlot">timeSlot.</param>
         /// <param name="handoverLocation">handoverLocation.</param>
@@ -108,9 +108,9 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         public string ShippingOptionId { get; set; }
 
         /// <summary>
-        /// The carrier name for the offering.
+        /// The carrier name for the offering. Applicable only for Self Ship program
         /// </summary>
-        /// <value>The carrier name for the offering.</value>
+        /// <value>The carrier name for the offering. Applicable only for Self Ship program</value>
         [DataMember(Name = "carrierName", EmitDefaultValue = false)]
         public string? CarrierName { get; set; }
 

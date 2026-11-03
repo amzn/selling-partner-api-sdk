@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.listings.items.v2021_08_01
 {
     /// <summary>
-    /// The enforcement action taken by Amazon that affect the publishing or status of a listing
+    /// An enforcement action that Amazon takes that affects the publishing or status of a listing.
     /// </summary>
     [DataContract(Name = "IssueEnforcementAction")]
     public partial class IssueEnforcementAction : IValidatableObject
@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// <summary>
         /// Initializes a new instance of the <see cref="IssueEnforcementAction" /> class.
         /// </summary>
-        /// <param name="action">The enforcement action name.   Possible values:   * &#x60;LISTING_SUPPRESSED&#x60; - This enforcement takes down the current listing item&#39;s buyability.   * &#x60;ATTRIBUTE_SUPPRESSED&#x60; - An attribute&#39;s value on the listing item is invalid, which causes it to be rejected by Amazon.   * &#x60;CATALOG_ITEM_REMOVED&#x60; - This catalog item is inactive on Amazon, and all offers against it in the applicable Amazon store are non-buyable.   * &#x60;SEARCH_SUPPRESSED&#x60; - This value indicates that the catalog item is hidden from search results. (required).</param>
+        /// <param name="action">The enforcement action name.  Possible values:  * &#x60;LISTING_SUPPRESSED&#x60; - This enforcement takes down the current listing item&#39;s buyability.  * &#x60;ATTRIBUTE_SUPPRESSED&#x60; - An attribute&#39;s value on the listing item is invalid, which causes it to be rejected by Amazon.  * &#x60;CATALOG_ITEM_REMOVED&#x60; - This catalog item is inactive on Amazon, and all offers against it in the applicable Amazon store are non-buyable.  * &#x60;SEARCH_SUPPRESSED&#x60; - This value indicates that the catalog item is hidden from search results. (required).</param>
         public IssueEnforcementAction(string action = default(string))
         {
             // to ensure "action" is required (not null)
@@ -51,9 +51,9 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         }
 
         /// <summary>
-        /// The enforcement action name.   Possible values:   * &#x60;LISTING_SUPPRESSED&#x60; - This enforcement takes down the current listing item&#39;s buyability.   * &#x60;ATTRIBUTE_SUPPRESSED&#x60; - An attribute&#39;s value on the listing item is invalid, which causes it to be rejected by Amazon.   * &#x60;CATALOG_ITEM_REMOVED&#x60; - This catalog item is inactive on Amazon, and all offers against it in the applicable Amazon store are non-buyable.   * &#x60;SEARCH_SUPPRESSED&#x60; - This value indicates that the catalog item is hidden from search results.
+        /// The enforcement action name.  Possible values:  * &#x60;LISTING_SUPPRESSED&#x60; - This enforcement takes down the current listing item&#39;s buyability.  * &#x60;ATTRIBUTE_SUPPRESSED&#x60; - An attribute&#39;s value on the listing item is invalid, which causes it to be rejected by Amazon.  * &#x60;CATALOG_ITEM_REMOVED&#x60; - This catalog item is inactive on Amazon, and all offers against it in the applicable Amazon store are non-buyable.  * &#x60;SEARCH_SUPPRESSED&#x60; - This value indicates that the catalog item is hidden from search results.
         /// </summary>
-        /// <value>The enforcement action name.   Possible values:   * &#x60;LISTING_SUPPRESSED&#x60; - This enforcement takes down the current listing item&#39;s buyability.   * &#x60;ATTRIBUTE_SUPPRESSED&#x60; - An attribute&#39;s value on the listing item is invalid, which causes it to be rejected by Amazon.   * &#x60;CATALOG_ITEM_REMOVED&#x60; - This catalog item is inactive on Amazon, and all offers against it in the applicable Amazon store are non-buyable.   * &#x60;SEARCH_SUPPRESSED&#x60; - This value indicates that the catalog item is hidden from search results.</value>
+        /// <value>The enforcement action name.  Possible values:  * &#x60;LISTING_SUPPRESSED&#x60; - This enforcement takes down the current listing item&#39;s buyability.  * &#x60;ATTRIBUTE_SUPPRESSED&#x60; - An attribute&#39;s value on the listing item is invalid, which causes it to be rejected by Amazon.  * &#x60;CATALOG_ITEM_REMOVED&#x60; - This catalog item is inactive on Amazon, and all offers against it in the applicable Amazon store are non-buyable.  * &#x60;SEARCH_SUPPRESSED&#x60; - This value indicates that the catalog item is hidden from search results.</value>
         /*
         <example>LISTING_SUPPRESSED</example>
         */

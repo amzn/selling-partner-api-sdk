@@ -127,14 +127,15 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <summary>
         /// Initializes a new instance of the <see cref="Package" /> class.
         /// </summary>
-        /// <param name="id">An ID that uniquely identifies a package within a shipment. (required).</param>
+        /// <param name="id">The ID of the package whose information you want to update. (required).</param>
         /// <param name="dimensions">dimensions (required).</param>
         /// <param name="weight">weight (required).</param>
         /// <param name="hazmatLabels">The optional list of HAZMAT labels applied to the package..</param>
         /// <param name="packageLineItems">The list of line items in a package. (required).</param>
         /// <param name="status">The current status of the package..</param>
         /// <param name="packageHandlingRequirements">Whether the package requires standard handling or extra care..</param>
-        public Package(string id = default(string), PackageDimensions dimensions = default(PackageDimensions), Weight weight = default(Weight), List<string>? hazmatLabels = default(List<string>?), List<PackageLineItem> packageLineItems = default(List<PackageLineItem>), StatusEnum? status = default(StatusEnum?), PackageHandlingRequirementsEnum? packageHandlingRequirements = default(PackageHandlingRequirementsEnum?))
+        /// <param name="trackingDetails">trackingDetails.</param>
+        public Package(string id = default(string), PackageDimensions dimensions = default(PackageDimensions), Weight weight = default(Weight), List<string>? hazmatLabels = default(List<string>?), List<PackageLineItem> packageLineItems = default(List<PackageLineItem>), StatusEnum? status = default(StatusEnum?), PackageHandlingRequirementsEnum? packageHandlingRequirements = default(PackageHandlingRequirementsEnum?), TrackingDetails? trackingDetails = default(TrackingDetails?))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -163,12 +164,13 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             this.HazmatLabels = hazmatLabels;
             this.Status = status;
             this.PackageHandlingRequirements = packageHandlingRequirements;
+            this.TrackingDetails = trackingDetails;
         }
 
         /// <summary>
-        /// An ID that uniquely identifies a package within a shipment.
+        /// The ID of the package whose information you want to update.
         /// </summary>
-        /// <value>An ID that uniquely identifies a package within a shipment.</value>
+        /// <value>The ID of the package whose information you want to update.</value>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
@@ -199,6 +201,12 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         public List<PackageLineItem> PackageLineItems { get; set; }
 
         /// <summary>
+        /// Gets or Sets TrackingDetails
+        /// </summary>
+        [DataMember(Name = "trackingDetails", EmitDefaultValue = false)]
+        public TrackingDetails? TrackingDetails { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -213,6 +221,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             sb.Append("  PackageLineItems: ").Append(PackageLineItems).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  PackageHandlingRequirements: ").Append(PackageHandlingRequirements).Append("\n");
+            sb.Append("  TrackingDetails: ").Append(TrackingDetails).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

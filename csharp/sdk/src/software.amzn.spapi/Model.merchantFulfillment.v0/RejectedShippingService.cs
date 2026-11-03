@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.merchantFulfillment.v0
 {
     /// <summary>
-    /// Information about a rejected shipping service
+    /// Information about a rejected shipping service.
     /// </summary>
     [DataContract(Name = "RejectedShippingService")]
     public partial class RejectedShippingService : IValidatableObject
@@ -42,8 +42,8 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="carrierName">The rejected shipping carrier name. For example, USPS. (required).</param>
         /// <param name="shippingServiceName">The rejected shipping service localized name. For example, FedEx Standard Overnight. (required).</param>
         /// <param name="shippingServiceId">An Amazon-defined shipping service identifier. (required).</param>
-        /// <param name="rejectionReasonCode">A reason code meant to be consumed programatically. For example, &#x60;CARRIER_CANNOT_SHIP_TO_POBOX&#x60;. (required).</param>
-        /// <param name="rejectionReasonMessage">A localized human readable description of the rejected reason..</param>
+        /// <param name="rejectionReasonCode">A reason code meant to be consumed programmatically. For example, &#x60;CARRIER_CANNOT_SHIP_TO_POBOX&#x60;. (required).</param>
+        /// <param name="rejectionReasonMessage">A localized, human-readable description of the rejected reason..</param>
         public RejectedShippingService(string carrierName = default(string), string shippingServiceName = default(string), string shippingServiceId = default(string), string rejectionReasonCode = default(string), string? rejectionReasonMessage = default(string?))
         {
             // to ensure "carrierName" is required (not null)
@@ -95,16 +95,16 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         public string ShippingServiceId { get; set; }
 
         /// <summary>
-        /// A reason code meant to be consumed programatically. For example, &#x60;CARRIER_CANNOT_SHIP_TO_POBOX&#x60;.
+        /// A reason code meant to be consumed programmatically. For example, &#x60;CARRIER_CANNOT_SHIP_TO_POBOX&#x60;.
         /// </summary>
-        /// <value>A reason code meant to be consumed programatically. For example, &#x60;CARRIER_CANNOT_SHIP_TO_POBOX&#x60;.</value>
+        /// <value>A reason code meant to be consumed programmatically. For example, &#x60;CARRIER_CANNOT_SHIP_TO_POBOX&#x60;.</value>
         [DataMember(Name = "RejectionReasonCode", IsRequired = true, EmitDefaultValue = true)]
         public string RejectionReasonCode { get; set; }
 
         /// <summary>
-        /// A localized human readable description of the rejected reason.
+        /// A localized, human-readable description of the rejected reason.
         /// </summary>
-        /// <value>A localized human readable description of the rejected reason.</value>
+        /// <value>A localized, human-readable description of the rejected reason.</value>
         [DataMember(Name = "RejectionReasonMessage", EmitDefaultValue = false)]
         public string? RejectionReasonMessage { get; set; }
 

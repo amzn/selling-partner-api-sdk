@@ -40,7 +40,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// Initializes a new instance of the <see cref="GetEligibleShipmentServicesResult" /> class.
         /// </summary>
         /// <param name="shippingServiceList">A list of shipping services offers. (required).</param>
-        /// <param name="rejectedShippingServiceList">List of services that are for some reason unavailable for this request.</param>
+        /// <param name="rejectedShippingServiceList">List of services that are for some reason unavailable for this request..</param>
         /// <param name="temporarilyUnavailableCarrierList">A list of temporarily unavailable carriers..</param>
         /// <param name="termsAndConditionsNotAcceptedCarrierList">List of carriers whose terms and conditions were not accepted by the seller..</param>
         public GetEligibleShipmentServicesResult(List<ShippingService> shippingServiceList = default(List<ShippingService>), List<RejectedShippingService>? rejectedShippingServiceList = default(List<RejectedShippingService>?), List<TemporarilyUnavailableCarrier>? temporarilyUnavailableCarrierList = default(List<TemporarilyUnavailableCarrier>?), List<TermsAndConditionsNotAcceptedCarrier>? termsAndConditionsNotAcceptedCarrierList = default(List<TermsAndConditionsNotAcceptedCarrier>?))
@@ -64,9 +64,9 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         public List<ShippingService> ShippingServiceList { get; set; }
 
         /// <summary>
-        /// List of services that are for some reason unavailable for this request
+        /// List of services that are for some reason unavailable for this request.
         /// </summary>
-        /// <value>List of services that are for some reason unavailable for this request</value>
+        /// <value>List of services that are for some reason unavailable for this request.</value>
         [DataMember(Name = "RejectedShippingServiceList", EmitDefaultValue = false)]
         public List<RejectedShippingService>? RejectedShippingServiceList { get; set; }
 

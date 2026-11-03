@@ -79,25 +79,20 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <summary>
         /// Initializes a new instance of the <see cref="Weight" /> class.
         /// </summary>
-        /// <param name="value">A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. (required).</param>
+        /// <param name="value">A decimal number. (required).</param>
         /// <param name="weightUnit">The unit of measurement of the weight. (required).</param>
-        public Weight(string value = default(string), WeightUnitEnum weightUnit = default(WeightUnitEnum))
+        public Weight(decimal value = default(decimal), WeightUnitEnum weightUnit = default(WeightUnitEnum))
         {
-            // to ensure "value" is required (not null)
-            if (value == null)
-            {
-                throw new ArgumentNullException("value is a required property for Weight and cannot be null");
-            }
             this.Value = value;
             this.WeightUnit = weightUnit;
         }
 
         /// <summary>
-        /// A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+        /// A decimal number.
         /// </summary>
-        /// <value>A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.</value>
+        /// <value>A decimal number.</value>
         [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
-        public string Value { get; set; }
+        public decimal Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

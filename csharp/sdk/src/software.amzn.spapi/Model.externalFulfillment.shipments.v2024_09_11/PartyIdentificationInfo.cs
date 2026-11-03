@@ -27,7 +27,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
 {
     /// <summary>
-    /// Party identification details for the shipment, applicable to direct fulfillment shipments.
+    /// Party identification details for the shipment, applicable only to direct fulfillment shipments.
     /// </summary>
     [DataContract(Name = "PartyIdentificationInfo")]
     public partial class PartyIdentificationInfo : IValidatableObject

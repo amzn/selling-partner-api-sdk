@@ -60,7 +60,19 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// Enum NoPreference for value: NoPreference
         /// </summary>
         [EnumMember(Value = "NoPreference")]
-        NoPreference = 5
+        NoPreference = 5,
+
+        /// <summary>
+        /// Enum DeliveryConfirmationWithIdentityCheck for value: DeliveryConfirmationWithIdentityCheck
+        /// </summary>
+        [EnumMember(Value = "DeliveryConfirmationWithIdentityCheck")]
+        DeliveryConfirmationWithIdentityCheck = 6,
+
+        /// <summary>
+        /// Enum DeliveryConfirmationWithNameVerification for value: DeliveryConfirmationWithNameVerification
+        /// </summary>
+        [EnumMember(Value = "DeliveryConfirmationWithNameVerification")]
+        DeliveryConfirmationWithNameVerification = 7
     }
 
 }

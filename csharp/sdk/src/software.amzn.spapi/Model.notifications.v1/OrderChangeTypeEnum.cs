@@ -48,7 +48,13 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// Enum OrderStatusChange for value: OrderStatusChange
         /// </summary>
         [EnumMember(Value = "OrderStatusChange")]
-        OrderStatusChange = 3
+        OrderStatusChange = 3,
+
+        /// <summary>
+        /// Enum PreFulfillmentStatusChange for value: PreFulfillmentStatusChange
+        /// </summary>
+        [EnumMember(Value = "PreFulfillmentStatusChange")]
+        PreFulfillmentStatusChange = 4
     }
 
 }

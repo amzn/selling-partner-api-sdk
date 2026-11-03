@@ -151,7 +151,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// <summary>
         /// Initializes a new instance of the <see cref="ItemSummaryByMarketplace" /> class.
         /// </summary>
-        /// <param name="marketplaceId">A marketplace identifier. Identifies the listings item&#39;s Amazon store. (required).</param>
+        /// <param name="marketplaceId">An Amazon store identifier. Identifies the listings item&#39;s Amazon store. (required).</param>
         /// <param name="asin">The ASIN of the listings item..</param>
         /// <param name="productType">The listings item&#39;s Amazon product type. (required).</param>
         /// <param name="conditionType">Identifies the condition of the listings item..</param>
@@ -191,9 +191,9 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         }
 
         /// <summary>
-        /// A marketplace identifier. Identifies the listings item&#39;s Amazon store.
+        /// An Amazon store identifier. Identifies the listings item&#39;s Amazon store.
         /// </summary>
-        /// <value>A marketplace identifier. Identifies the listings item&#39;s Amazon store.</value>
+        /// <value>An Amazon store identifier. Identifies the listings item&#39;s Amazon store.</value>
         [DataMember(Name = "marketplaceId", IsRequired = true, EmitDefaultValue = true)]
         public string MarketplaceId { get; set; }
 

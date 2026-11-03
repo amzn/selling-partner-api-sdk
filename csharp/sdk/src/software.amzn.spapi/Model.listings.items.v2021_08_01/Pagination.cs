@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.listings.items.v2021_08_01
 {
     /// <summary>
-    /// When a request produces a response that exceeds the &#x60;pageSize&#x60;, pagination occurs. This means the response is divided into individual pages. To retrieve the next page or the previous page, you must pass the &#x60;nextToken&#x60; value or the &#x60;previousToken&#x60; value as the &#x60;pageToken&#x60; parameter in the next request. When you receive the last page, there is no &#x60;nextToken&#x60; key in the pagination object.
+    /// When a response exceeds the &#x60;pageSize&#x60;, the response is divided into individual pages. To retrieve the next page or the previous page, you must pass the &#x60;nextToken&#x60; value or the &#x60;previousToken&#x60; value as the &#x60;pageToken&#x60; parameter in the next request. When you receive the last page, there is no &#x60;nextToken&#x60; key in the pagination object.
     /// </summary>
     [DataContract(Name = "Pagination")]
     public partial class Pagination : IValidatableObject

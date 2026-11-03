@@ -29,7 +29,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve a specific support case.
+        /// Retrieve a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="caseId">The case identifier.</param>
@@ -40,7 +40,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve a specific support case.
+        /// Retrieve a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="caseId">The case identifier.</param>
@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve support cases for a selling partner.
+        /// Retrieve support cases for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The request body for the listCases operation.</param>
@@ -61,7 +61,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve support cases for a selling partner.
+        /// Retrieve support cases for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The request body for the listCases operation.</param>
@@ -71,7 +71,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve contacts for a specific support case.
+        /// Retrieve contacts for a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="caseId">The case identifier.</param>
@@ -85,7 +85,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve contacts for a specific support case.
+        /// Retrieve contacts for a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="caseId">The case identifier.</param>
@@ -100,7 +100,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve a specific support case.
+        /// Retrieve a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="caseId">The case identifier.</param>
@@ -111,7 +111,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve a specific support case.
+        /// Retrieve a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="caseId">The case identifier.</param>
@@ -121,7 +121,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve support cases for a selling partner.
+        /// Retrieve support cases for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The request body for the listCases operation.</param>
@@ -132,7 +132,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve support cases for a selling partner.
+        /// Retrieve support cases for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The request body for the listCases operation.</param>
@@ -142,7 +142,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve contacts for a specific support case.
+        /// Retrieve contacts for a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="caseId">The case identifier.</param>
@@ -156,7 +156,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         /// 
         /// </summary>
         /// <remarks>
-        /// Retrieve contacts for a specific support case.
+        /// Retrieve contacts for a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="caseId">The case identifier.</param>
@@ -257,7 +257,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         }
 
         /// <summary>
-        ///  Retrieve a specific support case.
+        ///  Retrieve a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="caseId">The case identifier.</param>
@@ -269,7 +269,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         }
 
         /// <summary>
-        ///  Retrieve a specific support case.
+        ///  Retrieve a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="caseId">The case identifier.</param>
@@ -321,7 +321,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         }
 
         /// <summary>
-        ///  Retrieve a specific support case.
+        ///  Retrieve a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="caseId">The case identifier.</param>
@@ -334,7 +334,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         }
 
         /// <summary>
-        ///  Retrieve a specific support case.
+        ///  Retrieve a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="caseId">The case identifier.</param>
@@ -385,7 +385,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         }
 
         /// <summary>
-        ///  Retrieve support cases for a selling partner.
+        ///  Retrieve support cases for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The request body for the listCases operation.</param>
@@ -397,7 +397,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         }
 
         /// <summary>
-        ///  Retrieve support cases for a selling partner.
+        ///  Retrieve support cases for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The request body for the listCases operation.</param>
@@ -457,7 +457,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         }
 
         /// <summary>
-        ///  Retrieve support cases for a selling partner.
+        ///  Retrieve support cases for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The request body for the listCases operation.</param>
@@ -470,7 +470,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         }
 
         /// <summary>
-        ///  Retrieve support cases for a selling partner.
+        ///  Retrieve support cases for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The request body for the listCases operation.</param>
@@ -529,7 +529,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         }
 
         /// <summary>
-        ///  Retrieve contacts for a specific support case.
+        ///  Retrieve contacts for a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="caseId">The case identifier.</param>
@@ -544,7 +544,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         }
 
         /// <summary>
-        ///  Retrieve contacts for a specific support case.
+        ///  Retrieve contacts for a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="caseId">The case identifier.</param>
@@ -602,7 +602,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         }
 
         /// <summary>
-        ///  Retrieve contacts for a specific support case.
+        ///  Retrieve contacts for a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="caseId">The case identifier.</param>
@@ -618,7 +618,7 @@ namespace software.amzn.spapi.Api.Support.v2025_02_01
         }
 
         /// <summary>
-        ///  Retrieve contacts for a specific support case.
+        ///  Retrieve contacts for a specific support case.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon/sp-api/docs/usage-plans-and-rate-limits).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="caseId">The case identifier.</param>

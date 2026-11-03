@@ -40,6 +40,12 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         public RequirementLevel HazmatLabelsRequirement { get; set; }
 
         /// <summary>
+        /// Gets or Sets HazmatLabelRequirement
+        /// </summary>
+        [DataMember(Name = "hazmatLabelRequirement", EmitDefaultValue = false)]
+        public RequirementLevel? HazmatLabelRequirement { get; set; }
+
+        /// <summary>
         /// Gets or Sets SerialNumberRequirement
         /// </summary>
         [DataMember(Name = "serialNumberRequirement", IsRequired = true, EmitDefaultValue = true)]
@@ -48,14 +54,14 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <summary>
         /// Gets or Sets CountryOfOriginRequirement
         /// </summary>
-        [DataMember(Name = "countryOfOriginRequirement", IsRequired = true, EmitDefaultValue = true)]
-        public RequirementLevel CountryOfOriginRequirement { get; set; }
+        [DataMember(Name = "countryOfOriginRequirement", EmitDefaultValue = false)]
+        public RequirementLevel? CountryOfOriginRequirement { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemValueRequirement
         /// </summary>
-        [DataMember(Name = "itemValueRequirement", IsRequired = true, EmitDefaultValue = true)]
-        public RequirementLevel ItemValueRequirement { get; set; }
+        [DataMember(Name = "itemValueRequirement", EmitDefaultValue = false)]
+        public RequirementLevel? ItemValueRequirement { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ComplianceAttributes" /> class.
         /// </summary>
@@ -65,13 +71,15 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// Initializes a new instance of the <see cref="ComplianceAttributes" /> class.
         /// </summary>
         /// <param name="hazmatLabelsRequirement">hazmatLabelsRequirement (required).</param>
+        /// <param name="hazmatLabelRequirement">hazmatLabelRequirement.</param>
         /// <param name="serialNumberRequirement">serialNumberRequirement (required).</param>
-        /// <param name="countryOfOriginRequirement">countryOfOriginRequirement (required).</param>
-        /// <param name="itemValueRequirement">itemValueRequirement (required).</param>
-        public ComplianceAttributes(RequirementLevel hazmatLabelsRequirement = default(RequirementLevel), RequirementLevel serialNumberRequirement = default(RequirementLevel), RequirementLevel countryOfOriginRequirement = default(RequirementLevel), RequirementLevel itemValueRequirement = default(RequirementLevel))
+        /// <param name="countryOfOriginRequirement">countryOfOriginRequirement.</param>
+        /// <param name="itemValueRequirement">itemValueRequirement.</param>
+        public ComplianceAttributes(RequirementLevel hazmatLabelsRequirement = default(RequirementLevel), RequirementLevel? hazmatLabelRequirement = default(RequirementLevel?), RequirementLevel serialNumberRequirement = default(RequirementLevel), RequirementLevel? countryOfOriginRequirement = default(RequirementLevel?), RequirementLevel? itemValueRequirement = default(RequirementLevel?))
         {
             this.HazmatLabelsRequirement = hazmatLabelsRequirement;
             this.SerialNumberRequirement = serialNumberRequirement;
+            this.HazmatLabelRequirement = hazmatLabelRequirement;
             this.CountryOfOriginRequirement = countryOfOriginRequirement;
             this.ItemValueRequirement = itemValueRequirement;
         }
@@ -85,6 +93,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             StringBuilder sb = new StringBuilder();
             sb.Append("class ComplianceAttributes {\n");
             sb.Append("  HazmatLabelsRequirement: ").Append(HazmatLabelsRequirement).Append("\n");
+            sb.Append("  HazmatLabelRequirement: ").Append(HazmatLabelRequirement).Append("\n");
             sb.Append("  SerialNumberRequirement: ").Append(SerialNumberRequirement).Append("\n");
             sb.Append("  CountryOfOriginRequirement: ").Append(CountryOfOriginRequirement).Append("\n");
             sb.Append("  ItemValueRequirement: ").Append(ItemValueRequirement).Append("\n");

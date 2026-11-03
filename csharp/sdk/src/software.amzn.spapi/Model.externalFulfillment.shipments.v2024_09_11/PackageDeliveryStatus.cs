@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <param name="status">status.</param>
         /// <param name="subStatus">subStatus.</param>
-        /// <param name="reason">The reason for the sub-status..</param>
+        /// <param name="reason">The reason for the sub-status. Refer [table](https://developer-docs.amazon/sp-api/docs/process-shipment#step-6-update-the-package-status) for possible values..</param>
         public PackageDeliveryStatus(PackageStatus? status = default(PackageStatus?), PackageSubStatus? subStatus = default(PackageSubStatus?), string? reason = default(string?))
         {
             this.Status = status;
@@ -58,9 +58,9 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         }
 
         /// <summary>
-        /// The reason for the sub-status.
+        /// The reason for the sub-status. Refer [table](https://developer-docs.amazon/sp-api/docs/process-shipment#step-6-update-the-package-status) for possible values.
         /// </summary>
-        /// <value>The reason for the sub-status.</value>
+        /// <value>The reason for the sub-status. Refer [table](https://developer-docs.amazon/sp-api/docs/process-shipment#step-6-update-the-package-status) for possible values.</value>
         [DataMember(Name = "reason", EmitDefaultValue = false)]
         public string? Reason { get; set; }
 
