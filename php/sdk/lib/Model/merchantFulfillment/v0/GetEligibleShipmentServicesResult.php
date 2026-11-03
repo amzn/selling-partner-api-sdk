@@ -295,7 +295,7 @@ class GetEligibleShipmentServicesResult implements ModelInterface, \ArrayAccess,
     /**
      * Sets rejected_shipping_service_list.
      *
-     * @param null|array $rejected_shipping_service_list List of services that are for some reason unavailable for this request
+     * @param null|array $rejected_shipping_service_list list of services that are for some reason unavailable for this request
      */
     public function setRejectedShippingServiceList(?array $rejected_shipping_service_list): self
     {

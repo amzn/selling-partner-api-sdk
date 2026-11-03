@@ -577,7 +577,7 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets state_or_province_code.
      *
-     * @param null|string $state_or_province_code The state or province code. This is a required field in Canada, US, and UK marketplaces, and for shipments that originate in China.
+     * @param null|string $state_or_province_code The state or province code. This is a required field in Amazon Canada, US, and UK stores, and for shipments that originate in China.
      */
     public function setStateOrProvinceCode(?string $state_or_province_code): self
     {

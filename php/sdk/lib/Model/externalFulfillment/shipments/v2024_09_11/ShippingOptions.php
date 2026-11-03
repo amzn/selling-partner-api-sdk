@@ -376,7 +376,7 @@ class ShippingOptions implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets carrier_name.
      *
-     * @param null|string $carrier_name the carrier name for the offering
+     * @param null|string $carrier_name The carrier name for the offering. Applicable only for Self Ship program
      */
     public function setCarrierName(?string $carrier_name): self
     {

@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Conveying the status of the listed enforcement actions and, if applicable, provides information about the exemption&#39;s expiry date.
+ * @description The status of the listed enforcement actions. If applicable, includes information about the exemption expiry date.
  *
  * @author   OpenAPI Generator team
  *
@@ -319,7 +319,7 @@ class IssueExemption implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets expiry_date.
      *
-     * @param null|\DateTime $expiry_date represents the timestamp, in ISO 8601 format, that specifies the date when the temporary exemptions expires, and Amazon begins enforcing the listed actions
+     * @param null|\DateTime $expiry_date the timestamp, in ISO 8601 format, when the temporary exemption expires and Amazon begins enforcing the listed actions
      */
     public function setExpiryDate(?\DateTime $expiry_date): self
     {

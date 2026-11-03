@@ -66,7 +66,8 @@ class ShippingInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $openAPITypes = [
         'recommended_ship_method' => 'string',
-        'expected_shipping_date_time_in_utc' => 'string',
+        'expected_shipping_date_time' => '\DateTime',
+        'expected_shipping_date_time_in_utc' => '\DateTime',
         'ship_to_address' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\Address',
         'shipping_type' => 'string',
         'recommended_packages' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\RecommendedPackage[]'];
@@ -82,7 +83,8 @@ class ShippingInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $openAPIFormats = [
         'recommended_ship_method' => null,
-        'expected_shipping_date_time_in_utc' => null,
+        'expected_shipping_date_time' => 'date-time',
+        'expected_shipping_date_time_in_utc' => 'date-time',
         'ship_to_address' => null,
         'shipping_type' => null,
         'recommended_packages' => null];
@@ -94,6 +96,7 @@ class ShippingInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $openAPINullables = [
         'recommended_ship_method' => true,
+        'expected_shipping_date_time' => true,
         'expected_shipping_date_time_in_utc' => false,
         'ship_to_address' => true,
         'shipping_type' => true,
@@ -115,6 +118,7 @@ class ShippingInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $attributeMap = [
         'recommended_ship_method' => 'recommendedShipMethod',
+        'expected_shipping_date_time' => 'expectedShippingDateTime',
         'expected_shipping_date_time_in_utc' => 'expectedShippingDateTimeInUTC',
         'ship_to_address' => 'shipToAddress',
         'shipping_type' => 'shippingType',
@@ -128,6 +132,7 @@ class ShippingInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $setters = [
         'recommended_ship_method' => 'setRecommendedShipMethod',
+        'expected_shipping_date_time' => 'setExpectedShippingDateTime',
         'expected_shipping_date_time_in_utc' => 'setExpectedShippingDateTimeInUtc',
         'ship_to_address' => 'setShipToAddress',
         'shipping_type' => 'setShippingType',
@@ -141,6 +146,7 @@ class ShippingInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $getters = [
         'recommended_ship_method' => 'getRecommendedShipMethod',
+        'expected_shipping_date_time' => 'getExpectedShippingDateTime',
         'expected_shipping_date_time_in_utc' => 'getExpectedShippingDateTimeInUtc',
         'ship_to_address' => 'getShipToAddress',
         'shipping_type' => 'getShippingType',
@@ -161,6 +167,7 @@ class ShippingInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('recommended_ship_method', $data ?? [], null);
+        $this->setIfExists('expected_shipping_date_time', $data ?? [], null);
         $this->setIfExists('expected_shipping_date_time_in_utc', $data ?? [], null);
         $this->setIfExists('ship_to_address', $data ?? [], null);
         $this->setIfExists('shipping_type', $data ?? [], null);
@@ -328,9 +335,39 @@ class ShippingInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets expected_shipping_date_time.
+     */
+    public function getExpectedShippingDateTime(): ?\DateTime
+    {
+        return $this->container['expected_shipping_date_time'];
+    }
+
+    /**
+     * Sets expected_shipping_date_time.
+     *
+     * @param null|\DateTime $expected_shipping_date_time A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     */
+    public function setExpectedShippingDateTime(?\DateTime $expected_shipping_date_time): self
+    {
+        if (is_null($expected_shipping_date_time)) {
+            array_push($this->openAPINullablesSetToNull, 'expected_shipping_date_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expected_shipping_date_time', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['expected_shipping_date_time'] = $expected_shipping_date_time;
+
+        return $this;
+    }
+
+    /**
      * Gets expected_shipping_date_time_in_utc.
      */
-    public function getExpectedShippingDateTimeInUtc(): string
+    public function getExpectedShippingDateTimeInUtc(): \DateTime
     {
         return $this->container['expected_shipping_date_time_in_utc'];
     }
@@ -338,9 +375,9 @@ class ShippingInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets expected_shipping_date_time_in_utc.
      *
-     * @param string $expected_shipping_date_time_in_utc A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     * @param \DateTime $expected_shipping_date_time_in_utc A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      */
-    public function setExpectedShippingDateTimeInUtc(string $expected_shipping_date_time_in_utc): self
+    public function setExpectedShippingDateTimeInUtc(\DateTime $expected_shipping_date_time_in_utc): self
     {
         if (is_null($expected_shipping_date_time_in_utc)) {
             throw new \InvalidArgumentException('non-nullable expected_shipping_date_time_in_utc cannot be null');

@@ -88,7 +88,7 @@ class RecommendedPackage implements ModelInterface, \ArrayAccess, \JsonSerializa
     protected static array $openAPINullables = [
         'dimensions' => false,
         'weight' => false,
-        'line_items' => false,
+        'line_items' => true,
     ];
 
     /**
@@ -243,10 +243,7 @@ class RecommendedPackage implements ModelInterface, \ArrayAccess, \JsonSerializa
         if (null === $this->container['weight']) {
             $invalidProperties[] = "'weight' can't be null";
         }
-        if (null === $this->container['line_items']) {
-            $invalidProperties[] = "'line_items' can't be null";
-        }
-        if (count($this->container['line_items']) > 50) {
+        if (!is_null($this->container['line_items']) && (count($this->container['line_items']) > 50)) {
             $invalidProperties[] = "invalid value for 'line_items', number of items must be less than or equal to 50.";
         }
 
@@ -313,7 +310,7 @@ class RecommendedPackage implements ModelInterface, \ArrayAccess, \JsonSerializa
     /**
      * Gets line_items.
      */
-    public function getLineItems(): array
+    public function getLineItems(): ?array
     {
         return $this->container['line_items'];
     }
@@ -321,15 +318,22 @@ class RecommendedPackage implements ModelInterface, \ArrayAccess, \JsonSerializa
     /**
      * Sets line_items.
      *
-     * @param array $line_items A list of line items to be contained in a recommended package. This attribute is only for orders that come with specific recommendations for line-item distribution.
+     * @param null|array $line_items A list of line items to be contained in a recommended package. This attribute is only for orders that come with specific recommendations for line-item distribution.
      */
-    public function setLineItems(array $line_items): self
+    public function setLineItems(?array $line_items): self
     {
         if (is_null($line_items)) {
-            throw new \InvalidArgumentException('non-nullable line_items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'line_items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('line_items', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         if (!ObjectSerializer::getSkipModelValidation()) {
-            if (count($line_items) > 50) {
+            if (!is_null($line_items) && (count($line_items) > 50)) {
                 throw new \InvalidArgumentException('invalid value for $line_items when calling RecommendedPackage., number of items must be less than or equal to 50.');
             }
         }

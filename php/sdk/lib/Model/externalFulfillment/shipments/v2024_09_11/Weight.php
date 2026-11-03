@@ -67,7 +67,7 @@ class Weight implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'value' => 'string',
+        'value' => 'float',
         'weight_unit' => 'string'];
 
     /**
@@ -282,7 +282,7 @@ class Weight implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets value.
      */
-    public function getValue(): string
+    public function getValue(): float
     {
         return $this->container['value'];
     }
@@ -290,9 +290,9 @@ class Weight implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets value.
      *
-     * @param string $value A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+     * @param float $value a decimal number
      */
-    public function setValue(string $value): self
+    public function setValue(float $value): self
     {
         if (is_null($value)) {
             throw new \InvalidArgumentException('non-nullable value cannot be null');

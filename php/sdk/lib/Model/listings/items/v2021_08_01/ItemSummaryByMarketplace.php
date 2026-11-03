@@ -388,7 +388,7 @@ class ItemSummaryByMarketplace implements ModelInterface, \ArrayAccess, \JsonSer
     /**
      * Sets marketplace_id.
      *
-     * @param string $marketplace_id A marketplace identifier. Identifies the listings item's Amazon store.
+     * @param string $marketplace_id An Amazon store identifier. Identifies the listings item's Amazon store.
      */
     public function setMarketplaceId(string $marketplace_id): self
     {

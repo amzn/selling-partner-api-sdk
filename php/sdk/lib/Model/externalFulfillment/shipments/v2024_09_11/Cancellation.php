@@ -67,7 +67,7 @@ class Cancellation implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $openAPITypes = [
         'cancelled_quantity' => 'int',
-        'cancelled_timestamp' => 'string',
+        'cancelled_timestamp' => '\DateTime',
         'cancellation_type' => 'string',
         'cancellation_reason' => 'string'];
 
@@ -82,7 +82,7 @@ class Cancellation implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $openAPIFormats = [
         'cancelled_quantity' => null,
-        'cancelled_timestamp' => null,
+        'cancelled_timestamp' => 'date-time',
         'cancellation_type' => null,
         'cancellation_reason' => null];
 
@@ -329,7 +329,7 @@ class Cancellation implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets cancelled_timestamp.
      */
-    public function getCancelledTimestamp(): string
+    public function getCancelledTimestamp(): \DateTime
     {
         return $this->container['cancelled_timestamp'];
     }
@@ -337,9 +337,9 @@ class Cancellation implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets cancelled_timestamp.
      *
-     * @param string $cancelled_timestamp A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     * @param \DateTime $cancelled_timestamp A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      */
-    public function setCancelledTimestamp(string $cancelled_timestamp): self
+    public function setCancelledTimestamp(\DateTime $cancelled_timestamp): self
     {
         if (is_null($cancelled_timestamp)) {
             throw new \InvalidArgumentException('non-nullable cancelled_timestamp cannot be null');

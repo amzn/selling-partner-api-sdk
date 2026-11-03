@@ -62,9 +62,9 @@ class Geocodes implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'latitude' => 'string',
-        'longitude' => 'string',
-        'elevation' => 'string'];
+        'latitude' => 'float',
+        'longitude' => 'float',
+        'elevation' => 'float'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -261,7 +261,7 @@ class Geocodes implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets latitude.
      */
-    public function getLatitude(): string
+    public function getLatitude(): float
     {
         return $this->container['latitude'];
     }
@@ -269,9 +269,9 @@ class Geocodes implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets latitude.
      *
-     * @param string $latitude A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+     * @param float $latitude a decimal number
      */
-    public function setLatitude(string $latitude): self
+    public function setLatitude(float $latitude): self
     {
         if (is_null($latitude)) {
             throw new \InvalidArgumentException('non-nullable latitude cannot be null');
@@ -284,7 +284,7 @@ class Geocodes implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets longitude.
      */
-    public function getLongitude(): string
+    public function getLongitude(): float
     {
         return $this->container['longitude'];
     }
@@ -292,9 +292,9 @@ class Geocodes implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets longitude.
      *
-     * @param string $longitude A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+     * @param float $longitude a decimal number
      */
-    public function setLongitude(string $longitude): self
+    public function setLongitude(float $longitude): self
     {
         if (is_null($longitude)) {
             throw new \InvalidArgumentException('non-nullable longitude cannot be null');
@@ -307,7 +307,7 @@ class Geocodes implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets elevation.
      */
-    public function getElevation(): ?string
+    public function getElevation(): ?float
     {
         return $this->container['elevation'];
     }
@@ -315,9 +315,9 @@ class Geocodes implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets elevation.
      *
-     * @param null|string $elevation A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.
+     * @param null|float $elevation a decimal number
      */
-    public function setElevation(?string $elevation): self
+    public function setElevation(?float $elevation): self
     {
         if (is_null($elevation)) {
             array_push($this->openAPINullablesSetToNull, 'elevation');

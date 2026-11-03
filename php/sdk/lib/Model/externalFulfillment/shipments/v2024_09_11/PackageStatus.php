@@ -47,14 +47,6 @@ class PackageStatus
     /**
      * Possible values of this enum.
      */
-    public const CREATED = 'CREATED';
-
-    public const PICKUP_SLOT_RETRIEVED = 'PICKUP_SLOT_RETRIEVED';
-
-    public const INVOICE_GENERATED = 'INVOICE_GENERATED';
-
-    public const SHIPLABEL_GENERATED = 'SHIPLABEL_GENERATED';
-
     public const SHIPPED = 'SHIPPED';
 
     public const DELIVERED = 'DELIVERED';
@@ -67,10 +59,6 @@ class PackageStatus
     public static function getAllowableEnumValues(): array
     {
         return [
-            self::CREATED,
-            self::PICKUP_SLOT_RETRIEVED,
-            self::INVOICE_GENERATED,
-            self::SHIPLABEL_GENERATED,
             self::SHIPPED,
             self::DELIVERED,
         ];

@@ -291,6 +291,9 @@ class ShipmentProcessingApiTest extends TestCase
                     $allowableValues = $instance->$allowableMethodName();
                     if (!empty($allowableValues)) {
                         $dummyValue = reset($allowableValues);
+                        if (str_ends_with((string) $propertyType, "[]")) {
+                            $dummyValue = [$dummyValue];
+                        }
                     } else {
                         $dummyValue = $this->generateMockData($propertyType);
                     }

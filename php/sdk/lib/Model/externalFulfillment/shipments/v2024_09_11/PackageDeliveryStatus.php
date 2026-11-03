@@ -326,7 +326,7 @@ class PackageDeliveryStatus implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets reason.
      *
-     * @param null|string $reason the reason for the sub-status
+     * @param null|string $reason The reason for the sub-status. Refer [table](https://developer-docs.amazon/sp-api/docs/process-shipment#step-6-update-the-package-status) for possible values.
      */
     public function setReason(?string $reason): self
     {

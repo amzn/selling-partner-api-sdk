@@ -292,7 +292,7 @@ class ShipmentAcknowledgementRequest implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets line_items.
      *
-     * @param array $line_items details about the line items from the shipment that are being confirmed or rejected by the seller
+     * @param array $line_items details about the line items from the shipment that are being rejected by the seller
      */
     public function setLineItems(array $line_items): self
     {

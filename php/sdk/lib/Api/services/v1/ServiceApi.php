@@ -4176,42 +4176,44 @@ class ServiceApi
      * Operation getServiceJobs.
      *
      * @param string[]      $marketplace_ids
-     *                                           Used to select jobs that were placed in the specified marketplaces. (required)
+     *                                                          Used to select jobs that were placed in the specified marketplaces. (required)
      * @param null|string[] $service_order_ids
-     *                                           List of service order ids for the query you want to perform.Max values supported 20. (optional)
+     *                                                          List of service order ids for the query you want to perform.Max values supported 20. (optional)
      * @param null|string[] $product_order_ids
-     *                                           A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)
+     *                                                          A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)
      * @param null|string[] $tracking_ids
-     *                                           A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)
+     *                                                          A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)
      * @param null|string[] $service_job_status
-     *                                           A list of one or more job status by which to filter the list of jobs. (optional)
+     *                                                          A list of one or more job status by which to filter the list of jobs. (optional)
      * @param null|string   $page_token
-     *                                           String returned in the response of your previous request. (optional)
+     *                                                          String returned in the response of your previous request. (optional)
      * @param null|int      $page_size
-     *                                           A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
+     *                                                          A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
      * @param null|string   $sort_field
-     *                                           Sort fields on which you want to sort the output. (optional)
+     *                                                          Sort fields on which you want to sort the output. (optional)
      * @param null|string   $sort_order
-     *                                           Sort order for the query you want to perform. (optional)
+     *                                                          Sort order for the query you want to perform. (optional)
      * @param null|string   $created_after
-     *                                           A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     *                                                          A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
      * @param null|string   $created_before
-     *                                           A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
+     *                                                          A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
      * @param null|string   $last_updated_after
-     *                                           A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     *                                                          A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
      * @param null|string   $last_updated_before
-     *                                           A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
+     *                                                          A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
      * @param null|string   $schedule_start_date
-     *                                           A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     *                                                          A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
      * @param null|string   $schedule_end_date
-     *                                           A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     *                                                          A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
      * @param null|string[] $asins
-     *                                           List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
+     *                                                          List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
      * @param null|string[] $required_skills
-     *                                           A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
+     *                                                          A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
      * @param null|string[] $store_ids
-     *                                           List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
-     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *                                                          List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param null|string[] $provider_service_job_reference_ids
+     *                                                          A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs. (optional)
+     * @param null|string   $restrictedDataToken                Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -4235,9 +4237,10 @@ class ServiceApi
         ?array $asins = null,
         ?array $required_skills = null,
         ?array $store_ids = null,
+        ?array $provider_service_job_reference_ids = null,
         ?string $restrictedDataToken = null
     ): GetServiceJobsResponse {
-        list($response) = $this->getServiceJobsWithHttpInfo($marketplace_ids, $service_order_ids, $product_order_ids, $tracking_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids, $restrictedDataToken);
+        list($response) = $this->getServiceJobsWithHttpInfo($marketplace_ids, $service_order_ids, $product_order_ids, $tracking_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids, $provider_service_job_reference_ids, $restrictedDataToken);
 
         return $response;
     }
@@ -4246,42 +4249,44 @@ class ServiceApi
      * Operation getServiceJobsWithHttpInfo.
      *
      * @param string[]      $marketplace_ids
-     *                                           Used to select jobs that were placed in the specified marketplaces. (required)
+     *                                                          Used to select jobs that were placed in the specified marketplaces. (required)
      * @param null|string[] $service_order_ids
-     *                                           List of service order ids for the query you want to perform.Max values supported 20. (optional)
+     *                                                          List of service order ids for the query you want to perform.Max values supported 20. (optional)
      * @param null|string[] $product_order_ids
-     *                                           A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)
+     *                                                          A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)
      * @param null|string[] $tracking_ids
-     *                                           A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)
+     *                                                          A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)
      * @param null|string[] $service_job_status
-     *                                           A list of one or more job status by which to filter the list of jobs. (optional)
+     *                                                          A list of one or more job status by which to filter the list of jobs. (optional)
      * @param null|string   $page_token
-     *                                           String returned in the response of your previous request. (optional)
+     *                                                          String returned in the response of your previous request. (optional)
      * @param null|int      $page_size
-     *                                           A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
+     *                                                          A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
      * @param null|string   $sort_field
-     *                                           Sort fields on which you want to sort the output. (optional)
+     *                                                          Sort fields on which you want to sort the output. (optional)
      * @param null|string   $sort_order
-     *                                           Sort order for the query you want to perform. (optional)
+     *                                                          Sort order for the query you want to perform. (optional)
      * @param null|string   $created_after
-     *                                           A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     *                                                          A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
      * @param null|string   $created_before
-     *                                           A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
+     *                                                          A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
      * @param null|string   $last_updated_after
-     *                                           A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     *                                                          A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
      * @param null|string   $last_updated_before
-     *                                           A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
+     *                                                          A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
      * @param null|string   $schedule_start_date
-     *                                           A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     *                                                          A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
      * @param null|string   $schedule_end_date
-     *                                           A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     *                                                          A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
      * @param null|string[] $asins
-     *                                           List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
+     *                                                          List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
      * @param null|string[] $required_skills
-     *                                           A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
+     *                                                          A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
      * @param null|string[] $store_ids
-     *                                           List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
-     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *                                                          List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param null|string[] $provider_service_job_reference_ids
+     *                                                          A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs. (optional)
+     * @param null|string   $restrictedDataToken                Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\services\v1\GetServiceJobsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -4307,9 +4312,10 @@ class ServiceApi
         ?array $asins = null,
         ?array $required_skills = null,
         ?array $store_ids = null,
+        ?array $provider_service_job_reference_ids = null,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getServiceJobsRequest($marketplace_ids, $service_order_ids, $product_order_ids, $tracking_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids);
+        $request = $this->getServiceJobsRequest($marketplace_ids, $service_order_ids, $product_order_ids, $tracking_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids, $provider_service_job_reference_ids);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getServiceJobs');
         } else {
@@ -4387,41 +4393,43 @@ class ServiceApi
      * Operation getServiceJobsAsync.
      *
      * @param string[]      $marketplace_ids
-     *                                           Used to select jobs that were placed in the specified marketplaces. (required)
+     *                                                          Used to select jobs that were placed in the specified marketplaces. (required)
      * @param null|string[] $service_order_ids
-     *                                           List of service order ids for the query you want to perform.Max values supported 20. (optional)
+     *                                                          List of service order ids for the query you want to perform.Max values supported 20. (optional)
      * @param null|string[] $product_order_ids
-     *                                           A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)
+     *                                                          A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)
      * @param null|string[] $tracking_ids
-     *                                           A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)
+     *                                                          A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)
      * @param null|string[] $service_job_status
-     *                                           A list of one or more job status by which to filter the list of jobs. (optional)
+     *                                                          A list of one or more job status by which to filter the list of jobs. (optional)
      * @param null|string   $page_token
-     *                                           String returned in the response of your previous request. (optional)
+     *                                                          String returned in the response of your previous request. (optional)
      * @param null|int      $page_size
-     *                                           A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
+     *                                                          A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
      * @param null|string   $sort_field
-     *                                           Sort fields on which you want to sort the output. (optional)
+     *                                                          Sort fields on which you want to sort the output. (optional)
      * @param null|string   $sort_order
-     *                                           Sort order for the query you want to perform. (optional)
+     *                                                          Sort order for the query you want to perform. (optional)
      * @param null|string   $created_after
-     *                                           A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     *                                                          A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
      * @param null|string   $created_before
-     *                                           A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
+     *                                                          A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
      * @param null|string   $last_updated_after
-     *                                           A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     *                                                          A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
      * @param null|string   $last_updated_before
-     *                                           A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
+     *                                                          A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
      * @param null|string   $schedule_start_date
-     *                                           A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     *                                                          A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
      * @param null|string   $schedule_end_date
-     *                                           A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     *                                                          A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
      * @param null|string[] $asins
-     *                                           List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
+     *                                                          List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
      * @param null|string[] $required_skills
-     *                                           A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
+     *                                                          A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
      * @param null|string[] $store_ids
-     *                                           List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     *                                                          List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param null|string[] $provider_service_job_reference_ids
+     *                                                          A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -4443,9 +4451,10 @@ class ServiceApi
         ?string $schedule_end_date = null,
         ?array $asins = null,
         ?array $required_skills = null,
-        ?array $store_ids = null
+        ?array $store_ids = null,
+        ?array $provider_service_job_reference_ids = null
     ): PromiseInterface {
-        return $this->getServiceJobsAsyncWithHttpInfo($marketplace_ids, $service_order_ids, $product_order_ids, $tracking_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids)
+        return $this->getServiceJobsAsyncWithHttpInfo($marketplace_ids, $service_order_ids, $product_order_ids, $tracking_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids, $provider_service_job_reference_ids)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4458,41 +4467,43 @@ class ServiceApi
      * Operation getServiceJobsAsyncWithHttpInfo.
      *
      * @param string[]      $marketplace_ids
-     *                                           Used to select jobs that were placed in the specified marketplaces. (required)
+     *                                                          Used to select jobs that were placed in the specified marketplaces. (required)
      * @param null|string[] $service_order_ids
-     *                                           List of service order ids for the query you want to perform.Max values supported 20. (optional)
+     *                                                          List of service order ids for the query you want to perform.Max values supported 20. (optional)
      * @param null|string[] $product_order_ids
-     *                                           A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)
+     *                                                          A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)
      * @param null|string[] $tracking_ids
-     *                                           A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)
+     *                                                          A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)
      * @param null|string[] $service_job_status
-     *                                           A list of one or more job status by which to filter the list of jobs. (optional)
+     *                                                          A list of one or more job status by which to filter the list of jobs. (optional)
      * @param null|string   $page_token
-     *                                           String returned in the response of your previous request. (optional)
+     *                                                          String returned in the response of your previous request. (optional)
      * @param null|int      $page_size
-     *                                           A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
+     *                                                          A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
      * @param null|string   $sort_field
-     *                                           Sort fields on which you want to sort the output. (optional)
+     *                                                          Sort fields on which you want to sort the output. (optional)
      * @param null|string   $sort_order
-     *                                           Sort order for the query you want to perform. (optional)
+     *                                                          Sort order for the query you want to perform. (optional)
      * @param null|string   $created_after
-     *                                           A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     *                                                          A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
      * @param null|string   $created_before
-     *                                           A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
+     *                                                          A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
      * @param null|string   $last_updated_after
-     *                                           A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     *                                                          A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
      * @param null|string   $last_updated_before
-     *                                           A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
+     *                                                          A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
      * @param null|string   $schedule_start_date
-     *                                           A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     *                                                          A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
      * @param null|string   $schedule_end_date
-     *                                           A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     *                                                          A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
      * @param null|string[] $asins
-     *                                           List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
+     *                                                          List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
      * @param null|string[] $required_skills
-     *                                           A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
+     *                                                          A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
      * @param null|string[] $store_ids
-     *                                           List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     *                                                          List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param null|string[] $provider_service_job_reference_ids
+     *                                                          A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -4515,10 +4526,11 @@ class ServiceApi
         ?array $asins = null,
         ?array $required_skills = null,
         ?array $store_ids = null,
+        ?array $provider_service_job_reference_ids = null,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\GetServiceJobsResponse';
-        $request = $this->getServiceJobsRequest($marketplace_ids, $service_order_ids, $product_order_ids, $tracking_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids);
+        $request = $this->getServiceJobsRequest($marketplace_ids, $service_order_ids, $product_order_ids, $tracking_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids, $provider_service_job_reference_ids);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getServiceJobs');
         } else {
@@ -4574,41 +4586,43 @@ class ServiceApi
      * Create request for operation 'getServiceJobs'.
      *
      * @param string[]      $marketplace_ids
-     *                                           Used to select jobs that were placed in the specified marketplaces. (required)
+     *                                                          Used to select jobs that were placed in the specified marketplaces. (required)
      * @param null|string[] $service_order_ids
-     *                                           List of service order ids for the query you want to perform.Max values supported 20. (optional)
+     *                                                          List of service order ids for the query you want to perform.Max values supported 20. (optional)
      * @param null|string[] $product_order_ids
-     *                                           A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)
+     *                                                          A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)
      * @param null|string[] $tracking_ids
-     *                                           A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)
+     *                                                          A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)
      * @param null|string[] $service_job_status
-     *                                           A list of one or more job status by which to filter the list of jobs. (optional)
+     *                                                          A list of one or more job status by which to filter the list of jobs. (optional)
      * @param null|string   $page_token
-     *                                           String returned in the response of your previous request. (optional)
+     *                                                          String returned in the response of your previous request. (optional)
      * @param null|int      $page_size
-     *                                           A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
+     *                                                          A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
      * @param null|string   $sort_field
-     *                                           Sort fields on which you want to sort the output. (optional)
+     *                                                          Sort fields on which you want to sort the output. (optional)
      * @param null|string   $sort_order
-     *                                           Sort order for the query you want to perform. (optional)
+     *                                                          Sort order for the query you want to perform. (optional)
      * @param null|string   $created_after
-     *                                           A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     *                                                          A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
      * @param null|string   $created_before
-     *                                           A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
+     *                                                          A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
      * @param null|string   $last_updated_after
-     *                                           A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     *                                                          A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
      * @param null|string   $last_updated_before
-     *                                           A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
+     *                                                          A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
      * @param null|string   $schedule_start_date
-     *                                           A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     *                                                          A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
      * @param null|string   $schedule_end_date
-     *                                           A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     *                                                          A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
      * @param null|string[] $asins
-     *                                           List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
+     *                                                          List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
      * @param null|string[] $required_skills
-     *                                           A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
+     *                                                          A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
      * @param null|string[] $store_ids
-     *                                           List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     *                                                          List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param null|string[] $provider_service_job_reference_ids
+     *                                                          A list of up to 20 reference IDs for the service jobs assigned to the provider. You can use these IDs to query service jobs. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -4630,7 +4644,8 @@ class ServiceApi
         ?string $schedule_end_date = null,
         ?array $asins = null,
         ?array $required_skills = null,
-        ?array $store_ids = null
+        ?array $store_ids = null,
+        ?array $provider_service_job_reference_ids = null
     ): Request {
         // verify the required parameter 'marketplace_ids' is set
         if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
@@ -4689,6 +4704,13 @@ class ServiceApi
         }
         if (null !== $store_ids && count($store_ids) < 1) {
             throw new \InvalidArgumentException('invalid value for "$store_ids" when calling ServiceApi.getServiceJobs, number of items must be greater than or equal to 1.');
+        }
+
+        if (null !== $provider_service_job_reference_ids && count($provider_service_job_reference_ids) > 20) {
+            throw new \InvalidArgumentException('invalid value for "$provider_service_job_reference_ids" when calling ServiceApi.getServiceJobs, number of items must be less than or equal to 20.');
+        }
+        if (null !== $provider_service_job_reference_ids && count($provider_service_job_reference_ids) < 1) {
+            throw new \InvalidArgumentException('invalid value for "$provider_service_job_reference_ids" when calling ServiceApi.getServiceJobs, number of items must be greater than or equal to 1.');
         }
 
         $resourcePath = '/service/v1/serviceJobs';
@@ -4872,6 +4894,16 @@ class ServiceApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $store_ids,
             'storeIds', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $provider_service_job_reference_ids,
+            'providerServiceJobReferenceIds', // param base name
             'array', // openApiType
             'form', // style
             false, // explode

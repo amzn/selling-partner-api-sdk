@@ -268,7 +268,7 @@ class Error implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets code.
      *
-     * @param string $code an error code that identifies the type of error that occurred
+     * @param string $code an error code that identifies the type of error
      */
     public function setCode(string $code): self
     {

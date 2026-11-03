@@ -266,7 +266,7 @@ class ShippingOfferingFilter implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets include_packing_slip_with_label.
      *
-     * @param null|bool $include_packing_slip_with_label when true, include a packing slip with the label
+     * @param null|bool $include_packing_slip_with_label when `true`, include a packing slip with the label
      */
     public function setIncludePackingSlipWithLabel(?bool $include_packing_slip_with_label): self
     {
@@ -296,7 +296,7 @@ class ShippingOfferingFilter implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets include_complex_shipping_options.
      *
-     * @param null|bool $include_complex_shipping_options when true, include complex shipping options
+     * @param null|bool $include_complex_shipping_options when `true`, include complex shipping options
      */
     public function setIncludeComplexShippingOptions(?bool $include_complex_shipping_options): self
     {

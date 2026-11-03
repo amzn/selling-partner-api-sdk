@@ -1179,10 +1179,46 @@ DefaultApi-getRemittance:
 # Support API
 SupportApi-getCase:
   - 1
-  - 1
+  - 10
+  - 10
 SupportApi-listCase:
   - 1
-  - 1
+  - 10
+  - 10
 SupportApi-listContacts:
+  - 1
+  - 10
+  - 10
+# Messaging Automations v2026-04-20
+AutomationConfigurationsApi-createAutomationConfiguration:
+  - 1
+  - 15
+AutomationConfigurationsApi-listAutomationConfigurations:
+  - 1
+  - 15
+AutomationConfigurationsApi-getAutomationConfiguration:
+  - 1
+  - 15
+AutomationConfigurationsApi-updateAutomationConfiguration:
+  - 1
+  - 15
+# Action Items v2026-06-01
+ItemsApi-listActionItems:
+  - 1
+  - 1
+ItemsApi-getActionItem:
+  - 1
+  - 1
+ItemsApi-dismissActionItem:
+  - 1
+  - 1
+# Action Plans v2026-06-01
+ActionPlansApi-getActionPlan:
+  - 1
+  - 1
+ActionPlansApi-createActionPlan:
+  - 1
+  - 1
+ActionPlansApi-listActionPlans:
   - 1
   - 1

@@ -39,7 +39,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Party identification details for the shipment, applicable to direct fulfillment shipments.
+ * @description Party identification details for the shipment, applicable only to direct fulfillment shipments.
  *
  * @author   OpenAPI Generator team
  *

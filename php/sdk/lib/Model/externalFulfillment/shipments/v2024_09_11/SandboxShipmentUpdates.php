@@ -69,7 +69,7 @@ class SandboxShipmentUpdates implements ModelInterface, \ArrayAccess, \JsonSeria
     protected static array $openAPITypes = [
         'status' => 'string',
         'sub_status' => 'string',
-        'timestamp' => 'string'];
+        'timestamp' => '\DateTime'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -387,7 +387,7 @@ class SandboxShipmentUpdates implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Gets timestamp.
      */
-    public function getTimestamp(): ?string
+    public function getTimestamp(): ?\DateTime
     {
         return $this->container['timestamp'];
     }
@@ -395,9 +395,9 @@ class SandboxShipmentUpdates implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets timestamp.
      *
-     * @param null|string $timestamp The Expected Pickup Date (EPD) for the shipment. Used with `TRANSPORT_CAPACITY_CHANGE` update type. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
+     * @param null|\DateTime $timestamp The Expected Pickup Date (EPD) for the shipment. Used with `TRANSPORT_CAPACITY_CHANGE` update type. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      */
-    public function setTimestamp(?string $timestamp): self
+    public function setTimestamp(?\DateTime $timestamp): self
     {
         if (is_null($timestamp)) {
             array_push($this->openAPINullablesSetToNull, 'timestamp');

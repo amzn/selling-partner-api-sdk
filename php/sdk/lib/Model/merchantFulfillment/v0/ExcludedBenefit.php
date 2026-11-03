@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description An object representing an excluded benefit that is excluded for a shipping offer or rate.
+ * @description A benefit excluded from a shipping offer or rate.
  *
  * @author   OpenAPI Generator team
  *
@@ -252,7 +252,7 @@ class ExcludedBenefit implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets benefit.
      *
-     * @param null|string $benefit a benefit that is being excluded from a shipment
+     * @param null|string $benefit the benefit excluded from a shipment
      */
     public function setBenefit(?string $benefit): self
     {

@@ -39,7 +39,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Whether the invoice document is required to be attached to the shipment and its corresponding status.
+ * @description Whether the invoice document is required to be attached to the shipment and its corresponding status. Applicable only for Brazil marketplace.
  *
  * @author   OpenAPI Generator team
  *

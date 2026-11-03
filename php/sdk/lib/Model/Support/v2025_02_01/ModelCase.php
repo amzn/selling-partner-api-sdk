@@ -74,8 +74,7 @@ class ModelCase implements ModelInterface, \ArrayAccess, \JsonSerializable
         'appointments' => '\SpApi\Model\Support\v2025_02_01\Appointment[]',
         'created_date' => '\DateTime',
         'last_updated_date' => '\DateTime',
-        'resolved_date' => '\DateTime',
-        'last_outbound_date' => '\DateTime'];
+        'resolved_date' => '\DateTime'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -95,8 +94,7 @@ class ModelCase implements ModelInterface, \ArrayAccess, \JsonSerializable
         'appointments' => null,
         'created_date' => 'date-time',
         'last_updated_date' => 'date-time',
-        'resolved_date' => 'date-time',
-        'last_outbound_date' => 'date-time'];
+        'resolved_date' => 'date-time'];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -113,7 +111,6 @@ class ModelCase implements ModelInterface, \ArrayAccess, \JsonSerializable
         'created_date' => false,
         'last_updated_date' => false,
         'resolved_date' => true,
-        'last_outbound_date' => true,
     ];
 
     /**
@@ -139,7 +136,6 @@ class ModelCase implements ModelInterface, \ArrayAccess, \JsonSerializable
         'created_date' => 'createdDate',
         'last_updated_date' => 'lastUpdatedDate',
         'resolved_date' => 'resolvedDate',
-        'last_outbound_date' => 'lastOutboundDate',
     ];
 
     /**
@@ -157,7 +153,6 @@ class ModelCase implements ModelInterface, \ArrayAccess, \JsonSerializable
         'created_date' => 'setCreatedDate',
         'last_updated_date' => 'setLastUpdatedDate',
         'resolved_date' => 'setResolvedDate',
-        'last_outbound_date' => 'setLastOutboundDate',
     ];
 
     /**
@@ -175,7 +170,6 @@ class ModelCase implements ModelInterface, \ArrayAccess, \JsonSerializable
         'created_date' => 'getCreatedDate',
         'last_updated_date' => 'getLastUpdatedDate',
         'resolved_date' => 'getResolvedDate',
-        'last_outbound_date' => 'getLastOutboundDate',
     ];
 
     /**
@@ -200,7 +194,6 @@ class ModelCase implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('created_date', $data ?? [], null);
         $this->setIfExists('last_updated_date', $data ?? [], null);
         $this->setIfExists('resolved_date', $data ?? [], null);
-        $this->setIfExists('last_outbound_date', $data ?? [], null);
     }
 
     /**
@@ -579,36 +572,6 @@ class ModelCase implements ModelInterface, \ArrayAccess, \JsonSerializable
             }
         }
         $this->container['resolved_date'] = $resolved_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_outbound_date.
-     */
-    public function getLastOutboundDate(): ?\DateTime
-    {
-        return $this->container['last_outbound_date'];
-    }
-
-    /**
-     * Sets last_outbound_date.
-     *
-     * @param null|\DateTime $last_outbound_date The timestamp of the last outbound contact on the case. The date must be in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> format.
-     */
-    public function setLastOutboundDate(?\DateTime $last_outbound_date): self
-    {
-        if (is_null($last_outbound_date)) {
-            array_push($this->openAPINullablesSetToNull, 'last_outbound_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('last_outbound_date', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['last_outbound_date'] = $last_outbound_date;
 
         return $this;
     }

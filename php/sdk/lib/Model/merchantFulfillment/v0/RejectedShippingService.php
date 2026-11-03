@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Information about a rejected shipping service
+ * @description Information about a rejected shipping service.
  *
  * @author   OpenAPI Generator team
  *
@@ -357,7 +357,7 @@ class RejectedShippingService implements ModelInterface, \ArrayAccess, \JsonSeri
     /**
      * Sets rejection_reason_code.
      *
-     * @param string $rejection_reason_code A reason code meant to be consumed programatically. For example, `CARRIER_CANNOT_SHIP_TO_POBOX`.
+     * @param string $rejection_reason_code A reason code meant to be consumed programmatically. For example, `CARRIER_CANNOT_SHIP_TO_POBOX`.
      */
     public function setRejectionReasonCode(string $rejection_reason_code): self
     {
@@ -380,7 +380,7 @@ class RejectedShippingService implements ModelInterface, \ArrayAccess, \JsonSeri
     /**
      * Sets rejection_reason_message.
      *
-     * @param null|string $rejection_reason_message a localized human readable description of the rejected reason
+     * @param null|string $rejection_reason_message a localized, human-readable description of the rejected reason
      */
     public function setRejectionReasonMessage(?string $rejection_reason_message): self
     {
