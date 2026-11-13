@@ -323,7 +323,7 @@ class MarketplaceAttributes implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets marketplace_id.
      *
-     * @param null|string $marketplace_id the marketplace ID of the marketplace where you want to update inventory
+     * @param null|string $marketplace_id The identifier for the marketplace. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for the full list of supported marketplace IDs.
      */
     public function setMarketplaceId(?string $marketplace_id): self
     {
