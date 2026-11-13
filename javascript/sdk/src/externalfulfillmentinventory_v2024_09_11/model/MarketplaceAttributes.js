@@ -89,7 +89,7 @@ MarketplaceAttributes.ChannelNameEnum = {
 MarketplaceAttributes.prototype.channelName = undefined
 
 /**
- * The marketplace ID of the marketplace where you want to update inventory.
+ * The identifier for the marketplace. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for the full list of supported marketplace IDs.
  * @member {String} marketplaceId
  * @type {String}
  */
