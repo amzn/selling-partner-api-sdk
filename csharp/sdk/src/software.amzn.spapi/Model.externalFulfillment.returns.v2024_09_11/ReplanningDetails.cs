@@ -45,6 +45,9 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// A list of all the previous tracking information for the return.
         /// </summary>
         /// <value>A list of all the previous tracking information for the return.</value>
+        /*
+        <example>[{carrierName&#x3D;ATS, trackingId&#x3D;156121269663}]</example>
+        */
         [DataMember(Name = "previousTrackingInfo", EmitDefaultValue = false)]
         public List<TrackingInfo>? PreviousTrackingInfo { get; set; }
 
