@@ -63,6 +63,9 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// The ID of the merchant or seller to whom this return is created in the marketplace.
         /// </summary>
         /// <value>The ID of the merchant or seller to whom this return is created in the marketplace.</value>
+        /*
+        <example>A2MERCHANTID</example>
+        */
         [DataMember(Name = "merchantId", EmitDefaultValue = false)]
         public string? MerchantId { get; set; }
 
