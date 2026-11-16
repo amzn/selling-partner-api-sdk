@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - uses: actions/checkout@v4
@@ -23,7 +23,7 @@ jobs:
           path: selling-partner-api-models
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.9.25'
+          python-version: '3.9'
       - uses: actions/setup-node@v4  # needed for openapi-generator-cli
         with:
           node-version: '20'
