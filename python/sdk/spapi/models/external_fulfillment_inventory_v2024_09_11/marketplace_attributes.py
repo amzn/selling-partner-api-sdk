@@ -91,7 +91,7 @@ class MarketplaceAttributes(object):
     def marketplace_id(self):
         """Gets the marketplace_id of this MarketplaceAttributes.  # noqa: E501
 
-        The marketplace ID of the marketplace where you want to update inventory.  # noqa: E501
+        The identifier for the marketplace. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for the full list of supported marketplace IDs.  # noqa: E501
 
         :return: The marketplace_id of this MarketplaceAttributes.  # noqa: E501
         :rtype: str
@@ -102,7 +102,7 @@ class MarketplaceAttributes(object):
     def marketplace_id(self, marketplace_id):
         """Sets the marketplace_id of this MarketplaceAttributes.
 
-        The marketplace ID of the marketplace where you want to update inventory.  # noqa: E501
+        The identifier for the marketplace. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for the full list of supported marketplace IDs.  # noqa: E501
 
         :param marketplace_id: The marketplace_id of this MarketplaceAttributes.  # noqa: E501
         :type: str
