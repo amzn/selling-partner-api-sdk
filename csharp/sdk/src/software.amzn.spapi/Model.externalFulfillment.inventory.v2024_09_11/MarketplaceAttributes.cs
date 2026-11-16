@@ -71,7 +71,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /// Initializes a new instance of the <see cref="MarketplaceAttributes" /> class.
         /// </summary>
         /// <param name="channelName">The name of the fulfillment channel in which to update inventory..</param>
-        /// <param name="marketplaceId">The marketplace ID of the marketplace where you want to update inventory..</param>
+        /// <param name="marketplaceId">The identifier for the marketplace. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for the full list of supported marketplace IDs..</param>
         public MarketplaceAttributes(ChannelNameEnum? channelName = default(ChannelNameEnum?), string? marketplaceId = default(string?))
         {
             this.ChannelName = channelName;
@@ -79,11 +79,11 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         }
 
         /// <summary>
-        /// The marketplace ID of the marketplace where you want to update inventory.
+        /// The identifier for the marketplace. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for the full list of supported marketplace IDs.
         /// </summary>
-        /// <value>The marketplace ID of the marketplace where you want to update inventory.</value>
+        /// <value>The identifier for the marketplace. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for the full list of supported marketplace IDs.</value>
         /*
-        <example>AXJDDKDFDKDF</example>
+        <example>A21TJRUUN4KGV</example>
         */
         [DataMember(Name = "marketplaceId", EmitDefaultValue = false)]
         public string? MarketplaceId { get; set; }

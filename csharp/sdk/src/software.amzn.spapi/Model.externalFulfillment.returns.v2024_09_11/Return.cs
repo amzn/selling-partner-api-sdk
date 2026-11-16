@@ -309,6 +309,9 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// The SmartConnect identifier for where the return item was dropped for delivery.
         /// </summary>
         /// <value>The SmartConnect identifier for where the return item was dropped for delivery.</value>
+        /*
+        <example>EDD5</example>
+        */
         [DataMember(Name = "returnLocationId", EmitDefaultValue = false)]
         public string? ReturnLocationId { get; set; }
 

@@ -62,6 +62,9 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// The name of the third party courier service used to ship the return package.
         /// </summary>
         /// <value>The name of the third party courier service used to ship the return package.</value>
+        /*
+        <example>ATS</example>
+        */
         [DataMember(Name = "carrierName", IsRequired = true, EmitDefaultValue = true)]
         public string CarrierName { get; set; }
 
@@ -69,6 +72,9 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// The tracking ID of the return package.
         /// </summary>
         /// <value>The tracking ID of the return package.</value>
+        /*
+        <example>19124773658</example>
+        */
         [DataMember(Name = "trackingId", IsRequired = true, EmitDefaultValue = true)]
         public string TrackingId { get; set; }
 
