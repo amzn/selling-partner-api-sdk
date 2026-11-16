@@ -30,7 +30,7 @@ jobs:
           token: ${{ secrets.MAFGE_PAT }}
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: '3.9.25'
       - name: Copy required files and install dependencies
         working-directory: python/sdk
         run: |
