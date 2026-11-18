@@ -50,7 +50,8 @@ class Context implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
-    public const STORE_NAME_AMAZON_HAUL = 'AMAZON_HAUL';
+    public const STORE_NAME_HAUL = 'AMAZON_HAUL';
+    public const STORE_NAME_FBA_FROM_ORIGIN = 'AMAZON_FBA_FROM_ORIGIN';
 
     /**
      * The original name of the model.
@@ -328,7 +329,8 @@ class Context implements ModelInterface, \ArrayAccess, \JsonSerializable
     public function getStoreNameAllowableValues(): array
     {
         return [
-            self::STORE_NAME_AMAZON_HAUL,
+            self::STORE_NAME_HAUL,
+            self::STORE_NAME_FBA_FROM_ORIGIN,
         ];
     }
 
