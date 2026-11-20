@@ -39,6 +39,11 @@ export declare namespace BusinessContext {
            * @const
            */
         AMAZON_HAUL: string;
+        /**
+           * value: "AMAZON_FBA_FROM_ORIGIN"
+           * @const
+           */
+        AMAZON_FBA_FROM_ORIGIN: string;
     };
 }
 //# sourceMappingURL=BusinessContext.d.ts.map

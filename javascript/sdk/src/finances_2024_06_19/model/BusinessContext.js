@@ -66,7 +66,13 @@ BusinessContext.StoreNameEnum = {
      * value: "AMAZON_HAUL"
      * @const
      */
-  AMAZON_HAUL: 'AMAZON_HAUL'
+  AMAZON_HAUL: 'AMAZON_HAUL',
+
+  /**
+     * value: "AMAZON_FBA_FROM_ORIGIN"
+     * @const
+     */
+  AMAZON_FBA_FROM_ORIGIN: 'AMAZON_FBA_FROM_ORIGIN'
 }
 /**
  * The store name associated with the transaction.
