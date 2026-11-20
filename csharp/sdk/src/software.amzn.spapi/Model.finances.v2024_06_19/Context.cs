@@ -39,10 +39,16 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         public enum StoreNameEnum
         {
             /// <summary>
-            /// Enum AMAZONHAUL for value: AMAZON_HAUL
+            /// Enum HAUL for value: AMAZON_HAUL
             /// </summary>
             [EnumMember(Value = "AMAZON_HAUL")]
-            AMAZONHAUL = 1
+            HAUL = 1,
+
+            /// <summary>
+            /// Enum FBAFROMORIGIN for value: AMAZON_FBA_FROM_ORIGIN
+            /// </summary>
+            [EnumMember(Value = "AMAZON_FBA_FROM_ORIGIN")]
+            FBAFROMORIGIN = 2
         }
 
 
