@@ -146,7 +146,7 @@ class Context(object):
         :param store_name: The store_name of this Context.  # noqa: E501
         :type: str
         """
-        allowed_values = ["AMAZON_HAUL"]  # noqa: E501
+        allowed_values = ["AMAZON_HAUL", "AMAZON_FBA_FROM_ORIGIN"]  # noqa: E501
         if (self._configuration.client_side_validation and
                 store_name not in allowed_values):
             raise ValueError(
