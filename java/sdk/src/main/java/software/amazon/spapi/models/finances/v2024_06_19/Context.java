@@ -28,7 +28,9 @@ public class Context {
     @JsonAdapter(StoreNameEnum.Adapter.class)
     public enum StoreNameEnum {
         @SerializedName("AMAZON_HAUL")
-        AMAZON_HAUL("AMAZON_HAUL");
+        HAUL("AMAZON_HAUL"),
+        @SerializedName("AMAZON_FBA_FROM_ORIGIN")
+        FBA_FROM_ORIGIN("AMAZON_FBA_FROM_ORIGIN");
 
         private String value;
 

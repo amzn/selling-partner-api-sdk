@@ -878,10 +878,11 @@ public class DefaultApi {
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
      *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. *
-     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:**
-     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with
-     *     filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in
-     *     the response when available, they cannot be used for filtering purposes. (optional)
+     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. * &#x60;SETTLEMENT_ID&#x60;: the
+     *     settlement group ID associated with the transaction. **Note:** &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;,
+     *     &#x60;ORDER_ID&#x60;, and &#x60;SETTLEMENT_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with filtering
+     *     capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in the response
+     *     when available, they cannot be used for filtering purposes. (optional)
      * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
      *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
@@ -1000,10 +1001,11 @@ public class DefaultApi {
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
      *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. *
-     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:**
-     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with
-     *     filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in
-     *     the response when available, they cannot be used for filtering purposes. (optional)
+     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. * &#x60;SETTLEMENT_ID&#x60;: the
+     *     settlement group ID associated with the transaction. **Note:** &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;,
+     *     &#x60;ORDER_ID&#x60;, and &#x60;SETTLEMENT_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with filtering
+     *     capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in the response
+     *     when available, they cannot be used for filtering purposes. (optional)
      * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
      *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
@@ -1064,10 +1066,11 @@ public class DefaultApi {
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
      *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. *
-     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:**
-     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with
-     *     filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in
-     *     the response when available, they cannot be used for filtering purposes. (optional)
+     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. * &#x60;SETTLEMENT_ID&#x60;: the
+     *     settlement group ID associated with the transaction. **Note:** &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;,
+     *     &#x60;ORDER_ID&#x60;, and &#x60;SETTLEMENT_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with filtering
+     *     capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in the response
+     *     when available, they cannot be used for filtering purposes. (optional)
      * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
      *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
@@ -1126,10 +1129,11 @@ public class DefaultApi {
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
      *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. *
-     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:**
-     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with
-     *     filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in
-     *     the response when available, they cannot be used for filtering purposes. (optional)
+     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. * &#x60;SETTLEMENT_ID&#x60;: the
+     *     settlement group ID associated with the transaction. **Note:** &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;,
+     *     &#x60;ORDER_ID&#x60;, and &#x60;SETTLEMENT_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with filtering
+     *     capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in the response
+     *     when available, they cannot be used for filtering purposes. (optional)
      * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
      *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
@@ -1200,10 +1204,11 @@ public class DefaultApi {
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
      *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. *
-     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:**
-     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with
-     *     filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in
-     *     the response when available, they cannot be used for filtering purposes. (optional)
+     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. * &#x60;SETTLEMENT_ID&#x60;: the
+     *     settlement group ID associated with the transaction. **Note:** &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;,
+     *     &#x60;ORDER_ID&#x60;, and &#x60;SETTLEMENT_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with filtering
+     *     capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in the response
+     *     when available, they cannot be used for filtering purposes. (optional)
      * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
      *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
@@ -1261,10 +1266,11 @@ public class DefaultApi {
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
      *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. *
-     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:**
-     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with
-     *     filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in
-     *     the response when available, they cannot be used for filtering purposes. (optional)
+     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. * &#x60;SETTLEMENT_ID&#x60;: the
+     *     settlement group ID associated with the transaction. **Note:** &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;,
+     *     &#x60;ORDER_ID&#x60;, and &#x60;SETTLEMENT_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with filtering
+     *     capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in the response
+     *     when available, they cannot be used for filtering purposes. (optional)
      * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
      *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
@@ -1324,10 +1330,11 @@ public class DefaultApi {
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
      *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. *
-     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:**
-     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with
-     *     filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in
-     *     the response when available, they cannot be used for filtering purposes. (optional)
+     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. * &#x60;SETTLEMENT_ID&#x60;: the
+     *     settlement group ID associated with the transaction. **Note:** &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;,
+     *     &#x60;ORDER_ID&#x60;, and &#x60;SETTLEMENT_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with filtering
+     *     capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in the response
+     *     when available, they cannot be used for filtering purposes. (optional)
      * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
      *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
