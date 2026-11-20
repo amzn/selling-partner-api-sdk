@@ -17,12 +17,15 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.internal.bind.util.ISO8601Utils;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.gsonfire.GsonFireBuilder;
 import java.io.IOException;
 import java.io.StringReader;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -86,6 +89,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter);
         gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
         gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
+        gsonBuilder.registerTypeAdapterFactory(new NullPreservingMapTypeAdapterFactory());
         gson = gsonBuilder.create();
     }
 
@@ -149,6 +153,68 @@ public class JSON {
             } else {
                 throw (e);
             }
+        }
+    }
+
+    /**
+     * Gson TypeAdapterFactory for free-form maps (for example the {@code value} of a Listings Items
+     * {@code PatchOperation}). Gson drops map entries whose value is null unless null serialization is enabled
+     * globally, which would also emit every unset model field as null. This factory writes null map entries explicitly,
+     * so that operations such as {@code merge} can remove an attribute, while null model fields are still omitted.
+     */
+    public static class NullPreservingMapTypeAdapterFactory implements TypeAdapterFactory {
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> typeToken) {
+            if (!Map.class.isAssignableFrom(typeToken.getRawType())) {
+                return null;
+            }
+            Type keyType = Object.class;
+            Type valueType = Object.class;
+            if (typeToken.getType() instanceof ParameterizedType) {
+                Type[] typeArguments = ((ParameterizedType) typeToken.getType()).getActualTypeArguments();
+                if (typeArguments.length == 2) {
+                    keyType = typeArguments[0];
+                    valueType = typeArguments[1];
+                }
+            }
+            if (keyType != String.class && keyType != Object.class) {
+                return null;
+            }
+            final TypeAdapter<T> delegate = gson.getDelegateAdapter(this, typeToken);
+            final TypeAdapter<?> declaredValueAdapter =
+                    valueType == Object.class ? null : gson.getAdapter(TypeToken.get(valueType));
+            return new TypeAdapter<T>() {
+                @Override
+                @SuppressWarnings({"unchecked", "rawtypes"})
+                public void write(JsonWriter out, T map) throws IOException {
+                    if (map == null) {
+                        out.nullValue();
+                        return;
+                    }
+                    out.beginObject();
+                    for (Map.Entry<?, ?> entry : ((Map<?, ?>) map).entrySet()) {
+                        out.name(String.valueOf(entry.getKey()));
+                        Object value = entry.getValue();
+                        if (value == null) {
+                            boolean serializeNulls = out.getSerializeNulls();
+                            out.setSerializeNulls(true);
+                            out.nullValue();
+                            out.setSerializeNulls(serializeNulls);
+                        } else {
+                            TypeAdapter valueAdapter = declaredValueAdapter != null
+                                    ? declaredValueAdapter
+                                    : gson.getAdapter(value.getClass());
+                            valueAdapter.write(out, value);
+                        }
+                    }
+                    out.endObject();
+                }
+
+                @Override
+                public T read(JsonReader in) throws IOException {
+                    return delegate.read(in);
+                }
+            };
         }
     }
 
